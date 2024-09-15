@@ -15,45 +15,22 @@ namespace SefariaAPI;
 
 
 /**
- * Successful Response
- */
-model `get_api-index200ApplicationJsonResponse` {
-    @statusCode statusCode: 200;
-    @bodyRoot body: APIIndexResponse;
-  }
-  
-/**
- * Retrieve basic statistics and information about the "shape" of an `Index` on Sefaria.
- */
-model `get_api-shape-title200ApplicationJsonResponse` {
-@statusCode statusCode: 200;
-@bodyRoot body: ShapeJSON;
-}
-
-  /**
- * Successful Request
- */
-model `get_api-v2-raw-index-index-title200ApplicationJsonResponse` {
-    @statusCode statusCode: 200;
-    @bodyRoot body: RawIndexJSON;
-  }
-  
-
-/**
  * This API endpoint will retrieve the full mongo record of the given `Index` as it appears in the database.
+ * @returns Successful Request
  */
 @tag("Index")
 @route("/api/v2/raw/index/{index_title}")
 @get
-op `get_api-v2-raw-index-index-title`(index_title : string): `get_api-v2-raw-index-index-title200ApplicationJsonResponse`;
+op `get_api-v2-raw-index-index-title`(index_title : string): RawIndexJSON;
 
 /**
  * This API endpoint returns the titles of all the books in the Sefaria Library arranged by their category along with some additional metadata. This is a large and rarely changing request and should be cached locally if you utilize it.
+ * @returns Successful Response
  */
 @tag("Index")
 @route("/api/index")
 @get
-op `get_api-index`(): `get_api-index200ApplicationJsonResponse`;
+op `get_api-index`(): APIIndexResponse;
 
 /**
  * Retrieve basic statistics and information about the "shape" of an `Index` on Sefaria.
@@ -61,7 +38,7 @@ op `get_api-index`(): `get_api-index200ApplicationJsonResponse`;
 @tag("Index")
 @route("/api/shape/{title}")
 @get
-op `get_api-shape-title`(title: string): `get_api-shape-title200ApplicationJsonResponse`;
+op `get_api-shape-title`(title: string): ShapeJSON;
 
 model APIIndexResponse
   is {

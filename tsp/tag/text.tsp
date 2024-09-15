@@ -15,80 +15,18 @@ namespace SefariaAPI;
  */
 scalar LanguageCode extends string;
 
-
-/**
- * Successful response
- */
-model `get_api-texts-tref200ApplicationJsonResponse` {
-  @statusCode statusCode: 200;
-  @bodyRoot body: textAPIReponse;
-}
-
-/**
- * Returns a list containing the JSON Objects for each version available for the given `index` title. Each JSON Object contains all of the metadata for a given version.
- */
-model `get_api-texts-versions-index200VersionJSONResponse` {
-  @statusCode statusCode: 200;
-  @bodyRoot body: VersionJSON[];
-  @header contentType: "VersionJSON";
-}
-
-/**
- * Successful Response
- */
-model `get_api-texts-translations200ApplicationJsonResponse` {
-  @statusCode statusCode: 200;
-  @bodyRoot body: string[];
-}
-
-/**
- * Successful Response
- */
-model `get_api-texts-translations-lan200ApplicationJsonResponse` {
-  @statusCode statusCode: 200;
-  @bodyRoot body: {
-    title?: string;
-    url?: string;
-    versionTitle?: string;
-    rtlLanguage?: "he" | "en";
-  };
-}
-
-
-/**
- * Successful response
- */
-model `get_api-manuscripts-tref200ApplicationJsonResponse` {
-    @statusCode statusCode: 200;
-    @bodyRoot body: ManuscriptJSON[];
-  }
-  
-/**
- * Successful response
- */
-model `get_api-texts-random200ApplicationJsonResponse` {
-@statusCode statusCode: 200;
-@bodyRoot body: textAPIReponse;
-}
-
-/**
- * Successful retrieval of the desired texts.
- */
-model `get_api-v3-texts-tref200ApplicationJsonResponse` {
-    @statusCode statusCode: 200;
-    @bodyRoot body: v3TextsJson;
-  }  
-
 /**
  * The most up-to-date way to retrieve texts from Sefaria via the API, with enhanced control over language, language direction, and other parameters.
+ * @returns Successful retrieval of the desired texts.
  */
 @tag("Text")
 @route("/api/v3/texts/{tref}")
 @get
-op `get_api-v3-texts-tref`(tref: string): `get_api-v3-texts-tref200ApplicationJsonResponse`;
+op `get_api-v3-texts-tref`(tref: string): v3TextsJson;
 
 /**
  * Retrieve the text and some additional metadata for a specific Sefaria textual `Ref`
+* @returns Successful response
  */
 @tag("Text")
 @route("/api/texts/{tref}")
@@ -171,36 +109,45 @@ op `get_api-texts-tref`(
    * A valid textual `Ref` to a Sefaria text.
    */
   @path tref: ref,
-): `get_api-texts-tref200ApplicationJsonResponse`;
+): textAPIReponse;
 
 /**
  * The versions API takes a title of a valid Sefaria `index` as a parameter, and will return all available versions of the text in the Sefaria database, alongside metadata for each version. A version can be a translation of the text, an alternative language, or any other text associated with that index.
  *
  * *Note:* In order to see the expected results, you need to make sure you are passing a recognized `index`. For example, `Rashi on Genesis` is a valid `index` but `Rashi` is not. To see the entire list of valid Sefaria indices, click [here](https://www.sefaria.org/api/index/)
+* @returns Returns a list containing the JSON Objects for each version available for the given `index` title. Each JSON Object contains all of the metadata for a given version.
  */
 @tag("Text")
 @route("/api/texts/versions/{index}")
 @get
-op `get_api-texts-versions-index`(index: string): `get_api-texts-versions-index200VersionJSONResponse`;
+op `get_api-texts-versions-index`(index: string): VersionJSON[];
 
 /**
  * Returns a list of distinct languages for which translations exist in the database.
+* @returns Successful Response
  */
 @tag("Text")
 @route("/api/texts/translations")
 @get
-op `get_api-texts-translations`(): `get_api-texts-translations200ApplicationJsonResponse`;
+op `get_api-texts-translations`(): string[];
 
 /**
  * Returns a dictionary of texts translated into `lang`, organized by the Sefaria category & secondary category of each title.
+* @returns Successful Response
  */
 @tag("Text")
 @route("/api/texts/translations/{lang}")
 @get
-op `get_api-texts-translations-lan`(lang: string): `get_api-texts-translations-lan200ApplicationJsonResponse`;
+op `get_api-texts-translations-lan`(lang: string): {
+    title?: string;
+    url?: string;
+    versionTitle?: string;
+    rtlLanguage?: "he" | "en";
+  };
 
 /**
  * This call retrieves all associated manuscript data and metadata for a given Sefaria `tref`.
+* @returns Successful response
  */
 @tag("Text")
 @route("/api/manuscripts/{tref}")
@@ -210,10 +157,11 @@ op `get_api-manuscripts-tref`(
    * The `tref` parameter must a valid Sefaria ref to a text.
    */
   @path tref: string,
-): `get_api-manuscripts-tref200ApplicationJsonResponse`;
+): ManuscriptJSON[];
 
 /**
  * Returns a random text reference from the Sefaria library. Results can be limited to a specific category or from a selection of titles given the correct query params.
+* @returns Successful response
  */
 @tag("Text")
 @route("/api/texts/random")
@@ -228,7 +176,7 @@ op `get_api-texts-random`(
    * A string of categories from the Sefaria library separated with the character `|`. If it exists it will limit the random selection to those categories.
    */
   @query categories?: string,
-): `get_api-texts-random200ApplicationJsonResponse`;
+): textAPIReponse;
 
 /**
  * Expected reponse data from Sefaria's Text API

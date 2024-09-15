@@ -7,29 +7,16 @@ using OpenAPI;
 
 namespace SefariaAPI;
 
-/**
- * An array of matching words.
- */
-model `get_api-words-word200ApplicationJsonResponse` {
-    @statusCode statusCode: 200;
-    @bodyRoot body: (
+alias DictionaryEntryArray = (
       | JastrowDictionaryEntry
       | StrongsDictionaryEntry
       | BDBDictionaryEntry
       | KleinDictionaryEntry
       | HebrewDictionaryEntry)[];
-  }
-  
-  /**
-   * Successful response
-   */
-  model `get_api-words-completion-word-lexicon200ApplicationJsonResponse` {
-    @statusCode statusCode: 200;
-    @bodyRoot body: wordCompletionAPIResponse[];
-  }
 
 /**
  * Searches Sefaria lexicon entries (i.e. dictionaries) for the query string passed as `word` to the endpoint.
+ * @returns An array of matching words.
  */
 @tag("Lexicon")
 @route("/api/words/{word}")
@@ -52,12 +39,14 @@ op `get_api-words-word`(
   @query always_split?: string,
 
   @query always_consonants?: string,
-): `get_api-words-word200ApplicationJsonResponse`;
+): DictionaryEntryArray;
 
 /**
  * Serves primarily as an autocompleter, returning potential lexicon entries for a given input.
  *
  * Returns an array of arrays, each containing two strings. The first is a completion entry in Hebrew without vowels and the second includes vowels.
+ *
+ * @returns Successful response
  */
 @tag("Lexicon")
 @route("/api/words/completion/{word}/{lexicon}")
@@ -74,13 +63,12 @@ op `get_api-words-completion-word-lexicon`(
    * An optional text string matching the name of one of Sefaria's lexicons to limit the search.
    */
   @path lexicon: string,
-): `get_api-words-completion-word-lexicon200ApplicationJsonResponse`;
+): wordCompletionAPIResponse[];
 
 /**
  * An array of arrays, each containing two strings. The first is a completion entry in Hebrew without vowels and the second includes vowels.
  */
 model wordCompletionAPIResponse is string[];
-
 
 /**
  * A single dictionary entry on Sefaria.
@@ -99,8 +87,7 @@ model dictionaryEntry {
     parent_lexicon_details?: {};
   }
   
-  model StrongsDictionaryEntry {
-    ...dictionaryEntry;
+  model StrongsDictionaryEntry extends dictionaryEntry {
     strong_number?: string;
     transliteration?: unknown;
     pronunciation?: unknown;
@@ -111,9 +98,7 @@ model dictionaryEntry {
     };
   }
   
-  model BDBDictionaryEntry {
-    ...dictionaryEntry;
-  
+  model BDBDictionaryEntry  extends dictionaryEntry {
     /**
      * Returns a unique id for this reference that establishes an ordering of references across the whole catalog. The `rid` will change as the ordering of the categories changes, and may begin to overlap with other numbers because of those changes. However, at any point in time the `rid`s will be unique across the catalog. The `rid` is used to sort results from ElasticSearch queries.
      */
@@ -197,9 +182,7 @@ model dictionaryEntry {
     };
   }
   
-  model HebrewDictionaryEntry {
-    ...dictionaryEntry;
-  
+  model HebrewDictionaryEntry  extends dictionaryEntry {
     /**
      * Returns a unique id for this reference that establishes an ordering of references across the whole catalog. This id will change as the ordering of the categories changes, and may begin to overlap with other numbers because of those changes. However, at any point in time these ids will be unique across the catalog. Used to sort results from ElasticSearch queries
      */
@@ -230,9 +213,8 @@ model dictionaryEntry {
   /**
    * An entry from Jastrow’s Dictionary,
    */
-  model JastrowDictionaryEntry {
-    ...dictionaryEntry;
-  
+  model JastrowDictionaryEntry  extends dictionaryEntry {
+
     /**
      * Returns a unique id for this reference that establishes an ordering of references across the whole catalog. This id will change as the ordering of the categories changes, and may begin to overlap with other numbers because of those changes. However, at any point in time these ids will be unique across the catalog. Used to sort results from ElasticSearch queries
      */
@@ -279,9 +261,7 @@ model dictionaryEntry {
   }
   
   
-  model KleinDictionaryEntry {
-    ...dictionaryEntry;
-  
+  model KleinDictionaryEntry extends dictionaryEntry {
     /**
      * Returns a unique id for this reference that establishes an ordering of references across the whole catalog. This id will change as the ordering of the categories changes, and may begin to overlap with other numbers because of those changes. However, at any point in time these ids will be unique across the catalog. Used to sort results from ElasticSearch queries
      */

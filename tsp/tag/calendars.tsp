@@ -8,26 +8,10 @@ using Http;
 using OpenAPI;
 
 namespace SefariaAPI;
-  
-/**
- * Successful Response
- */
-model `get_api-calendars200ApplicationJsonResponse` {
-    @statusCode statusCode: 200;
-    @bodyRoot body: CalendarAPIResponse;
-  }
-  
-/**
- * Successful Response
- */
-model `get_api-calendars-next-read-parasha200ApplicationJsonResponse` {
-@statusCode statusCode: 200;
-@bodyRoot body: CalendarNextReadAPI;
-}
-  
 
 /**
  * Returns the daily or weekly learning schedule for a given date.
+* @returns Successful Response
  */
 @tag("Calendars")
 @route("/api/calendars")
@@ -62,10 +46,11 @@ op `get_api-calendars`(
    * By default, the API attempts to return the calendars for the client's timezone. If you want another region you can override it. Timezone names are in accordance with [IANA Standards](https://www.iana.org/time-zones)
    */
   @query timezone?: unknown,
-): `get_api-calendars200ApplicationJsonResponse`;
+): CalendarNextReadAPI;
 
 /**
  * Given a Parasha name in English, this API returns the next Hebrew and English dates that it is read, along with details about the Torah and Haftarah readings for that date.
+* @returns Successful Response
  */
 @tag("Calendars")
 @route("/api/calendars/next-read/{parasha}")
@@ -136,7 +121,7 @@ op `get_api-calendars-next-read-parasha`(
     | "Chukat-Balak"
     | "Matot-Masei"
     | "Nitzavim-Vayeilech",
-): `get_api-calendars-next-read-parasha200ApplicationJsonResponse`;
+): CalendarAPIResponse;
 
 
 /**

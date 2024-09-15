@@ -1348,7 +1348,7 @@
         "responses": {
           "200": {
             "content": {
-              "VersionJSON": {
+              "application/json": {
                 "schema": {
                   "type": "array",
                   "items": {

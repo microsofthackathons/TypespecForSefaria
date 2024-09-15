@@ -8,34 +8,20 @@ using OpenAPI;
 namespace SefariaAPI;
 
 /**
- * The response to a query for a specific Term in the Terms API.
- */
-model `get_api-terms-name200ApplicationJsonResponse` {
-    @statusCode statusCode: 200;
-    @bodyRoot body: TermsJSON;
-  }
-  
-  /**
-   * Successful response
-   */
-  model `get_api-name-name200ApplicationJsonResponse` {
-    @statusCode statusCode: 200;
-    @bodyRoot body: nameAPIResponse;
-  }
-
-/**
  * A Term is a shared title node.  It can be referenced and used by many different `Index` nodes. Terms that use the same `TermScheme` can be ordered within that scheme. So for example, _Parsha_ terms who all share the `TermScheme` of `parsha`, can be ordered within that scheme.
  *
  * Examples of valid terms:  `Noah`, `HaChovel`
  *
+ * @returns The response to a query for a specific Term in the Terms API.
  */
 @tag("Term")
 @route("/api/terms/{name}")
 @get
-op `get_api-terms-name`(name: string): `get_api-terms-name200ApplicationJsonResponse`;
+op `get_api-terms-name`(name: string): TermsJSON;
 
 /**
  * Serves primarily as an autocompleter, returning potential keyword matches for `Ref`s, book titles, authors, topics, and collections available on Sefaria.
+* @returns Successful response
  */
 @tag("Term")
 @route("/api/name/{name}")
@@ -51,7 +37,7 @@ op `get_api-name-name`(
    * By default `0` the Name API returns `Ref`s, book titles, authors, topics, and collections. If true, the response will only contain text references.
    */
   @query ref_only?: "0" | "1",
-): `get_api-name-name200ApplicationJsonResponse`;
+): nameAPIResponse;
 
 
 /**

@@ -9,58 +9,10 @@ using Http;
 using OpenAPI;
 
 namespace SefariaAPI;
-
-/**
- * v2 Specific Topic API
- */
-model `get_api-v2-topics-topic-slug200ApplicationJsonResponse` {
-    @statusCode statusCode: 200;
-    @bodyRoot body: TopicJSON;
-  }
-
-/**
- * When one calls this endpoint _with_ a specific `topic_slug`, it returns a JSON object containing the metadata for the topic.
- *
- */
-model `get_api-topics-topic-slug200ApplicationJsonResponse` {
-    @statusCode statusCode: 200;
-    @bodyRoot body: TopicJSON;
-  }
-  
-  /**
-   * A list of JSON objects, each object representing a topic in the Sefaria database. Please note, since this list is over 30,000 topics long, in the example we only presented the first several topics that are returned in the array.
-   */
-  model `get_api-topics200ApplicationJsonResponse` {
-    @statusCode statusCode: 200;
-    @bodyRoot body: TopicJSON[];
-  }
-  
-  /**
-   * A list of topics connected to the `topic_slug` as well as a list of links.
-   */
-  model `get_api-topics-graph-topic-slug200ApplicationJsonResponse` {
-    @statusCode statusCode: 200;
-    @bodyRoot body: TopicGraphJSON;
-  }
-  
-  /**
-   * Successful response
-   */
-  model `get_api-recommend-topics-ref-list200ApplicationJsonResponse` {
-    @statusCode statusCode: 200;
-    @bodyRoot body: recommendedTopicResponse[];
-  }
-  
-  /**
-   * Successful response
-   */
-  model `get_api-texts-random-by-topic200ApplicationJsonResponse` {
-    @statusCode statusCode: 200;
-    @bodyRoot body: RandomByTopicJSON;
-  }
   
 /**
  * Retrieve a specific topic from the `v2` version of the topics API.
+* @returns v2 Specific Topic API
  */
 @tag("Topic")
 @route("/api/v2/topics/{topic_slug}")
@@ -74,35 +26,38 @@ op `get_api-v2-topics-topic-slug`(
    * If `1`, adds the following fields to each intra-topic link: `title`, `titleIsTransliteration`, `shouldDisplay`, and `order`.
    */
   @query annotate_links?: integer,
-): `get_api-v2-topics-topic-slug200ApplicationJsonResponse`;
+): TopicJSON;
 
 /**
  * When one calls this endpoint _with_ a specific `topic_slug`, it returns a JSON object containing the metadata for the topic.
- *
+ * @returns  When one calls this endpoint _with_ a specific `topic_slug`, it returns a JSON object containing the metadata for the topic.
  */
 @tag("Topic")
 @route("/api/topics/{topic_slug}")
 @get
-op `get_api-topics-topic-slug`(topic_slug : string): `get_api-topics-topic-slug200ApplicationJsonResponse`;
+op `get_api-topics-topic-slug`(topic_slug : string): TopicJSON;
 
 /**
  * The topics API returns a list of JSON objects, each object containing all of the metadata for each topic in the Sefaria database.
+* @returns A list of JSON objects, each object representing a topic in the Sefaria database. Please note, since this list is over 30,000 topics long, in the example we only presented the first several topics that are returned in the array.
  */
 @tag("Topic")
 @route("/api/topics")
 @get
-op `get_api-topics`(): `get_api-topics200ApplicationJsonResponse`;
+op `get_api-topics`(): TopicJSON[];
 
 /**
  * Endpoint to retrieve topics and their links between other topics. As opposed to topic links to refs, this endpoint retrieve connections between one topic to another topic.
+* @returns A list of topics connected to the `topic_slug` as well as a list of links.
  */
 @tag("Topic")
 @route("/api/topics-graph/{topic_slug}")
 @get
-op `get_api-topics-graph-topic-slug`(topic_slug : string): `get_api-topics-graph-topic-slug200ApplicationJsonResponse`;
+op `get_api-topics-graph-topic-slug`(topic_slug : string): TopicGraphJSON;
 
 /**
  * Given a list of `Ref`s this API returns the most used topics associated with them. This is a fast way of identifying potential shared topics amongst disparate `Ref`s.
+* @returns Successful response
  */
 @tag("Topic")
 @route("/api/recommend/topics/{ref_list}")
@@ -112,15 +67,16 @@ op `get_api-recommend-topics-ref-list`(
    * List of strings separated by '+'
    */
   @path ref_list: string,
-): `get_api-recommend-topics-ref-list200ApplicationJsonResponse`;
+): recommendedTopicResponse[];
 
 /**
  * Returns Texts API data for a random text taken from popular topic tags.
+* @returns Successful response
  */
 @tag("Topic")
 @route("/api/texts/random-by-topic")
 @get
-op `get_api-texts-random-by-topic`(): `get_api-texts-random-by-topic200ApplicationJsonResponse`;
+op `get_api-texts-random-by-topic`(): RandomByTopicJSON;
 
 
 /**

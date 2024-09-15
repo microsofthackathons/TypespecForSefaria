@@ -8,44 +8,19 @@ using Http;
 using OpenAPI;
 
 namespace SefariaAPI;
-  /**
-   * All content related to the queried `Ref`.
-   */
-  model `get_api-related-tref200ApplicationJsonResponse` {
-    @statusCode statusCode: 200;
-    @bodyRoot body: RelatedJSON;
-  }
-  
-
-
-
-/**
- * Successful response
- */
-model `get_api-links-tref200ApplicationJsonResponse` {
-    @statusCode statusCode: 200;
-    @bodyRoot body: LinkObj[];
-  }
-  
-  /**
-   * Successful response
-   */
-  model `get_api-ref-topic-links-tref200ApplicationJsonResponse` {
-    @statusCode statusCode: 200;
-    @bodyRoot body: RefTopicLinksJSON;
-  }
-  
 
 /**
  * A single API endpoint to return all of the content (links, sheets, notes, media, manuscripts, webpages and topics) related to the given `Ref` in the query.
+* @returns All content related to the queried `Ref`.
  */
 @tag("Related")
 @route("/api/related/{tref}")
 @get
-op `get_api-related-tref`(tref: string): `get_api-related-tref200ApplicationJsonResponse`;
+op `get_api-related-tref`(tref: string): RelatedJSON;
 
 /**
  * Returns a list of known connections for the submitted text `ref` along with some additional metadata.
+* @returns Successful response
  */
 @tag("Related")
 @route("/api/links/{tref}")
@@ -62,15 +37,16 @@ op `get_api-links-tref`(
    * `with_sheet_links` is an optional parameter that determines whether or not the API response will include links to user generated source sheets from Sefaria. It's default is `0`
    */
   @query with_sheet_links?: "0" | "1",
-): `get_api-links-tref200ApplicationJsonResponse`;
+): LinkObj[];
 
 /**
  * An API endpoint where, given a `Ref`, all of the topics linked to that `Ref` are retrieved along with the respective metadata.
+* @returns Successful response
  */
 @tag("Related")
 @route("/api/ref-topic-links/{tref}")
 @get
-op `get_api-ref-topic-links-tref`(tref: string): `get_api-ref-topic-links-tref200ApplicationJsonResponse`;
+op `get_api-ref-topic-links-tref`(tref: string): RefTopicLinksJSON;
 
   
 model RelatedJSON {

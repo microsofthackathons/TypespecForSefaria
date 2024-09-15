@@ -105,11 +105,6 @@ model FindRefsAPIResponse {
     };
   }
   
-  
-  
-  
-  
-  
   /**
    * A properly formatted POST request for the Find Refs API
    */
@@ -215,66 +210,40 @@ model FindRefsAPIResponse {
     lastPath?: string;
   }
   
-  
-  
   /**
    * Successful Response
    */
-  model `post_api-find-refs200ApplicationJsonResponse` {
-    @statusCode statusCode: 200;
-    @bodyRoot body: FindRefsAPIResponse;
-  }
-  
-  /**
-   * Successful Response
-   */
-  model `post_api-search-wrapper200ApplicationJsonResponse` {
-    @statusCode statusCode: 200;
-    @bodyRoot body: searchResponse;
-  }
-  
-  /**
-   * Successful Response
-   */
-  model `get_api-img-gen-tref200ImagePngResponse` {
+  model `ImagePngResponse` {
     @statusCode statusCode: 200;
     @header contentType: "image/png";
     @body image: bytes;
   }
-  
-  /**
-   * GET requests take a full category path in the request, e.g. `/api/category/Tanakh/Torah/Genesis`, and return the full category object found.
-   *
-   * If the category is not found, the returned object will have an error attribute. If any element of the path is found, the API will return the closest parent in an attribute called `closest_parent`. This is useful for proactively looking up a category before posting an `Index` to it.
-   */
-  model `get_api-category-category-path200ApplicationJsonResponse` {
-    @statusCode statusCode: 200;
-    @bodyRoot body: CatJSON;
-  }
-  
-  
+
   /**
    * Initially designed to find links on websites using [Sefaria's Linker](https://www.sefaria.org/linker), the Find Refs API can identify textual refernces in any arbitrary text that gets sent to it via a structured POST request and returns a response object identifying each located reference including its start and end position within the submitted text.
+   * @returns Successful Response
    */
   @tag("Misc")
   @route("/api/find-refs")
   @post
   op `post_api-find-refs`(
-    @bodyRoot body: FindRefsPOSTRequest,
-  ): `post_api-find-refs200ApplicationJsonResponse`;
+    @body body: FindRefsPOSTRequest,
+  ): `FindRefsAPIResponse`;
   
   /**
    * An [elastic search](https://www.elastic.co/guide/en/elasticsearch/reference/current/) endpoint for Sefaria's data. Given a properly formated POST request this endpoint will return search results for appropriate Sefaria records.
+   * @returns Successful Response
    */
   @tag("Misc")
   @route("/api/search-wrapper")
   @post
   op `post_api-search-wrapper`(
-    @bodyRoot body: SearchPOSTData,
-  ): `post_api-search-wrapper200ApplicationJsonResponse`;
+    @body body: SearchPOSTData,
+  ): searchResponse;
   
   /**
    * Given a Sefaria text `Ref` and some other optional parameters, this endpoint returns a .png image ready to share on social media. At Sefaria.org we use it primarily to auto-generate social media images for any page.
+   * @returns Successful Response
    */
   @tag("Misc")
   @route("/api/img-gen/{tref}")
@@ -300,7 +269,7 @@ model FindRefsAPIResponse {
      * The title of the version of Hebrew text desired for the image.
      */
     @query vhe?: string,
-  ): `get_api-img-gen-tref200ImagePngResponse`;
+  ): `ImagePngResponse`;
   
   /**
    * GET requests take a full category path in the request, e.g. `/api/category/Tanakh/Torah/Genesis`, and return the full category object found.
@@ -310,5 +279,5 @@ model FindRefsAPIResponse {
   @tag("Misc")
   @route("/api/category/{category_path}")
   @get
-  op `get_api-category-category-path`(category_path: string): `get_api-category-category-path200ApplicationJsonResponse`;
+  op `get_api-category-category-path`(category_path: string): CatJSON;
   
