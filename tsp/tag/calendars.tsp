@@ -11,7 +11,7 @@ namespace SefariaAPI;
 
 /**
  * Returns the daily or weekly learning schedule for a given date.
-* @returns Successful Response
+ * @returns Successful Response
  */
 @tag("Calendars")
 @route("/api/calendars")
@@ -50,7 +50,7 @@ op getCalendars(
 
 /**
  * Given a Parasha name in English, this API returns the next Hebrew and English dates that it is read, along with details about the Torah and Haftarah readings for that date.
-* @returns Successful Response
+ * @returns Successful Response
  */
 @tag("Calendars")
 @route("/api/calendars/next-read/{parasha}")
@@ -123,85 +123,84 @@ op getNextRead(
     | "Nitzavim-Vayeilech",
 ): CalendarAPIResponse;
 
-
 /**
  * A response from the Calendar API
  */
 model CalendarAPIResponse {
-    /**
-     * The datestring for the calendars shown. It should match the values submitted in `year` `month` `day` or should be the current date.
-     */
-    date?: plainDate;
-  
-    /**
-     * An IANA timezone name
-     */
-    timezone?: string;
-  
-    calendar_items?: {
-      title?: {
-        en?: string;
-        he?: string;
-      };
-      displayValue?: {
-        en?: string;
-        he?: string;
-      };
-      url?: string;
-      ref?: ref;
-      heRef?: string;
-      order?: int32;
-      category?: string;
-      extraDetails?: {
-        aliyot?: string[];
-      };
-      description?: {
-        en?: string;
-        he?: string;
-      };
-    }[];
-  }
-  
-  model CalendarNextReadAPI {
-    parasha?: {
-      title?: {
-        en?: string;
-        he?: string;
-      };
-      displayValue?: {
-        en?: string;
-        he?: string;
-      };
-      url?: string;
-      ref?: ref;
-      heRef?: string;
-      order?: int32;
-      category?: string;
-      extraDetails?: {
-        aliyot?: string[];
-      };
-      description?: {
-        en?: string;
-        he?: string;
-      };
-    };
-    haftarah?: {
-      title?: {
-        en?: string;
-        he?: string;
-      };
-      displayValue?: {
-        en?: string;
-        he?: string;
-      };
-      url?: string;
-      ref?: ref;
-      order?: int32;
-      category?: string;
-    }[];
-    date?: utcDateTime;
-    he_date?: {
+  /**
+   * The datestring for the calendars shown. It should match the values submitted in `year` `month` `day` or should be the current date.
+   */
+  date?: plainDate;
+
+  /**
+   * An IANA timezone name
+   */
+  timezone?: string;
+
+  calendar_items?: {
+    title?: {
       en?: string;
       he?: string;
     };
-  }
+    displayValue?: {
+      en?: string;
+      he?: string;
+    };
+    url?: string;
+    ref?: ref;
+    heRef?: string;
+    order?: int32;
+    category?: string;
+    extraDetails?: {
+      aliyot?: string[];
+    };
+    description?: {
+      en?: string;
+      he?: string;
+    };
+  }[];
+}
+
+model CalendarNextReadAPI {
+  parasha?: {
+    title?: {
+      en?: string;
+      he?: string;
+    };
+    displayValue?: {
+      en?: string;
+      he?: string;
+    };
+    url?: string;
+    ref?: ref;
+    heRef?: string;
+    order?: int32;
+    category?: string;
+    extraDetails?: {
+      aliyot?: string[];
+    };
+    description?: {
+      en?: string;
+      he?: string;
+    };
+  };
+  haftarah?: {
+    title?: {
+      en?: string;
+      he?: string;
+    };
+    displayValue?: {
+      en?: string;
+      he?: string;
+    };
+    url?: string;
+    ref?: ref;
+    order?: int32;
+    category?: string;
+  }[];
+  date?: utcDateTime;
+  he_date?: {
+    en?: string;
+    he?: string;
+  };
+}

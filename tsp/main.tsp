@@ -31,6 +31,5 @@ using OpenAPI;
     url: "https://www.gnu.org/licenses/agpl.txt",
   },
 })
-
 @server("https://www.sefaria.org", "")
 namespace SefariaAPI;
