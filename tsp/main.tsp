@@ -22,6 +22,8 @@ using OpenAPI;
     url: "https://www.gnu.org/licenses/agpl.txt",
   },
 })
+
+@server("https://www.sefaria.org", "")
 namespace SefariaAPI;
 
 /**
@@ -1297,43 +1299,11 @@ model v3TextsJson {
  */
 model v3AvailableVersionsTextJson {
   ...v3TextVersionsJSON;
-  status?: string;
-  priority?: int32;
-  license?: string;
-  versionNotes?: string;
-  formatAsPoetry?: string;
-  digitizedBySefaria?: string;
-  method?: string;
-  heversionSource?: string;
-  versionUrl?: string;
-  versionTitleInHebrew?: string;
-  versionNotesInHebrew?: string;
-  shortVersionTitle?: string;
-  shortVersionTitleInHebrew?: string;
-  extendedNotes?: string;
-  extendedNotesHebrew?: string;
-  purchaseInformationImage?: string;
-  purchaseInformationURL?: string;
-  hasManuallyWrappedRefs?: string;
-  actualLanguage?: string;
-
-  /**
-   * The overarching family for the specific language detailed in `actualLanguage`. For example, `Arabic` would be the overarching `languageFamily` for `judeo-arabic`.
-   */
-  languageFamilyName?: string;
-
-  isSource?: boolean;
-  isPrimary?: boolean;
-  direction?: string;
-  language?: string;
 
   /**
    * The title of the book.
    */
   title?: string;
-
-  versionSource?: string;
-  versionTitle?: string;
 }
 
 model v3TextVersionsJSON {
@@ -2878,6 +2848,7 @@ model `post_api-search-wrapper200ApplicationJsonResponse` {
 model `get_api-img-gen-tref200ImagePngResponse` {
   @statusCode statusCode: 200;
   @header contentType: "image/png";
+  @body image: bytes;
 }
 
 /**
@@ -2896,7 +2867,7 @@ model `get_api-category-category-path200ApplicationJsonResponse` {
 @tag("Text")
 @route("/api/v3/texts/{tref}")
 @get
-op `get_api-v3-texts-tref`(): `get_api-v3-texts-tref200ApplicationJsonResponse`;
+op `get_api-v3-texts-tref`(tref: string): `get_api-v3-texts-tref200ApplicationJsonResponse`;
 
 /**
  * Retrieve the text and some additional metadata for a specific Sefaria textual `Ref`
@@ -2992,7 +2963,7 @@ op `get_api-texts-tref`(
 @tag("Text")
 @route("/api/texts/versions/{index}")
 @get
-op `get_api-texts-versions-index`(): `get_api-texts-versions-index200VersionJSONResponse`;
+op `get_api-texts-versions-index`(index: string): `get_api-texts-versions-index200VersionJSONResponse`;
 
 /**
  * Returns a list of distinct languages for which translations exist in the database.
@@ -3008,7 +2979,7 @@ op `get_api-texts-translations`(): `get_api-texts-translations200ApplicationJson
 @tag("Text")
 @route("/api/texts/translations/{lang}")
 @get
-op `get_api-texts-translations-lan`(): `get_api-texts-translations-lan200ApplicationJsonResponse`;
+op `get_api-texts-translations-lan`(lang: string): `get_api-texts-translations-lan200ApplicationJsonResponse`;
 
 /**
  * This call retrieves all associated manuscript data and metadata for a given Sefaria `tref`.
@@ -3047,8 +3018,7 @@ op `get_api-texts-random`(
 @tag("Index")
 @route("/api/v2/raw/index/{index_title}")
 @get
-op `get_api-v2-raw-index-index-title`(
-): `get_api-v2-raw-index-index-title200ApplicationJsonResponse`;
+op `get_api-v2-raw-index-index-title`(index_title : string): `get_api-v2-raw-index-index-title200ApplicationJsonResponse`;
 
 /**
  * This API endpoint returns the titles of all the books in the Sefaria Library arranged by their category along with some additional metadata. This is a large and rarely changing request and should be cached locally if you utilize it.
@@ -3064,7 +3034,7 @@ op `get_api-index`(): `get_api-index200ApplicationJsonResponse`;
 @tag("Index")
 @route("/api/shape/{title}")
 @get
-op `get_api-shape-title`(): `get_api-shape-title200ApplicationJsonResponse`;
+op `get_api-shape-title`(title: string): `get_api-shape-title200ApplicationJsonResponse`;
 
 /**
  * A single API endpoint to return all of the content (links, sheets, notes, media, manuscripts, webpages and topics) related to the given `Ref` in the query.
@@ -3072,7 +3042,7 @@ op `get_api-shape-title`(): `get_api-shape-title200ApplicationJsonResponse`;
 @tag("Related")
 @route("/api/related/{tref}")
 @get
-op `get_api-related-tref`(): `get_api-related-tref200ApplicationJsonResponse`;
+op `get_api-related-tref`(tref: string): `get_api-related-tref200ApplicationJsonResponse`;
 
 /**
  * Returns a list of known connections for the submitted text `ref` along with some additional metadata.
@@ -3081,6 +3051,8 @@ op `get_api-related-tref`(): `get_api-related-tref200ApplicationJsonResponse`;
 @route("/api/links/{tref}")
 @get
 op `get_api-links-tref`(
+  tref: string,
+
   /**
    * `with_text` is an optional parameter that determines whether or not the API response will include the text of any connected links. It's default is `1`
    */
@@ -3098,7 +3070,7 @@ op `get_api-links-tref`(
 @tag("Related")
 @route("/api/ref-topic-links/{tref}")
 @get
-op `get_api-ref-topic-links-tref`(): `get_api-ref-topic-links-tref200ApplicationJsonResponse`;
+op `get_api-ref-topic-links-tref`(tref: string): `get_api-ref-topic-links-tref200ApplicationJsonResponse`;
 
 /**
  * Returns the daily or weekly learning schedule for a given date.
@@ -3219,6 +3191,7 @@ op `get_api-calendars-next-read-parasha`(
 @route("/api/words/{word}")
 @get
 op `get_api-words-word`(
+  word: string,
   /**
    * This parameters refines the search to fine tune based on the `lookup_ref`.
    */
@@ -3246,6 +3219,8 @@ op `get_api-words-word`(
 @route("/api/words/completion/{word}/{lexicon}")
 @get
 op `get_api-words-completion-word-lexicon`(
+  word: string,
+
   /**
    * Number of results to return (0 indicates no limit, and is the default)
    */
@@ -3264,6 +3239,8 @@ op `get_api-words-completion-word-lexicon`(
 @route("/api/v2/topics/{topic_slug}")
 @get
 op `get_api-v2-topics-topic-slug`(
+  
+  topic_slug: string,
   /**
    * Values can be `1` or `0`.
    *
@@ -3279,7 +3256,7 @@ op `get_api-v2-topics-topic-slug`(
 @tag("Topic")
 @route("/api/topics/{topic_slug}")
 @get
-op `get_api-topics-topic-slug`(): `get_api-topics-topic-slug200ApplicationJsonResponse`;
+op `get_api-topics-topic-slug`(topic_slug : string): `get_api-topics-topic-slug200ApplicationJsonResponse`;
 
 /**
  * The topics API returns a list of JSON objects, each object containing all of the metadata for each topic in the Sefaria database.
@@ -3295,7 +3272,7 @@ op `get_api-topics`(): `get_api-topics200ApplicationJsonResponse`;
 @tag("Topic")
 @route("/api/topics-graph/{topic_slug}")
 @get
-op `get_api-topics-graph-topic-slug`(): `get_api-topics-graph-topic-slug200ApplicationJsonResponse`;
+op `get_api-topics-graph-topic-slug`(topic_slug : string): `get_api-topics-graph-topic-slug200ApplicationJsonResponse`;
 
 /**
  * Given a list of `Ref`s this API returns the most used topics associated with them. This is a fast way of identifying potential shared topics amongst disparate `Ref`s.
@@ -3327,7 +3304,7 @@ op `get_api-texts-random-by-topic`(): `get_api-texts-random-by-topic200Applicati
 @tag("Term")
 @route("/api/terms/{name}")
 @get
-op `get_api-terms-name`(): `get_api-terms-name200ApplicationJsonResponse`;
+op `get_api-terms-name`(name: string): `get_api-terms-name200ApplicationJsonResponse`;
 
 /**
  * Serves primarily as an autocompleter, returning potential keyword matches for `Ref`s, book titles, authors, topics, and collections available on Sefaria.
@@ -3336,6 +3313,7 @@ op `get_api-terms-name`(): `get_api-terms-name200ApplicationJsonResponse`;
 @route("/api/name/{name}")
 @get
 op `get_api-name-name`(
+  name: string,
   /**
    * Number of results to return (`0` indicates no limit)
    */
@@ -3374,6 +3352,7 @@ op `post_api-search-wrapper`(
 @route("/api/img-gen/{tref}")
 @get
 op `get_api-img-gen-tref`(
+  tref: string,
   /**
    * The language the social image should return, `en` for English language or `he` for Hebrew.
    */
@@ -3403,4 +3382,4 @@ op `get_api-img-gen-tref`(
 @tag("Misc")
 @route("/api/category/{category_path}")
 @get
-op `get_api-category-category-path`(): `get_api-category-category-path200ApplicationJsonResponse`;
+op `get_api-category-category-path`(category_path: string): `get_api-category-category-path200ApplicationJsonResponse`;
