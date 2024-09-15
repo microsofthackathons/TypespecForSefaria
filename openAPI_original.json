@@ -6172,15 +6172,6 @@
             "type": "array",
             "items": {
               "type": "string"
-            },
-            "properties": {
-              "word": {
-                "description": "The alternative headword",
-                "type": "string"
-              },
-              "occurences": {
-                "description": "The number of times the alternative headword exists in the Bible"
-              }
             }
           },
           "prev_hw": {
