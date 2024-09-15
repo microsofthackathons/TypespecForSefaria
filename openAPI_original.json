@@ -15,8 +15,34 @@
   },
   "servers": [
     {
-      "url": "https://www.sefaria.org/",
+      "url": "https://www.sefaria.org",
       "description": ""
+    }
+  ],
+  "tags": [
+    {
+      "name": "Text"
+    },
+    {
+      "name": "Index"
+    },
+    {
+      "name": "Related"
+    },
+    {
+      "name": "Calendars"
+    },
+    {
+      "name": "Lexicon"
+    },
+    {
+      "name": "Topic"
+    },
+    {
+      "name": "Term"
+    },
+    {
+      "name": "Misc"
     }
   ],
   "paths": {
@@ -24,6 +50,7 @@
       "summary": "v3 Texts",
       "description": "The most up-to-date way to retrieve Sefaria texts, with language data that can handle displaying a right-to-left text with a right-to-left translation. ",
       "get": {
+        "operationId": "get_api-v3-texts-tref",
         "tags": [
           "Text"
         ],
@@ -986,6 +1013,7 @@
     },
     "/api/texts/{tref}": {
       "get": {
+        "operationId" : "get_api-texts-tref",
         "tags": [
           "Text"
         ],
@@ -1313,6 +1341,7 @@
       "summary": "All Available Versions of a Text",
       "description": "This endpoint return all of the available versions of a text given an index title passed as a parameter. ",
       "get": {
+        "operationId" : "get_api-texts-versions-index",
         "tags": [
           "Text"
         ],
@@ -1468,6 +1497,7 @@
     },
     "/api/texts/translations": {
       "get": {
+        "operationId" : "get_api-texts-translations",
         "tags": [
           "Text"
         ],
@@ -1515,6 +1545,7 @@
     },
     "/api/texts/translations/{lang}": {
       "get": {
+        "operationId" : "get_api-texts-translations-lan",
         "tags": [
           "Text"
         ],
@@ -1590,6 +1621,7 @@
     "/api/manuscripts/{tref}": {
       "summary": "For a given `tref` (textual ref), if a manuscript exists, returns a list of all relevant data as well as the image URL for each associated manuscript.",
       "get": {
+        "operationId" : "get_api-manuscripts-tref",
         "tags": [
           "Text"
         ],
@@ -1615,7 +1647,7 @@
         "responses": {
           "200": {
             "content": {
-              "Manuscript JSON": {
+              "application/json": {
                 "schema": {
                   "type": "array",
                   "items": {
@@ -1694,6 +1726,7 @@
     },
     "/api/texts/random": {
       "get": {
+        "operationId" : "get_api-texts-random",
         "tags": [
           "Text"
         ],
@@ -1735,6 +1768,7 @@
       "summary": "v2 Raw Index API",
       "description": "This API endpoint will retrieve the full mongo record of the given `Index` as it appears in the database.",
       "get": {
+        "operationId" : "get_api-v2-raw-index-index-title",
         "tags": [
           "Index"
         ],
@@ -2424,8 +2458,9 @@
         }
       ]
     },
-    "/api/index/": {
+    "/api/index": {
       "get": {
+        "operationId" : "get_api-index",
         "tags": [
           "Index"
         ],
@@ -2449,6 +2484,7 @@
       "summary": "Shape",
       "description": "The shape API allows one to retrieve information about the shape of an Index on Sefaria. The shape refers some basic statistics about the Index, mostly the number of chapters, and the number of segments per chapter.",
       "get": {
+        "operationId" : "get_api-shape-title",
           "tags": [
               "Index"
           ],
@@ -2925,6 +2961,7 @@
       "summary": "The Related API",
       "description": "The Related API returns all related links, sheets, notes, webpages, topics, manuscripts, and other connected media for a given `Ref`. ",
       "get": {
+        "operationId" : "get_api-related-tref",
         "tags": [
           "Related"
         ],
@@ -3477,6 +3514,7 @@
     },
     "/api/links/{tref}": {
       "get": {
+        "operationId" : "get_api-links-tref",
         "tags": [
           "Related"
         ],
@@ -3543,6 +3581,7 @@
     },
     "/api/ref-topic-links/{tref}": {
       "get": {
+        "operationId" : "get_api-ref-topic-links-tref",
         "tags": [
           "Related"
         ],
@@ -3629,6 +3668,7 @@
     },
     "/api/calendars": {
       "get": {
+        "operationId" : "get_api-calendars",
         "tags": [
           "Calendars"
         ],
@@ -3708,6 +3748,7 @@
     },
     "/api/calendars/next-read/{parasha}": {
       "get": {
+        "operationId" : "get_api-calendars-next-read-parasha",
         "tags": [
           "Calendars"
         ],
@@ -3828,6 +3869,7 @@
     },
     "/api/words/{word}": {
       "get": {
+        "operationId" : "get_api-words-word",
         "tags": [
           "Lexicon"
         ],
@@ -3919,6 +3961,7 @@
     "/api/words/completion/{word}/{lexicon}": {
       "description": "Serves primarily as an autocompleter, returning potential lexicon entries for a given input. \n\nReturns an array of arrays, each containing two strings. The first is a completion entry in Hebrew without vowels and the second includes vowels.",
       "get": {
+        "operationId" : "get_api-words-completion-word-lexicon",
         "tags": [
           "Lexicon"
         ],
@@ -4053,6 +4096,7 @@
       "summary": "v2 Specific Topic API",
       "description": "The `v2` Topic API is identical to the `v1` Topic API, with one exception. When the API is run with the following query parameter `with_refs=1`, the list of topic links returned is grouped by `type`.  ",
       "get": {
+        "operationId" : "get_api-v2-topics-topic-slug",
         "tags": [
           "Topic"
         ],
@@ -4270,6 +4314,7 @@
       "summary": "The Specific Topic API",
       "description": "This API will return all of the metadata for the given topic passed in as a path parameter with its `topic_slug`. ",
       "get": {
+        "operationId" : "get_api-topics-topic-slug",
         "tags": [
           "Topic"
         ],
@@ -4458,6 +4503,7 @@
       "summary": "The Topics API",
       "description": "The topics API returns a list of JSON objects containing metadata for every topic in the Sefaria database. ",
       "get": {
+        "operationId" : "get_api-topics",
         "tags": [
           "Topic"
         ],
@@ -4804,6 +4850,7 @@
       "summary": "Topic Graph API",
       "description": "And enpoint to retrieve links between various topics. ",
       "get": {
+        "operationId" : "get_api-topics-graph-topic-slug",
         "tags": [
           "Topic"
         ],
@@ -5003,6 +5050,7 @@
     },
     "/api/recommend/topics/{ref_list}": {
       "get": {
+        "operationId" : "get_api-recommend-topics-ref-list",
         "tags": [
           "Topic"
         ],
@@ -5045,6 +5093,7 @@
       "summary": "Random By Topic API",
       "description": "Returns Texts API data for a random text taken from popular topic tags",
       "get": {
+        "operationId" : "get_api-texts-random-by-topic",
         "tags": [
           "Topic"
         ],
@@ -5137,6 +5186,7 @@
       "summary": "The Terms API",
       "description": "A Term is a shared title node.  It can be referenced and used by many different `Index` nodes. Terms that use the same `TermScheme` can be ordered within that scheme. So for example, _Parsha_ terms who all share the `TermScheme` of `parsha`, can be ordered within that scheme. \n\nExamples of valid terms:  `Noah`, `HaChovel`\n",
       "get": {
+        "operationId" : "get_api-terms-name",
         "tags": [
           "Term"
         ],
@@ -5217,6 +5267,7 @@
     "/api/name/{name}": {
       "description": "Serves primarily as an autocompleter, returning potential keyword matches for `Ref`s, book titles, authors, topics, and collections available on Sefaria",
       "get": {
+        "operationId" : "get_api-name-name",
         "tags": [
           "Term"
         ],
@@ -5271,6 +5322,7 @@
     },
     "/api/find-refs": {
       "post": {
+        "operationId" : "post_api-find-refs",
         "requestBody": {
           "description": "",
           "content": {
@@ -5314,6 +5366,7 @@
     },
     "/api/search-wrapper": {
       "post": {
+        "operationId" : "post_api-search-wrapper",
         "requestBody": {
           "content": {
             "application/json": {
@@ -5345,6 +5398,7 @@
     },
     "/api/img-gen/{tref}": {
       "get": {
+        "operationId" : "get_api-img-gen-tref",
         "tags": [
           "Misc"
         ],
@@ -5435,6 +5489,7 @@
       "summary": "Category",
       "description": "The category API takes a full category path in the request, e.g. /api/category/Tanakh/Torah/Genesis, and return the full category object found. The above request would return:",
       "get": {
+        "operationId" : "get_api-category-category-path",
         "tags": [
           "Misc"
         ],

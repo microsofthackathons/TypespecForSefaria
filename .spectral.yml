@@ -1,0 +1,6 @@
+extends: spectral:oas
+rules:
+# these problems are pervasive in the original OpenAPI spec and will not be fixed before Typespeccing.
+  no-$ref-siblings: false
+  oas3-valid-schema-example: false
+  oas3-valid-media-example: false
