@@ -17,6 +17,25 @@ namespace SefariaAPI;
   }
   
 
+
+
+/**
+ * Successful response
+ */
+model `get_api-links-tref200ApplicationJsonResponse` {
+    @statusCode statusCode: 200;
+    @bodyRoot body: LinkObj[];
+  }
+  
+  /**
+   * Successful response
+   */
+  model `get_api-ref-topic-links-tref200ApplicationJsonResponse` {
+    @statusCode statusCode: 200;
+    @bodyRoot body: RefTopicLinksJSON;
+  }
+  
+
 /**
  * A single API endpoint to return all of the content (links, sheets, notes, media, manuscripts, webpages and topics) related to the given `Ref` in the query.
  */
@@ -337,3 +356,160 @@ model WebPagesJSON {
      */
     anchorRefExpanded?: ref[];
   }
+
+  /**
+ * A single link returned by the link (and related[?]) APIs
+ */
+model LinkObj {
+    _id?: string;
+  
+    /**
+     * The cannonical title of the text in the Sefaria library.
+     */
+    index_title?: string;
+  
+    /**
+     * The primary category this ref belongs to on Sefaria.
+     */
+    category?: string;
+  
+    /**
+     * An arbitrary string assigned to the connection to identify it. Most commonly `commentary`, `reference`, or an empty string.
+     */
+    type?: string;
+  
+    ref?: ref;
+  
+    /**
+     * The submitted `ref` in the GET request at times may fall within a more encompassing ranged ref that includes multiple text segments. The `anchorRef` is that complete range the that the link is associated with, and will contain within it the specific `ref` that was passed.
+     */
+    anchorRef?: string;
+  
+    /**
+     * An array of strings, where each string is a segment level `ref` of the `ref` passed in as a parameter. If a segment level `ref` is passed in, this array will have a length of 1, and only contain that segment level `ref`. If the `ref` passed in is ranged, this array will contain each of the segment level `ref`s within that range.
+     *
+     * For example, if someone was searching for links for `Esther 4.14-15`, the `anchorRefExpanded` would contain `Esther 4.14` and `Esther 4.15`.
+     */
+    @minItems(1) anchorRefExpanded?: string[];
+  
+    /**
+     * The connecting link for the submitted `ref`
+     */
+    sourceRef?: ref;
+  
+    sourceHeRef?: ref;
+    anchorVerse?: int32;
+    sourceHasEn?: boolean;
+  
+    /**
+     * The estimated year of completion of the work according to the Gregorian calendar. If its length is zero the completion date is unknown. If its length is one, then the completion date is that single year. If its length is 2 then the date is a potential range with the first int in the array is the lower end of the range and the latter the higher.
+     */
+    compDate?: int32[];
+  
+    commentaryNum?: float64;
+    collectiveTitle?: {
+      en?: string;
+      he?: string;
+    };
+  
+    /**
+     * The default text written in RTL characters for the query (Usually Hebrew). It is structured as a JaggedArray (nested arrays), with the lowest level being an array of strings with some html text.
+     *
+     */
+    he?: string;
+  
+    /**
+     * The title of the work in English for where the default `he` text came from.
+     */
+    heVersionTitle?: string;
+  
+    /**
+     * A string of text documenting the license for the text in Hebrew.
+     */
+    heLicense?: string;
+  
+    /**
+     * The title of the work in Hebrew for where the default `he` text came from.
+     */
+    heVersionTitleInHebrew?: string;
+  
+    /**
+     * The default text written in LTR characters for the query (Usually English). It is structured as a JaggedArray (nested arrays), with the lowest level being an array of strings with some html text.
+     */
+    text?: unknown[];
+  
+    /**
+     * A descriptive string which describes what version of a text this is. Is it from a particular printing or edition of a book? An online resource? This string should describe it in English
+     */
+    versionTitle?: string;
+  
+    /**
+     * A string of text documenting the license for the text in English.
+     */
+    license?: string;
+  
+    /**
+     * A descriptive string which describes what version of a text this is. Is it from a particular printing or edition of a book? An online resource? This string should describe it in Hebrew.
+     */
+    versionTitleInHebrew?: string;
+  }
+
+  
+/**
+ * Response from the ref-topic-links endpoint
+ */
+model RefTopicLinksJSON {
+    /**
+     * The type of the link, based on the relationship within our ontology. Many links has an `is-a` relationship (such as `Genesis` `is-a` `Book`), but other topic-to-topic links have a variety of other types documented  [here](https://developers.sefaria.org/docs/topic-ontology#overview-of-sefaria-link-types).
+     *
+     * Some examples include `child-of`, `parent-of`, `sibling-of` etc.
+     */
+    linkType?: string;
+  
+    /**
+     * A classification of the link as either `refTopic` (i.e. a ref to a topic) or `intraTopic` (topic-to-topic). In this case, it would be expected that all returned topic links would be of type `refTopic`.
+     */
+    class?: "refTopic" | "intraTopic";
+  
+    /**
+     * Where the topic link originated from (i.e. was it added to a sheet and generated by Sefaria users, or was it created by the Sefaria learning team?)
+     */
+    dataSource?: DataSourceJSON;
+  
+    /**
+     * Is this ref-to-topic link one that was generated by a user-created source sheet?
+     */
+    is_sheet?: boolean;
+  
+    /**
+     * This JSON includes the various metrics that are relevant for ordering the link on a topics page. We use these metrics at [Sefaria.org](sefaria.org) to change the order on the topics page.
+     */
+    order?: OrderTopicLinkJSON;
+  
+    /**
+     * JSON containing descriptions for a given topic in various languages. Each language contains a `title` for the topic description, as well as a `prompt` which previews the source and asks questions to help the user engage with the text.
+     */
+    descriptions?: {
+      en?: {
+        title?: string;
+        prompt?: string;
+      };
+    };
+  
+    /**
+     * The title of the topic.
+     */
+    topic?: string;
+  
+    /**
+     * The `Ref` the topic is connected to, which should overlap with the requested `Ref` passed through the endpoint. For example, if someone queries for `Bamidbar 28:21`, one of the topics returned is `passover` which has an `anchorRef` of `Numbers 28:16-24` - a range overlapping with our desired `Ref`.
+     */
+    anchorRef?: string;
+  
+    /**
+     * If the `anchorRef` is a ranged `Ref` (i.e. containing more than a single segment), then this is a list of strings, with each string being one of single segment level `Ref`s that together comprise the range. So for example, the `anchorRefExpanded` of `Exodus 1:1-2` would be `["Exodus 1:1", "Exodus 1:2"]`.
+     */
+    anchorRefExpanded?: string[];
+  }
+
+  

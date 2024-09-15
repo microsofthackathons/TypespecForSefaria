@@ -35,3 +35,19 @@ model TitlesJSON {
      */
     Primary?: boolean;
   }
+
+  /**
+ * A JSON object containing billingual text, both `he` and `en` parallel texts.
+ */
+model BillingualJSON {
+    /**
+     * The English field for a JSON object representing billingual text.
+     */
+    en?: string;
+  
+    /**
+     * The Hebrew field for a JSON object representing billingual text.
+     */
+    he?: string;
+  }
+  
