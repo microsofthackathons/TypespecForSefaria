@@ -88,7 +88,8 @@ model dictionaryEntry {
   parent_lexicon_details?: {};
 }
 
-model StrongsDictionaryEntry extends dictionaryEntry {
+model StrongsDictionaryEntry  {
+  ... dictionaryEntry;
   strong_number?: string;
   transliteration?: unknown;
   pronunciation?: unknown;
@@ -99,7 +100,8 @@ model StrongsDictionaryEntry extends dictionaryEntry {
   };
 }
 
-model BDBDictionaryEntry extends dictionaryEntry {
+model BDBDictionaryEntry  {
+  ... dictionaryEntry;
   /**
    * Returns a unique id for this reference that establishes an ordering of references across the whole catalog. The `rid` will change as the ordering of the categories changes, and may begin to overlap with other numbers because of those changes. However, at any point in time the `rid`s will be unique across the catalog. The `rid` is used to sort results from ElasticSearch queries.
    */
@@ -183,7 +185,8 @@ model BDBDictionaryEntry extends dictionaryEntry {
   };
 }
 
-model HebrewDictionaryEntry extends dictionaryEntry {
+model HebrewDictionaryEntry  {
+  ... dictionaryEntry;
   /**
    * Returns a unique id for this reference that establishes an ordering of references across the whole catalog. This id will change as the ordering of the categories changes, and may begin to overlap with other numbers because of those changes. However, at any point in time these ids will be unique across the catalog. Used to sort results from ElasticSearch queries
    */
@@ -214,7 +217,8 @@ model HebrewDictionaryEntry extends dictionaryEntry {
 /**
  * An entry from Jastrow’s Dictionary,
  */
-model JastrowDictionaryEntry extends dictionaryEntry {
+model JastrowDictionaryEntry {
+    ... dictionaryEntry;
   /**
    * Returns a unique id for this reference that establishes an ordering of references across the whole catalog. This id will change as the ordering of the categories changes, and may begin to overlap with other numbers because of those changes. However, at any point in time these ids will be unique across the catalog. Used to sort results from ElasticSearch queries
    */
@@ -260,7 +264,8 @@ model JastrowDictionaryEntry extends dictionaryEntry {
   };
 }
 
-model KleinDictionaryEntry extends dictionaryEntry {
+model KleinDictionaryEntry {
+  ... dictionaryEntry;
   /**
    * Returns a unique id for this reference that establishes an ordering of references across the whole catalog. This id will change as the ordering of the categories changes, and may begin to overlap with other numbers because of those changes. However, at any point in time these ids will be unique across the catalog. Used to sort results from ElasticSearch queries
    */

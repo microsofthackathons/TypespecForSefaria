@@ -1,0 +1,327 @@
+<h3 id="new-endpoints-none">New Endpoints: None</h3>
+<hr>
+<h3 id="deleted-endpoints-none">Deleted Endpoints: None</h3>
+<hr>
+<h3 id="modified-endpoints-29">Modified Endpoints: 29</h3>
+<hr>
+<p>GET /api/calendars</p>
+<ul>
+<li>Responses changed
+<ul>
+<li>Modified response: 200
+<ul>
+<li>Content changed
+<ul>
+<li>Modified media type: application/json
+<ul>
+<li>Schema changed
+<ul>
+<li>Properties changed
+<ul>
+<li>New property: haftarah</li>
+<li>New property: he_date</li>
+<li>New property: parasha</li>
+<li>Deleted property: calendar_items</li>
+<li>Deleted property: timezone</li>
+<li>Modified property: date
+<ul>
+<li>Format changed from 'date' to 'date-time'</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>GET /api/calendars/next-read/{parasha}</p>
+<ul>
+<li>Responses changed
+<ul>
+<li>Modified response: 200
+<ul>
+<li>Content changed
+<ul>
+<li>Modified media type: application/json
+<ul>
+<li>Schema changed
+<ul>
+<li>Properties changed
+<ul>
+<li>New property: calendar_items</li>
+<li>New property: timezone</li>
+<li>Deleted property: haftarah</li>
+<li>Deleted property: he_date</li>
+<li>Deleted property: parasha</li>
+<li>Modified property: date
+<ul>
+<li>Format changed from 'date-time' to 'date'</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>GET /api/category/{category_path}</p>
+<p>POST /api/find-refs</p>
+<p>GET /api/img-gen/{tref}</p>
+<ul>
+<li>Responses changed
+<ul>
+<li>Modified response: 200
+<ul>
+<li>Content changed
+<ul>
+<li>Modified media type: image/png
+<ul>
+<li>Schema changed
+<ul>
+<li>Schema added</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>GET /api/index</p>
+<p>GET /api/links/{tref}</p>
+<ul>
+<li>Responses changed
+<ul>
+<li>Modified response: 200
+<ul>
+<li>Content changed
+<ul>
+<li>Modified media type: application/json
+<ul>
+<li>Schema changed
+<ul>
+<li>Items changed
+<ul>
+<li>Properties changed
+<ul>
+<li>Modified property: anchorRefExpanded
+<ul>
+<li>UniqueItems changed from true to false</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>GET /api/manuscripts/{tref}</p>
+<ul>
+<li>Responses changed
+<ul>
+<li>Modified response: 200
+<ul>
+<li>Content changed
+<ul>
+<li>Modified media type: application/json
+<ul>
+<li>Schema changed
+<ul>
+<li>Items changed
+<ul>
+<li>Properties changed
+<ul>
+<li>Modified property: anchorRefExpanded
+<ul>
+<li>UniqueItems changed from true to false</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>GET /api/name/{name}</p>
+<p>GET /api/recommend/topics/{ref_list}</p>
+<p>GET /api/ref-topic-links/{tref}</p>
+<p>GET /api/related/{tref}</p>
+<ul>
+<li>Responses changed
+<ul>
+<li>Modified response: 200
+<ul>
+<li>Content changed
+<ul>
+<li>Modified media type: application/json
+<ul>
+<li>Schema changed
+<ul>
+<li>Properties changed
+<ul>
+<li>Modified property: manuscripts
+<ul>
+<li>Items changed
+<ul>
+<li>Properties changed
+<ul>
+<li>Modified property: anchorRefExpanded
+<ul>
+<li>UniqueItems changed from true to false</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>POST /api/search-wrapper</p>
+<p>GET /api/shape/{title}</p>
+<ul>
+<li>Deleted query param: dependents</li>
+<li>Deleted query param: depth</li>
+</ul>
+<p>GET /api/terms/{name}</p>
+<p>GET /api/texts/random</p>
+<p>GET /api/texts/random-by-topic</p>
+<p>GET /api/texts/translations</p>
+<p>GET /api/texts/translations/{lang}</p>
+<p>GET /api/texts/versions/{index}</p>
+<p>GET /api/texts/{tref}</p>
+<ul>
+<li>Deprecated changed from true to false</li>
+</ul>
+<p>GET /api/topics</p>
+<p>GET /api/topics-graph/{topic_slug}</p>
+<ul>
+<li>Deleted query param: link_type</li>
+</ul>
+<p>GET /api/topics/{topic_slug}</p>
+<ul>
+<li>Deleted query param: annotate_links</li>
+<li>Deleted query param: annotate_time_period</li>
+<li>Deleted query param: group_related</li>
+<li>Deleted query param: with_links</li>
+<li>Deleted query param: with_refs</li>
+<li>Deprecated changed from true to false</li>
+</ul>
+<p>GET /api/v2/raw/index/{index_title}</p>
+<p>GET /api/v2/topics/{topic_slug}</p>
+<ul>
+<li>Deleted query param: annotate_time_period</li>
+<li>Deleted query param: group_related</li>
+<li>Deleted query param: with_links</li>
+<li>Deleted query param: with_refs</li>
+</ul>
+<p>GET /api/v3/texts/{tref}</p>
+<ul>
+<li>Deleted query param: fill_in_missing_segments</li>
+<li>Deleted query param: return_format</li>
+<li>Deleted query param: version</li>
+<li>Responses changed
+<ul>
+<li>Modified response: 200
+<ul>
+<li>Content changed
+<ul>
+<li>Modified media type: application/json
+<ul>
+<li>Schema changed
+<ul>
+<li>Properties changed
+<ul>
+<li>Modified property: available_versions
+<ul>
+<li>Items changed
+<ul>
+<li>Properties changed
+<ul>
+<li>New property: firstSectionRef</li>
+<li>New property: text</li>
+<li>Modified property: digitizedBySefaria
+<ul>
+<li>Type changed from 'string' to 'boolean'</li>
+</ul>
+</li>
+<li>Modified property: formatAsPoetry
+<ul>
+<li>Type changed from 'string' to 'boolean'</li>
+</ul>
+</li>
+<li>Modified property: priority
+<ul>
+<li>Type changed from 'integer' to 'number'</li>
+<li>Format changed from 'int32' to 'float'</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>GET /api/words/completion/{word}/{lexicon}</p>
+<p>GET /api/words/{word}</p>
+
