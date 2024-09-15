@@ -213,7 +213,7 @@ model FindRefsAPIResponse {
   /**
    * Successful Response
    */
-  model `ImagePngResponse` {
+  model ImagePngResponse {
     @statusCode statusCode: 200;
     @header contentType: "image/png";
     @body image: bytes;
@@ -226,9 +226,9 @@ model FindRefsAPIResponse {
   @tag("Misc")
   @route("/api/find-refs")
   @post
-  op `post_api-find-refs`(
+  op postFindRefs(
     @body body: FindRefsPOSTRequest,
-  ): `FindRefsAPIResponse`;
+  ): FindRefsAPIResponse;
   
   /**
    * An [elastic search](https://www.elastic.co/guide/en/elasticsearch/reference/current/) endpoint for Sefaria's data. Given a properly formated POST request this endpoint will return search results for appropriate Sefaria records.
@@ -237,7 +237,7 @@ model FindRefsAPIResponse {
   @tag("Misc")
   @route("/api/search-wrapper")
   @post
-  op `post_api-search-wrapper`(
+  op postSearch(
     @body body: SearchPOSTData,
   ): searchResponse;
   
@@ -248,7 +248,7 @@ model FindRefsAPIResponse {
   @tag("Misc")
   @route("/api/img-gen/{tref}")
   @get
-  op `get_api-img-gen-tref`(
+  op getSocialMediaImage(
     tref: string,
     /**
      * The language the social image should return, `en` for English language or `he` for Hebrew.
@@ -269,7 +269,7 @@ model FindRefsAPIResponse {
      * The title of the version of Hebrew text desired for the image.
      */
     @query vhe?: string,
-  ): `ImagePngResponse`;
+  ): ImagePngResponse;
   
   /**
    * GET requests take a full category path in the request, e.g. `/api/category/Tanakh/Torah/Genesis`, and return the full category object found.
@@ -279,5 +279,5 @@ model FindRefsAPIResponse {
   @tag("Misc")
   @route("/api/category/{category_path}")
   @get
-  op `get_api-category-category-path`(category_path: string): CatJSON;
+  op getCategory(category_path: string): CatJSON;
   

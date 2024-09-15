@@ -21,7 +21,7 @@ alias DictionaryEntryArray = (
 @tag("Lexicon")
 @route("/api/words/{word}")
 @get
-op `get_api-words-word`(
+op getLexicon(
   word: string,
   /**
    * This parameters refines the search to fine tune based on the `lookup_ref`.
@@ -51,7 +51,7 @@ op `get_api-words-word`(
 @tag("Lexicon")
 @route("/api/words/completion/{word}/{lexicon}")
 @get
-op `get_api-words-completion-word-lexicon`(
+op getWordCompletion(
   word: string,
 
   /**

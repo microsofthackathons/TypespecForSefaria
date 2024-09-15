@@ -16,7 +16,7 @@ namespace SefariaAPI;
 @tag("Related")
 @route("/api/related/{tref}")
 @get
-op `get_api-related-tref`(tref: string): RelatedJSON;
+op getRelated(tref: string): RelatedJSON;
 
 /**
  * Returns a list of known connections for the submitted text `ref` along with some additional metadata.
@@ -25,7 +25,7 @@ op `get_api-related-tref`(tref: string): RelatedJSON;
 @tag("Related")
 @route("/api/links/{tref}")
 @get
-op `get_api-links-tref`(
+op getLinks(
   tref: string,
 
   /**
@@ -46,7 +46,7 @@ op `get_api-links-tref`(
 @tag("Related")
 @route("/api/ref-topic-links/{tref}")
 @get
-op `get_api-ref-topic-links-tref`(tref: string): RefTopicLinksJSON;
+op getRefTopicLinks(tref: string): RefTopicLinksJSON;
 
   
 model RelatedJSON {

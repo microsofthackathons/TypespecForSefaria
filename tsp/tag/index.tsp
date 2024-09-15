@@ -21,7 +21,7 @@ namespace SefariaAPI;
 @tag("Index")
 @route("/api/v2/raw/index/{index_title}")
 @get
-op `get_api-v2-raw-index-index-title`(index_title : string): RawIndexJSON;
+op getIndexV2(index_title : string): RawIndexJSON;
 
 /**
  * This API endpoint returns the titles of all the books in the Sefaria Library arranged by their category along with some additional metadata. This is a large and rarely changing request and should be cached locally if you utilize it.
@@ -30,7 +30,7 @@ op `get_api-v2-raw-index-index-title`(index_title : string): RawIndexJSON;
 @tag("Index")
 @route("/api/index")
 @get
-op `get_api-index`(): APIIndexResponse;
+op getTableOfContents(): APIIndexResponse;
 
 /**
  * Retrieve basic statistics and information about the "shape" of an `Index` on Sefaria.
@@ -38,7 +38,7 @@ op `get_api-index`(): APIIndexResponse;
 @tag("Index")
 @route("/api/shape/{title}")
 @get
-op `get_api-shape-title`(title: string): ShapeJSON;
+op getShape(title: string): ShapeJSON;
 
 model APIIndexResponse
   is {

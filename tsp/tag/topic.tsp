@@ -17,7 +17,7 @@ namespace SefariaAPI;
 @tag("Topic")
 @route("/api/v2/topics/{topic_slug}")
 @get
-op `get_api-v2-topics-topic-slug`(
+op getTopicV2(
   
   topic_slug: string,
   /**
@@ -35,7 +35,7 @@ op `get_api-v2-topics-topic-slug`(
 @tag("Topic")
 @route("/api/topics/{topic_slug}")
 @get
-op `get_api-topics-topic-slug`(topic_slug : string): TopicJSON;
+op getTopicV1(topic_slug : string): TopicJSON;
 
 /**
  * The topics API returns a list of JSON objects, each object containing all of the metadata for each topic in the Sefaria database.
@@ -44,7 +44,7 @@ op `get_api-topics-topic-slug`(topic_slug : string): TopicJSON;
 @tag("Topic")
 @route("/api/topics")
 @get
-op `get_api-topics`(): TopicJSON[];
+op getAllTopics(): TopicJSON[];
 
 /**
  * Endpoint to retrieve topics and their links between other topics. As opposed to topic links to refs, this endpoint retrieve connections between one topic to another topic.
@@ -53,7 +53,7 @@ op `get_api-topics`(): TopicJSON[];
 @tag("Topic")
 @route("/api/topics-graph/{topic_slug}")
 @get
-op `get_api-topics-graph-topic-slug`(topic_slug : string): TopicGraphJSON;
+op getTopicGraph(topic_slug : string): TopicGraphJSON;
 
 /**
  * Given a list of `Ref`s this API returns the most used topics associated with them. This is a fast way of identifying potential shared topics amongst disparate `Ref`s.
@@ -62,7 +62,7 @@ op `get_api-topics-graph-topic-slug`(topic_slug : string): TopicGraphJSON;
 @tag("Topic")
 @route("/api/recommend/topics/{ref_list}")
 @get
-op `get_api-recommend-topics-ref-list`(
+op getRecommendedTopics(
   /**
    * List of strings separated by '+'
    */
@@ -76,7 +76,7 @@ op `get_api-recommend-topics-ref-list`(
 @tag("Topic")
 @route("/api/texts/random-by-topic")
 @get
-op `get_api-texts-random-by-topic`(): RandomByTopicJSON;
+op getRandomByTopic(): RandomByTopicJSON;
 
 
 /**

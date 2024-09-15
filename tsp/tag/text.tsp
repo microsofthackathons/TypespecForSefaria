@@ -22,7 +22,7 @@ scalar LanguageCode extends string;
 @tag("Text")
 @route("/api/v3/texts/{tref}")
 @get
-op `get_api-v3-texts-tref`(tref: string): v3TextsJson;
+op getTextsV3(tref: string): v3TextsJson;
 
 /**
  * Retrieve the text and some additional metadata for a specific Sefaria textual `Ref`
@@ -31,7 +31,7 @@ op `get_api-v3-texts-tref`(tref: string): v3TextsJson;
 @tag("Text")
 @route("/api/texts/{tref}")
 @get
-op `get_api-texts-tref`(
+op getTextsV1(
   @query callback?: string,
 
   /**
@@ -120,7 +120,7 @@ op `get_api-texts-tref`(
 @tag("Text")
 @route("/api/texts/versions/{index}")
 @get
-op `get_api-texts-versions-index`(index: string): VersionJSON[];
+op getVersions(index: string): VersionJSON[];
 
 /**
  * Returns a list of distinct languages for which translations exist in the database.
@@ -129,7 +129,7 @@ op `get_api-texts-versions-index`(index: string): VersionJSON[];
 @tag("Text")
 @route("/api/texts/translations")
 @get
-op `get_api-texts-translations`(): string[];
+op getLangages(): string[];
 
 /**
  * Returns a dictionary of texts translated into `lang`, organized by the Sefaria category & secondary category of each title.
@@ -138,7 +138,7 @@ op `get_api-texts-translations`(): string[];
 @tag("Text")
 @route("/api/texts/translations/{lang}")
 @get
-op `get_api-texts-translations-lan`(lang: string): {
+op getTranslations(lang: string): {
     title?: string;
     url?: string;
     versionTitle?: string;
@@ -152,7 +152,7 @@ op `get_api-texts-translations-lan`(lang: string): {
 @tag("Text")
 @route("/api/manuscripts/{tref}")
 @get
-op `get_api-manuscripts-tref`(
+op getManuscripts(
   /**
    * The `tref` parameter must a valid Sefaria ref to a text.
    */
@@ -166,7 +166,7 @@ op `get_api-manuscripts-tref`(
 @tag("Text")
 @route("/api/texts/random")
 @get
-op `get_api-texts-random`(
+op getRandomText(
   /**
    * A string of book titles from the Sefaria library separated with the character `|`. If it exists it will limit the random selection to those titles.
    */

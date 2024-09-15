@@ -17,7 +17,7 @@ namespace SefariaAPI;
 @tag("Term")
 @route("/api/terms/{name}")
 @get
-op `get_api-terms-name`(name: string): TermsJSON;
+op getTerms(name: string): TermsJSON;
 
 /**
  * Serves primarily as an autocompleter, returning potential keyword matches for `Ref`s, book titles, authors, topics, and collections available on Sefaria.
@@ -26,7 +26,7 @@ op `get_api-terms-name`(name: string): TermsJSON;
 @tag("Term")
 @route("/api/name/{name}")
 @get
-op `get_api-name-name`(
+op getName(
   name: string,
   /**
    * Number of results to return (`0` indicates no limit)

@@ -16,7 +16,7 @@ namespace SefariaAPI;
 @tag("Calendars")
 @route("/api/calendars")
 @get
-op `get_api-calendars`(
+op getCalendars(
   /**
    * When this value is set to `diaspora=1`, the text returned is the weekly Torah reading for the diaspora. When this value is set to `diaspora=0`, the text returned is the Torah reading for Israel.
    */
@@ -55,7 +55,7 @@ op `get_api-calendars`(
 @tag("Calendars")
 @route("/api/calendars/next-read/{parasha}")
 @get
-op `get_api-calendars-next-read-parasha`(
+op getNextRead(
   /**
    * One of the 54 weekly Torah Parasha names in English or one of the 7 double parshiyot.
    */
