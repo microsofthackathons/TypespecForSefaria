@@ -145,16 +145,10 @@ model CalendarAPIResponse {
  */
 model CalendarAPIResponseCalendarItem {
   /** The learning schedule title in `he` and `en` */
-  title?: {
-    en?: string;
-    he?: string;
-  };
+  title?: BilingualJSONSlim;
 
   /** The name of the reading for the selected date in the learning schedule in `en` and `he` */
-  displayValue?: {
-    en?: string;
-    he?: string;
-  };
+  displayValue?: BilingualJSONSlim;
 
   /** The url path on Sefaria where this selection can be found */
   url?: string;
@@ -177,25 +171,16 @@ model CalendarAPIResponseCalendarItem {
   };
 
   /** A description of this learning schedule entry if it exists in `he` and `en` */
-  description?: {
-    en?: string;
-    he?: string;
-  };
+  description?: BilingualJSONSlim;
 }
 
 model CalendarNextReadAPI {
   parasha?: {
     /** This should always read `Parashat Hashavua` */
-    title?: {
-      en?: string;
-      he?: string;
-    };
+    title?: BilingualJSONSlim;
 
     /** The name of the Parashah */
-    displayValue?: {
-      en?: string;
-      he?: string;
-    };
+    displayValue?: BilingualJSONSlim;
 
     /** The url path on Sefaria where this selection can be found */
     url?: string;
@@ -218,23 +203,14 @@ model CalendarNextReadAPI {
     };
 
     /** A description of this learning schedule entry if it exists in `he` and `en` */
-    description?: {
-      en?: string;
-      he?: string;
-    };
+    description?: BilingualJSONSlim;
   };
   haftarah?: {
     /** This should always read `Haftarah` */
-    title?: {
-      en?: string;
-      he?: string;
-    };
+    title?: BilingualJSONSlim;
 
     /** The name of the Haftarah */
-    displayValue?: {
-      en?: string;
-      he?: string;
-    };
+    displayValue?: BilingualJSONSlim;
 
     /** The url path on Sefaria where this selection can be found */
     url?: string;
@@ -248,8 +224,5 @@ model CalendarNextReadAPI {
     category?: string;
   }[];
   date?: utcDateTime;
-  he_date?: {
-    en?: string;
-    he?: string;
-  };
+  he_date?: BilingualJSONSlim;
 }

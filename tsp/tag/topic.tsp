@@ -241,10 +241,7 @@ model recommendedTopicResponse {
   /**
    * Titles for the topic by language (usually Hebrew & English)
    */
-  titles?: {
-    en?: string;
-    he?: string;
-  };
+  titles?: BilingualJSONSlim;
 
   /**
    * Number of times the topic appears in the references

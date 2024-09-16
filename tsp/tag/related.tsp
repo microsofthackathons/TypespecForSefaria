@@ -147,10 +147,7 @@ model RelatedLinkJSON {
   compDate?: int32[];
 
   commentaryNum?: float64;
-  collectiveTitle?: {
-    en?: string;
-    he?: string;
-  };
+  collectiveTitle?: BilingualJSONSlim;
 
   /**
    * Hebrew title of the linked work
@@ -386,10 +383,7 @@ model LinkObj {
   compDate?: int32[];
 
   commentaryNum?: float64;
-  collectiveTitle?: {
-    en?: string;
-    he?: string;
-  };
+  collectiveTitle?: BilingualJSONSlim;
 
   /**
    * The default text written in RTL characters for the query (Usually Hebrew). It is structured as a JaggedArray (nested arrays), with the lowest level being an array of strings with some html text.

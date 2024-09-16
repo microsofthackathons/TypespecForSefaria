@@ -315,10 +315,7 @@ model RawIndexSchemaJSON {
    */
   key?: string;
 
-  checkFirst?: {
-    he?: string;
-    en?: string;
-  };
+  checkFirst?: BilingualJSONSlim;
 }
 
 /**

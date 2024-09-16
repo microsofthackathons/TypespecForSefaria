@@ -36,6 +36,11 @@ model TitlesJSON {
   Primary?: boolean;
 }
 
+alias BilingualJSONSlim = {
+  en?: string;
+  he?: string;
+};
+
 /**
  * A JSON object containing billingual text, both `he` and `en` parallel texts.
  */
