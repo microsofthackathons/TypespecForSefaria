@@ -137,65 +137,114 @@ model CalendarAPIResponse {
    */
   timezone?: string;
 
-  calendar_items?: {
-    title?: {
-      en?: string;
-      he?: string;
-    };
-    displayValue?: {
-      en?: string;
-      he?: string;
-    };
-    url?: string;
-    ref?: ref;
-    heRef?: string;
-    order?: int32;
-    category?: string;
-    extraDetails?: {
-      aliyot?: string[];
-    };
-    description?: {
-      en?: string;
-      he?: string;
-    };
-  }[];
+  calendar_items?: CalendarAPIResponseCalendarItem[];
+}
+
+/**
+ * A single learning schedule for the selected date
+ */
+model CalendarAPIResponseCalendarItem {
+  /** The learning schedule title in `he` and `en` */
+  title?: {
+    en?: string;
+    he?: string;
+  };
+
+  /** The name of the reading for the selected date in the learning schedule in `en` and `he` */
+  displayValue?: {
+    en?: string;
+    he?: string;
+  };
+
+  /** The url path on Sefaria where this selection can be found */
+  url?: string;
+
+  ref?: ref;
+
+  /** The Hebrew equivalent of the `ref` */
+  heRef?: string;
+
+  /** This is used internally on Sefaria to arrange the learning schedules in the manner we choose. */
+  order?: int32;
+
+  /** The primary category that this `ref` belongs to */
+  category?: string;
+
+  /** Additional details about this learning schedule entry */
+  extraDetails?: {
+    /** The breakdown of aliyot for a parashah */
+    aliyot?: string[];
+  };
+
+  /** A description of this learning schedule entry if it exists in `he` and `en` */
+  description?: {
+    en?: string;
+    he?: string;
+  };
 }
 
 model CalendarNextReadAPI {
   parasha?: {
+    /** This should always read `Parashat Hashavua` */
     title?: {
       en?: string;
       he?: string;
     };
+
+    /** The name of the Parashah */
     displayValue?: {
       en?: string;
       he?: string;
     };
+
+    /** The url path on Sefaria where this selection can be found */
     url?: string;
+
     ref?: ref;
+
+    /** The Hebrew equivalent of the `ref` */
     heRef?: string;
+
+    /** This is used internally on Sefaria to arrange the learning schedules in the manner we choose. */
     order?: int32;
+
+    /** Should always return `Tanakh` */
     category?: string;
+
+    /** Additional details about this learning schedule entry */
     extraDetails?: {
+      /** The breakdown of aliyot for a parashah */
       aliyot?: string[];
     };
+
+    /** A description of this learning schedule entry if it exists in `he` and `en` */
     description?: {
       en?: string;
       he?: string;
     };
   };
   haftarah?: {
+    /** This should always read `Haftarah` */
     title?: {
       en?: string;
       he?: string;
     };
+
+    /** The name of the Haftarah */
     displayValue?: {
       en?: string;
       he?: string;
     };
+
+    /** The url path on Sefaria where this selection can be found */
     url?: string;
+
     ref?: ref;
+
+    /** This is used internally on Sefaria to arrange the learning schedules in the manner we choose. */
     order?: int32;
+
+    /** Should return `Tanakh` */
     category?: string;
   }[];
   date?: utcDateTime;

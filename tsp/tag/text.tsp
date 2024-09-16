@@ -81,10 +81,10 @@ op getTextsV3(
  * Retrieve the text and some additional metadata for a specific Sefaria textual `Ref`
  * @returns Successful response
  */
+#deprecated "use getTextsV3"
 @tag("Text")
 @route("/api/texts/{tref}")
 @get
-#deprecated "use getTextsV3"
 op getTextsV1(
   @query callback?: string,
 
@@ -193,9 +193,16 @@ op getLangages(): string[];
 @route("/api/texts/translations/{lang}")
 @get
 op getTranslations(lang: string): {
+  /** Title of the book on Sefaria */
   title?: string;
+
+  /** Base URL of the book on Sefaria */
   url?: string;
+
+  /** Title of this specific translation of the title */
   versionTitle?: string;
+
+  /** Is this version a RTL text (i.e. `he`) or LTR text (i.e. `en`) */
   rtlLanguage?: "he" | "en";
 };
 

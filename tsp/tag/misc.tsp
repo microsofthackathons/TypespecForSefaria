@@ -35,7 +35,8 @@ op postSearch(@body body: SearchPOSTData): searchResponse;
 @route("/api/img-gen/{tref}")
 @get
 op getSocialMediaImage(
-  tref: string,
+  /** A valid Sefaria textual `Ref`. */
+  tref: ref,
 
   /**
    * The language the social image should return, `en` for English language or `he` for Hebrew.
@@ -66,7 +67,10 @@ op getSocialMediaImage(
 @tag("Misc")
 @route("/api/category/{category_path}")
 @get
-op getCategory(category_path: string): CatJSON;
+op getCategory(
+  /** A valid Sefaria Category path */
+  category_path: string,
+): CatJSON;
 
 /**
  * A response to the Find Refs API
@@ -75,42 +79,43 @@ model FindRefsAPIResponse {
   /**
    * Information about any references found in the `title` field of the POST request
    */
-  title?: {
-    results?: {
-      startChar?: int32;
-      endChar?: int32;
-      text?: string;
-      linkFailed?: boolean;
-      refs?: ref[];
-    }[];
-    refData?: {
-      RefTitle?: {
-        heRef?: string;
-        url?: string;
-        primaryCategory?: string;
-      };
-    };
-  };
+  title?: FindRefsAPIResponseReference;
 
   /**
    * Information about any references found in the `body` field of the POST request
    */
-  body?: {
-    results?: {
-      startChar?: int32;
-      endChar?: int32;
-      text?: string;
-      linkFailed?: boolean;
-      refs?: ref[];
-    }[];
-    refData?: {
-      RefTitle?: {
-        heRef?: string;
-        url?: string;
-        primaryCategory?: string;
-      };
+  body?: FindRefsAPIResponseReference;
+}
+
+model FindRefsAPIResponseReference {
+  results?: FindRefsAPIResponseReferenceResult[];
+  refData?: {
+    RefTitle?: {
+      /** The Hebrew equivalent of the cannonical ref */
+      heRef?: string;
+
+      /** The URL this ref can be found at on Sefaria */
+      url?: string;
+
+      /** The primary category this ref belongs to on Sefaria */
+      primaryCategory?: string;
     };
   };
+}
+
+/** A single matched reference */
+model FindRefsAPIResponseReferenceResult {
+  /** The index of the starting character of the match */
+  startChar?: int32;
+
+  /** The index of the ending character of the match */
+  endChar?: int32;
+
+  /** The matched reference */
+  text?: string;
+
+  linkFailed?: boolean;
+  refs?: ref[];
 }
 
 model searchResponse {

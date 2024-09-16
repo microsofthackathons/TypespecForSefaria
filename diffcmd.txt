@@ -1,1 +1,0 @@
-oasdiff.exe diff ../openAPI_original.json tsp-output/@typespec/openapi3/openapi.json --flatten-params --flatten-allof --format html --exclude-elements examples,description,title > diff.html

@@ -15,6 +15,7 @@ namespace SefariaAPI;
 @route("/api/words/{word}")
 @get
 op getLexicon(
+  /** A single dictionary entry on Sefaria. */
   word: string,
 
   /**
@@ -46,6 +47,7 @@ op getLexicon(
 @route("/api/words/completion/{word}/{lexicon}")
 @get
 op getWordCompletion(
+  /** The word or phrase to search for in the lexicons. */
   word: string,
 
   /**
@@ -88,8 +90,9 @@ model dictionaryEntry {
   parent_lexicon_details?: {};
 }
 
-model StrongsDictionaryEntry  {
-  ... dictionaryEntry;
+/** A single dictionary entry on Sefaria. */
+model StrongsDictionaryEntry {
+  ...dictionaryEntry;
   strong_number?: string;
   transliteration?: unknown;
   pronunciation?: unknown;
@@ -100,8 +103,10 @@ model StrongsDictionaryEntry  {
   };
 }
 
-model BDBDictionaryEntry  {
-  ... dictionaryEntry;
+/** A single dictionary entry on Sefaria. */
+model BDBDictionaryEntry {
+  ...dictionaryEntry;
+
   /**
    * Returns a unique id for this reference that establishes an ordering of references across the whole catalog. The `rid` will change as the ordering of the categories changes, and may begin to overlap with other numbers because of those changes. However, at any point in time the `rid`s will be unique across the catalog. The `rid` is used to sort results from ElasticSearch queries.
    */
@@ -174,19 +179,34 @@ model BDBDictionaryEntry  {
 
   content?: {
     senses?: {
+      /** a definition of this sense of the word */
       definition?: string;
+
+      /** A bool indicating the presense of the `†` symbol in print, indicating that all of the occurences of this sense of the word are listed as part of this entry */
       all_cited?: string;
+
+      /** the grammatical verb form (binyan) of the word */
       form?: string;
+
+      /** an additional note for the entry */
       note?: string;
+
+      /** the string of the numbering of this sense in print (it can be a number, English letter, Roman digits, with period, in parentheses, etc.) */
       num?: string;
+
+      /** number of occurrences of this sense in bible */
       occurences?: string;
+
+      /** In some cases the sense has some additional characters before the entry  (e.g. the word Especially). That data is included here */
       pre_num?: string;
     }[];
   };
 }
 
-model HebrewDictionaryEntry  {
-  ... dictionaryEntry;
+/** A single dictionary entry on Sefaria. */
+model HebrewDictionaryEntry {
+  ...dictionaryEntry;
+
   /**
    * Returns a unique id for this reference that establishes an ordering of references across the whole catalog. This id will change as the ordering of the categories changes, and may begin to overlap with other numbers because of those changes. However, at any point in time these ids will be unique across the catalog. Used to sort results from ElasticSearch queries
    */
@@ -209,6 +229,7 @@ model HebrewDictionaryEntry  {
 
   content?: {
     senses?: {
+      /** A definition of this sense of the word */
       definition?: string;
     }[];
   };
@@ -218,7 +239,8 @@ model HebrewDictionaryEntry  {
  * An entry from Jastrow’s Dictionary,
  */
 model JastrowDictionaryEntry {
-    ... dictionaryEntry;
+  ...dictionaryEntry;
+
   /**
    * Returns a unique id for this reference that establishes an ordering of references across the whole catalog. This id will change as the ordering of the categories changes, and may begin to overlap with other numbers because of those changes. However, at any point in time these ids will be unique across the catalog. Used to sort results from ElasticSearch queries
    */
@@ -260,12 +282,16 @@ model JastrowDictionaryEntry {
 
   content?: {
     senses?: SenseJastrowDictionaryEntry[];
+
+    /** A description of the morphological form of the word, one of `m., m. pl., f., f. pl., pr. n., pr. n. pl., pr. n. f., pr. n. m., pron., pers. pron.` */
     morphology?: string;
   };
 }
 
+/** A single dictionary entry on Sefaria. */
 model KleinDictionaryEntry {
-  ... dictionaryEntry;
+  ...dictionaryEntry;
+
   /**
    * Returns a unique id for this reference that establishes an ordering of references across the whole catalog. This id will change as the ordering of the categories changes, and may begin to overlap with other numbers because of those changes. However, at any point in time these ids will be unique across the catalog. Used to sort results from ElasticSearch queries
    */
@@ -322,6 +348,8 @@ model KleinDictionaryEntry {
 
   content?: {
     senses?: SenseKleinDictionaryEntry[];
+
+    /** One of [n., adj., adv., m.n., abs., art. , attrib., auxil., comp., copul., c st., def., f., f. n., imper.., Imperf., Indef art., Inf, Interj., Interr., Intr., Neut., Part., Pass., Perf., Possess., p. part., prep., pres part., pres t., p.t.., sing., Subj., Tr.] */
     morphology?: string;
   };
 }
@@ -346,7 +374,10 @@ model SenseKleinDictionaryEntry {
   grammar?: {
     verbal_stem?: string;
     language_code?: string;
+
+    /** what form the root takes in this binyan */
     binyan_form?: string[];
+
     morphology?: string;
   };
 
@@ -392,6 +423,8 @@ model SenseJastrowDictionaryEntry {
   grammar?: {
     verbal_stem?: string;
     language_code?: string;
+
+    /** Found in verbs, a binyan is a linguistic alternate use of the word. It will be one of the following: Hiph., Hish., Hith., Hithpalp., Hithpol., Hoph., Hoth., Niph, , Nith., Pa., Pi., Pil., Pilp., Pir., Po., Pol., Polp., Pu., Pul., Pulp., Qal., Shaph., Shiph., Shuph., Tiph., Tuph., Hif., Nif., Hithpa., Af., Ithpa., Ithpe., Nithpa */
     binyan_form?: string[];
   };
   number?: string;

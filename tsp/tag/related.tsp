@@ -16,7 +16,10 @@ namespace SefariaAPI;
 @tag("Related")
 @route("/api/related/{tref}")
 @get
-op getRelated(tref: string): RelatedJSON;
+op getRelated(
+  /** A valid Sefaria textual `Ref`. */
+  tref: ref,
+): RelatedJSON;
 
 /**
  * Returns a list of known connections for the submitted text `ref` along with some additional metadata.
@@ -26,7 +29,8 @@ op getRelated(tref: string): RelatedJSON;
 @route("/api/links/{tref}")
 @get
 op getLinks(
-  tref: string,
+  /** A valid Sefaria textual `Ref`. */
+  tref: ref,
 
   /**
    * `with_text` is an optional parameter that determines whether or not the API response will include the text of any connected links. It's default is `1`
@@ -46,7 +50,10 @@ op getLinks(
 @tag("Related")
 @route("/api/ref-topic-links/{tref}")
 @get
-op getRefTopicLinks(tref: string): RefTopicLinksJSON;
+op getRefTopicLinks(
+  /** A valid Sefaria textual `Ref` */
+  tref: ref,
+): RefTopicLinksJSON;
 
 model RelatedJSON {
   /**

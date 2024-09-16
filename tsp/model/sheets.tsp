@@ -1,4 +1,4 @@
-namespace SefariaAPI;
+﻿namespace SefariaAPI;
 
 /**
  * JSON containing metadata relating for a given source sheet on [Sefaria](sefaria.org).
@@ -54,14 +54,30 @@ model SheetsJSON {
    * A JSON object containing document level options related to how this source sheet should be displayed in Sefaria's Source Sheet editor.
    */
   options?: {
+    //* Should the sources be automatically numbered in the Sefaria editor view */
     numbered?: boolean;
+
+    //* Should the sources be boxed o the page in the Sefaria editor view */
     boxed?: boolean;
+
+    //* Is this source sheet an assignment for students in the Sefaria editor view */
     assignable?: boolean;
+
+    //* Should the source sheet include בס"ד at the top of the page in the Sefaria editor view */
     bsd?: boolean;
+
+    //* Default display language of the source sheet in the Sefaria editor view */
     language?: "blingual" | "hebrew" | "english";
+
+    //* Default display layout of the source sheet in the Sefaria editor view */
     layout?: string;
+
+    //* Default display side of the language in a bilingual side-by-side view in the Sefaria editor view */
     langLayout?: string;
+
+    //* Should the Tetragrammaton (Shem Hashem) and other variants of the divine name be replaced, and if so in what form? */
     divineNames?: string;
+
     highlightMode?: int32;
     collaboration?: string;
   };

@@ -48,7 +48,7 @@
   "paths": {
     "/api/v3/texts/{tref}": {
       "summary": "v3 Texts",
-      "description": "The most up-to-date way to retrieve Sefaria texts, with language data that can handle displaying a right-to-left text with a right-to-left translation. ",
+      "description": "The most up-to-date way to retrieve Sefaria texts, with language data that can handle displaying a right-to-left text with a right-to-left translation.",
       "get": {
         "operationId": "get_api-v3-texts-tref",
         "tags": [
@@ -65,7 +65,7 @@
               }
             },
             "name": "version",
-            "description": "There are two possible forms for the string passed as the `version`:\n1. `language`\n2. `language|versionTitle`\n\nWhen in the form of `language`, the primary version of that language is returned in the `versions` field of the response object. When in the form of `language>|<versionTitle`, only that specific version is returned in the `versions` field. \n\n\n**Notes**: \n- `language` is the full English name of the language. In cases of dialectics with varying sub-specifities, please pass the ‘mother’ language (so for example, `arabic` rather than `judeo-arabic`). This field is NOT case sensitive.\n- `versionTitle` is the exact English `versionTitle` of the given `version` in the Sefaria database. \n- When only `language` is passed, the response will return a single version of the text in that language, the one that is highest priority in the Sefaria database.\n- Requests can have more than one `version` param. If no `version` was passed, the API defaults to `version=primary`.\n\n-----\n\n**Special Values**\nThe following values can be passed in as special values to the `version` parameter. \n- `source`: When `version=source` is passed, it retrieves the text in its \"source\" language (i.e. the original language the text was written in, versus a translation).\n- `translation`: When `version=translation`is passed, it retrieves a translation of the text. \n- `primary`: When `version=primary` is passed, it retrieves the primary text as per the Sefaria database (i.e. the `isPrimary` field on the `version` in the database is set to `True`). Usually the text returned is identical to what is returned with the special value of `source`, but it can also include other languages (e.g. Hebrew for the _Kuzari_, which was originally written in Judeo-Arabic)\n- `all`: get all texts in the required language.\n\n\nIf a required version is missing that information will be under the field warnings of the response.\n",
+            "description": "There are two possible forms for the string passed as the `version`:\n1. `language`\n2. `language|versionTitle`\n\nWhen in the form of `language`, the primary version of that language is returned in the `versions` field of the response object. When in the form of `language>|<versionTitle`, only that specific version is returned in the `versions` field.\n\n\n**Notes**: \n- `language` is the full English name of the language. In cases of dialectics with varying sub-specifities, please pass the ‘mother’ language (so for example, `arabic` rather than `judeo-arabic`). This field is NOT case sensitive.\n- `versionTitle` is the exact English `versionTitle` of the given `version` in the Sefaria database. \n- When only `language` is passed, the response will return a single version of the text in that language, the one that is highest priority in the Sefaria database.\n- Requests can have more than one `version` param. If no `version` was passed, the API defaults to `version=primary`.\n\n-----\n\n**Special Values**\nThe following values can be passed in as special values to the `version` parameter. \n- `source`: When `version=source` is passed, it retrieves the text in its \"source\" language (i.e. the original language the text was written in, versus a translation).\n- `translation`: When `version=translation`is passed, it retrieves a translation of the text. \n- `primary`: When `version=primary` is passed, it retrieves the primary text as per the Sefaria database (i.e. the `isPrimary` field on the `version` in the database is set to `True`). Usually the text returned is identical to what is returned with the special value of `source`, but it can also include other languages (e.g. Hebrew for the _Kuzari_, which was originally written in Judeo-Arabic)\n- `all`: get all texts in the required language.\n\n\nIf a required version is missing that information will be under the field warnings of the response.",
             "schema": {
               "type": "string"
             },
@@ -102,7 +102,7 @@
           },
           {
             "name": "fill_in_missing_segments",
-            "description": "This parameter is only relevant for cases where the requested text is incomplete (i.e. not all of the segments in the requested version exist in the database for that text, such as a partial translation).\n\nWhen `fill_in_missing_segments=1`, the segments of text that are missing in the requested version will be filled by other versions of the same language.\n\nThis value defaults to `0`. \n",
+            "description": "This parameter is only relevant for cases where the requested text is incomplete (i.e. not all of the segments in the requested version exist in the database for that text, such as a partial translation).\n\nWhen `fill_in_missing_segments=1`, the segments of text that are missing in the requested version will be filled by other versions of the same language.\n\nThis value defaults to `0`.",
             "schema": {
               "enum": [
                 "0",
@@ -122,7 +122,7 @@
               }
             },
             "name": "return_format",
-            "description": "This parameter formats the text that will be returned from the `v3` `texts/` API. It can have one of four values:\n1. `text_only` - This strips footnotes, inline references and all html tags from the returned text\n2. `strip_only_footnotes` - This only strips the footnotes and commentator <i> tags without stripping the other HTML tags.This is useful for the native app, where we do not display footnotes.\n3. `wrap_all_entities` - This wraps the HTML for links and topic links\n4. `default` - This returns the basic text as it’s saved in Sefaria’s DB\n",
+            "description": "This parameter formats the text that will be returned from the `v3` `texts/` API. It can have one of four values:\n1. `text_only` - This strips footnotes, inline references and all html tags from the returned text\n2. `strip_only_footnotes` - This only strips the footnotes and commentator <i> tags without stripping the other HTML tags.This is useful for the native app, where we do not display footnotes.\n3. `wrap_all_entities` - This wraps the HTML for links and topic links\n4. `default` - This returns the basic text as it’s saved in Sefaria’s DB",
             "schema": {
               "enum": [
                 "default",
@@ -625,7 +625,7 @@
                           "versionUrl": "",
                           "versionTitleInHebrew": "",
                           "versionNotesInHebrew": "",
-                          "shortVersionTitle": "Izaak Cylkow, 1841 - 1908 ",
+                          "shortVersionTitle": "Izaak Cylkow, 1841 - 1908",
                           "shortVersionTitleInHebrew": "",
                           "extendedNotes": "",
                           "extendedNotesHebrew": "",
@@ -799,7 +799,7 @@
                           "versionUrl": "",
                           "versionTitleInHebrew": "",
                           "versionNotesInHebrew": "",
-                          "shortVersionTitle": "Samuel Cahen, 1831 ",
+                          "shortVersionTitle": "Samuel Cahen, 1831",
                           "shortVersionTitleInHebrew": "",
                           "extendedNotes": "",
                           "extendedNotesHebrew": "",
@@ -1008,7 +1008,7 @@
           }
         },
         "summary": "Texts (v3)",
-        "description": "The most up-to-date way to retrieve texts from Sefaria via the API, with enhanced control over language, language direction, and other parameters. "
+        "description": "The most up-to-date way to retrieve texts from Sefaria via the API, with enhanced control over language, language direction, and other parameters."
       }
 
     },
@@ -1067,7 +1067,7 @@
               }
             },
             "name": "ven",
-            "description": "Unless explicitly specified, the texts API returns a default version of a text with roman characters as of the content in the `text` response. Passing a specific `versionTitle` here will load that text version if it exists instead of the default.\n",
+            "description": "Unless explicitly specified, the texts API returns a default version of a text with roman characters as of the content in the `text` response. Passing a specific `versionTitle` here will load that text version if it exists instead of the default.",
             "schema": {
               "type": "string"
             },
@@ -1075,7 +1075,7 @@
           },
           {
             "name": "firstAvailableRef",
-            "description": "If a given text reference doesn't return any content, setting this to `1` will return the first reference that does. \n\nSometimes this occurs when a text reference may pass our ref checking logic, but doesn't exist e.g. `https://www.sefaria.org/api/texts/Berakhot 1a?firstAvailableRef=1`, and sometimes this occurs when a translation is incomplete. Defaults to `0`",
+            "description": "If a given text reference doesn't return any content, setting this to `1` will return the first reference that does.\n\nSometimes this occurs when a text reference may pass our ref checking logic, but doesn't exist e.g. `https://www.sefaria.org/api/texts/Berakhot 1a?firstAvailableRef=1`, and sometimes this occurs when a translation is incomplete. Defaults to `0`",
             "schema": {
               "enum": [
                 "0",
@@ -1087,7 +1087,7 @@
           },
           {
             "name": "vhe",
-            "description": "Unless explicitly specified, the texts API returns a default version of a text with Hebrew characters as of the content in the `he` response. Passing a specific `versionTitle` here will load that text version if it exists instead of the default.\n",
+            "description": "Unless explicitly specified, the texts API returns a default version of a text with Hebrew characters as of the content in the `he` response. Passing a specific `versionTitle` here will load that text version if it exists instead of the default.",
             "schema": {
               "type": "string"
             },
@@ -1340,7 +1340,7 @@
     },
     "/api/texts/versions/{index}": {
       "summary": "All Available Versions of a Text",
-      "description": "This endpoint return all of the available versions of a text given an index title passed as a parameter. ",
+      "description": "This endpoint return all of the available versions of a text given an index title passed as a parameter.",
       "get": {
         "operationId" : "get_api-texts-versions-index",
         "tags": [
@@ -1464,11 +1464,11 @@
                 }
               }
             },
-            "description": "Returns a list containing the JSON Objects for each version available for the given `index` title. Each JSON Object contains all of the metadata for a given version. "
+            "description": "Returns a list containing the JSON Objects for each version available for the given `index` title. Each JSON Object contains all of the metadata for a given version."
           }
         },
         "summary": "Versions",
-        "description": "The versions API takes a title of a valid Sefaria `index` as a parameter, and will return all available versions of the text in the Sefaria database, alongside metadata for each version. A version can be a translation of the text, an alternative language, or any other text associated with that index. \n\n*Note:* In order to see the expected results, you need to make sure you are passing a recognized `index`. For example, `Rashi on Genesis` is a valid `index` but `Rashi` is not. To see the entire list of valid Sefaria indices, click [here](https://www.sefaria.org/api/index/)"
+        "description": "The versions API takes a title of a valid Sefaria `index` as a parameter, and will return all available versions of the text in the Sefaria database, alongside metadata for each version. A version can be a translation of the text, an alternative language, or any other text associated with that index.\n\n*Note:* In order to see the expected results, you need to make sure you are passing a recognized `index`. For example, `Rashi on Genesis` is a valid `index` but `Rashi` is not. To see the entire list of valid Sefaria indices, click [here](https://www.sefaria.org/api/index/)"
       },
       "parameters": [
         {
@@ -1597,7 +1597,7 @@
               "value": "he"
             },
             "Yiddish": {
-              "value": "yi\n"
+              "value": "yi"
             },
             "French": {
               "value": "fr"
@@ -1703,7 +1703,7 @@
           }
         },
         "summary": "Manuscripts",
-        "description": "This call retrieves all associated manuscript data and metadata for a given Sefaria `tref`. "
+        "description": "This call retrieves all associated manuscript data and metadata for a given Sefaria `tref`."
       },
       "parameters": [
         {
@@ -1906,7 +1906,7 @@
                             "lang": "en"
                           },
                           {
-                            "text": "Pesaḥim ",
+                            "text": "Pesaḥim",
                             "lang": "en"
                           },
                           {
@@ -2450,7 +2450,7 @@
             }
           },
           "name": "index_title",
-          "description": "A title of a valid Sefaria `Index`. For a complete list of works in the [Sefaria](sefaria.org) library, as well as their index titles, query the [api/index](https://www.sefaria.org/api/index/) endpoint. ",
+          "description": "A title of a valid Sefaria `Index`. For a complete list of works in the [Sefaria](sefaria.org) library, as well as their index titles, query the [api/index](https://www.sefaria.org/api/index/) endpoint.",
           "schema": {
             "type": "string"
           },
@@ -2506,7 +2506,7 @@
               }
             },
             "name": "title",
-            "description": "The title of a valid Sefaria `Index`, or the path of a valid Sefaria category. ",
+            "description": "The title of a valid Sefaria `Index`, or the path of a valid Sefaria category.",
             "schema": {
               "type": "string"
             },
@@ -2951,15 +2951,15 @@
                 }
               }
             },
-            "description": "Retrieve basic statistics and information about the \"shape\" of an `Index` on Sefaria. "
+            "description": "Retrieve basic statistics and information about the \"shape\" of an `Index` on Sefaria."
           }
         },
         "summary": "Shape",
-        "description": "Retrieve basic statistics and information about the \"shape\" of an `Index` on Sefaria. "
+        "description": "Retrieve basic statistics and information about the \"shape\" of an `Index` on Sefaria."
       }},
     "/api/related/{tref}": {
       "summary": "The Related API",
-      "description": "The Related API returns all related links, sheets, notes, webpages, topics, manuscripts, and other connected media for a given `Ref`. ",
+      "description": "The Related API returns all related links, sheets, notes, webpages, topics, manuscripts, and other connected media for a given `Ref`.",
       "get": {
         "operationId" : "get_api-related-tref",
         "tags": [
@@ -3489,11 +3489,11 @@
                 }
               }
             },
-            "description": "All content related to the queried `Ref`. "
+            "description": "All content related to the queried `Ref`."
           }
         },
         "summary": "Related",
-        "description": "A single API endpoint to return all of the content (links, sheets, notes, media, manuscripts, webpages and topics) related to the given `Ref` in the query. "
+        "description": "A single API endpoint to return all of the content (links, sheets, notes, media, manuscripts, webpages and topics) related to the given `Ref` in the query."
       },
       "parameters": [
         {
@@ -3503,7 +3503,7 @@
             }
           },
           "name": "tref",
-          "description": "A valid Sefaria textual `Ref`. ",
+          "description": "A valid Sefaria textual `Ref`.",
           "schema": {
             "$ref": "#/components/schemas/ref"
           },
@@ -3638,7 +3638,7 @@
           }
         },
         "summary": "Ref-Topic-Links",
-        "description": "An API endpoint where, given a `Ref`, all of the topics linked to that `Ref` are retrieved along with the respective metadata. "
+        "description": "An API endpoint where, given a `Ref`, all of the topics linked to that `Ref` are retrieved along with the respective metadata."
       },
       "parameters": [
         {
@@ -3675,7 +3675,7 @@
         "parameters": [
           {
             "name": "diaspora",
-            "description": "When this value is set to `diaspora=1`, the text returned is the weekly Torah reading for the diaspora. When this value is set to `diaspora=0`, the text returned is the Torah reading for Israel. ",
+            "description": "When this value is set to `diaspora=1`, the text returned is the weekly Torah reading for the diaspora. When this value is set to `diaspora=0`, the text returned is the Torah reading for Israel.",
             "schema": {
               "enum": [
                 "0",
@@ -3858,7 +3858,7 @@
             }
           },
           "name": "parasha",
-          "description": "The _Parasha_ for which you'd like to generate relevant metadata, most notably the schedule of when it is next read. \n\n*Note*: The _Parasha_ must be in English written with a capitalized first letter, so `Noach` is valid, but `noach` will return an empty array. Any parshiyot with special characters (i.e. apostrophes, or spaces) should have those special characters percent url encoded. ",
+          "description": "The _Parasha_ for which you'd like to generate relevant metadata, most notably the schedule of when it is next read.\n\n*Note*: The _Parasha_ must be in English written with a capitalized first letter, so `Noach` is valid, but `noach` will return an empty array. Any parshiyot with special characters (i.e. apostrophes, or spaces) should have those special characters percent url encoded.",
           "schema": {
             "type": "string"
           },
@@ -3897,7 +3897,7 @@
           },
           {
             "name": "always_split",
-            "description": "This parameters refines the search to look for substring matches regardless of results for original input. One can pass the values `0` (to indicate false) and `1` (to indicate true). ",
+            "description": "This parameters refines the search to look for substring matches regardless of results for original input. One can pass the values `0` (to indicate false) and `1` (to indicate true).",
             "schema": {
               "type": "string"
             },
@@ -3959,7 +3959,7 @@
       ]
     },
     "/api/words/completion/{word}/{lexicon}": {
-      "description": "Serves primarily as an autocompleter, returning potential lexicon entries for a given input. \n\nReturns an array of arrays, each containing two strings. The first is a completion entry in Hebrew without vowels and the second includes vowels.",
+      "description": "Serves primarily as an autocompleter, returning potential lexicon entries for a given input.\n\nReturns an array of arrays, each containing two strings. The first is a completion entry in Hebrew without vowels and the second includes vowels.",
       "get": {
         "operationId" : "get_api-words-completion-word-lexicon",
         "tags": [
@@ -4094,7 +4094,7 @@
     },
     "/api/v2/topics/{topic_slug}": {
       "summary": "v2 Specific Topic API",
-      "description": "The `v2` Topic API is identical to the `v1` Topic API, with one exception. When the API is run with the following query parameter `with_refs=1`, the list of topic links returned is grouped by `type`.  ",
+      "description": "The `v2` Topic API is identical to the `v1` Topic API, with one exception. When the API is run with the following query parameter `with_refs=1`, the list of topic links returned is grouped by `type`.",
       "get": {
         "operationId" : "get_api-v2-topics-topic-slug",
         "tags": [
@@ -4103,7 +4103,7 @@
         "parameters": [
           {
             "name": "annotate_links",
-            "description": "Values can be `1` or `0`. \n\nIf `1`, adds the following fields to each intra-topic link: `title`, `titleIsTransliteration`, `shouldDisplay`, and `order`.",
+            "description": "Values can be `1` or `0`.\n\nIf `1`, adds the following fields to each intra-topic link: `title`, `titleIsTransliteration`, `shouldDisplay`, and `order`.",
             "schema": {
               "type": "integer"
             },
@@ -4131,7 +4131,7 @@
           },
           {
             "name": "with_links",
-            "description": "Values can be `1` or `0`. \n\nIf `1`, includes intra-topic links in the `result` field, under `links`.",
+            "description": "Values can be `1` or `0`.\n\nIf `1`, includes intra-topic links in the `result` field, under `links`.",
             "schema": {
               "type": "integer"
             },
@@ -4139,13 +4139,13 @@
           },
           {
             "name": "annotate_time_period",
-            "description": "Values can be `1` or `0`. \n\nIf `1`, the response includes time period data under the `timePeriod` key.",
+            "description": "Values can be `1` or `0`.\n\nIf `1`, the response includes time period data under the `timePeriod` key.",
             "schema": {},
             "in": "query"
           },
           {
             "name": "group_related",
-            "description": "Values can be `1` or `0`. \n\nIf `1`, groups link types with the `groupRelated` key set to true. This will simulate how the sidebar looks on the Sefaria site.",
+            "description": "Values can be `1` or `0`.\n\nIf `1`, groups link types with the `groupRelated` key set to true. This will simulate how the sidebar looks on the Sefaria site.",
             "schema": {
               "type": "integer"
             },
@@ -4153,7 +4153,7 @@
           },
           {
             "name": "with_refs",
-            "description": "Values can be `1` or `0`. \n\nIf `1`, adds a list of `Ref`s tagged with this topic under the `refs` key.",
+            "description": "Values can be `1` or `0`.\n\nIf `1`, adds a list of `Ref`s tagged with this topic under the `refs` key.",
             "schema": {
               "type": "integer"
             },
@@ -4297,12 +4297,12 @@
           }
         },
         "summary": "Topic (v2)",
-        "description": "Retrieve a specific topic from the `v2` version of the topics API. "
+        "description": "Retrieve a specific topic from the `v2` version of the topics API."
       }
     },
     "/api/topics/{topic_slug}": {
       "summary": "The Specific Topic API",
-      "description": "This API will return all of the metadata for the given topic passed in as a path parameter with its `topic_slug`. ",
+      "description": "This API will return all of the metadata for the given topic passed in as a path parameter with its `topic_slug`.",
       "get": {
         "operationId": "get_api-topics-topic-slug",
         "tags": [
@@ -4481,17 +4481,17 @@
                 }
               }
             },
-            "description": "When one calls this endpoint _with_ a specific `topic_slug`, it returns a JSON object containing the metadata for the topic. \n"
+            "description": "When one calls this endpoint _with_ a specific `topic_slug`, it returns a JSON object containing the metadata for the topic."
           }
         },
         "deprecated": true,
         "summary": "Topic (v1)",
-        "description": "When one calls this endpoint _with_ a specific `topic_slug`, it returns a JSON object containing the metadata for the topic. \n"
+        "description": "When one calls this endpoint _with_ a specific `topic_slug`, it returns a JSON object containing the metadata for the topic."
       }
     },
     "/api/topics": {
       "summary": "The Topics API",
-      "description": "The topics API returns a list of JSON objects containing metadata for every topic in the Sefaria database. ",
+      "description": "The topics API returns a list of JSON objects containing metadata for every topic in the Sefaria database.",
       "get": {
         "operationId" : "get_api-topics",
         "tags": [
@@ -4829,16 +4829,16 @@
                 }
               }
             },
-            "description": "A list of JSON objects, each object representing a topic in the Sefaria database. Please note, since this list is over 30,000 topics long, in the example we only presented the first several topics that are returned in the array. "
+            "description": "A list of JSON objects, each object representing a topic in the Sefaria database. Please note, since this list is over 30,000 topics long, in the example we only presented the first several topics that are returned in the array."
           }
         },
         "summary": "All Topics",
-        "description": "The topics API returns a list of JSON objects, each object containing all of the metadata for each topic in the Sefaria database. "
+        "description": "The topics API returns a list of JSON objects, each object containing all of the metadata for each topic in the Sefaria database."
       }
     },
     "/api/topics-graph/{topic_slug}": {
       "summary": "Topic Graph API",
-      "description": "And enpoint to retrieve links between various topics. ",
+      "description": "And enpoint to retrieve links between various topics.",
       "get": {
         "operationId": "get_api-topics-graph-topic-slug",
         "tags": [
@@ -4855,7 +4855,7 @@
               }
             },
             "name": "topic_slug",
-            "description": "A valid Sefaria slug for a topic in the database. ",
+            "description": "A valid Sefaria slug for a topic in the database.",
             "schema": {
               "type": "string"
             },
@@ -4931,8 +4931,8 @@
                             }
                           },
                           "description": {
-                            "en": "Shabbat (or Sabbath) falls every seventh day of the week, from Friday just before sunset until dark on Saturday night. It is a day of rest, marking the time when God stopped creating after after the six days of creation. Shabbat recognizes God as Creator of the Universe and as Redeemer of Israel from Egypt. ",
-                            "he": "היום השביעי בשבוע, החל מיום שישי בשעת השקיעה ועד צאת הכוכבים במוצאי השבת. יום מנוחה לפי המקורות, המציין את הזמן שבו ה' נח לאחר שברא את העולם. "
+                            "en": "Shabbat (or Sabbath) falls every seventh day of the week, from Friday just before sunset until dark on Saturday night. It is a day of rest, marking the time when God stopped creating after after the six days of creation. Shabbat recognizes God as Creator of the Universe and as Redeemer of Israel from Egypt.",
+                            "he": "היום השביעי בשבוע, החל מיום שישי בשעת השקיעה ועד צאת הכוכבים במוצאי השבת. יום מנוחה לפי המקורות, המציין את הזמן שבו ה' נח לאחר שברא את העולם."
                           },
                           "categoryDescription": {},
                           "displayOrder": 0,
@@ -5031,11 +5031,11 @@
                 }
               }
             },
-            "description": "A list of topics connected to the `topic_slug` as well as a list of links. "
+            "description": "A list of topics connected to the `topic_slug` as well as a list of links."
           }
         },
         "summary": "Topic Graph",
-        "description": "Endpoint to retrieve topics and their links between other topics. As opposed to topic links to refs, this endpoint retrieve connections between one topic to another topic. "
+        "description": "Endpoint to retrieve topics and their links between other topics. As opposed to topic links to refs, this endpoint retrieve connections between one topic to another topic."
       }
     },
     "/api/recommend/topics/{ref_list}": {
@@ -5174,7 +5174,7 @@
     },
     "/api/terms/{name}": {
       "summary": "The Terms API",
-      "description": "A Term is a shared title node.  It can be referenced and used by many different `Index` nodes. Terms that use the same `TermScheme` can be ordered within that scheme. So for example, _Parsha_ terms who all share the `TermScheme` of `parsha`, can be ordered within that scheme. \n\nExamples of valid terms:  `Noah`, `HaChovel`\n",
+      "description": "A Term is a shared title node.  It can be referenced and used by many different `Index` nodes. Terms that use the same `TermScheme` can be ordered within that scheme. So for example, _Parsha_ terms who all share the `TermScheme` of `parsha`, can be ordered within that scheme.\n\nExamples of valid terms:  `Noah`, `HaChovel`",
       "get": {
         "operationId" : "get_api-terms-name",
         "tags": [
@@ -5228,11 +5228,11 @@
                 }
               }
             },
-            "description": "The response to a query for a specific Term in the Terms API. "
+            "description": "The response to a query for a specific Term in the Terms API."
           }
         },
         "summary": "Terms",
-        "description": "A Term is a shared title node.  It can be referenced and used by many different `Index` nodes. Terms that use the same `TermScheme` can be ordered within that scheme. So for example, _Parsha_ terms who all share the `TermScheme` of `parsha`, can be ordered within that scheme. \n\nExamples of valid terms:  `Noah`, `HaChovel`\n"
+        "description": "A Term is a shared title node.  It can be referenced and used by many different `Index` nodes. Terms that use the same `TermScheme` can be ordered within that scheme. So for example, _Parsha_ terms who all share the `TermScheme` of `parsha`, can be ordered within that scheme.\n\nExamples of valid terms:  `Noah`, `HaChovel`"
       },
       "parameters": [
         {
@@ -5245,7 +5245,7 @@
             }
           },
           "name": "name",
-          "description": "The English name of a valid Sefaria term. ",
+          "description": "The English name of a valid Sefaria term.",
           "schema": {
             "type": "string"
           },
@@ -5395,7 +5395,7 @@
         "parameters": [
           {
             "name": "lang",
-            "description": "The language the social image should return, `en` for English language or `he` for Hebrew. ",
+            "description": "The language the social image should return, `en` for English language or `he` for Hebrew.",
             "schema": {
               "enum": [
                 "he",
@@ -5424,7 +5424,7 @@
               }
             },
             "name": "ven",
-            "description": "The title of the version of English text desired for the image. ",
+            "description": "The title of the version of English text desired for the image.",
             "schema": {
               "type": "string"
             },
@@ -5437,7 +5437,7 @@
               }
             },
             "name": "vhe",
-            "description": "The title of the version of Hebrew text desired for the image. ",
+            "description": "The title of the version of Hebrew text desired for the image.",
             "schema": {
               "type": "string"
             },
@@ -5515,11 +5515,11 @@
                 }
               }
             },
-            "description": "GET requests take a full category path in the request, e.g. `/api/category/Tanakh/Torah/Genesis`, and return the full category object found. \n\nIf the category is not found, the returned object will have an error attribute. If any element of the path is found, the API will return the closest parent in an attribute called `closest_parent`. This is useful for proactively looking up a category before posting an `Index` to it."
+            "description": "GET requests take a full category path in the request, e.g. `/api/category/Tanakh/Torah/Genesis`, and return the full category object found.\n\nIf the category is not found, the returned object will have an error attribute. If any element of the path is found, the API will return the closest parent in an attribute called `closest_parent`. This is useful for proactively looking up a category before posting an `Index` to it."
           }
         },
         "summary": "Category",
-        "description": "GET requests take a full category path in the request, e.g. `/api/category/Tanakh/Torah/Genesis`, and return the full category object found. \n\nIf the category is not found, the returned object will have an error attribute. If any element of the path is found, the API will return the closest parent in an attribute called `closest_parent`. This is useful for proactively looking up a category before posting an `Index` to it."
+        "description": "GET requests take a full category path in the request, e.g. `/api/category/Tanakh/Torah/Genesis`, and return the full category object found.\n\nIf the category is not found, the returned object will have an error attribute. If any element of the path is found, the API will return the closest parent in an attribute called `closest_parent`. This is useful for proactively looking up a category before posting an `Index` to it."
       },
       "parameters": [
         {
@@ -5545,7 +5545,7 @@
   "components": {
     "schemas": {
       "ref": {
-        "description": "A string representing a citation to a Jewish text. \n\nA valid `Ref` consists of a title string followed optionally by a section string or a segment string. \n\nA title string is any one of the known text titles or title variants in the Sefaria Database.",
+        "description": "A string representing a citation to a Jewish text.\n\nA valid `Ref` consists of a title string followed optionally by a section string or a segment string.\n\nA title string is any one of the known text titles or title variants in the Sefaria Database.",
         "type": "string",
         "example": "Mishnah Peah 4:2"
       },
@@ -5686,7 +5686,7 @@
             "type": "boolean"
           },
           "is_node": {
-            "description": "Returns true if the submitted text is a `node` in a complex text. (For example, the query `Abarbanel on Torah, Genesis` is a `node` in the `index` of the complex text `Abarbanel on Torah`). ",
+            "description": "Returns true if the submitted text is a `node` in a complex text. (For example, the query `Abarbanel on Torah, Genesis` is a `node` in the `index` of the complex text `Abarbanel on Torah`).",
             "type": "boolean"
           },
           "is_section": {
@@ -6441,7 +6441,7 @@
             "type": "string"
           },
           "categories": {
-            "description": "A list of categories that a text belongs to. ",
+            "description": "A list of categories that a text belongs to.",
             "type": "array",
             "items": {
               "type": "string"
@@ -6618,17 +6618,17 @@
             "[Grain found in] ant holes where the stalks are still standing, behold it still belongs to the owner. After the harvesters [had passed over them], those found in the top parts [of the ant holes belong] to the poor, but [those found] on the bottom parts [belong] to the owner. Rabbi Meir says: it all belongs to the poor, for gleanings about which there is any doubt are regarded as gleanings."
           ],
           "he": [
-            "הַפֵּאָה נִתֶּנֶת בִּמְחֻבָּר לַקַּרְקָע. בְּדָלִית וּבְדֶקֶל, בַּעַל הַבַּיִת מוֹרִיד וּמְחַלֵּק לָעֲנִיִּים. רַבִּי שִׁמְעוֹן אוֹמֵר, אַף בַּחֲלִיקֵי אֱגוֹזִים. אֲפִלּוּ תִשְׁעִים וְתִשְׁעָה אוֹמְרִים לְחַלֵּק וְאֶחָד אוֹמֵר לָבוֹז, לָזֶה שׁוֹמְעִין, שֶׁאָמַר כַּהֲלָכָה: \n",
-            "בְּדָלִית וּבְדֶקֶל אֵינוֹ כֵן, אֲפִלּוּ תִשְׁעִים וְתִשְׁעָה אוֹמְרִים לָבוֹז וְאֶחָד אוֹמֵר לְחַלֵּק, לָזֶה שׁוֹמְעִין, שֶׁאָמַר כַּהֲלָכָה: \n",
-            "נָטַל מִקְצָת פֵּאָה וּזְרָקָהּ עַל הַשְּׁאָר, אֵין לוֹ בָהּ כְּלוּם. נָפַל לוֹ עָלֶיהָ, וּפֵרֵשׂ טַלִּיתוֹ עָלֶיהָ, מַעֲבִירִין אוֹתָהּ הֵימֶנּוּ. וְכֵן בְּלֶקֶט, וְכֵן בְּעֹמֶר הַשִּׁכְחָה: \n",
-            "פֵּאָה אֵין קוֹצְרִין אוֹתָהּ בְּמַגָּלוֹת, וְאֵין עוֹקְרִין אוֹתָהּ בְּקַרְדֻּמּוֹת, כְּדֵי שֶׁלֹּא יַכּוּ אִישׁ אֶת רֵעֵהוּ: \n",
-            "שָׁלשׁ אַבְעָיוֹת בַּיּוֹם, בַּשַּׁחַר וּבַחֲצוֹת וּבַמִּנְחָה. רַבָּן גַּמְלִיאֵל אוֹמֵר, לֹא אָמְרוּ אֶלָּא כְּדֵי שֶׁלֹּא יִפְחֲתוּ. רַבִּי עֲקִיבָא אוֹמֵר, לֹא אָמְרוּ אֶלָּא כְּדֵי שֶׁלֹּא יוֹסִיפוּ. שֶׁל בֵּית נָמֵר הָיוּ מְלַקְּטִין עַל הַחֶבֶל, וְנוֹתְנִים פֵּאָה מִכָּל אֻמָּן וְאֻמָּן: \n",
-            "עוֹבֵד כּוֹכָבִים שֶׁקָּצַר אֶת שָׂדֵהוּ וְאַחַר כָּךְ נִתְגַּיֵּר, פָּטוּר מִן הַלֶּקֶט וּמִן הַשִּׁכְחָה וּמִן הַפֵּאָה. רַבִּי יְהוּדָה מְחַיֵּב בְּשִׁכְחָה, שֶׁאֵין הַשִּׁכְחָה אֶלָּא בִשְׁעַת הָעִמּוּר: \n",
-            "הִקְדִּישׁ קָמָה וּפָדָה קָמָה, חַיָּב. עֳמָרִין וּפָדָה עֳמָרִין, חַיָּב. קָמָה וּפָדָה עֳמָרִין, פְּטוּרָה, שֶׁבִּשְׁעַת חוֹבָתָהּ הָיְתָה פְטוּרָה: \n",
-            "כַּיּוֹצֵא בוֹ, הַמַּקְדִּישׁ פֵּרוֹתָיו עַד שֶׁלֹּא בָאוּ לְעוֹנַת הַמַּעַשְׂרוֹת, וּפְדָאָן, חַיָּבִין. מִשֶּׁבָּאוּ לְעוֹנַת הַמַּעַשְׂרוֹת, וּפְדָאָן, חַיָּבִין. הִקְדִּישָׁן עַד שֶׁלֹּא נִגְמְרוּ וּגְמָרָן הַגִּזְבָּר, וְאַחַר כָּךְ פְּדָאָן, פְּטוּרִים, שֶׁבִּשְׁעַת חוֹבָתָן הָיוּ פְטוּרִים: \n",
-            "מִי שֶׁלָּקַט אֶת הַפֵּאָה וְאָמַר הֲרֵי זוֹ לְאִישׁ פְּלוֹנִי עָנִי, רַבִּי אֱלִיעֶזֶר אוֹמֵר, זָכָה לוֹ. וַחֲכָמִים אוֹמְרִים, יִתְּנֶנָּה לֶעָנִי שֶׁנִּמְצָא רִאשׁוֹן. הַלֶּקֶט וְהַשִּׁכְחָה וְהַפֵּאָה שֶׁל עוֹבֵד כּוֹכָבִים חַיָּב בְּמַעַשְׂרוֹת, אֶלָּא אִם כֵּן הִפְקִיר: \n",
-            "אֵיזֶהוּ לֶקֶט, הַנּוֹשֵׁר בִּשְׁעַת הַקְּצִירָה. הָיָה קוֹצֵר, קָצַר מְלֹא יָדוֹ, תָּלַשׁ מְלֹא קֻמְצוֹ, הִכָּהוּ קוֹץ וְנָפַל מִיָּדוֹ לָאָרֶץ, הֲרֵי הוּא שֶׁל בַּעַל הַבָּיִת. תּוֹךְ הַיָּד וְתוֹךְ הַמַּגָּל, לָעֲנִיִּים. אַחַר הַיָּד וְאַחַר הַמַּגָּל, לְבַעַל הַבָּיִת. רֹאשׁ הַיָּד וְרֹאשׁ הַמַּגָּל, רַבִּי יִשְׁמָעֵאל אוֹמֵר, לָעֲנִיִּים. רַבִּי עֲקִיבָא אוֹמֵר, לְבַעַל הַבָּיִת: \n",
-            "חוֹרֵי הַנְּמָלִים שֶׁבְּתוֹךְ הַקָּמָה, הֲרֵי הֵן שֶׁל בַּעַל הַבָּיִת. שֶׁלְּאַחַר הַקּוֹצְרִים, הָעֶלְיוֹנִים לָעֲנִיִּים, וְהַתַּחְתּוֹנִים שֶׁל בַּעַל הַבָּיִת. רַבִּי מֵאִיר אוֹמֵר, הַכֹּל לָעֲנִיִּים, שֶׁסְּפֵק לֶקֶט, לֶקֶט: \n"
+            "הַפֵּאָה נִתֶּנֶת בִּמְחֻבָּר לַקַּרְקָע. בְּדָלִית וּבְדֶקֶל, בַּעַל הַבַּיִת מוֹרִיד וּמְחַלֵּק לָעֲנִיִּים. רַבִּי שִׁמְעוֹן אוֹמֵר, אַף בַּחֲלִיקֵי אֱגוֹזִים. אֲפִלּוּ תִשְׁעִים וְתִשְׁעָה אוֹמְרִים לְחַלֵּק וְאֶחָד אוֹמֵר לָבוֹז, לָזֶה שׁוֹמְעִין, שֶׁאָמַר כַּהֲלָכָה:",
+            "בְּדָלִית וּבְדֶקֶל אֵינוֹ כֵן, אֲפִלּוּ תִשְׁעִים וְתִשְׁעָה אוֹמְרִים לָבוֹז וְאֶחָד אוֹמֵר לְחַלֵּק, לָזֶה שׁוֹמְעִין, שֶׁאָמַר כַּהֲלָכָה:",
+            "נָטַל מִקְצָת פֵּאָה וּזְרָקָהּ עַל הַשְּׁאָר, אֵין לוֹ בָהּ כְּלוּם. נָפַל לוֹ עָלֶיהָ, וּפֵרֵשׂ טַלִּיתוֹ עָלֶיהָ, מַעֲבִירִין אוֹתָהּ הֵימֶנּוּ. וְכֵן בְּלֶקֶט, וְכֵן בְּעֹמֶר הַשִּׁכְחָה:",
+            "פֵּאָה אֵין קוֹצְרִין אוֹתָהּ בְּמַגָּלוֹת, וְאֵין עוֹקְרִין אוֹתָהּ בְּקַרְדֻּמּוֹת, כְּדֵי שֶׁלֹּא יַכּוּ אִישׁ אֶת רֵעֵהוּ:",
+            "שָׁלשׁ אַבְעָיוֹת בַּיּוֹם, בַּשַּׁחַר וּבַחֲצוֹת וּבַמִּנְחָה. רַבָּן גַּמְלִיאֵל אוֹמֵר, לֹא אָמְרוּ אֶלָּא כְּדֵי שֶׁלֹּא יִפְחֲתוּ. רַבִּי עֲקִיבָא אוֹמֵר, לֹא אָמְרוּ אֶלָּא כְּדֵי שֶׁלֹּא יוֹסִיפוּ. שֶׁל בֵּית נָמֵר הָיוּ מְלַקְּטִין עַל הַחֶבֶל, וְנוֹתְנִים פֵּאָה מִכָּל אֻמָּן וְאֻמָּן:",
+            "עוֹבֵד כּוֹכָבִים שֶׁקָּצַר אֶת שָׂדֵהוּ וְאַחַר כָּךְ נִתְגַּיֵּר, פָּטוּר מִן הַלֶּקֶט וּמִן הַשִּׁכְחָה וּמִן הַפֵּאָה. רַבִּי יְהוּדָה מְחַיֵּב בְּשִׁכְחָה, שֶׁאֵין הַשִּׁכְחָה אֶלָּא בִשְׁעַת הָעִמּוּר:",
+            "הִקְדִּישׁ קָמָה וּפָדָה קָמָה, חַיָּב. עֳמָרִין וּפָדָה עֳמָרִין, חַיָּב. קָמָה וּפָדָה עֳמָרִין, פְּטוּרָה, שֶׁבִּשְׁעַת חוֹבָתָהּ הָיְתָה פְטוּרָה:",
+            "כַּיּוֹצֵא בוֹ, הַמַּקְדִּישׁ פֵּרוֹתָיו עַד שֶׁלֹּא בָאוּ לְעוֹנַת הַמַּעַשְׂרוֹת, וּפְדָאָן, חַיָּבִין. מִשֶּׁבָּאוּ לְעוֹנַת הַמַּעַשְׂרוֹת, וּפְדָאָן, חַיָּבִין. הִקְדִּישָׁן עַד שֶׁלֹּא נִגְמְרוּ וּגְמָרָן הַגִּזְבָּר, וְאַחַר כָּךְ פְּדָאָן, פְּטוּרִים, שֶׁבִּשְׁעַת חוֹבָתָן הָיוּ פְטוּרִים:",
+            "מִי שֶׁלָּקַט אֶת הַפֵּאָה וְאָמַר הֲרֵי זוֹ לְאִישׁ פְּלוֹנִי עָנִי, רַבִּי אֱלִיעֶזֶר אוֹמֵר, זָכָה לוֹ. וַחֲכָמִים אוֹמְרִים, יִתְּנֶנָּה לֶעָנִי שֶׁנִּמְצָא רִאשׁוֹן. הַלֶּקֶט וְהַשִּׁכְחָה וְהַפֵּאָה שֶׁל עוֹבֵד כּוֹכָבִים חַיָּב בְּמַעַשְׂרוֹת, אֶלָּא אִם כֵּן הִפְקִיר:",
+            "אֵיזֶהוּ לֶקֶט, הַנּוֹשֵׁר בִּשְׁעַת הַקְּצִירָה. הָיָה קוֹצֵר, קָצַר מְלֹא יָדוֹ, תָּלַשׁ מְלֹא קֻמְצוֹ, הִכָּהוּ קוֹץ וְנָפַל מִיָּדוֹ לָאָרֶץ, הֲרֵי הוּא שֶׁל בַּעַל הַבָּיִת. תּוֹךְ הַיָּד וְתוֹךְ הַמַּגָּל, לָעֲנִיִּים. אַחַר הַיָּד וְאַחַר הַמַּגָּל, לְבַעַל הַבָּיִת. רֹאשׁ הַיָּד וְרֹאשׁ הַמַּגָּל, רַבִּי יִשְׁמָעֵאל אוֹמֵר, לָעֲנִיִּים. רַבִּי עֲקִיבָא אוֹמֵר, לְבַעַל הַבָּיִת:",
+            "חוֹרֵי הַנְּמָלִים שֶׁבְּתוֹךְ הַקָּמָה, הֲרֵי הֵן שֶׁל בַּעַל הַבָּיִת. שֶׁלְּאַחַר הַקּוֹצְרִים, הָעֶלְיוֹנִים לָעֲנִיִּים, וְהַתַּחְתּוֹנִים שֶׁל בַּעַל הַבָּיִת. רַבִּי מֵאִיר אוֹמֵר, הַכֹּל לָעֲנִיִּים, שֶׁסְּפֵק לֶקֶט, לֶקֶט: "
           ],
           "versions": [
             {
@@ -6723,7 +6723,7 @@
               "extendedNotesHebrew": "",
               "purchaseInformationImage": "",
               "purchaseInformationURL": "",
-              "shortVersionTitle": "Lazarus Goldschmidt, 1929 ",
+              "shortVersionTitle": "Lazarus Goldschmidt, 1929",
               "shortVersionTitleInHebrew": ""
             },
             {
@@ -7003,7 +7003,7 @@
             "type": "string"
           },
           "morphology": {
-            "description": " One of [n., adj., adv., m.n., abs., art. , attrib., auxil., comp., copul., c st., def., f., f. n., imper.., Imperf., Indef art., Inf, Interj., Interr., Intr., Neut., Part., Pass., Perf., Possess., p. part., prep., pres part., pres t., p.t.., sing., Subj., Tr.]",
+            "description": "One of [n., adj., adv., m.n., abs., art. , attrib., auxil., comp., copul., c st., def., f., f. n., imper.., Imperf., Indef art., Inf, Interj., Interr., Intr., Neut., Part., Pass., Perf., Possess., p. part., prep., pres part., pres t., p.t.., sing., Subj., Tr.]",
             "type": "string"
           },
           "language_code": {
@@ -7085,7 +7085,7 @@
       },
       "ManuscriptJSON": {
         "title": "Root Type for ManuscriptJSON",
-        "description": "Manuscript data and metadata JSON. ",
+        "description": "Manuscript data and metadata JSON.",
         "required": [
           "manuscript"
         ],
@@ -7097,7 +7097,7 @@
             "example": "leningrad-codex-(1008-ce)"
           },
           "page_id": {
-            "description": "The ID for the specific page within the manuscript being referenced. ",
+            "description": "The ID for the specific page within the manuscript being referenced.",
             "type": "string",
             "example": "LC_Folio_435r"
           },
@@ -7107,17 +7107,17 @@
             "example": "https://manuscripts.sefaria.org/leningrad-color/BIB_LENCDX_F434B_thumbnail.jpg"
           },
           "thumbnail_url": {
-            "description": "The url to the thumbnail image of the manuscript. ",
+            "description": "The url to the thumbnail image of the manuscript.",
             "type": "string",
             "example": "https://manuscripts.sefaria.org/leningrad-color/BIB_LENCDX_F434B_thumbnail.jpg"
           },
           "anchorRef": {
-            "description": "A manuscript image will in most cases be associated with a range of `refs` (i.e. an image of a page of Tanakh will display multiple verses). The `anchorRef` is that complete range the manuscript is associated with, and will contain within it the specific textual `Ref` passed in as a parameter. ",
+            "description": "A manuscript image will in most cases be associated with a range of `refs` (i.e. an image of a page of Tanakh will display multiple verses). The `anchorRef` is that complete range the manuscript is associated with, and will contain within it the specific textual `Ref` passed in as a parameter.",
             "type": "string",
             "example": "\"Esther 3:15-4:17\""
           },
           "anchorRefExpanded": {
-            "description": "An array of strings, where each string is a segment level `Ref` of the `Ref` passed in as a parameter. If a segment level `Ref` is passed in, this array will have a length of 1, and only contain that segment level `Ref`. If the `Ref` passed in is ranged, this array will contain each of the segment level `Ref`s within that range. \n\nFor example, if someone was searching for manuscript data for `Esther 4.14-15`, the `anchorRefExpanded` would contain `Esther 4.14` and `Esther 4.15`.",
+            "description": "An array of strings, where each string is a segment level `Ref` of the `Ref` passed in as a parameter. If a segment level `Ref` is passed in, this array will have a length of 1, and only contain that segment level `Ref`. If the `Ref` passed in is ranged, this array will contain each of the segment level `Ref`s within that range.\n\nFor example, if someone was searching for manuscript data for `Esther 4.14-15`, the `anchorRefExpanded` would contain `Esther 4.14` and `Esther 4.15`.",
             "minItems": 1,
             "uniqueItems": true,
             "type": "array",
@@ -7128,7 +7128,7 @@
           },
           "manuscript": {
             "$ref": "#/components/schemas/ManuscriptVersionMetaData",
-            "description": "The version metadata for the manuscript, including the title, Hebrew and English descriptions. ",
+            "description": "The version metadata for the manuscript, including the title, Hebrew and English descriptions.",
             "properties": {
               "slug": {
                 "type": "string"
@@ -7173,7 +7173,7 @@
       },
       "ManuscriptVersionMetaData": {
         "title": "Root Type for ManuscriptVersionMetaData",
-        "description": "The specific metadata for the version of the manuscript. ",
+        "description": "The specific metadata for the version of the manuscript.",
         "required": [
           "slug",
           "description",
@@ -7185,32 +7185,32 @@
         "type": "object",
         "properties": {
           "slug": {
-            "description": "The unique slug for the manuscript. ",
+            "description": "The unique slug for the manuscript.",
             "type": "string",
             "example": "leningrad-codex-(1008-ce)"
           },
           "title": {
-            "description": "The title of the manuscript. ",
+            "description": "The title of the manuscript.",
             "type": "string",
             "example": "Leningrad Codex (1008 CE)"
           },
           "he_title": {
-            "description": "The manuscript title in Hebrew. ",
+            "description": "The manuscript title in Hebrew.",
             "type": "string",
             "example": "כתב יד לנינגרד (1008)"
           },
           "source": {
-            "description": "The url for the source of the manuscript images. ",
+            "description": "The url for the source of the manuscript images.",
             "type": "string",
             "example": "https://dornsife.usc.edu/wsrp/biblical-manuscripts/"
           },
           "description": {
-            "description": "A description of the manuscript, oftening containing details about the archivists or where the physical manuscript images can be found, as well as other library details.  ",
+            "description": "A description of the manuscript, oftening containing details about the archivists or where the physical manuscript images can be found, as well as other library details.",
             "type": "string",
             "example": "Bruce Zuckerman, West Semitic Research, in collaboration with the Ancient Biblical Manuscript Center; courtesy Russian National Library, Saltykov-Schedrin"
           },
           "he_description": {
-            "description": "A Hebrew description of the manuscript, oftening containing details about the archivists or where the physical manuscript images can be found, as well as other library details.  ",
+            "description": "A Hebrew description of the manuscript, oftening containing details about the archivists or where the physical manuscript images can be found, as well as other library details.",
             "type": "string"
           }
         },
@@ -7238,11 +7238,11 @@
       },
       "VersionJSON": {
         "title": "Root Type for VersionJSON",
-        "description": "The metadata for a given version. ",
+        "description": "The metadata for a given version.",
         "type": "object",
         "properties": {
           "title": {
-            "description": "The title of the Index. ",
+            "description": "The title of the Index.",
             "type": "string",
             "example": "Talmud Berakhot"
           },
@@ -7252,7 +7252,7 @@
             "example": "\"William Davidson Edition - Vocalized Aramaic\""
           },
           "versionSource": {
-            "description": "A URL pointing to the hardcopy of the text as it can be found in libraries, most usually in our case the NLI (National Library of Israel), but not exclusively. ",
+            "description": "A URL pointing to the hardcopy of the text as it can be found in libraries, most usually in our case the NLI (National Library of Israel), but not exclusively.",
             "type": "string",
             "example": "https://www.nli.org.il/he/books/NNL_ALEPH990025294890205171/NLI"
           },
@@ -7262,27 +7262,27 @@
             "example": "'en'\n'he'"
           },
           "status": {
-            "description": "The status field contains either the string `\"locked\"` or an empty string. If `\"locked\"` is the value of the field, it indicates that the text is locked from future updatees, edits and translations from community members. ",
+            "description": "The status field contains either the string `\"locked\"` or an empty string. If `\"locked\"` is the value of the field, it indicates that the text is locked from future updatees, edits and translations from community members.",
             "type": "string",
             "example": "\"locked\""
           },
           "license": {
-            "description": "The copyright license for using, and reproducing the text. ",
+            "description": "The copyright license for using, and reproducing the text.",
             "type": "string",
             "example": "CC-BY"
           },
           "versionNotes": {
-            "description": "English notes relating to the version, often containing details of authorship, place of printing, and sometimes donor dedications. ",
+            "description": "English notes relating to the version, often containing details of authorship, place of printing, and sometimes donor dedications.",
             "type": "string",
             "example": "\"English from The William Davidson digital edition of the <a href='https://korenpub.com/collections/the-noe-edition-koren-talmud-bavli-1'>Koren Noé Talmud</a>, with commentary by <a href='/adin-even-israel-steinsaltz'>Rabbi Adin Even-Israel Steinsaltz</a>\","
           },
           "digitizedBySefaria": {
-            "description": "Whether or not the text was digitized by Sefaria. We have some texts we've been able to add to our database from digital sources, and other texts that we've transfered from print to a digital medium ourselves. This field indicates if Sefaria did the digitization. ",
+            "description": "Whether or not the text was digitized by Sefaria. We have some texts we've been able to add to our database from digital sources, and other texts that we've transfered from print to a digital medium ourselves. This field indicates if Sefaria did the digitization.",
             "type": "boolean",
             "example": "True"
           },
           "priority": {
-            "description": "The priority field is a number which indicates the priority of a version relative to all other existing versions of the same text. A value of `1` indicates the lowest priority, while the highest value among all versions of the text indicate the highest priority. \n\nPriority values can also be floating point numbers. The priority field determines how the various available versions of a text will be displayed on the Sefaria website. The texts are displayed to the user in a highest-to-lowest priority order, in many cases offering more complete or higher quality versions of the text before ones of inferior quality. ",
+            "description": "The priority field is a number which indicates the priority of a version relative to all other existing versions of the same text. A value of `1` indicates the lowest priority, while the highest value among all versions of the text indicate the highest priority.\n\nPriority values can also be floating point numbers. The priority field determines how the various available versions of a text will be displayed on the Sefaria website. The texts are displayed to the user in a highest-to-lowest priority order, in many cases offering more complete or higher quality versions of the text before ones of inferior quality.",
             "type": "number",
             "example": "7"
           },
@@ -7292,24 +7292,24 @@
             "example": "מהדורת וויליאם דייוידסון - ארמית המנוקד"
           },
           "versionNotesInHebrew": {
-            "description": "Hebrew notes relating to the version, often containing details of authorship, place of printing, and sometimes donor dedications. ",
+            "description": "Hebrew notes relating to the version, often containing details of authorship, place of printing, and sometimes donor dedications.",
             "type": "string"
           },
           "extendedNotes": {
-            "description": "English extended notes on a version that go beyond the time and place of printing. ",
+            "description": "English extended notes on a version that go beyond the time and place of printing.",
             "type": "string"
           },
           "extendedNotesHebrew": {
-            "description": "Hebrew extended notes on a version that go beyond the time and place of printing. ",
+            "description": "Hebrew extended notes on a version that go beyond the time and place of printing.",
             "type": "string"
           },
           "purchaseInformationImage": {
-            "description": "A URL pointing to an image of the hard copy of the version associated with the digital copy, for those who would like to purchase a hard copy. ",
+            "description": "A URL pointing to an image of the hard copy of the version associated with the digital copy, for those who would like to purchase a hard copy.",
             "type": "string",
             "example": "\"https://storage.googleapis.com/sefaria-physical-editions/4fc4b6d5b144eb3915d250d743eaf2e8.png\""
           },
           "purchaseInformationURL": {
-            "description": "The URL pointing to a website where on can buy a physical copy of the given text version. ",
+            "description": "The URL pointing to a website where on can buy a physical copy of the given text version.",
             "type": "string",
             "example": "\"https://korenpub.com/collections/the-noe-edition-koren-talmud-bavli-1/products/copy-of-vol-1-berakhot-1\""
           },
@@ -7350,7 +7350,7 @@
         }
       },
       "LanguageCode": {
-        "description": "The texts on Sefaria are grouped into two language buckets, `en` for languages which read left-to-right (i.e. English, Spanish, German) and `he` for languages which read right-to-left (i.e. Hebrew, Arabic). This field is only ever populated by a string containing the value of either `en` or `he`. ",
+        "description": "The texts on Sefaria are grouped into two language buckets, `en` for languages which read left-to-right (i.e. English, Spanish, German) and `he` for languages which read right-to-left (i.e. Hebrew, Arabic). This field is only ever populated by a string containing the value of either `en` or `he`.",
         "type": "string",
         "example": "'en'\n'he'"
       },
@@ -7866,7 +7866,7 @@
             "example": "nachman-of-breslov"
           },
           "titles": {
-            "description": "An array of JSON objects, each representing an alternative title for the object, in various languages. ",
+            "description": "An array of JSON objects, each representing an alternative title for the object, in various languages.",
             "type": "array",
             "items": {
               "$ref": "#/components/schemas/TitlesJSON"
@@ -7874,7 +7874,7 @@
             "example": "\"titles\": [\n    {\n        \"text\": \"Tabernacles\",\n        \"lang\": \"en\"\n    },\n    {\n        \"text\": \"Succot\",\n        \"lang\": \"en\"\n    },\n    {\n        \"text\": \"Sukkos\",\n        \"lang\": \"en\"\n    },\n    {\n        \"text\": \"Succos\",\n        \"lang\": \"en\"\n    },\n    {\n        \"text\": \"Booths\",\n        \"lang\": \"en\"\n    },\n    {\n        \"text\": \"sukkot\",\n        \"lang\": \"en\"\n    },\n    {\n        \"text\": \"succot\",\n        \"lang\": \"en\"\n    },\n    {\n        \"text\": \"Succoth\",\n        \"lang\": \"en\"\n    },\n    {\n        \"text\": \"Sukkoth\",\n        \"lang\": \"en\"\n    },\n    {\n        \"text\": \"חג הסוכות\",\n        \"lang\": \"he\"\n    },\n    {\n        \"text\": \"סכות\",\n        \"lang\": \"he\"\n    },\n    {\n        \"text\": \"Sukkot\",\n        \"lang\": \"en\",\n        \"primary\": true\n    },\n    {\n        \"text\": \"סוכות\",\n        \"lang\": \"he\",\n        \"primary\": true\n    }\n]"
           },
           "alt_ids": {
-            "description": "This is a dictionary containing the keys of naming schemes, and ids of this topic represented in that naming scheme.  It’s used both for canonical names in other naming schemes and temporary storage of names when renaming slugs. All of the data here is for internal use, with the exception of the values `bfo` and `wikidata`. `bfo` refers to [basic formal ontology](https://developers.sefaria.org/docs/topic-ontology), and `wikidata` to the wikidata ontology of topics. ",
+            "description": "This is a dictionary containing the keys of naming schemes, and ids of this topic represented in that naming scheme.  It’s used both for canonical names in other naming schemes and temporary storage of names when renaming slugs. All of the data here is for internal use, with the exception of the values `bfo` and `wikidata`. `bfo` refers to [basic formal ontology](https://developers.sefaria.org/docs/topic-ontology), and `wikidata` to the wikidata ontology of topics.",
             "type": "object",
             "properties": {
               "_temp_id": {
@@ -7885,7 +7885,7 @@
           },
           "properties": {
             "$ref": "#/components/schemas/TopicPropertyJson",
-            "description": "The properties stores optional data relating to the topic, including links (if relevant) to where on can learn more about the topic. ",
+            "description": "The properties stores optional data relating to the topic, including links (if relevant) to where on can learn more about the topic.",
             "properties": {
               "heNliLink": {
                 "type": "object",
@@ -7931,29 +7931,29 @@
           },
           "displayOrder": {
             "format": "int32",
-            "description": "The order in which topics are displayed on the Sefaria website, relative to other topics within their same category. ",
+            "description": "The order in which topics are displayed on the Sefaria website, relative to other topics within their same category.",
             "type": "integer",
             "example": "1"
           },
           "numSources": {
             "format": "int32",
-            "description": "The number of text sources associated with a topic. ",
+            "description": "The number of text sources associated with a topic.",
             "type": "integer",
             "example": "831"
           },
           "description_published": {
-            "description": "A boolean representing whether or not the description was published. ",
+            "description": "A boolean representing whether or not the description was published.",
             "type": "boolean",
             "example": "true"
           },
           "data_source": {
-            "description": "How the topic was generated, whether by Sefaria, a user on a source sheet, or some other source. ",
+            "description": "How the topic was generated, whether by Sefaria, a user on a source sheet, or some other source.",
             "type": "string",
             "example": "`sefaria`"
           },
           "image": {
             "$ref": "#/components/schemas/TopicImgJSON",
-            "description": "Metadata for images associated with topics. ",
+            "description": "Metadata for images associated with topics.",
             "properties": {
               "image_uri": {
                 "type": "string"
@@ -7987,7 +7987,7 @@
           },
           "primaryTitleIsTransliteration": {
             "$ref": "#/components/schemas/BillingualJSON",
-            "description": "This field has the possibility of being used to indicate whether or not a title is a transliteration, however the data here is not always consistent or up-to-date. Therefore, it is best to disregard the data in this field, and there are many false negatives. ",
+            "description": "This field has the possibility of being used to indicate whether or not a title is a transliteration, however the data here is not always consistent or up-to-date. Therefore, it is best to disregard the data in this field, and there are many false negatives.",
             "properties": {
               "en": {
                 "type": "boolean"
@@ -8098,11 +8098,11 @@
       },
       "TopicImgJSON": {
         "title": "Root Type for TopicImgJSON",
-        "description": "A JSON object containing the image metadata for topics with images. ",
+        "description": "A JSON object containing the image metadata for topics with images.",
         "type": "object",
         "properties": {
           "image_uri": {
-            "description": "The URL pointing to the image as hosted by Sefaria. ",
+            "description": "The URL pointing to the image as hosted by Sefaria.",
             "type": "string",
             "example": "https://storage.googleapis.com/img.sefaria.org/topics/sukkot.jpg"
           },
@@ -8130,16 +8130,16 @@
       },
       "BillingualJSON": {
         "title": "Root Type for TopicImgCaption",
-        "description": "A JSON object containing billingual text, both `he` and `en` parallel texts. ",
+        "description": "A JSON object containing billingual text, both `he` and `en` parallel texts.",
         "type": "object",
         "properties": {
           "en": {
-            "description": "The English field for a JSON object representing billingual text. ",
+            "description": "The English field for a JSON object representing billingual text.",
             "type": "string",
             "example": "Detail of a painting of a sukkah. Image taken from f. 316v of Forli Siddur. 1383, Italian rite. The British Library"
           },
           "he": {
-            "description": "The Hebrew field for a JSON object representing billingual text. ",
+            "description": "The Hebrew field for a JSON object representing billingual text.",
             "type": "string",
             "example": "פרט ציור של סוכה עם שולחן פרוש ושלוש דמויות. דימוי מתוך סידור פורלי, 1383 איטליה"
           }
@@ -8156,7 +8156,7 @@
         "properties": {
           "heNliLink": {
             "$ref": "#/components/schemas/NLILinkJSON",
-            "description": "A link to the Hebrew page on the website of the National Library of Israel which corresponds to the given topic, so users can learn more. ",
+            "description": "A link to the Hebrew page on the website of the National Library of Israel which corresponds to the given topic, so users can learn more.",
             "properties": {
               "value": {
                 "type": "string"
@@ -8169,7 +8169,7 @@
           },
           "enNliLink": {
             "$ref": "#/components/schemas/NLILinkJSON",
-            "description": "A link to the English page on the website of the National Library of Israel which corresponds to the given topic, so users can learn more. ",
+            "description": "A link to the English page on the website of the National Library of Israel which corresponds to the given topic, so users can learn more.",
             "properties": {
               "value": {
                 "type": "string"
@@ -8194,16 +8194,16 @@
       },
       "NLILinkJSON": {
         "title": "Root Type for NLILinkJSON",
-        "description": "JSON for storing NLI links related to data in the Sefaria database. ",
+        "description": "JSON for storing NLI links related to data in the Sefaria database.",
         "type": "object",
         "properties": {
           "value": {
-            "description": "A link to a corresponding NLI page to learn more. ",
+            "description": "A link to a corresponding NLI page to learn more.",
             "type": "string",
             "example": "https://www.nli.org.il/en/discover/judaism/holidays/sukkot"
           },
           "dataSource": {
-            "description": "The source of the topic data, whether user-created or Sefaria-created. ",
+            "description": "The source of the topic data, whether user-created or Sefaria-created.",
             "type": "string",
             "example": "`sefaria`"
           }
@@ -8764,8 +8764,8 @@
                   "path": "Talmud/Bavli/Seder Moed/Shabbat",
                   "pagesheetrank": 769.444762983379,
                   "comp_date": 450,
-                  "exact": "קוצר: harvest Rashi : Is דש = when the kernel falls from natural covering. This means that we can't peel banana... But we can if it's לאלתר - for immediate consumption. Tosphot : Is דש = when your removing something from natural connection ",
-                  "naive_lemmatizer": "קוצר: harvest Rashi : Is דש = when the kernel falls from natural covering. This means that we can't peel banana... But we can if it's לאלתר - for immediate consumption. Tosphot : Is דש = when your removing something from natural connection ",
+                  "exact": "קוצר: harvest Rashi : Is דש = when the kernel falls from natural covering. This means that we can't peel banana... But we can if it's לאלתר - for immediate consumption. Tosphot : Is דש = when your removing something from natural connection",
+                  "naive_lemmatizer": "קוצר: harvest Rashi : Is דש = when the kernel falls from natural covering. This means that we can't peel banana... But we can if it's לאלתר - for immediate consumption. Tosphot : Is דש = when your removing something from natural connection",
                   "hebrew_version_title": "תרגום קהילת ספריא"
                 },
                 "highlight": {
@@ -9018,16 +9018,16 @@
       },
       "v3TextsJson": {
         "title": "Root Type for v3TextsJson",
-        "description": "The JSON returned from the `v3` `texts/` endpoint. ",
+        "description": "The JSON returned from the `v3` `texts/` endpoint.",
         "type": "object",
         "properties": {
           "versions": {
-            "description": "The list of requested `version` objects. It includes all the data that is unique to the requested `versions`. \n",
+            "description": "The list of requested `version` objects. It includes all the data that is unique to the requested `versions`.",
             "type": "array",
             "items": {
               "$ref": "#/components/schemas/v3TextVersionsJSON"
             },
-            "example": "{\n\"status\": \"locked\",\n\"priority\": 2,\n\"license\": \"CC-BY-SA\",\n\"versionNotes\": \"<i>Miqra According to the Masorah</i> (MAM) is a digital Hebrew edition of the Tanakh based on the Aleppo Codex and related manuscripts. It is designed for readers, and as such it contains added elements to aid vocalization of the text. For instance: When an accent is marked in an unstressed syllable, an extra accent is added in the proper place (<i>pashta</i>, <i>zarqa</i>, <i>segol</i>, <i>telisha</i>). <i>Legarmeih</i> and <i>paseq</i> are visibly distinguished. <i>Qamaz qatan</i> is indicated by its designated Unicode character (alternatives are documented where traditions differ about its application).<br>The text of MAM is fully documented. The <a href=\\\"https://he.wikisource.org/wiki/%D7%9E%D7%A9%D7%AA%D7%9E%D7%A9:Dovi/%D7%9E%D7%A7%D7%A8%D7%90_%D7%A2%D7%9C_%D7%A4%D7%99_%D7%94%D7%9E%D7%A1%D7%95%D7%A8%D7%94/%D7%9E%D7%99%D7%93%D7%A2_%D7%A2%D7%9C_%D7%9E%D7%94%D7%93%D7%95%D7%A8%D7%94_%D7%96%D7%95\\\">complete introduction</a> to the edition (Hebrew) explains the types of editorial decisions that have been made and the reasons for them (<a href=\\\"https://en.wikisource.org/wiki/User:Dovi/Miqra_according_to_the_Masorah#About_this_Edition_(English_Abstract)\\\">English abstract</a>). In addition, every word in the Bible about which there is some textual concern or ambiguity includes a documentation note; these notes can be viewed conveniently <a href=\\\"https://bdenckla.github.io/MAM-with-doc/\\\">here</a>. If an error is discovered, it may be reported to <a href=\\\"https://he.wikisource.org/wiki/%D7%A9%D7%99%D7%97%D7%AA_%D7%9E%D7%A9%D7%AA%D7%9E%D7%A9:Dovi\\\">User:Dovi</a> at Hebrew Wikisource. Please check the documentation notes before reporting an error.\",\n\"formatAsPoetry\": \"\",\n\"digitizedBySefaria\": \"\",\n\"method\": \"\",\n\"heversionSource\": \"\",\n\"versionUrl\": \"\",\n\"versionTitleInHebrew\": \"מקרא על פי המסורה\",\n\"versionNotesInHebrew\": \"\",\n\"shortVersionTitle\": \"\",\n\"shortVersionTitleInHebrew\": \"\",\n\"extendedNotes\": \"\",\n\"extendedNotesHebrew\": \"\",\n\"purchaseInformationImage\": \"\",\n\"purchaseInformationURL\": \"\",\n\"hasManuallyWrappedRefs\": \"\",\n\"actualLanguage\": \"he\",\n\"languageFamilyName\": \"hebrew\",\n\"isSource\": true,\n\"isPrimary\": true,\n\"direction\": \"rtl\",\n\"language\": \"he\",\n\"versionSource\": \"https://he.wikisource.org/wiki/%D7%9E%D7%A9%D7%AA%D7%9E%D7%A9:Dovi/%D7%9E%D7%A7%D7%A8%D7%90_%D7%A2%D7%9C_%D7%A4%D7%99_%D7%94%D7%9E%D7%A1%D7%95%D7%A8%D7%94\",\n\"versionTitle\": \"Miqra according to the Masorah\",\n\"text\": [\n[\n\"חֲז֖וֹן עֹֽבַדְיָ֑ה כֹּֽה־אָמַר֩ אֲדֹנָ֨י יֱהֹוִ֜ה לֶאֱד֗וֹם שְׁמוּעָ֨ה שָׁמַ֜עְנוּ מֵאֵ֤ת יְהֹוָה֙ וְצִיר֙ בַּגּוֹיִ֣ם שֻׁלָּ֔ח ק֛וּמוּ וְנָק֥וּמָה עָלֶ֖יהָ לַמִּלְחָמָֽה׃\",\n\"הִנֵּ֥ה קָטֹ֛ן נְתַתִּ֖יךָ בַּגּוֹיִ֑ם בָּז֥וּי אַתָּ֖ה מְאֹֽד׃\",\n\"זְד֤וֹן לִבְּךָ֙ הִשִּׁיאֶ֔ךָ שֹׁכְנִ֥י בְחַגְוֵי־סֶ֖לַע מְר֣וֹם שִׁבְתּ֑וֹ אֹמֵ֣ר בְּלִבּ֔וֹ מִ֥י יוֹרִדֵ֖נִי אָֽרֶץ׃\",\n\"אִם־תַּגְבִּ֣יהַּ כַּנֶּ֔שֶׁר וְאִם־בֵּ֥ין כּֽוֹכָבִ֖ים שִׂ֣ים קִנֶּ֑ךָ מִשָּׁ֥ם אוֹרִֽידְךָ֖ נְאֻם־יְהֹוָֽה׃\",\n\"אִם־גַּנָּבִ֤ים בָּאֽוּ־לְךָ֙ אִם־שׁ֣וֹדְדֵי לַ֔יְלָה אֵ֣יךְ נִדְמֵ֔יתָה הֲל֥וֹא יִגְנְב֖וּ דַּיָּ֑ם אִם־בֹּֽצְרִים֙ בָּ֣אוּ לָ֔ךְ הֲל֖וֹא יַשְׁאִ֥ירוּ עֹלֵלֽוֹת׃\",\n\"אֵ֚יךְ נֶחְפְּשׂ֣וּ עֵשָׂ֔ו נִבְע֖וּ מַצְפֻּנָֽיו׃\",\n\"עַֽד־הַגְּב֣וּל שִׁלְּח֗וּךָ כֹּ֚ל אַנְשֵׁ֣י בְרִיתֶ֔ךָ הִשִּׁיא֛וּךָ יָכְל֥וּ לְךָ֖ אַנְשֵׁ֣י שְׁלֹמֶ֑ךָ לַחְמְךָ֗ יָשִׂ֤ימוּ מָזוֹר֙ תַּחְתֶּ֔יךָ אֵ֥ין תְּבוּנָ֖ה בּֽוֹ׃\",\n\"הֲל֛וֹא בַּיּ֥וֹם הַה֖וּא נְאֻם־יְהֹוָ֑ה וְהַאֲבַדְתִּ֤י חֲכָמִים֙ מֵֽאֱד֔וֹם וּתְבוּנָ֖ה מֵהַ֥ר עֵשָֽׂו׃\",\n\"וְחַתּ֥וּ גִבּוֹרֶ֖יךָ תֵּימָ֑ן לְמַ֧עַן יִכָּֽרֶת־אִ֛ישׁ מֵהַ֥ר עֵשָׂ֖ו מִקָּֽטֶל׃\",\n\"מֵחֲמַ֛ס אָחִ֥יךָ יַעֲקֹ֖ב תְּכַסְּךָ֣ בוּשָׁ֑ה וְנִכְרַ֖תָּ לְעוֹלָֽם׃\",\n\"בְּיוֹם֙ עֲמׇֽדְךָ֣ מִנֶּ֔גֶד בְּי֛וֹם שְׁב֥וֹת זָרִ֖ים חֵיל֑וֹ וְנׇכְרִ֞ים בָּ֣אוּ <span class=\\\"mam-kq-trivial\\\">שְׁעָרָ֗ו</span> וְעַל־יְרוּשָׁלַ֙͏ִם֙ יַדּ֣וּ גוֹרָ֔ל גַּם־אַתָּ֖ה כְּאַחַ֥ד מֵהֶֽם׃\",\n\"וְאַל־תֵּ֤רֶא בְיוֹם־אָחִ֙יךָ֙ בְּי֣וֹם נׇכְר֔וֹ וְאַל־תִּשְׂמַ֥ח לִבְנֵֽי־יְהוּדָ֖ה בְּי֣וֹם אׇבְדָ֑ם וְאַל־תַּגְדֵּ֥ל פִּ֖יךָ בְּי֥וֹם צָרָֽה׃\",\n\"אַל־תָּב֤וֹא בְשַֽׁעַר־עַמִּי֙ בְּי֣וֹם אֵידָ֔ם אַל־תֵּ֧רֶא גַם־אַתָּ֛ה בְּרָעָת֖וֹ בְּי֣וֹם אֵיד֑וֹ וְאַל־תִּשְׁלַ֥חְנָה בְחֵיל֖וֹ בְּי֥וֹם אֵידֽוֹ׃\",\n\"וְאַֽל־תַּעֲמֹד֙ עַל־הַפֶּ֔רֶק לְהַכְרִ֖ית אֶת־פְּלִיטָ֑יו וְאַל־תַּסְגֵּ֥ר שְׂרִידָ֖יו בְּי֥וֹם צָרָֽה׃\",\n\"כִּֽי־קָר֥וֹב יוֹם־יְהֹוָ֖ה עַל־כׇּל־הַגּוֹיִ֑ם כַּאֲשֶׁ֤ר עָשִׂ֙יתָ֙ יֵעָ֣שֶׂה לָּ֔ךְ גְּמֻלְךָ֖ יָשׁ֥וּב בְּרֹאשֶֽׁךָ׃\",\n\"כִּ֗י כַּֽאֲשֶׁ֤ר שְׁתִיתֶם֙ עַל־הַ֣ר קׇדְשִׁ֔י יִשְׁתּ֥וּ כׇֽל־הַגּוֹיִ֖ם תָּמִ֑יד וְשָׁת֣וּ וְלָע֔וּ וְהָי֖וּ כְּל֥וֹא הָיֽוּ׃\",\n\"וּבְהַ֥ר צִיּ֛וֹן תִּהְיֶ֥ה פְלֵיטָ֖ה וְהָ֣יָה קֹ֑דֶשׁ וְיָֽרְשׁוּ֙ בֵּ֣ית יַֽעֲקֹ֔ב אֵ֖ת מוֹרָֽשֵׁיהֶֽם׃\",\n\"וְהָיָה֩ בֵית־יַעֲקֹ֨ב אֵ֜שׁ וּבֵ֧ית יוֹסֵ֣ף לֶהָבָ֗ה וּבֵ֤ית עֵשָׂו֙ לְקַ֔שׁ וְדָלְק֥וּ בָהֶ֖ם וַאֲכָל֑וּם וְלֹֽא־יִֽהְיֶ֤ה שָׂרִיד֙ לְבֵ֣ית עֵשָׂ֔ו כִּ֥י יְהֹוָ֖ה דִּבֵּֽר׃\",\n\"וְיָרְשׁ֨וּ הַנֶּ֜גֶב אֶת־הַ֣ר עֵשָׂ֗ו וְהַשְּׁפֵלָה֙ אֶת־פְּלִשְׁתִּ֔ים וְיָרְשׁוּ֙ אֶת־שְׂדֵ֣ה אֶפְרַ֔יִם וְאֵ֖ת שְׂדֵ֣ה שֹׁמְר֑וֹן וּבִנְיָמִ֖ן אֶת־הַגִּלְעָֽד׃\",\n\"וְגָלֻ֣ת הַֽחֵל־הַ֠זֶּ֠ה לִבְנֵ֨י יִשְׂרָאֵ֤ל אֲשֶֽׁר־כְּנַעֲנִים֙ עַד־צָ֣רְפַ֔ת וְגָלֻ֥ת יְרוּשָׁלַ֖͏ִם אֲשֶׁ֣ר בִּסְפָרַ֑ד יִֽרְשׁ֕וּ אֵ֖ת עָרֵ֥י הַנֶּֽגֶב׃\",\n\"וְעָל֤וּ מֽוֹשִׁעִים֙ בְּהַ֣ר צִיּ֔וֹן לִשְׁפֹּ֖ט אֶת־הַ֣ר עֵשָׂ֑ו וְהָיְתָ֥ה לַֽיהֹוָ֖ה הַמְּלוּכָֽה׃\"\n]\n],\n\"firstSectionRef\": \"Obadiah 1\"}\n"
+            "example": "{\n\"status\": \"locked\",\n\"priority\": 2,\n\"license\": \"CC-BY-SA\",\n\"versionNotes\": \"<i>Miqra According to the Masorah</i> (MAM) is a digital Hebrew edition of the Tanakh based on the Aleppo Codex and related manuscripts. It is designed for readers, and as such it contains added elements to aid vocalization of the text. For instance: When an accent is marked in an unstressed syllable, an extra accent is added in the proper place (<i>pashta</i>, <i>zarqa</i>, <i>segol</i>, <i>telisha</i>). <i>Legarmeih</i> and <i>paseq</i> are visibly distinguished. <i>Qamaz qatan</i> is indicated by its designated Unicode character (alternatives are documented where traditions differ about its application).<br>The text of MAM is fully documented. The <a href=\\\"https://he.wikisource.org/wiki/%D7%9E%D7%A9%D7%AA%D7%9E%D7%A9:Dovi/%D7%9E%D7%A7%D7%A8%D7%90_%D7%A2%D7%9C_%D7%A4%D7%99_%D7%94%D7%9E%D7%A1%D7%95%D7%A8%D7%94/%D7%9E%D7%99%D7%93%D7%A2_%D7%A2%D7%9C_%D7%9E%D7%94%D7%93%D7%95%D7%A8%D7%94_%D7%96%D7%95\\\">complete introduction</a> to the edition (Hebrew) explains the types of editorial decisions that have been made and the reasons for them (<a href=\\\"https://en.wikisource.org/wiki/User:Dovi/Miqra_according_to_the_Masorah#About_this_Edition_(English_Abstract)\\\">English abstract</a>). In addition, every word in the Bible about which there is some textual concern or ambiguity includes a documentation note; these notes can be viewed conveniently <a href=\\\"https://bdenckla.github.io/MAM-with-doc/\\\">here</a>. If an error is discovered, it may be reported to <a href=\\\"https://he.wikisource.org/wiki/%D7%A9%D7%99%D7%97%D7%AA_%D7%9E%D7%A9%D7%AA%D7%9E%D7%A9:Dovi\\\">User:Dovi</a> at Hebrew Wikisource. Please check the documentation notes before reporting an error.\",\n\"formatAsPoetry\": \"\",\n\"digitizedBySefaria\": \"\",\n\"method\": \"\",\n\"heversionSource\": \"\",\n\"versionUrl\": \"\",\n\"versionTitleInHebrew\": \"מקרא על פי המסורה\",\n\"versionNotesInHebrew\": \"\",\n\"shortVersionTitle\": \"\",\n\"shortVersionTitleInHebrew\": \"\",\n\"extendedNotes\": \"\",\n\"extendedNotesHebrew\": \"\",\n\"purchaseInformationImage\": \"\",\n\"purchaseInformationURL\": \"\",\n\"hasManuallyWrappedRefs\": \"\",\n\"actualLanguage\": \"he\",\n\"languageFamilyName\": \"hebrew\",\n\"isSource\": true,\n\"isPrimary\": true,\n\"direction\": \"rtl\",\n\"language\": \"he\",\n\"versionSource\": \"https://he.wikisource.org/wiki/%D7%9E%D7%A9%D7%AA%D7%9E%D7%A9:Dovi/%D7%9E%D7%A7%D7%A8%D7%90_%D7%A2%D7%9C_%D7%A4%D7%99_%D7%94%D7%9E%D7%A1%D7%95%D7%A8%D7%94\",\n\"versionTitle\": \"Miqra according to the Masorah\",\n\"text\": [\n[\n\"חֲז֖וֹן עֹֽבַדְיָ֑ה כֹּֽה־אָמַר֩ אֲדֹנָ֨י יֱהֹוִ֜ה לֶאֱד֗וֹם שְׁמוּעָ֨ה שָׁמַ֜עְנוּ מֵאֵ֤ת יְהֹוָה֙ וְצִיר֙ בַּגּוֹיִ֣ם שֻׁלָּ֔ח ק֛וּמוּ וְנָק֥וּמָה עָלֶ֖יהָ לַמִּלְחָמָֽה׃\",\n\"הִנֵּ֥ה קָטֹ֛ן נְתַתִּ֖יךָ בַּגּוֹיִ֑ם בָּז֥וּי אַתָּ֖ה מְאֹֽד׃\",\n\"זְד֤וֹן לִבְּךָ֙ הִשִּׁיאֶ֔ךָ שֹׁכְנִ֥י בְחַגְוֵי־סֶ֖לַע מְר֣וֹם שִׁבְתּ֑וֹ אֹמֵ֣ר בְּלִבּ֔וֹ מִ֥י יוֹרִדֵ֖נִי אָֽרֶץ׃\",\n\"אִם־תַּגְבִּ֣יהַּ כַּנֶּ֔שֶׁר וְאִם־בֵּ֥ין כּֽוֹכָבִ֖ים שִׂ֣ים קִנֶּ֑ךָ מִשָּׁ֥ם אוֹרִֽידְךָ֖ נְאֻם־יְהֹוָֽה׃\",\n\"אִם־גַּנָּבִ֤ים בָּאֽוּ־לְךָ֙ אִם־שׁ֣וֹדְדֵי לַ֔יְלָה אֵ֣יךְ נִדְמֵ֔יתָה הֲל֥וֹא יִגְנְב֖וּ דַּיָּ֑ם אִם־בֹּֽצְרִים֙ בָּ֣אוּ לָ֔ךְ הֲל֖וֹא יַשְׁאִ֥ירוּ עֹלֵלֽוֹת׃\",\n\"אֵ֚יךְ נֶחְפְּשׂ֣וּ עֵשָׂ֔ו נִבְע֖וּ מַצְפֻּנָֽיו׃\",\n\"עַֽד־הַגְּב֣וּל שִׁלְּח֗וּךָ כֹּ֚ל אַנְשֵׁ֣י בְרִיתֶ֔ךָ הִשִּׁיא֛וּךָ יָכְל֥וּ לְךָ֖ אַנְשֵׁ֣י שְׁלֹמֶ֑ךָ לַחְמְךָ֗ יָשִׂ֤ימוּ מָזוֹר֙ תַּחְתֶּ֔יךָ אֵ֥ין תְּבוּנָ֖ה בּֽוֹ׃\",\n\"הֲל֛וֹא בַּיּ֥וֹם הַה֖וּא נְאֻם־יְהֹוָ֑ה וְהַאֲבַדְתִּ֤י חֲכָמִים֙ מֵֽאֱד֔וֹם וּתְבוּנָ֖ה מֵהַ֥ר עֵשָֽׂו׃\",\n\"וְחַתּ֥וּ גִבּוֹרֶ֖יךָ תֵּימָ֑ן לְמַ֧עַן יִכָּֽרֶת־אִ֛ישׁ מֵהַ֥ר עֵשָׂ֖ו מִקָּֽטֶל׃\",\n\"מֵחֲמַ֛ס אָחִ֥יךָ יַעֲקֹ֖ב תְּכַסְּךָ֣ בוּשָׁ֑ה וְנִכְרַ֖תָּ לְעוֹלָֽם׃\",\n\"בְּיוֹם֙ עֲמׇֽדְךָ֣ מִנֶּ֔גֶד בְּי֛וֹם שְׁב֥וֹת זָרִ֖ים חֵיל֑וֹ וְנׇכְרִ֞ים בָּ֣אוּ <span class=\\\"mam-kq-trivial\\\">שְׁעָרָ֗ו</span> וְעַל־יְרוּשָׁלַ֙͏ִם֙ יַדּ֣וּ גוֹרָ֔ל גַּם־אַתָּ֖ה כְּאַחַ֥ד מֵהֶֽם׃\",\n\"וְאַל־תֵּ֤רֶא בְיוֹם־אָחִ֙יךָ֙ בְּי֣וֹם נׇכְר֔וֹ וְאַל־תִּשְׂמַ֥ח לִבְנֵֽי־יְהוּדָ֖ה בְּי֣וֹם אׇבְדָ֑ם וְאַל־תַּגְדֵּ֥ל פִּ֖יךָ בְּי֥וֹם צָרָֽה׃\",\n\"אַל־תָּב֤וֹא בְשַֽׁעַר־עַמִּי֙ בְּי֣וֹם אֵידָ֔ם אַל־תֵּ֧רֶא גַם־אַתָּ֛ה בְּרָעָת֖וֹ בְּי֣וֹם אֵיד֑וֹ וְאַל־תִּשְׁלַ֥חְנָה בְחֵיל֖וֹ בְּי֥וֹם אֵידֽוֹ׃\",\n\"וְאַֽל־תַּעֲמֹד֙ עַל־הַפֶּ֔רֶק לְהַכְרִ֖ית אֶת־פְּלִיטָ֑יו וְאַל־תַּסְגֵּ֥ר שְׂרִידָ֖יו בְּי֥וֹם צָרָֽה׃\",\n\"כִּֽי־קָר֥וֹב יוֹם־יְהֹוָ֖ה עַל־כׇּל־הַגּוֹיִ֑ם כַּאֲשֶׁ֤ר עָשִׂ֙יתָ֙ יֵעָ֣שֶׂה לָּ֔ךְ גְּמֻלְךָ֖ יָשׁ֥וּב בְּרֹאשֶֽׁךָ׃\",\n\"כִּ֗י כַּֽאֲשֶׁ֤ר שְׁתִיתֶם֙ עַל־הַ֣ר קׇדְשִׁ֔י יִשְׁתּ֥וּ כׇֽל־הַגּוֹיִ֖ם תָּמִ֑יד וְשָׁת֣וּ וְלָע֔וּ וְהָי֖וּ כְּל֥וֹא הָיֽוּ׃\",\n\"וּבְהַ֥ר צִיּ֛וֹן תִּהְיֶ֥ה פְלֵיטָ֖ה וְהָ֣יָה קֹ֑דֶשׁ וְיָֽרְשׁוּ֙ בֵּ֣ית יַֽעֲקֹ֔ב אֵ֖ת מוֹרָֽשֵׁיהֶֽם׃\",\n\"וְהָיָה֩ בֵית־יַעֲקֹ֨ב אֵ֜שׁ וּבֵ֧ית יוֹסֵ֣ף לֶהָבָ֗ה וּבֵ֤ית עֵשָׂו֙ לְקַ֔שׁ וְדָלְק֥וּ בָהֶ֖ם וַאֲכָל֑וּם וְלֹֽא־יִֽהְיֶ֤ה שָׂרִיד֙ לְבֵ֣ית עֵשָׂ֔ו כִּ֥י יְהֹוָ֖ה דִּבֵּֽר׃\",\n\"וְיָרְשׁ֨וּ הַנֶּ֜גֶב אֶת־הַ֣ר עֵשָׂ֗ו וְהַשְּׁפֵלָה֙ אֶת־פְּלִשְׁתִּ֔ים וְיָרְשׁוּ֙ אֶת־שְׂדֵ֣ה אֶפְרַ֔יִם וְאֵ֖ת שְׂדֵ֣ה שֹׁמְר֑וֹן וּבִנְיָמִ֖ן אֶת־הַגִּלְעָֽד׃\",\n\"וְגָלֻ֣ת הַֽחֵל־הַ֠זֶּ֠ה לִבְנֵ֨י יִשְׂרָאֵ֤ל אֲשֶֽׁר־כְּנַעֲנִים֙ עַד־צָ֣רְפַ֔ת וְגָלֻ֥ת יְרוּשָׁלַ֖͏ִם אֲשֶׁ֣ר בִּסְפָרַ֑ד יִֽרְשׁ֕וּ אֵ֖ת עָרֵ֥י הַנֶּֽגֶב׃\",\n\"וְעָל֤וּ מֽוֹשִׁעִים֙ בְּהַ֣ר צִיּ֔וֹן לִשְׁפֹּ֖ט אֶת־הַ֣ר עֵשָׂ֑ו וְהָיְתָ֥ה לַֽיהֹוָ֖ה הַמְּלוּכָֽה׃\"\n]\n],\n\"firstSectionRef\": \"Obadiah 1\"}"
           },
           "available_versions": {
             "type": "array",
@@ -9039,7 +9039,7 @@
             "$ref": "#/components/schemas/ref"
           },
           "heRef": {
-            "description": "Hebrew `Ref` for the segment. ",
+            "description": "Hebrew `Ref` for the segment.",
             "type": "string"
           },
           "sections": {
@@ -9076,7 +9076,7 @@
             "type": "string"
           },
           "title": {
-            "description": "The title of the book these versions correspond to. ",
+            "description": "The title of the book these versions correspond to.",
             "type": "string"
           },
           "book": {
@@ -9098,7 +9098,7 @@
             "type": "string"
           },
           "categories": {
-            "description": "A list of categories that a text belongs to. ",
+            "description": "A list of categories that a text belongs to.",
             "type": "array",
             "items": {
               "type": "string"
@@ -9147,7 +9147,7 @@
           },
           "textDepth": {
             "format": "int32",
-            "description": "The depth of the text. For example, Genesis will have depth of `2`, since it is comprised of two layers, chapters and verses. Whereas a commentary on Genesis will have a depth of `3`, since it is organized by chapter, verse, and then specific comment on a verse. ",
+            "description": "The depth of the text. For example, Genesis will have depth of `2`, since it is comprised of two layers, chapters and verses. Whereas a commentary on Genesis will have a depth of `3`, since it is organized by chapter, verse, and then specific comment on a verse.",
             "type": "integer"
           },
           "sectionNames": {
@@ -9166,7 +9166,7 @@
             "example": "[\n\"Perek\",\n\"Pasuk\"\n]"
           },
           "titleVariants": {
-            "description": "Various alternative titles used for the text. ",
+            "description": "Various alternative titles used for the text.",
             "type": "array",
             "items": {
               "type": "string"
@@ -9183,7 +9183,7 @@
             "type": "object"
           },
           "warnings": {
-            "description": "A list of objects - for any version parameter that has no result there is a readable message and warning code. \n\nCodes:\n`APINoVersion = 101`\n`APINoLanguageVersion = 102`\n`APINoSourceText = 103`\n`APINoTranslationText = 104`\n",
+            "description": "A list of objects - for any version parameter that has no result there is a readable message and warning code.\n\nCodes:\n`APINoVersion = 101`\n`APINoLanguageVersion = 102`\n`APINoSourceText = 103`\n`APINoTranslationText = 104`",
             "type": "array",
             "items": {},
             "example": "[\n{\n\"\\\"finnish\\\"\": {\n\"warning_code\": 102,\n\"message\": \"We do not have the language you asked for Esther 1:1. Available languages are ['english', 'esperanto', 'french', 'german', 'hebrew', 'italian', 'persian', 'polish', 'spanish', 'yiddish']\"\n}\n},\n{\n\"\\\"dutch\\\"\": {\n\"warning_code\": 102,\n\"message\": \"We do not have the language you asked for Esther 1:1. Available languages are ['english', 'esperanto', 'french', 'german', 'hebrew', 'italian', 'persian', 'polish', 'spanish', 'yiddish']\"\n}\n}\n]"
@@ -9288,7 +9288,7 @@
       },
       "v3AvailableVersionsTextJson": {
         "title": "Root Type for v3AvailableVersionsTextJson",
-        "description": "Data returned in the `available_versions` field of the `v3` `texts` API. This contains all of the available versions for a given text, not just the required versions. ",
+        "description": "Data returned in the `available_versions` field of the `v3` `texts` API. This contains all of the available versions for a given text, not just the required versions.",
         "type": "object",
         "allOf": [
           {
@@ -9411,7 +9411,7 @@
         "type": "object",
         "properties": {
           "status": {
-            "description": "Whether or not the text is `\"locked\"` for further edits from the community. ",
+            "description": "Whether or not the text is `\"locked\"` for further edits from the community.",
             "type": "string"
           },
           "priority": {
@@ -9420,7 +9420,7 @@
             "type": "number"
           },
           "license": {
-            "description": "The license for the text, in terms of copyright, and distribution. ",
+            "description": "The license for the text, in terms of copyright, and distribution.",
             "type": "string",
             "example": "Public Domain"
           },
@@ -9434,7 +9434,7 @@
             "type": "boolean"
           },
           "digitizedBySefaria": {
-            "description": "An indicator of whether or not Sefaria digitized the text, versus acquiring an already digital copy of a text. ",
+            "description": "An indicator of whether or not Sefaria digitized the text, versus acquiring an already digital copy of a text.",
             "type": "boolean"
           },
           "method": {
@@ -9471,7 +9471,7 @@
             "example": "https://storage.googleapis.com/sefaria-physical-editions/touger-mishneh-torah-hilkhot-teshuvah-purchase-img.png"
           },
           "purchaseInformationURL": {
-            "description": "A URL pointing to where one can purchase a hardcopy of this text. ",
+            "description": "A URL pointing to where one can purchase a hardcopy of this text.",
             "type": "string",
             "example": "https://moznaim.com/products/mishneh-torah-rambam"
           },
@@ -9484,7 +9484,7 @@
             "example": "de"
           },
           "languageFamilyName": {
-            "description": "The overarching family for the specific language detailed in `actualLanguage`. For example, `Arabic` would be the overarching family for `judeo-arabic`. ",
+            "description": "The overarching family for the specific language detailed in `actualLanguage`. For example, `Arabic` would be the overarching family for `judeo-arabic`.",
             "type": "string"
           },
           "isSource": {
@@ -9495,27 +9495,27 @@
             "type": "boolean"
           },
           "direction": {
-            "description": "The direction of the text, either `ltr` (left-to-right) or `rtl` (right-to-left). Examples of `ltr` languages include English, French and German. Examples of `rtl` languages are Hebrew and Arabic. ",
+            "description": "The direction of the text, either `ltr` (left-to-right) or `rtl` (right-to-left). Examples of `ltr` languages include English, French and German. Examples of `rtl` languages are Hebrew and Arabic.",
             "type": "string",
             "example": "ltr"
           },
           "language": {
-            "description": "A holdover from the `v2` API which will eventually be deprecated. This used to indicate the direction of the text, with `en` indicating texts written from left-to-right, and `he` indicating texting written from right-to-left. ",
+            "description": "A holdover from the `v2` API which will eventually be deprecated. This used to indicate the direction of the text, with `en` indicating texts written from left-to-right, and `he` indicating texting written from right-to-left.",
             "type": "string",
             "example": "`he`\n`en`"
           },
           "versionSource": {
-            "description": "The original source of the digital text. ",
+            "description": "The original source of the digital text.",
             "type": "string",
             "example": "http://kehot.com/"
           },
           "versionTitle": {
-            "description": "The English title of the Version of text. ",
+            "description": "The English title of the Version of text.",
             "type": "string",
             "example": "Mischnajot mit deutscher Übersetzung und Erklärung. Berlin 1887-1933 [de]"
           },
           "text": {
-            "description": "An array of strings containing the text of the specific version. \n\nIf a segment `Ref` was passed, the array returned will be one-dimensional and contain a string with the specific segment level text. \n\nIf a bottom level section `Ref` was passed, the array returned will be a two-dimensional array, a list of lists of strings. The outer layer of the array represents the section, and the inner arrays represent the segments. ",
+            "description": "An array of strings containing the text of the specific version.\n\nIf a segment `Ref` was passed, the array returned will be one-dimensional and contain a string with the specific segment level text.\n\nIf a bottom level section `Ref` was passed, the array returned will be a two-dimensional array, a list of lists of strings. The outer layer of the array represents the section, and the inner arrays represent the segments.",
             "type": "array",
             "items": {
               "type": "string"
@@ -9523,7 +9523,7 @@
             "example": "[\n[\n\"<b>Von welcher Zeit ab liest man das Schema.</b> Zu Schema wird Deuter. 6, 4—9 <span dir=\\\"ltr\\\">שמע</span> , 2. Deuter. 11, 13—21 <span dir=\\\"rtl\\\">והיה אם שמוע</span> und 3. Numeri 15, 37—41 <span dir=\\\"rtl\\\">ויאמר</span> gerechnet.\",\n\"<b>da die Priester eintreten.</b> Nämlich unreine Priester, welche nicht gebadet und gereinigt hatten und erst mit dem Erscheinen der Sterne ihre Hebe essen durften (Lev. 22, 7).\",\n\"<b>bis zu Ende der ersten Nachtwache.</b> Man teilte die Nacht in drei Wachen.\",\n\"<b>Die Weisen.</b> So oft hier der Ausdruck die Weisen vorkommt, verstehe man darunter die große Mehrzahl der Weisen, sofern sie nach allgemein geltender Ansicht entscheidet.\",\n\"<b>Bis die Morgenröte.</b> Säule der Morgenröte im Hebr. und Arab.\",\n\"<b>aufsteigt.</b> Der Grund der Meinungsverschiedenheit liegt in der Deutung des <span dir=\\\"rtl\\\">ובשכבך</span> . R. Elieser erklärt: Wenn du dich niederlegst; dies geschieht bei den meisten Menschen bis Ende der ersten Nachtwache. Nach den Weisen und so auch nach R. Gamliel heißt <span dir=\\\"rtl\\\">ובשכבך</span> , wenn du liegst; demnach wäre es die ganze Nacht erlaubt das Schema zu lesen, jedoch die Weisen erlauben es nur bis Mitternacht, um der Gesetzesübertretung vorzubeugen, was R. Gamliel nicht für nötig hält.\",\n\"<b>Das Aufdampfen des Fettes und der Glieder.</b> Stücke der Opfertiere, (Lev. 6, 2; 7, 2.)\",\n\"<b>nur an demselben Tage gegessen werden darf.</b> D. h. am Tage der Darbringung (Lev. 7, 15).\",\n\"<b>Um die Menschen von der Übertretung fern zu halten.</b> Nämlich, sie setzten eine kürzere Frist, damit man sich auf keinen Fall verspäte.\"\n],\n[\n\"<b>Sobald man zwischen himmelblau und weiß unterscheiden kann; R. Elieser sagt: Zwischen himmelblau und lauchgrün; (und beendet das Lesen.</b> <span dir=\\\"rtl\\\">וגומרה</span> , wenn die Lesart richtig ist, bezieht es sich auf <span dir=\\\"rtl\\\">פרשת שמע</span> .\",\n\"<b>erst um drei Stunden aufzustehen.</b> Das Gesetz <span dir=\\\"rtl\\\">ובקומך</span> meint er, bedeute »bis Jedermann aufgestanden ist.« — Die Stunden sind hier je nach der Jahreszeit von verschiedener Länge; denn man teilte den Tag und die Nacht in je 12 Teile. Wenn also z. B. der Tag 8 und die Nacht 16 Stunden hat, so wird die Tagesstunde zu 8/12 gewöhnliche Stunden = 40 Minuten, die Nachtstunde aber zu 16/12 gewöhnliche Stunden = 80 Minuten gerechnet. Solche Stunden werden <span dir=\\\"rtl\\\">שעות זמניות</span> = Zeitstunden genannt\",\n\"<b>büsst nichts ein.</b> D. h. er möge immerhin die dazu gehörigen Vor- und Nachgebete sprechen (nach Einigen jedoch nur bis Ende der. 4. Stunde) obgleich deren Zeit vorüber ist.\"\n],\n[\n\"<b>brachte mich aber in Lebensgefahr durch Räuber.</b> Wäre beinahe von Räubern getötet worden.\"\n],\n[\n\"<b>Am Morgen spricht man zwei Segenssprüche voran.</b> <span dir=\\\"rtl\\\">לפניה</span> bezieht sich auf <span dir=\\\"rtl\\\">פרשת שמע</span> .\",\n\"<b>und zwei nachher.</b> Nämlich des Morgens <span dir=\\\"rtl\\\">אהבה רבה ,יוצר אור</span> und <span dir=\\\"rtl\\\">גאולה</span> Des Abends <span dir=\\\"rtl\\\">מעריב גאולה ,אהבת עולם ,ערבים</span> und <span dir=\\\"rtl\\\">השכיבנו</span> .\",\n\"<b>eine Schlussformel anzubringen.</b> Die ganze Stelle von <span dir=\\\"rtl\\\">מקום שאמרו</span> an wird hier als ein allgemeines, auf alle anderen <span dir=\\\"rtl\\\">ברכות</span> sich auch beziehendes Gesetz mit eingeschaltet. — Unter Schlussformel versteht man einen mit <span dir=\\\"rtl\\\">ברוך</span> anfangenden Satz, der das Ganze schliesst. Z. B. <span dir=\\\"rtl\\\">ברוך אתה ה׳ גאל ישראל</span> .\"\n],\n[\n\"<b>Man gedenke des Auszuges aus Ägypten auch in der Nachtzeit.</b> D. h. es ist Pflicht auch in der Nacht <span dir=\\\"rtl\\\">פרשת ציצית</span> zu sprechen, weil darin des Auszuges Erwähnung geschieht.\",\n\"<b>Ich bin jetzt beinah.</b> So nach einer Baraita im Jeruschalmi. Der babylonische Talmud jedoch sagt: R. Elasar ben Asarja sei damals nur 18 Jahre alt, aber bereits grau gewesen, wie ein Greis von siebzig Jahren. Nach Maimonides ist er durch vieles Studieren grau geworden.\"\n]\n]"
           },
           "firstSectionRef": {
-            "description": "The first available `Ref` to the section of text passed in the API. ",
+            "description": "The first available `Ref` to the section of text passed in the API.",
             "type": "string"
           }
         },
@@ -9575,19 +9575,19 @@
             "type": "string"
           },
           "type": {
-            "description": "An arbitrary string assigned to the connection to identify it. Most commonly `commentary`, `reference`, or an empty string. ",
+            "description": "An arbitrary string assigned to the connection to identify it. Most commonly `commentary`, `reference`, or an empty string.",
             "type": "string"
           },
           "ref": {
             "$ref": "#/components/schemas/ref"
           },
           "anchorRef": {
-            "description": "The submitted `ref` in the GET request at times may fall within a more encompassing ranged ref that includes multiple text segments. The `anchorRef` is that complete range the that the link is associated with, and will contain within it the specific `ref` that was passed. ",
+            "description": "The submitted `ref` in the GET request at times may fall within a more encompassing ranged ref that includes multiple text segments. The `anchorRef` is that complete range the that the link is associated with, and will contain within it the specific `ref` that was passed.",
             "type": "string",
             "example": "\"Esther 3:15-4:17\""
           },
           "anchorRefExpanded": {
-            "description": "An array of strings, where each string is a segment level `ref` of the `ref` passed in as a parameter. If a segment level `ref` is passed in, this array will have a length of 1, and only contain that segment level `ref`. If the `ref` passed in is ranged, this array will contain each of the segment level `ref`s within that range. \n\nFor example, if someone was searching for links for `Esther 4.14-15`, the `anchorRefExpanded` would contain `Esther 4.14` and `Esther 4.15`.",
+            "description": "An array of strings, where each string is a segment level `ref` of the `ref` passed in as a parameter. If a segment level `ref` is passed in, this array will have a length of 1, and only contain that segment level `ref`. If the `ref` passed in is ranged, this array will contain each of the segment level `ref`s within that range.\n\nFor example, if someone was searching for links for `Esther 4.14-15`, the `anchorRefExpanded` would contain `Esther 4.14` and `Esther 4.15`.",
             "minItems": 1,
             "uniqueItems": true,
             "type": "array",
@@ -9611,7 +9611,7 @@
             "type": "boolean"
           },
           "compDate": {
-            "description": "The estimated year of completion of the work according to the Gregorian calendar. If its length is zero the completion date is unknown. If its length is one, then the completion date is that single year. If its length is 2 then the date is a potential range with the first int in the array is the lower end of the range and the latter the higher. ",
+            "description": "The estimated year of completion of the work according to the Gregorian calendar. If its length is zero the completion date is unknown. If its length is one, then the completion date is that single year. If its length is 2 then the date is a potential range with the first int in the array is the lower end of the range and the latter the higher.",
             "type": "array",
             "items": {
               "format": "int32",
@@ -9634,7 +9634,7 @@
             }
           },
           "he": {
-            "description": "The default text written in RTL characters for the query (Usually Hebrew). It is structured as a JaggedArray (nested arrays), with the lowest level being an array of strings with some html text.\n",
+            "description": "The default text written in RTL characters for the query (Usually Hebrew). It is structured as a JaggedArray (nested arrays), with the lowest level being an array of strings with some html text.",
             "type": "string"
           },
           "heVersionTitle": {
@@ -9690,7 +9690,7 @@
             "en": "Tosafot Yom Tov",
             "he": "תוספות יום טוב"
           },
-          "he": "<b>[*ואחד אומר לחלק לזה שומעין וכו'</b>. שאפילו הוא זקן ותש כח או חולה שהרי מה שאמר לחלק מפני חלישותו הוא אפילו הכי שומעין לו כך מצאתי בפירוש הנ\"ל]: \n",
+          "he": "<b>[*ואחד אומר לחלק לזה שומעין וכו'</b>. שאפילו הוא זקן ותש כח או חולה שהרי מה שאמר לחלק מפני חלישותו הוא אפילו הכי שומעין לו כך מצאתי בפירוש הנ\"ל]:",
           "heVersionTitle": "Mishnah, ed. Romm, Vilna 1913",
           "heLicense": "Public Domain",
           "heVersionTitleInHebrew": "משנה, מהדורת בית דפוס ראם, וילנא 1913",
@@ -9733,8 +9733,8 @@
                 }
               },
               "description": {
-                "en": "Shabbat (or Sabbath) falls every seventh day of the week, from Friday just before sunset until dark on Saturday night. It is a day of rest, marking the time when God stopped creating after after the six days of creation. Shabbat recognizes God as Creator of the Universe and as Redeemer of Israel from Egypt. ",
-                "he": "היום השביעי בשבוע, החל מיום שישי בשעת השקיעה ועד צאת הכוכבים במוצאי השבת. יום מנוחה לפי המקורות, המציין את הזמן שבו ה' נח לאחר שברא את העולם. "
+                "en": "Shabbat (or Sabbath) falls every seventh day of the week, from Friday just before sunset until dark on Saturday night. It is a day of rest, marking the time when God stopped creating after after the six days of creation. Shabbat recognizes God as Creator of the Universe and as Redeemer of Israel from Egypt.",
+                "he": "היום השביעי בשבוע, החל מיום שישי בשעת השקיעה ועד צאת הכוכבים במוצאי השבת. יום מנוחה לפי המקורות, המציין את הזמן שבו ה' נח לאחר שברא את העולם."
               },
               "categoryDescription": {},
               "displayOrder": 0,
@@ -9808,8 +9808,8 @@
                 "_temp_id": "שבת הגדול"
               },
               "description": {
-                "en": "Shabbat HaGadol (“The Great Shabbat”) is the Shabbat that immediately precedes the holiday of Passover. Jewish texts offer many explanations as to why this Shabbat is called “great,” like those that  point to a great miracle performed on this Shabbat during the exodus, or those that point to the word “great” at the end of the haftarah prophetic reading traditionally read on this Shabbat. In many communities, the rabbi delivers a lengthy sermon on a Passover-related topic. ",
-                "he": "״שבת הגדול״ היא השבת האחרונה לפני חג הפסח. שבת זו נודעה כשבת מיוחדת החל מהמאה ה-12 בבתי המדרש של רש״י וחכמי התוספות. מנהגי שבת זו כוללים דרשה של הרב בקהילתו בהלכות הפסח, וקריאת קטעים מההגדה של פסח. מספר טעמים ניתנו לשמה של שבת זו כגון שבשבת זו בני ישראל הפסיקו לעבוד עבודה זרה, או שהיה נס גדול בלקיחת השה לקרבן פסח, ועוד. "
+                "en": "Shabbat HaGadol (“The Great Shabbat”) is the Shabbat that immediately precedes the holiday of Passover. Jewish texts offer many explanations as to why this Shabbat is called “great,” like those that  point to a great miracle performed on this Shabbat during the exodus, or those that point to the word “great” at the end of the haftarah prophetic reading traditionally read on this Shabbat. In many communities, the rabbi delivers a lengthy sermon on a Passover-related topic.",
+                "he": "״שבת הגדול״ היא השבת האחרונה לפני חג הפסח. שבת זו נודעה כשבת מיוחדת החל מהמאה ה-12 בבתי המדרש של רש״י וחכמי התוספות. מנהגי שבת זו כוללים דרשה של הרב בקהילתו בהלכות הפסח, וקריאת קטעים מההגדה של פסח. מספר טעמים ניתנו לשמה של שבת זו כגון שבשבת זו בני ישראל הפסיקו לעבוד עבודה זרה, או שהיה נס גדול בלקיחת השה לקרבן פסח, ועוד."
               },
               "categoryDescription": {},
               "displayOrder": 230,
@@ -9860,11 +9860,11 @@
             "type": "string"
           },
           "linkType": {
-            "description": "The type of the link, based on the relationship within our ontology. Many links has an `is-a` relationship (such as `Genesis` `is-a` `Book`), but other topic-to-topic links have a variety of other types documented [here](https://developers.sefaria.org/docs/topic-ontology#overview-of-sefaria-link-types). \n\nSome examples include `child-of`, `parent-of`, `sibling-of` etc. ",
+            "description": "The type of the link, based on the relationship within our ontology. Many links has an `is-a` relationship (such as `Genesis` `is-a` `Book`), but other topic-to-topic links have a variety of other types documented [here](https://developers.sefaria.org/docs/topic-ontology#overview-of-sefaria-link-types).\n\nSome examples include `child-of`, `parent-of`, `sibling-of` etc.",
             "type": "string"
           },
           "class": {
-            "description": "Class of the link `intraTopic` (a link from topic-to-topic) or `refTopic` (a link from a topic-to-ref). ",
+            "description": "Class of the link `intraTopic` (a link from topic-to-topic) or `refTopic` (a link from a topic-to-ref).",
             "enum": [
               "refTopic",
               "intraTopic"
@@ -9872,16 +9872,16 @@
             "type": "string"
           },
           "dataSource": {
-            "description": "Source where the topic link originated from. ",
+            "description": "Source where the topic link originated from.",
             "type": "string"
           },
           "fromTopic": {
-            "description": "Slug of the `fromTopic` (i.e. the topic from which the link originates). ",
+            "description": "Slug of the `fromTopic` (i.e. the topic from which the link originates).",
             "type": "string"
           },
           "order": {
             "$ref": "#/components/schemas/OrderJSON",
-            "description": "A dictionary containing information regarding the links in common, as well as the to and from `tfIdf` scores. To learn more about the [tfIdf](https://en.wikipedia.org/wiki/Tf%E2%80%93idf) algorithm. ",
+            "description": "A dictionary containing information regarding the links in common, as well as the to and from `tfIdf` scores. To learn more about the [tfIdf](https://en.wikipedia.org/wiki/Tf%E2%80%93idf) algorithm.",
             "properties": {
               "linksInCommon": {
                 "format": "int32",
@@ -9938,17 +9938,17 @@
       },
       "RandomByTopicJSON": {
         "title": "Root Type for RandomByTopicJSON",
-        "description": "Response to the random-by-topic API endpoint. ",
+        "description": "Response to the random-by-topic API endpoint.",
         "type": "object",
         "properties": {
           "ref": {
-            "description": "The `Ref` of the text randomly selected, which is connected to one of the recently popular topics. ",
+            "description": "The `Ref` of the text randomly selected, which is connected to one of the recently popular topics.",
             "type": "string",
             "example": "Deuteronomy 16:21"
           },
           "topic": {
             "$ref": "#/components/schemas/RandomByTopicTopicJSON",
-            "description": "The topic attached to the `Ref` returned. ",
+            "description": "The topic attached to the `Ref` returned.",
             "properties": {
               "slug": {
                 "type": "string"
@@ -10070,7 +10070,7 @@
             "example": "{\n\"slug\": \"metushelach\",\n\"titles\": [\n{\n\"text\": \"Metushelach\",\n\"lang\": \"en\",\n\"primary\": true,\n\"transliteration\": true\n},\n{\n\"text\": \"מתושלח\",\n\"lang\": \"he\",\n\"primary\": true\n},\n{\n\"text\": \"Methuselah\",\n\"lang\": \"en\"\n},\n{\n\"text\": \"Methushelach\",\n\"lang\": \"en\"\n}\n],\n\"subclass\": \"person\",\n\"alt_ids\": {\n\"_temp_id\": \"מתושלח\",\n\"wikidata\": \"Q156290\"\n},\n\"properties\": {\n\"enWikiLink\": {\n\"value\": \"https://en.wikipedia.org/wiki/Methuselah\",\n\"dataSource\": \"wikidata\"\n},\n\"heWikiLink\": {\n\"value\": \"https://he.wikipedia.org/wiki/מתושלח\",\n\"dataSource\": \"wikidata\"\n},\n\"deWikiLink\": {\n\"value\": \"https://de.wikipedia.org/wiki/Methusalem\",\n\"dataSource\": \"wikidata\"\n},\n\"esWikiLink\": {\n\"value\": \"https://es.wikipedia.org/wiki/Matusalén\",\n\"dataSource\": \"wikidata\"\n},\n\"frWikiLink\": {\n\"value\": \"https://fr.wikipedia.org/wiki/Mathusalem\",\n\"dataSource\": \"wikidata\"\n},\n\"ruWikiLink\": {\n\"value\": \"https://ru.wikipedia.org/wiki/Мафусал_(потомок_Сифа)\",\n\"dataSource\": \"wikidata\"\n}\n},\n\"numSources\": 7,\n\"good_to_promote\": true,\n\"primaryTitle\": {\n\"en\": \"Metushelach\",\n\"he\": \"מתושלח\"\n}\n}"
           },
           "url": {
-            "description": "The `Ref` in a format appropriate for a URL, with spaces replaced with `.` etc. ",
+            "description": "The `Ref` in a format appropriate for a URL, with spaces replaced with `.` etc.",
             "type": "string",
             "example": "Deuteronomy.16.21"
           }
@@ -10125,7 +10125,7 @@
       },
       "RandomByTopicTopicJSON": {
         "title": "Root Type for RandomByTopicTopicJSON",
-        "description": "Topic JSON for the `random-by-topic/` endpoint. ",
+        "description": "Topic JSON for the `random-by-topic/` endpoint.",
         "required": [
           "slug"
         ],
@@ -10138,10 +10138,10 @@
           },
           "titles": {
             "$ref": "#/components/schemas/TitlesJSON",
-            "description": "An array of JSON objects, each representing an alternative title for the object, in various languages. "
+            "description": "An array of JSON objects, each representing an alternative title for the object, in various languages."
           },
           "alt_ids": {
-            "description": "This is a dictionary containing the keys of naming schemes, and ids of this topic represented in that naming scheme.  It’s used both for canonical names in other naming schemes and temporary storage of names when renaming slugs. All of the data here is for internal use, with the exception of the values `bfo` and `wikidata`. `bfo` refers to [basic formal ontology](https://github.com/BFO-ontology/BFO#implementations), and `wikidata` to the wikidata ontology of topics. ",
+            "description": "This is a dictionary containing the keys of naming schemes, and ids of this topic represented in that naming scheme.  It’s used both for canonical names in other naming schemes and temporary storage of names when renaming slugs. All of the data here is for internal use, with the exception of the values `bfo` and `wikidata`. `bfo` refers to [basic formal ontology](https://github.com/BFO-ontology/BFO#implementations), and `wikidata` to the wikidata ontology of topics.",
             "example": "\"alt_ids\": {\n    \"_temp_id\": \"משה\",\n    \"wikidata\": \"Q9077\",\n    \"_old_slug\": \"-75\"\n}"
           },
           "categoryDescription": {
@@ -10149,21 +10149,21 @@
             "type": "string"
           },
           "good_to_promote": {
-            "description": "A topic which will be included in our results from the `random-by-topic` endpoint. ",
+            "description": "A topic which will be included in our results from the `random-by-topic` endpoint.",
             "type": "boolean"
           },
           "numSources": {
-            "description": "The number of text sources associated with a topic. ",
+            "description": "The number of text sources associated with a topic.",
             "type": "integer",
             "example": "613"
           },
           "description_published": {
-            "description": "A boolean representing whether or not the description was published. ",
+            "description": "A boolean representing whether or not the description was published.",
             "type": "boolean",
             "example": "false"
           },
           "data_source": {
-            "description": "How the topic was generated, whether by Sefaria, a user on a source sheet, or some other source. ",
+            "description": "How the topic was generated, whether by Sefaria, a user on a source sheet, or some other source.",
             "type": "string",
             "example": "sefaria"
           },
@@ -10215,12 +10215,12 @@
         "type": "object",
         "properties": {
           "linkType": {
-            "description": "The type of the link, based on the relationship within our ontology. Many links has an `is-a` relationship (such as `Genesis` `is-a` `Book`), but other topic-to-topic links have a variety of other types documented  [here](https://developers.sefaria.org/docs/topic-ontology#overview-of-sefaria-link-types). \n\nSome examples include `child-of`, `parent-of`, `sibling-of` etc. ",
+            "description": "The type of the link, based on the relationship within our ontology. Many links has an `is-a` relationship (such as `Genesis` `is-a` `Book`), but other topic-to-topic links have a variety of other types documented  [here](https://developers.sefaria.org/docs/topic-ontology#overview-of-sefaria-link-types).\n\nSome examples include `child-of`, `parent-of`, `sibling-of` etc.",
             "type": "string",
             "example": "about"
           },
           "class": {
-            "description": "A classification of the link as either `refTopic` (i.e. a ref to a topic) or `intraTopic` (topic-to-topic). In this case, it would be expected that all returned topic links would be of type `refTopic`. ",
+            "description": "A classification of the link as either `refTopic` (i.e. a ref to a topic) or `intraTopic` (topic-to-topic). In this case, it would be expected that all returned topic links would be of type `refTopic`.",
             "enum": [
               "refTopic",
               "intraTopic"
@@ -10295,7 +10295,7 @@
             "example": "\"order\": {\n\"tfidf\": 53.476917039392994,\n\"numDatasource\": 2,\n\"availableLangs\": [\n\"en\",\n\"he\"\n],\n\"comp_date\": -1400,\n\"order_id\": \"A00000000300280026\",\n\"pr\": 5.15330629652094,\n\"curatedPrimacy\": {\n\"en\": 100,\n\"he\": 0\n}\n}"
           },
           "descriptions": {
-            "description": "JSON containing descriptions for a given topic in various languages. Each language contains a `title` for the topic description, as well as a `prompt` which previews the source and asks questions to help the user engage with the text. ",
+            "description": "JSON containing descriptions for a given topic in various languages. Each language contains a `title` for the topic description, as well as a `prompt` which previews the source and asks questions to help the user engage with the text.",
             "type": "object",
             "properties": {
               "en": {
@@ -10313,17 +10313,17 @@
             "example": "\"en\": {\n\"title\": \"A New Grain Offering\",\n\"prompt\": \"The central ritual of Shavuot as described in the Torah is a special bread offering that was brought to the Temple. This sacrifice marked the beginning of sacrifices that were brought using grain from that year, as opposed to grains from the previous year, as explained in the Book of Numbers.\"\n}"
           },
           "topic": {
-            "description": "The title of the topic. ",
+            "description": "The title of the topic.",
             "type": "string",
             "example": "passover"
           },
           "anchorRef": {
-            "description": "The `Ref` the topic is connected to, which should overlap with the requested `Ref` passed through the endpoint. For example, if someone queries for `Bamidbar 28:21`, one of the topics returned is `passover` which has an `anchorRef` of `Numbers 28:16-24` - a range overlapping with our desired `Ref`. ",
+            "description": "The `Ref` the topic is connected to, which should overlap with the requested `Ref` passed through the endpoint. For example, if someone queries for `Bamidbar 28:21`, one of the topics returned is `passover` which has an `anchorRef` of `Numbers 28:16-24` - a range overlapping with our desired `Ref`.",
             "type": "string",
             "example": "Numbers 28:16-24"
           },
           "anchorRefExpanded": {
-            "description": "If the `anchorRef` is a ranged `Ref` (i.e. containing more than a single segment), then this is a list of strings, with each string being one of single segment level `Ref`s that together comprise the range. So for example, the `anchorRefExpanded` of `Exodus 1:1-2` would be `[\"Exodus 1:1\", \"Exodus 1:2\"]`. ",
+            "description": "If the `anchorRef` is a ranged `Ref` (i.e. containing more than a single segment), then this is a list of strings, with each string being one of single segment level `Ref`s that together comprise the range. So for example, the `anchorRefExpanded` of `Exodus 1:1-2` would be `[\"Exodus 1:1\", \"Exodus 1:2\"]`.",
             "type": "array",
             "items": {
               "type": "string"
@@ -10370,7 +10370,7 @@
       },
       "DataSourceJSON": {
         "title": "Root Type for DataSourceJSON",
-        "description": "JSON containing the information as to the source of the data for a given ref-to-topic link. ",
+        "description": "JSON containing the information as to the source of the data for a given ref-to-topic link.",
         "type": "object",
         "properties": {
           "en": {
@@ -10384,7 +10384,7 @@
             "example": "אספקלריא"
           },
           "slug": {
-            "description": "Unique slug describing the data source. ",
+            "description": "Unique slug describing the data source.",
             "type": "string",
             "example": "aspaklaria"
           }
@@ -10402,7 +10402,7 @@
         "properties": {
           "tfidf": {
             "format": "double",
-            "description": "Results of the [tfidf algorithm](https://en.wikipedia.org/wiki/Tf%E2%80%93idf) run on the `Ref`s within a given topic, as another metric for evaluating the relevance of a given source on a topic page. ",
+            "description": "Results of the [tfidf algorithm](https://en.wikipedia.org/wiki/Tf%E2%80%93idf) run on the `Ref`s within a given topic, as another metric for evaluating the relevance of a given source on a topic page.",
             "type": "number",
             "example": "53.476917039392994"
           },
@@ -10422,7 +10422,7 @@
           },
           "comp_date": {
             "format": "int32",
-            "description": "The date when the book referenced in the `Ref` was composed. Negative numbers indicate the work was composed BCE, whereas positive numbers indicate the book was composed CE. ",
+            "description": "The date when the book referenced in the `Ref` was composed. Negative numbers indicate the work was composed BCE, whereas positive numbers indicate the book was composed CE.",
             "type": "integer",
             "example": "-1400"
           },
@@ -10471,14 +10471,14 @@
       },
       "TermsJSON": {
         "title": "Root Type for TermsJSON",
-        "description": "Term JSON returned to a query for a Term. ",
+        "description": "Term JSON returned to a query for a Term.",
         "required": [
           "name"
         ],
         "type": "object",
         "properties": {
           "name": {
-            "description": "The name of the `Term`. Since a `Term` is a shared title node that can be referenced and used by many different `Index` nodes, the `name` field is critical as it contains the shared title. ",
+            "description": "The name of the `Term`. Since a `Term` is a shared title node that can be referenced and used by many different `Index` nodes, the `name` field is critical as it contains the shared title.",
             "type": "string",
             "example": "Noah"
           },
@@ -10491,23 +10491,23 @@
             "example": "\n{\n\"primary\": true,\n\"text\": \"Noach\",\n\"lang\": \"en\"\n},\n{\n\"primary\": true,\n\"text\": \"נח\",\n\"lang\": \"he\"\n},\n{\n\"text\": \"Parashat Noach\",\n\"lang\": \"en\"\n},\n{\n\"text\": \"פרשת נח\",\n\"lang\": \"he\"\n},\n{\n\"text\": \"Noah\",\n\"lang\": \"en\"\n},\n{\n\"text\": \"Parshat Noah\",\n\"lang\": \"en\"\n}\n]"
           },
           "scheme": {
-            "description": "A shared `scheme` for a group of terms. ",
+            "description": "A shared `scheme` for a group of terms.",
             "type": "string",
             "example": "Parasha"
           },
           "order": {
             "format": "int32",
-            "description": "Terms that share a `scheme` can be ordered within that `scheme`. So for example, _Parshiyot_ within the `Parasha` scheme can be ordered as per the order of the _Parshiyot_. ",
+            "description": "Terms that share a `scheme` can be ordered within that `scheme`. So for example, _Parshiyot_ within the `Parasha` scheme can be ordered as per the order of the _Parshiyot_.",
             "type": "integer",
             "example": "4"
           },
           "ref": {
             "$ref": "#/components/schemas/ref",
-            "description": "For a _Parasha_, this is the Sefaria `Ref` which correlates to this _Parasha_ in the text. For example, _Parshat Noah_ corresponds to the ranged `Ref` of `\"Genesis 6:9-11:32\"`. ",
+            "description": "For a _Parasha_, this is the Sefaria `Ref` which correlates to this _Parasha_ in the text. For example, _Parshat Noah_ corresponds to the ranged `Ref` of `\"Genesis 6:9-11:32\"`.",
             "example": "\"Genesis 6:9-11:32\""
           },
           "category": {
-            "description": "The category of a specific term. ",
+            "description": "The category of a specific term.",
             "type": "string",
             "example": "`texts`, `Torah Portions`"
           }
@@ -10550,7 +10550,7 @@
       },
       "TitlesJSON": {
         "title": "Root Type for TopicTitlesJSON",
-        "description": "Alternative title for a topic, along with the language code representing the language of the given title. ",
+        "description": "Alternative title for a topic, along with the language code representing the language of the given title.",
         "type": "object",
         "properties": {
           "text": {
@@ -10559,12 +10559,12 @@
             "example": "Sukkoth"
           },
           "lang": {
-            "description": "The language of the title, either `en` or `he`. ",
+            "description": "The language of the title, either `en` or `he`.",
             "type": "string",
             "example": "he"
           },
           "Primary": {
-            "description": "A field depicting whether or not the title is the primary title. Note: For any given topics, one should expect two titles with this field present and set to `true`, an English and a Hebrew primary title. The English value with `primary` set to `true` will match the string value of the `primaryTitle` field on topic. ",
+            "description": "A field depicting whether or not the title is the primary title. Note: For any given topics, one should expect two titles with this field present and set to `true`, an English and a Hebrew primary title. The English value with `primary` set to `true` will match the string value of the `primaryTitle` field on topic.",
             "type": "boolean",
             "example": "false"
           }
@@ -10589,7 +10589,7 @@
             "example": "[\n{\n\"_id\": \"54bd48c4fbfba21733367bfa\",\n\"index_title\": \"Psalms\",\n\"category\": \"Tanakh\",\n\"type\": \"\",\n\"ref\": \"Psalms 51\",\n\"anchorRef\": \"Or HaChaim on Deuteronomy 1:1:1\",\n\"anchorRefExpanded\": [\n\"Or HaChaim on Deuteronomy 1:1:1\"\n],\n\"sourceRef\": \"Psalms 51\",\n\"sourceHeRef\": \"תהילים נ״א\",\n\"anchorVerse\": 1,\n\"sourceHasEn\": true,\n\"compDate\": [\n-1000,\n0\n],\n\"commentaryNum\": 51,\n\"collectiveTitle\": {\n\"en\": \"Psalms\",\n\"he\": \"תהילים\"\n},\n\"heTitle\": \"תהילים\"\n},\n{\n\"_id\": \"54bd48c4fbfba21733367bfc\",\n\"index_title\": \"Pirkei Avot\",\n\"category\": \"Mishnah\",\n\"type\": \"\",\n\"ref\": \"Pirkei Avot 3\",\n\"anchorRef\": \"Or HaChaim on Deuteronomy 1:1:1\",\n\"anchorRefExpanded\": [\n\"Or HaChaim on Deuteronomy 1:1:1\"\n],\n\"sourceRef\": \"Pirkei Avot 3\",\n\"sourceHeRef\": \"משנה אבות ג׳\",\n\"anchorVerse\": 1,\n\"sourceHasEn\": true,\n\"compDate\": [\n190,\n230\n],\n\"commentaryNum\": 3,\n\"collectiveTitle\": {\n\"en\": \"Pirkei Avot\",\n\"he\": \"משנה אבות\"\n},\n\"heTitle\": \"משנה אבות\"\n},\n{\n\"_id\": \"54bd48c4fbfba21733367bfe\",\n\"index_title\": \"Pirkei Avot\",\n\"category\": \"Mishnah\",\n\"type\": \"\",\n\"ref\": \"Pirkei Avot 4\",\n\"anchorRef\": \"Or HaChaim on Deuteronomy 1:1:1\",\n\"anchorRefExpanded\": [\n\"Or HaChaim on Deuteronomy 1:1:1\"\n],\n\"sourceRef\": \"Pirkei Avot 4\",\n\"sourceHeRef\": \"משנה אבות ד׳\",\n\"anchorVerse\": 1,\n\"sourceHasEn\": true,\n\"compDate\": [\n190,\n230\n],\n\"commentaryNum\": 4,\n\"collectiveTitle\": {\n\"en\": \"Pirkei Avot\",\n\"he\": \"משנה אבות\"\n},\n\"heTitle\": \"משנה אבות\"\n},\n{\n\"_id\": \"54bd48c4fbfba21733367c08\",\n\"index_title\": \"Proverbs\",\n\"category\": \"Tanakh\",\n\"type\": \"\",\n\"ref\": \"Proverbs 3\",\n\"anchorRef\": \"Or HaChaim on Deuteronomy 1:1:1\",\n\"anchorRefExpanded\": [\n\"Or HaChaim on Deuteronomy 1:1:1\"\n],\n\"sourceRef\": \"Proverbs 3\",\n\"sourceHeRef\": \"משלי ג׳\",\n\"anchorVerse\": 1,\n\"sourceHasEn\": true,\n\"compDate\": [\n-800,\n-400\n],\n\"commentaryNum\": 3,\n\"collectiveTitle\": {\n\"en\": \"Proverbs\",\n\"he\": \"משלי\"\n},\n\"heTitle\": \"משלי\"\n},\n{\n\"_id\": \"54bd48c4fbfba21733367c0e\",\n\"index_title\": \"Yoma\",\n\"category\": \"Talmud\",\n\"type\": \"\",\n\"ref\": \"Yoma 19b\",\n\"anchorRef\": \"Or HaChaim on Deuteronomy 1:1:1\",\n\"anchorRefExpanded\": [\n\"Or HaChaim on Deuteronomy 1:1:1\"\n],\n\"sourceRef\": \"Yoma 19b\",\n\"sourceHeRef\": \"יומא י״ט ב\",\n\"anchorVerse\": 1,\n\"sourceHasEn\": true,\n\"compDate\": [\n450,\n550\n],\n\"commentaryNum\": 38,\n\"collectiveTitle\": {\n\"en\": \"Yoma\",\n\"he\": \"יומא\"\n},\n\"heTitle\": \"יומא\"\n},\n{\n\"_id\": \"53f17c73fbfba22336eaba1e\",\n\"index_title\": \"Deuteronomy\",\n\"category\": \"Tanakh\",\n\"type\": \"commentary\",\n\"ref\": \"Deuteronomy 1:1\",\n\"anchorRef\": \"Or HaChaim on Deuteronomy 1:1:1\",\n\"anchorRefExpanded\": [\n\"Or HaChaim on Deuteronomy 1:1:1\"\n],\n\"sourceRef\": \"Deuteronomy 1:1\",\n\"sourceHeRef\": \"דברים א׳:א׳\",\n\"anchorVerse\": 1,\n\"sourceHasEn\": true,\n\"compDate\": [\n-1400,\n-400\n],\n\"commentaryNum\": 1.0001,\n\"collectiveTitle\": {\n\"en\": \"Deuteronomy\",\n\"he\": \"דברים\"\n},\n\"heTitle\": \"דברים\"\n},\n{\n\"_id\": \"54bd48c4fbfba21733367bf8\",\n\"index_title\": \"Exodus\",\n\"category\": \"Tanakh\",\n\"type\": \"\",\n\"ref\": \"Exodus 19:2\",\n\"anchorRef\": \"Or HaChaim on Deuteronomy 1:1:1\",\n\"anchorRefExpanded\": [\n\"Or HaChaim on Deuteronomy 1:1:1\"\n],\n\"sourceRef\": \"Exodus 19:2\",\n\"sourceHeRef\": \"שמות י״ט:ב׳\",\n\"anchorVerse\": 1,\n\"sourceHasEn\": true,\n\"compDate\": [\n-1400,\n-400\n],\n\"commentaryNum\": 19.0002,\n\"collectiveTitle\": {\n\"en\": \"Exodus\",\n\"he\": \"שמות\"\n},\n\"heTitle\": \"שמות\"\n},\n{\n\"_id\": \"54bd48c4fbfba21733367c00\",\n\"index_title\": \"Numbers\",\n\"category\": \"Tanakh\",\n\"type\": \"\",\n\"ref\": \"Numbers 20\",\n\"anchorRef\": \"Or HaChaim on Deuteronomy 1:1:1\",\n\"anchorRefExpanded\": [\n\"Or HaChaim on Deuteronomy 1:1:1\"\n],\n\"sourceRef\": \"Numbers 20\",\n\"sourceHeRef\": \"במדבר כ׳\",\n\"anchorVerse\": 1,\n\"sourceHasEn\": true,\n\"compDate\": [\n-1400,\n-400\n],\n\"commentaryNum\": 20,\n\"collectiveTitle\": {\n\"en\": \"Numbers\",\n\"he\": \"במדבר\"\n},\n\"heTitle\": \"במדבר\"\n},\n{\n\"_id\": \"54bd48c4fbfba21733367c02\",\n\"index_title\": \"Numbers\",\n\"category\": \"Tanakh\",\n\"type\": \"\",\n\"ref\": \"Numbers 12:8\",\n\"anchorRef\": \"Or HaChaim on Deuteronomy 1:1:1\",\n\"anchorRefExpanded\": [\n\"Or HaChaim on Deuteronomy 1:1:1\"\n],\n\"sourceRef\": \"Numbers 12:8\",\n\"sourceHeRef\": \"במדבר י״ב:ח׳\",\n\"anchorVerse\": 1,\n\"sourceHasEn\": true,\n\"compDate\": [\n-1400,\n-400\n],\n\"commentaryNum\": 12.0008,\n\"collectiveTitle\": {\n\"en\": \"Numbers\",\n\"he\": \"במדבר\"\n},\n\"heTitle\": \"במדבר\"\n},\n{\n\"_id\": \"54bd48c4fbfba21733367c06\",\n\"index_title\": \"Kiddushin\",\n\"category\": \"Talmud\",\n\"type\": \"\",\n\"ref\": \"Kiddushin 38a\",\n\"anchorRef\": \"Or HaChaim on Deuteronomy 1:1:1\",\n\"anchorRefExpanded\": [\n\"Or HaChaim on Deuteronomy 1:1:1\"\n],\n\"sourceRef\": \"Kiddushin 38a\",\n\"sourceHeRef\": \"קידושין ל״ח א\",\n\"anchorVerse\": 1,\n\"sourceHasEn\": true,\n\"compDate\": [\n450,\n550\n],\n\"commentaryNum\": 75,\n\"collectiveTitle\": {\n\"en\": \"Kiddushin\",\n\"he\": \"קידושין\"\n},\n\"heTitle\": \"קידושין\"\n},\n{\n\"_id\": \"54bd48c4fbfba21733367c0a\",\n\"index_title\": \"Berakhot\",\n\"category\": \"Talmud\",\n\"type\": \"\",\n\"ref\": \"Berakhot 7a\",\n\"anchorRef\": \"Or HaChaim on Deuteronomy 1:1:1\",\n\"anchorRefExpanded\": [\n\"Or HaChaim on Deuteronomy 1:1:1\"\n],\n\"sourceRef\": \"Berakhot 7a\",\n\"sourceHeRef\": \"ברכות ז׳ א\",\n\"anchorVerse\": 1,\n\"sourceHasEn\": true,\n\"compDate\": [\n450,\n550\n],\n\"commentaryNum\": 13,\n\"collectiveTitle\": {\n\"en\": \"Berakhot\",\n\"he\": \"ברכות\"\n},\n\"heTitle\": \"ברכות\"\n},\n{\n\"_id\": \"54bd48c4fbfba21733367c0c\",\n\"index_title\": \"Eruvin\",\n\"category\": \"Talmud\",\n\"type\": \"\",\n\"ref\": \"Eruvin 54a\",\n\"anchorRef\": \"Or HaChaim on Deuteronomy 1:1:1\",\n\"anchorRefExpanded\": [\n\"Or HaChaim on Deuteronomy 1:1:1\"\n],\n\"sourceRef\": \"Eruvin 54a\",\n\"sourceHeRef\": \"עירובין נ״ד א\",\n\"anchorVerse\": 1,\n\"sourceHasEn\": true,\n\"compDate\": [\n450,\n550\n],\n\"commentaryNum\": 107,\n\"collectiveTitle\": {\n\"en\": \"Eruvin\",\n\"he\": \"עירובין\"\n},\n\"heTitle\": \"עירובין\"\n},\n{\n\"_id\": \"54bd48c4fbfba21733367c10\",\n\"index_title\": \"Genesis\",\n\"category\": \"Tanakh\",\n\"type\": \"\",\n\"ref\": \"Genesis 14:13\",\n\"anchorRef\": \"Or HaChaim on Deuteronomy 1:1:1\",\n\"anchorRefExpanded\": [\n\"Or HaChaim on Deuteronomy 1:1:1\"\n],\n\"sourceRef\": \"Genesis 14:13\",\n\"sourceHeRef\": \"בראשית י״ד:י״ג\",\n\"anchorVerse\": 1,\n\"sourceHasEn\": true,\n\"compDate\": [\n-1400,\n-400\n],\n\"commentaryNum\": 14.0013,\n\"collectiveTitle\": {\n\"en\": \"Genesis\",\n\"he\": \"בראשית\"\n},\n\"heTitle\": \"בראשית\"\n},\n{\n\"_id\": \"54bd48c4fbfba21733367c12\",\n\"index_title\": \"Genesis\",\n\"category\": \"Tanakh\",\n\"type\": \"\",\n\"ref\": \"Genesis 25:27\",\n\"anchorRef\": \"Or HaChaim on Deuteronomy 1:1:1\",\n\"anchorRefExpanded\": [\n\"Or HaChaim on Deuteronomy 1:1:1\"\n],\n\"sourceRef\": \"Genesis 25:27\",\n\"sourceHeRef\": \"בראשית כ״ה:כ״ז\",\n\"anchorVerse\": 1,\n\"sourceHasEn\": true,\n\"compDate\": [\n-1400,\n-400\n],\n\"commentaryNum\": 25.0027,\n\"collectiveTitle\": {\n\"en\": \"Genesis\",\n\"he\": \"בראשית\"\n},\n\"heTitle\": \"בראשית\"\n},\n{\n\"_id\": \"5c17ba58b071e100bf4f3c69\",\n\"index_title\": \"Megillah\",\n\"category\": \"Talmud\",\n\"type\": \"\",\n\"ref\": \"Megillah 31b:8\",\n\"anchorRef\": \"Or HaChaim on Deuteronomy 1:1:1\",\n\"anchorRefExpanded\": [\n\"Or HaChaim on Deuteronomy 1:1:1\"\n],\n\"sourceRef\": \"Megillah 31b:8\",\n\"sourceHeRef\": \"מגילה ל״א ב:ח׳\",\n\"anchorVerse\": 1,\n\"sourceHasEn\": true,\n\"compDate\": [\n450,\n550\n],\n\"commentaryNum\": 62.0008,\n\"collectiveTitle\": {\n\"en\": \"Megillah\",\n\"he\": \"מגילה\"\n},\n\"heTitle\": \"מגילה\"\n}\n]"
           },
           "sheets": {
-            "description": "All public source sheets linked to a given `Ref` or containing that `Ref` on the sheet. ",
+            "description": "All public source sheets linked to a given `Ref` or containing that `Ref` on the sheet.",
             "type": "array",
             "items": {
               "$ref": "#/components/schemas/SheetsJSON"
@@ -10597,12 +10597,12 @@
             "example": "{\n\"owner\": 65000,\n\"_id\": \"5ec3a6f7c73d4d278311782e\",\n\"id\": \"238181\",\n\"public\": true,\n\"title\": \"סדר תיקון ליל שבועות\",\n\"sheetUrl\": \"/sheets/238181\",\n\"anchorRef\": \"Deuteronomy 1\",\n\"anchorRefExpanded\": [\n\"Deuteronomy 1:2\"\n],\n\"options\": {\n\"numbered\": 0,\n\"boxed\": 0,\n\"assignable\": 0,\n\"bsd\": 1,\n\"language\": \"hebrew\",\n\"layout\": \"stacked\",\n\"langLayout\": \"heRight\",\n\"divineNames\": \"ykvk\",\n\"highlightMode\": 0,\n\"collaboration\": \"none\"\n},\n\"collectionTOC\": null,\n\"ownerName\": \"יותם גונן\",\n\"via\": null,\n\"viaOwnerName\": null,\n\"assignerName\": null,\n\"viaOwnerProfileUrl\": null,\n\"assignerProfileUrl\": null,\n\"ownerProfileUrl\": \"/profile/-2977\",\n\"ownerImageUrl\": \"https://storage.googleapis.com/sefaria-profile-pictures/-2977-1626800304-small.png\",\n\"status\": \"public\",\n\"views\": 8509,\n\"topics\": [],\n\"likes\": [],\n\"summary\": \"\",\n\"attribution\": null,\n\"is_featured\": false,\n\"category\": \"Sheets\",\n\"type\": \"sheet\"\n}"
           },
           "notes": {
-            "description": "Any notes a user has on a given `Ref`. **Note:** This data is only available for logged-in users to view their own notes on a text. This field will always present as an empty array for third party developers. ",
+            "description": "Any notes a user has on a given `Ref`. **Note:** This data is only available for logged-in users to view their own notes on a text. This field will always present as an empty array for third party developers.",
             "type": "array",
             "items": {}
           },
           "webpages": {
-            "description": "Webpages related to the `Ref`. ",
+            "description": "Webpages related to the `Ref`.",
             "type": "array",
             "items": {
               "$ref": "#/components/schemas/WebPagesJSON"
@@ -10610,7 +10610,7 @@
             "example": "{\n\"url\": \"https://etzion.org.il/en/mission-spies\",\n\"title\": \"The Mission of the Spies | vbm haretzion\",\n\"refs\": [\n\"Joshua 2:2-3\",\n\"I Samuel 26:9\",\n\"Deuteronomy 32:51\",\n\"Numbers 34:16-29\",\n\"Numbers 26:52-56\",\n\"Joshua 14\",\n\"Numbers 13\",\n\"Numbers 20:12\",\n\"Numbers 32:9\",\n\"Deuteronomy 9:1-2\",\n\"Numbers 13:20\",\n\"Genesis 13:17\",\n\"Numbers 13:21\",\n\"Numbers 13:22\",\n\"Deuteronomy 1:37\",\n\"Joshua 2:1\",\n\"Deuteronomy 1:22\",\n\"Deuteronomy 1\",\n\"Numbers 34\",\n\"Deuteronomy 1:21\",\n\"Numbers 32\",\n\"Deuteronomy 1:24\",\n\"Joshua 18:3-9\"\n],\n\"description\": \"Parshat HaShavua Yeshivat Har Etzion PARASHAT SHELACH The Mission of the Spies by Rav Yaakov Medan A  The Problem\",\n\"linkerHits\": 283,\n\"domain\": \"etzion.org.il\",\n\"siteName\": \"Torat Har Etzion\",\n\"favicon\": \"https://www.google.com/s2/favicons?domain=etzion.org.il\",\n\"authors\": null,\n\"articleSource\": null,\n\"anchorRef\": \"Deuteronomy 1\",\n\"anchorRefExpanded\": [\n\"Deuteronomy 1:2\"\n]\n}"
           },
           "topics": {
-            "description": "Topics related to a given `Ref`. ",
+            "description": "Topics related to a given `Ref`.",
             "type": "array",
             "items": {
               "$ref": "#/components/schemas/RelatedTopicJSON"
@@ -10618,7 +10618,7 @@
             "example": "{\n\"linkType\": \"about\",\n\"class\": \"refTopic\",\n\"dataSource\": {\n\"en\": \"Sheets by Sefaria users\",\n\"he\": \"דפי מקורות ממשתמשי ספריא\",\n\"slug\": \"sefaria-users\"\n},\n\"is_sheet\": false,\n\"generatedBy\": \"sheet-topic-aggregator\",\n\"order\": {\n\"user_votes\": 14,\n\"tfidf\": 10.783834565585545,\n\"numDatasource\": 1,\n\"availableLangs\": [\n\"en\",\n\"he\"\n],\n\"comp_date\": -1400,\n\"order_id\": \"A00000000400010001-00010011\",\n\"pr\": 8.083013483888324,\n\"numSources\": 143\n},\n\"topic\": \"parashat-devarim\",\n\"title\": {\n\"en\": \"Parashat Devarim\",\n\"he\": \"פרשת דברים\"\n},\n\"titleIsTransliteration\": {\n\"en\": false,\n\"he\": false\n},\n\"description\": {\n\"en\": \"Devarim (“Words”) is the first Torah portion in the Book of Deuteronomy, the final book of the Torah. In it, Moses recounts events from the Israelites’ travels in the desert, like the appointment of judges, the sin of the spies, and the wars with the Emorite kings Sihon and Og.\",\n\"he\": \"דברים היא הפרשה הראשונה בספר דברים, החומש החמישי והאחרון בתורה. בספר מובאים נאומי משה, שבהם הוא מזכיר אירועים מהעבר, סוקר מצוות שכבר ניתנו ומצווה מצוות חדשות. בפרשה משה מספר על הצורך במינוי שופטים להנהגת העם. הוא גם מזכיר את חטא המרגלים, שבו התלונן העם על הכניסה העתידית לארץ כנען, את העונש שהוטל על העם לנדוד במדבר ארבעים שנה ואת מלחמות ישראל במדבר.\"\n},\n\"anchorRef\": \"Deuteronomy 1:1-11\",\n\"anchorRefExpanded\": [\n\"Deuteronomy 1:1\",\n\"Deuteronomy 1:2\",\n\"Deuteronomy 1:3\",\n\"Deuteronomy 1:4\",\n\"Deuteronomy 1:5\",\n\"Deuteronomy 1:6\",\n\"Deuteronomy 1:7\",\n\"Deuteronomy 1:8\",\n\"Deuteronomy 1:9\",\n\"Deuteronomy 1:10\",\n\"Deuteronomy 1:11\"\n]\n}"
           },
           "manuscripts": {
-            "description": "An array of manuscript objects containing data of related manuscripts. ",
+            "description": "An array of manuscript objects containing data of related manuscripts.",
             "type": "array",
             "items": {
               "$ref": "#/components/schemas/ManuscriptJSON"
@@ -10626,7 +10626,7 @@
             "example": "[\n{\n\"manuscript_slug\": \"leningrad-codex-(1008-ce)\",\n\"page_id\": \"LC_Folio_98v\",\n\"image_url\": \"https://manuscripts.sefaria.org/leningrad-color/BIB_LENCDX_F098B.jpg\",\n\"thumbnail_url\": \"https://manuscripts.sefaria.org/leningrad-color/BIB_LENCDX_F098B_thumbnail.jpg\",\n\"anchorRef\": \"Deuteronomy 1:1-21\",\n\"anchorRefExpanded\": [\n\"Deuteronomy 1:2\"\n],\n\"manuscript\": {\n\"slug\": \"leningrad-codex-(1008-ce)\",\n\"title\": \"Leningrad Codex (1008 CE)\",\n\"he_title\": \"כתב יד לנינגרד (1008)\",\n\"source\": \"https://dornsife.usc.edu/wsrp/biblical-manuscripts\",\n\"description\": \"Bruce Zuckerman, West Semitic Research, in collaboration with the Ancient Biblical Manuscript Center; courtesy Russian National Library, Saltykov-Schedrin\",\n\"he_description\": \"\"\n}\n}\n]"
           },
           "media": {
-            "description": "An array of JSON containing any media related to the `Ref`. ",
+            "description": "An array of JSON containing any media related to the `Ref`.",
             "type": "array",
             "items": {
               "$ref": "#/components/schemas/MediaJSON"
@@ -11152,17 +11152,17 @@
         "type": "object",
         "properties": {
           "media_url": {
-            "description": "The URL for the media. ",
+            "description": "The URL for the media.",
             "type": "string",
             "example": "https://raw.githubusercontent.com/rneiss/PocketTorah/master/data/audio/Devarim-2.mp3"
           },
           "source": {
-            "description": "Source of the media. ",
+            "description": "Source of the media.",
             "type": "string",
             "example": "PocketTorah"
           },
           "source_he": {
-            "description": "Hebrew title of the media source. ",
+            "description": "Hebrew title of the media source.",
             "type": "string",
             "example": "פוקט\\\"-תורה"
           },
@@ -11172,7 +11172,7 @@
             "example": "0"
           },
           "end_time": {
-            "description": "End time of the portion of the associated media which correlates to this `Ref`. ",
+            "description": "End time of the portion of the associated media which correlates to this `Ref`.",
             "type": "string",
             "example": "27.26476"
           },
@@ -11182,7 +11182,7 @@
             "example": "Deuteronomy 1:2"
           },
           "license": {
-            "description": "The license on the media. ",
+            "description": "The license on the media.",
             "type": "string",
             "example": "CC-BY-SA"
           },
@@ -11192,12 +11192,12 @@
             "example": "http://www.pockettorah.com"
           },
           "description": {
-            "description": "A description of the associated media in English. ",
+            "description": "A description of the associated media in English.",
             "type": "string",
             "example": "Audio recordings of the weekly Torah portions used in PocketTorah. Avery-Binder style."
           },
           "description_he": {
-            "description": "A description of the associated media in Hebrew. ",
+            "description": "A description of the associated media in Hebrew.",
             "type": "string",
             "example": "הקלטות שמע של פרשות השבוע באמצעות \\\"פוקט-תורה\\\" בסגנון הקריאה של א. בינדר ול.אוורי."
           }
@@ -11221,7 +11221,7 @@
         "type": "object",
         "properties": {
           "url": {
-            "description": "URL to the related article on the webpage. ",
+            "description": "URL to the related article on the webpage.",
             "type": "string",
             "example": "https://etzion.org.il/en/mission-spies"
           },
@@ -11239,13 +11239,13 @@
             "example": "[\n\"Joshua 2:2-3\",\n\"I Samuel 26:9\",\n\"Deuteronomy 32:51\",\n\"Numbers 34:16-29\",\n\"Numbers 26:52-56\",\n\"Joshua 14\",\n\"Numbers 13\",\n\"Numbers 20:12\",\n\"Numbers 32:9\",\n\"Deuteronomy 9:1-2\",\n\"Numbers 13:20\",\n\"Genesis 13:17\",\n\"Numbers 13:21\",\n\"Numbers 13:22\",\n\"Deuteronomy 1:37\",\n\"Joshua 2:1\",\n\"Deuteronomy 1:22\",\n\"Deuteronomy 1\",\n\"Numbers 34\",\n\"Deuteronomy 1:21\",\n\"Numbers 32\",\n\"Deuteronomy 1:24\",\n\"Joshua 18:3-9\"\n]"
           },
           "description": {
-            "description": "Description of the article. ",
+            "description": "Description of the article.",
             "type": "string",
             "example": "Parshat HaShavua Yeshivat Har Etzion PARASHAT SHELACH The Mission of the Spies by Rav Yaakov Medan A  The Problem"
           },
           "linkerHits": {
             "format": "int32",
-            "description": "Number of hits by the Sefaria linker. ",
+            "description": "Number of hits by the Sefaria linker.",
             "type": "integer"
           },
           "domain": {
@@ -11271,7 +11271,7 @@
           },
           "anchorRef": {
             "$ref": "#/components/schemas/ref",
-            "description": "The `Ref` connecting this webpage to the queried `Ref`. ",
+            "description": "The `Ref` connecting this webpage to the queried `Ref`.",
             "example": "Deuteronomy 1.1"
           },
           "anchorRefExpanded": {
@@ -11361,7 +11361,7 @@
             "example": "Deuteronomy 1"
           },
           "anchorRefExpanded": {
-            "description": "An array containing the individual segments `Ref`s which comprise the `anchorRef`. \n\nExample 1: Ranged `Ref`\nIf the `anchorRef` is `Genesis 2:14-16`, the `anchorRefExpanded` is `[\"Genesis 2:14\", \"Genesis 2:15\", \"Genesis 2:16\"]`. \n\nExample 2: Segment Ref\nIf the `anchorRef` itself is a segment `Ref`, the `anchorRefExpanded` will contain that identical value. For example, `anchorRef` of `Genesis 2:11` will  have an `anchorRefExpanded` of `[\"Genesis 2:11\"]`",
+            "description": "An array containing the individual segments `Ref`s which comprise the `anchorRef`.\n\nExample 1: Ranged `Ref`\nIf the `anchorRef` is `Genesis 2:14-16`, the `anchorRefExpanded` is `[\"Genesis 2:14\", \"Genesis 2:15\", \"Genesis 2:16\"]`.\n\nExample 2: Segment Ref\nIf the `anchorRef` itself is a segment `Ref`, the `anchorRefExpanded` will contain that identical value. For example, `anchorRef` of `Genesis 2:11` will  have an `anchorRefExpanded` of `[\"Genesis 2:11\"]`",
             "type": "array",
             "items": {
               "$ref": "#/components/schemas/ref"
@@ -11492,7 +11492,7 @@
           },
           "is_featured": {
             "deprecated": true,
-            "description": "Previously a source sheet flagged with `is_featured` would be promoted throughout the site in various places. This behavior was removed in 2022 but some of the data remains. ",
+            "description": "Previously a source sheet flagged with `is_featured` would be promoted throughout the site in various places. This behavior was removed in 2022 but some of the data remains.",
             "type": "boolean"
           },
           "category": {
@@ -11574,19 +11574,19 @@
       },
       "RelatedLinkJSON": {
         "title": "Root Type for RelatedLinkJSON",
-        "description": "The link JSON returned as part of results for the related API endpoint. ",
+        "description": "The link JSON returned as part of results for the related API endpoint.",
         "type": "object",
         "properties": {
           "_id": {
             "type": "string"
           },
           "index_title": {
-            "description": "English title of the linked work. ",
+            "description": "English title of the linked work.",
             "type": "string",
             "example": "Rashi on Deuteronomy"
           },
           "category": {
-            "description": "Category of the type of link, for example a link between `Rashi on Exodus` and `Exodus` would have a category of `Commentary`. ",
+            "description": "Category of the type of link, for example a link between `Rashi on Exodus` and `Exodus` would have a category of `Commentary`.",
             "type": "string",
             "example": "Commentary"
           },
@@ -11595,7 +11595,7 @@
           },
           "ref": {
             "$ref": "#/components/schemas/ref",
-            "description": "Specific `Ref` of the segment which is linked to the queried `anchorRef`. ",
+            "description": "Specific `Ref` of the segment which is linked to the queried `anchorRef`.",
             "example": "Rashi on Deuteronomy 1:11:1"
           },
           "anchorRef": {
@@ -11615,9 +11615,9 @@
             "type": "string"
           },
           "sourceHeRef": {
-            "description": "Hebrew `Ref` of the linked source. ",
+            "description": "Hebrew `Ref` of the linked source.",
             "type": "string",
-            "example": " רש\\\"י על דברים א׳:י״א:א׳\n"
+            "example": " רש\\\"י על דברים א׳:י״א:א׳"
           },
           "anchorVerse": {
             "format": "int32",
@@ -11629,7 +11629,7 @@
             "example": "True"
           },
           "compDate": {
-            "description": "Date of the two books in the link were composed. Negative values indicate dates BCE. ",
+            "description": "Date of the two books in the link were composed. Negative values indicate dates BCE.",
             "type": "array",
             "items": {
               "format": "int32",
@@ -11686,11 +11686,11 @@
       },
       "RelatedTopicJSON": {
         "title": "Root Type for RelatedTopicJSON",
-        "description": "Topic JSON returned in the `topic` field of the related API endpoint. ",
+        "description": "Topic JSON returned in the `topic` field of the related API endpoint.",
         "type": "object",
         "properties": {
           "linkType": {
-            "description": "The type of link between the topic and the `Ref`. For more on Sefaria's topic ontology, see [here](https://developers.sefaria.org/docs/topic-ontology). ",
+            "description": "The type of link between the topic and the `Ref`. For more on Sefaria's topic ontology, see [here](https://developers.sefaria.org/docs/topic-ontology).",
             "type": "string",
             "example": "about"
           },
@@ -11768,7 +11768,7 @@
             "example": "{\n\"en\": \"Parashat Devarim\",\n\"he\": \"פרשת דברים\"\n}"
           },
           "titleIsTransliteration": {
-            "description": "A boolean value for the `he` and `en` fields inside the title JSON, indicating whether or not either translation is a transliteration. ",
+            "description": "A boolean value for the `he` and `en` fields inside the title JSON, indicating whether or not either translation is a transliteration.",
             "type": "object",
             "example": "{\n\"en\": false,\n\"he\": false\n}"
           },
@@ -11782,7 +11782,7 @@
             "description": "The `Ref` in the query."
           },
           "anchorRefExpanded": {
-            "description": "The segment `Ref`s within the `anchorRef`. ",
+            "description": "The segment `Ref`s within the `anchorRef`.",
             "type": "array",
             "items": {
               "$ref": "#/components/schemas/ref"
@@ -11818,7 +11818,7 @@
       },
       "RawIndexJSON": {
         "title": "Root Type for RawIndexJSON",
-        "description": "The full mongo record JSON from the database for a given Sefaria `Index`. ",
+        "description": "The full mongo record JSON from the database for a given Sefaria `Index`.",
         "type": "object",
         "properties": {
           "title": {
@@ -11827,7 +11827,7 @@
             "example": "Pesachim"
           },
           "categories": {
-            "description": "The categories within which this text falls. *Note:* The order of the strings in the array is significant. The categories should go from most general at position `0`, to most specific. ",
+            "description": "The categories within which this text falls. *Note:* The order of the strings in the array is significant. The categories should go from most general at position `0`, to most specific.",
             "type": "array",
             "items": {
               "type": "string"
@@ -11836,7 +11836,7 @@
           },
           "schema": {
             "$ref": "#/components/schemas/RawIndexSchemaJSON",
-            "description": "The structure of the Index within the Sefaria specific schema for texts. ",
+            "description": "The structure of the Index within the Sefaria specific schema for texts.",
             "properties": {
               "nodeType": {
                 "type": "string"
@@ -11986,7 +11986,7 @@
             }
           },
           "default_struct": {
-            "description": "Which structure of the available structures is default. ",
+            "description": "Which structure of the available structures is default.",
             "type": "string",
             "example": "\"chapters\""
           },
@@ -12009,22 +12009,22 @@
             "items": {}
           },
           "enDesc": {
-            "description": "A longer English description of the index. ",
+            "description": "A longer English description of the index.",
             "type": "string",
-            "example": "\"Pesachim (“Passover Festivals”) is the third tractate in Seder Moed (“Festivals”). Its ten chapters discuss laws relating to Passover: the consumption of matzah (unleavened bread) and maror (bitter herbs), the prohibitions against owning or consuming chametz (leavened bread) on the festival, the paschal lamb that used to be offered at the Temple in Jerusalem, and the order of the seder (ritual feast) held on the first evening of the holiday.\\n.\"\n"
+            "example": "\"Pesachim (“Passover Festivals”) is the third tractate in Seder Moed (“Festivals”). Its ten chapters discuss laws relating to Passover: the consumption of matzah (unleavened bread) and maror (bitter herbs), the prohibitions against owning or consuming chametz (leavened bread) on the festival, the paschal lamb that used to be offered at the Temple in Jerusalem, and the order of the seder (ritual feast) held on the first evening of the holiday.\\n.\""
           },
           "enShortDesc": {
-            "description": "A short English description of the index. ",
+            "description": "A short English description of the index.",
             "type": "string",
             "example": "Passover: ridding of chametz, the Paschal lamb offering, matzah, maror, and the Seder."
           },
           "heShortDesc": {
-            "description": "A short description of the text in Hebrew. ",
+            "description": "A short description of the text in Hebrew.",
             "type": "string",
             "example": "דינים הקשורים לחג הפסח: איסור חמץ, קורבן הפסח, מצה, מרור וליל הסדר."
           },
           "pubDate": {
-            "description": "Date(s) of publication. *Note:* A negative value indicates the work was published BCE. ",
+            "description": "Date(s) of publication. *Note:* A negative value indicates the work was published BCE.",
             "type": "array",
             "items": {
               "format": "int32",
@@ -12032,11 +12032,11 @@
             }
           },
           "hasErrorMargin": {
-            "description": "This field tells you if `compDate` is list of 2 integers (i.e. is a range) because much of the time `compDate` will be a range only when there's an error margin in our knowledge of the completion date.  ",
+            "description": "This field tells you if `compDate` is list of 2 integers (i.e. is a range) because much of the time `compDate` will be a range only when there's an error margin in our knowledge of the completion date.",
             "type": "boolean"
           },
           "compDate": {
-            "description": "Date(s) of text composition. \n\n**Notes:** \n- A negative value indicates BCE. \n- The integers are Gregorian years.\n- If it has 2 values, that is the range of years it was composed.\n- If has 1 value, that is the year it was composed.\n- If it has 0, we don’t know the year it was composed.",
+            "description": "Date(s) of text composition.\n\n**Notes:** \n- A negative value indicates BCE. \n- The integers are Gregorian years.\n- If it has 2 values, that is the range of years it was composed.\n- If has 1 value, that is the year it was composed.\n- If it has 0, we don’t know the year it was composed.",
             "type": "array",
             "items": {
               "format": "int32",
@@ -12054,7 +12054,7 @@
             "example": "Venice"
           },
           "era": {
-            "description": "Era of the text. The value will be represented by one of the following codes. \n\n```\n    \"Gaonim\": \"GN\",\n    \"Rishonim\": \"RI\",\n    \"Achronim\": \"AH\",\n    \"Tannaim\": \"T\",\n    \"Amoraim\": \"A\",\n    \"Contemporary\": \"CO\"\n```",
+            "description": "Era of the text. The value will be represented by one of the following codes.\n\n```\n    \"Gaonim\": \"GN\",\n    \"Rishonim\": \"RI\",\n    \"Achronim\": \"AH\",\n    \"Tannaim\": \"T\",\n    \"Amoraim\": \"A\",\n    \"Contemporary\": \"CO\"\n```",
             "type": "string"
           },
           "is_cited": {
@@ -12194,7 +12194,7 @@
                 "lang": "en"
               },
               {
-                "text": "Pesaḥim ",
+                "text": "Pesaḥim",
                 "lang": "en"
               },
               {
@@ -12720,7 +12720,7 @@
       },
       "RawIndexSchemaJSON": {
         "title": "Root Type for RawIndexSchemaJSON",
-        "description": "Schema JSON for an Index. ",
+        "description": "Schema JSON for an Index.",
         "type": "object",
         "properties": {
           "nodeType": {
@@ -12734,7 +12734,7 @@
           },
           "depth": {
             "format": "int32",
-            "description": "The depth of a text. For example, a book of Tanakh with chapters and verses has a depth 2, whereas a commentary on that book of Tanakh, with multiple comments on each verse (so a chapter-verse-comment structure) would have a depth of 3. ",
+            "description": "The depth of a text. For example, a book of Tanakh with chapters and verses has a depth 2, whereas a commentary on that book of Tanakh, with multiple comments on each verse (so a chapter-verse-comment structure) would have a depth of 3.",
             "type": "integer",
             "example": "2"
           },
@@ -12760,7 +12760,7 @@
             "items": {}
           },
           "lengths": {
-            "description": "The lengths of the text at each level of depth. For example, a text of depth 2 will have an array with two values, the first representing the number of sections, and the second value representing the number of verses. So, if Genesis has lengths, it's array will look like this `[50, 1533]`. This is interpreted to mean the Genesis Index has 50 chapters (sections) and 1533 verses (segments).\n\nA depth-3 text (a commentary, for example) will have three values, representing the number of super sections, sections, and segments. ",
+            "description": "The lengths of the text at each level of depth. For example, a text of depth 2 will have an array with two values, the first representing the number of sections, and the second value representing the number of verses. So, if Genesis has lengths, it's array will look like this `[50, 1533]`. This is interpreted to mean the Genesis Index has 50 chapters (sections) and 1533 verses (segments).\n\nA depth-3 text (a commentary, for example) will have three values, representing the number of super sections, sections, and segments.",
             "type": "array",
             "items": {
               "format": "int32",
@@ -12783,7 +12783,7 @@
             "example": "[\n{\n\"text\": \"Masekhet Pesachim\",\n\"lang\": \"en\"\n},\n{\n\"text\": \"Talmud Pesachim\",\n\"lang\": \"en\"\n},\n{\n\"text\": \"Tractate Pesachim\",\n\"lang\": \"en\"\n},\n{\n\"text\": \"Pesahim\",\n\"lang\": \"en\"\n},\n{\n\"text\": \"Pes.\",\n\"lang\": \"en\"\n},\n{\n\"text\": \"P’saḥim\",\n\"lang\": \"en\"\n},\n{\n\"text\": \"Pessachim\",\n\"lang\": \"en\"\n},\n{\n\"text\": \"BT Pesachim\",\n\"lang\": \"en\"\n},\n{\n\"text\": \"Psachim\",\n\"lang\": \"en\"\n},\n{\n\"text\": \"Pesaḥim \",\n\"lang\": \"en\"\n},\n{\n\"text\": \"פסחי'\",\n\"lang\": \"he\"\n},\n{\n\"text\": \"פסחי׳\",\n\"lang\": \"he\"\n},\n{\n\"text\": \"פסחים\",\n\"lang\": \"he\",\n\"primary\": true\n},\n{\n\"text\": \"Pesachim\",\n\"lang\": \"en\",\n\"primary\": true\n}\n]"
           },
           "key": {
-            "description": "Unique key for the text, usually matches the `Index` title. ",
+            "description": "Unique key for the text, usually matches the `Index` title.",
             "type": "string",
             "example": "Pesachim"
           },
@@ -12829,7 +12829,7 @@
       },
       "RawIndexAltStructsJSON": {
         "title": "Root Type for RawIndexAltStructsJSON",
-        "description": "The JSON returned for the alt structs of an Index. ",
+        "description": "The JSON returned for the alt structs of an Index.",
         "type": "object",
         "properties": {
           "Chapters": {
@@ -13112,22 +13112,22 @@
             "example": "Prophets"
           },
           "isComplex": {
-            "description": "A boolean representing whether or not this is a complex text. ",
+            "description": "A boolean representing whether or not this is a complex text.",
             "type": "boolean"
           },
           "Length": {
-            "description": "The number of chapters or top-level sections in the `Index`. "
+            "description": "The number of chapters or top-level sections in the `Index`."
           },
           "Book": {
             "description": "Title of the `Index` in English",
             "type": "string"
           },
           "heBook": {
-            "description": "Title of the `Index` in Hebrew. ",
+            "description": "Title of the `Index` in Hebrew.",
             "type": "string"
           },
           "Chapters": {
-            "description": "For simple texts, this is a list of chapter lengths. For complex texts or categories, the Shape API will return a list of dicts for each text within that category or text. ",
+            "description": "For simple texts, this is a list of chapter lengths. For complex texts or categories, the Shape API will return a list of dicts for each text within that category or text.",
             "type": "array",
             "items": {
               "$ref": "#/components/schemas/ShapeJSON"
@@ -13156,7 +13156,7 @@
             }
           },
           "lastPath": {
-            "description": "The immediate parent of the current category. So for example, with the category `Tanakh/Torah/Genesis`, the `lastPath` is `Torah`. ",
+            "description": "The immediate parent of the current category. So for example, with the category `Tanakh/Torah/Genesis`, the `lastPath` is `Torah`.",
             "type": "string"
           }
         },

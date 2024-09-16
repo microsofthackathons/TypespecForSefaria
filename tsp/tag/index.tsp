@@ -19,7 +19,10 @@ namespace SefariaAPI;
 @tag("Index")
 @route("/api/v2/raw/index/{index_title}")
 @get
-op getIndexV2(index_title: string): RawIndexJSON;
+op getIndexV2(
+  /** A title of a valid Sefaria `Index`. For a complete list of works in the [Sefaria](sefaria.org) library, as well as their index titles, query the [api/index](https://www.sefaria.org/api/index/) endpoint. */
+  index_title: string,
+): RawIndexJSON;
 
 /**
  * This API endpoint returns the titles of all the books in the Sefaria Library arranged by their category along with some additional metadata. This is a large and rarely changing request and should be cached locally if you utilize it.
@@ -57,37 +60,71 @@ op getShape(
 
 model APIIndexResponse
   is {
+    /** This level of the object is a category listing. */
     contents?: {
+      /** This level of the object is usually a book level. */
       contents?: {
+        /** A list of categories that this book belongs to. */
         categories?: string[];
+
+        /** This is used to order the texts on the Sefaria website. */
         order?: int32;
+
+        /** The main category that this work falls under. */
         primary_category?: string;
+
+        /** A short description of this book in English. */
         enShortDesc?: string;
+
+        /** A short description of this book in Hebrew. */
         heShortDesc?: string;
+
+        /** The corpus that this work belongs to e.g. `Tanakh` or `Mishnah` etc. */
         corpus?: string;
+
+        /** The Hebrew title of this work. */
         heTitle?: string;
+
+        /** The English title of this work. */
         title?: string;
       }[];
+
+      /** This is used to order the texts on the Sefaria website. */
       order?: int32;
-      enComplete?: boolean;
-      heComplete?: boolean;
-      enDesc?: string;
-      heDesc?: string;
-      enShortDesc?: string;
-      heShortDesc?: string;
-      heCategory?: string;
-      category?: string;
+
+      ...APIIndexResponseCategoryInfo;
     }[];
+
+    /** This is used to order the categories on the Sefaria website. */
     order?: int32;
-    enComplete?: boolean;
-    heComplete?: boolean;
-    enDesc?: string;
-    heDesc?: string;
-    enShortDesc?: string;
-    heShortDesc?: string;
-    heCategory?: string;
-    category?: string;
+
+    ...APIIndexResponseCategoryInfo;
   }[];
+
+model APIIndexResponseCategoryInfo {
+  /** Is the entirety of this category available in English */
+  enComplete?: boolean;
+
+  /** Is the entirety of this category available in Hebrew */
+  heComplete?: boolean;
+
+  /** An English description of the category */
+  enDesc?: string;
+
+  /** An Hebrew description of the category */
+  heDesc?: string;
+
+  /** A short description of this category in English. */
+  enShortDesc?: string;
+
+  /** A short description of this category in Hebrew. */
+  heShortDesc?: string;
+
+  heCategory?: string;
+
+  /** The current category that these works are nested in. */
+  category?: string;
+}
 
 /**
  * The shape API allows one to retrieve information about the shape of an Index on Sefaria. The shape refers some basic statistics about the Index, mostly the number of chapters, and the number of segments per chapter.

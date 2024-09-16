@@ -63,10 +63,10 @@ op getTopicV2(
  * When one calls this endpoint _with_ a specific `topic_slug`, it returns a JSON object containing the metadata for the topic.
  * @returns  When one calls this endpoint _with_ a specific `topic_slug`, it returns a JSON object containing the metadata for the topic.
  */
+#deprecated "use getTopicV1"
 @tag("Topic")
 @route("/api/topics/{topic_slug}")
 @get
-#deprecated "use getTopicV1"
 op getTopicV1(
   /**
    * The slug of a topic in the Sefaria system. (To find all of the slugs, you can run `api/topics` without a path parameter to see the data for each topic in our database).
