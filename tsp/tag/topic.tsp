@@ -18,14 +18,45 @@ namespace SefariaAPI;
 @route("/api/v2/topics/{topic_slug}")
 @get
 op getTopicV2(
-  topic_slug: string,
-
   /**
    * Values can be `1` or `0`.
    *
    * If `1`, adds the following fields to each intra-topic link: `title`, `titleIsTransliteration`, `shouldDisplay`, and `order`.
    */
   @query annotate_links?: integer,
+
+  /**
+   * The slug of the desired topic
+   */
+  @path topic_slug: string,
+
+  /**
+   * Values can be `1` or `0`.
+   *
+   * If `1`, includes intra-topic links in the `result` field, under `links`.
+   */
+  @query with_links?: integer,
+
+  /**
+   * Values can be `1` or `0`.
+   *
+   * If `1`, the response includes time period data under the `timePeriod` key.
+   */
+  @query annotate_time_period?: unknown,
+
+  /**
+   * Values can be `1` or `0`.
+   *
+   * If `1`, groups link types with the `groupRelated` key set to true. This will simulate how the sidebar looks on the Sefaria site.
+   */
+  @query group_related?: integer,
+
+  /**
+   * Values can be `1` or `0`.
+   *
+   * If `1`, adds a list of `Ref`s tagged with this topic under the `refs` key.
+   */
+  @query with_refs?: integer,
 ): TopicJSON;
 
 /**
@@ -35,7 +66,38 @@ op getTopicV2(
 @tag("Topic")
 @route("/api/topics/{topic_slug}")
 @get
-op getTopicV1(topic_slug: string): TopicJSON;
+#deprecated "use getTopicV1"
+op getTopicV1(
+  /**
+   * The slug of a topic in the Sefaria system. (To find all of the slugs, you can run `api/topics` without a path parameter to see the data for each topic in our database).
+   */
+  @path topic_slug: string,
+
+  /**
+   * `1` or `0`. If `1`, includes intra-topic links in the `result` field, under `links`.
+   */
+  @query with_links?: integer,
+
+  /**
+   * `1` or `0`. If `1`, adds the following fields to each intra-topic link: `title`, `titleIsTransliteration`, `shouldDisplay`, and `order`.
+   */
+  @query annotate_links?: integer,
+
+  /**
+   * `1` or `0`. If `1`, groups link types with the `groupRelated` key set to true. This will simulate how the sidebar looks on the Sefaria site.
+   */
+  @query group_related?: integer,
+
+  /**
+   * `1` or `0`. If `1`, adds a list of `Ref`s tagged with this topic under the `refs` key.
+   */
+  @query with_refs?: integer,
+
+  /**
+   * `1` or `0`. If `1`, the response includes time period data under the `timePeriod` key.
+   */
+  @query annotate_time_period?: unknown,
+): TopicJSON;
 
 /**
  * The topics API returns a list of JSON objects, each object containing all of the metadata for each topic in the Sefaria database.
@@ -53,7 +115,18 @@ op getAllTopics(): TopicJSON[];
 @tag("Topic")
 @route("/api/topics-graph/{topic_slug}")
 @get
-op getTopicGraph(topic_slug: string): TopicGraphJSON;
+op getTopicGraph(
+  /**
+   * A valid Sefaria slug for a topic in the database.
+   */
+  @path topic_slug: string,
+
+  /**
+   * The type of the link, based on the relationship within our ontology. Many links has an `is-a` relationship (such as `Genesis` `is-a` `Book`), but other topic-to-topic links have a variety of other types documented [here](https://developers.sefaria.org/docs/topic-ontology#overview-of-sefaria-link-types).
+   * Some examples include `child-of`, `parent-of`, `sibling-of` etc.
+   */
+  @query link_type?: string,
+): TopicGraphJSON;
 
 /**
  * Given a list of `Ref`s this API returns the most used topics associated with them. This is a fast way of identifying potential shared topics amongst disparate `Ref`s.

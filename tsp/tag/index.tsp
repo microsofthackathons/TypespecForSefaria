@@ -36,7 +36,24 @@ op getTableOfContents(): APIIndexResponse;
 @tag("Index")
 @route("/api/shape/{title}")
 @get
-op getShape(title: string): ShapeJSON;
+op getShape(
+  /**
+   * The title of a valid Sefaria `Index`, or the path of a valid Sefaria category.
+   */
+  @path title: string,
+
+  /**
+   * The `depth` parameter in the query string indicates how many levels in the category tree to descend.
+   * If `depth=0` is passed, then the returned JSON descends to end of tree.
+   * The default is `depth=2`.
+   */
+  @query depth?: integer,
+
+  /**
+   * The dependents parameter, if `true`, includes dependent texts. By default, they are filtered out.
+   */
+  @query dependents?: boolean,
+): ShapeJSON;
 
 model APIIndexResponse
   is {

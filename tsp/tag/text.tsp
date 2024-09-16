@@ -17,7 +17,65 @@ namespace SefariaAPI;
 @tag("Text")
 @route("/api/v3/texts/{tref}")
 @get
-op getTextsV3(tref: string): v3TextsJson;
+op getTextsV3(
+  /**
+   * There are two possible forms for the string passed as the `version`:
+   * 1. `language`
+   * 2. `language|versionTitle`
+   *
+   * When in the form of `language`, the primary version of that language is returned in the `versions` field of the response object. When in the form of `language>|<versionTitle`, only that specific version is returned in the `versions` field.
+   *
+   *
+   * **Notes**:
+   * - `language` is the full English name of the language. In cases of dialectics with varying sub-specifities, please pass the ‘mother’ language (so for example, `arabic` rather than `judeo-arabic`). This field is NOT case sensitive.
+   * - `versionTitle` is the exact English `versionTitle` of the given `version` in the Sefaria database.
+   * - When only `language` is passed, the response will return a single version of the text in that language, the one that is highest priority in the Sefaria database.
+   * - Requests can have more than one `version` param. If no `version` was passed, the API defaults to `version=primary`.
+   *
+   * -----
+   *
+   * **Special Values**
+   * The following values can be passed in as special values to the `version` parameter.
+   * - `source`: When `version=source` is passed, it retrieves the text in its "source" language (i.e. the original language the text was written in, versus a translation).
+   * - `translation`: When `version=translation`is passed, it retrieves a translation of the text.
+   * - `primary`: When `version=primary` is passed, it retrieves the primary text as per the Sefaria database (i.e. the `isPrimary` field on the `version` in the database is set to `True`). Usually the text returned is identical to what is returned with the special value of `source`, but it can also include other languages (e.g. Hebrew for the _Kuzari_, which was originally written in Judeo-Arabic)
+   * - `all`: get all texts in the required language.
+   *
+   *
+   * If a required version is missing that information will be under the field warnings of the response.
+   *
+   */
+  @query version?: string,
+
+  /**
+   * A Sefaria-specific reference, `Ref`. This should be a segment `Ref` (the most specific reference possible), or bottom level section `Ref` (i.e.  a section of text on level up, a section is an array of segments). If a `Ref` is passed in which is not a segment level or a bottom level section, the response will be to the first bottom level section `Ref` (e.g. `Genesis` will resolve to the bottom level section `Ref` of `Genesis 1`)
+   */
+  @path tref: string,
+
+  /**
+   * This parameter is only relevant for cases where the requested text is incomplete (i.e. not all of the segments in the requested version exist in the database for that text, such as a partial translation).
+   *
+   * When `fill_in_missing_segments=1`, the segments of text that are missing in the requested version will be filled by other versions of the same language.
+   *
+   * This value defaults to `0`.
+   *
+   */
+  @query fill_in_missing_segments?: "0" | "1",
+
+  /**
+   * This parameter formats the text that will be returned from the `v3` `texts/` API. It can have one of four values:
+   * 1. `text_only` - This strips footnotes, inline references and all html tags from the returned text
+   * 2. `strip_only_footnotes` - This only strips the footnotes and commentator <i> tags without stripping the other HTML tags.This is useful for the native app, where we do not display footnotes.
+   * 3. `wrap_all_entities` - This wraps the HTML for links and topic links
+   * 4. `default` - This returns the basic text as it’s saved in Sefaria’s DB
+   *
+   */
+  @query return_format?:
+    | "default"
+    | "wrap_all_entities"
+    | "strip_only_footnotes"
+    | "text_only" = "default",
+): v3TextsJson;
 
 /**
  * Retrieve the text and some additional metadata for a specific Sefaria textual `Ref`
@@ -26,6 +84,7 @@ op getTextsV3(tref: string): v3TextsJson;
 @tag("Text")
 @route("/api/texts/{tref}")
 @get
+#deprecated "use getTextsV3"
 op getTextsV1(
   @query callback?: string,
 

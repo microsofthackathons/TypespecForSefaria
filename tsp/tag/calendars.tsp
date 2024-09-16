@@ -46,7 +46,7 @@ op getCalendars(
    * By default, the API attempts to return the calendars for the client's timezone. If you want another region you can override it. Timezone names are in accordance with [IANA Standards](https://www.iana.org/time-zones)
    */
   @query timezone?: unknown,
-): CalendarNextReadAPI;
+): CalendarAPIResponse;
 
 /**
  * Given a Parasha name in English, this API returns the next Hebrew and English dates that it is read, along with details about the Torah and Haftarah readings for that date.
@@ -121,7 +121,7 @@ op getNextRead(
     | "Chukat-Balak"
     | "Matot-Masei"
     | "Nitzavim-Vayeilech",
-): CalendarAPIResponse;
+): CalendarNextReadAPI;
 
 /**
  * A response from the Calendar API

@@ -6,82 +6,62 @@
 <hr>
 <p>GET /api/calendars</p>
 <ul>
-<li>Responses changed
+<li>Modified query param: custom
 <ul>
-<li>Modified response: 200
-<ul>
-<li>Content changed
-<ul>
-<li>Modified media type: application/json
-<ul>
-<li>Schema changed
-<ul>
-<li>Properties changed
-<ul>
-<li>New property: haftarah</li>
-<li>New property: he_date</li>
-<li>New property: parasha</li>
-<li>Deleted property: calendar_items</li>
-<li>Deleted property: timezone</li>
-<li>Modified property: date
-<ul>
-<li>Format changed from 'date' to 'date-time'</li>
+<li>Explode changed from null to false</li>
 </ul>
 </li>
+<li>Modified query param: day
+<ul>
+<li>Explode changed from null to false</li>
 </ul>
 </li>
+<li>Modified query param: diaspora
+<ul>
+<li>Explode changed from null to false</li>
 </ul>
 </li>
+<li>Modified query param: month
+<ul>
+<li>Explode changed from null to false</li>
 </ul>
 </li>
+<li>Modified query param: timezone
+<ul>
+<li>Explode changed from null to false</li>
 </ul>
 </li>
-</ul>
-</li>
+<li>Modified query param: year
+<ul>
+<li>Explode changed from null to false</li>
 </ul>
 </li>
 </ul>
 <p>GET /api/calendars/next-read/{parasha}</p>
-<ul>
-<li>Responses changed
-<ul>
-<li>Modified response: 200
-<ul>
-<li>Content changed
-<ul>
-<li>Modified media type: application/json
-<ul>
-<li>Schema changed
-<ul>
-<li>Properties changed
-<ul>
-<li>New property: calendar_items</li>
-<li>New property: timezone</li>
-<li>Deleted property: haftarah</li>
-<li>Deleted property: he_date</li>
-<li>Deleted property: parasha</li>
-<li>Modified property: date
-<ul>
-<li>Format changed from 'date-time' to 'date'</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
 <p>GET /api/category/{category_path}</p>
 <p>POST /api/find-refs</p>
 <p>GET /api/img-gen/{tref}</p>
 <ul>
+<li>Modified query param: lang
+<ul>
+<li>Explode changed from null to false</li>
+</ul>
+</li>
+<li>Modified query param: platform
+<ul>
+<li>Explode changed from null to false</li>
+</ul>
+</li>
+<li>Modified query param: ven
+<ul>
+<li>Explode changed from null to false</li>
+</ul>
+</li>
+<li>Modified query param: vhe
+<ul>
+<li>Explode changed from null to false</li>
+</ul>
+</li>
 <li>Responses changed
 <ul>
 <li>Modified response: 200
@@ -107,6 +87,16 @@
 <p>GET /api/index</p>
 <p>GET /api/links/{tref}</p>
 <ul>
+<li>Modified query param: with_sheet_links
+<ul>
+<li>Explode changed from null to false</li>
+</ul>
+</li>
+<li>Modified query param: with_text
+<ul>
+<li>Explode changed from null to false</li>
+</ul>
+</li>
 <li>Responses changed
 <ul>
 <li>Modified response: 200
@@ -178,6 +168,18 @@
 </li>
 </ul>
 <p>GET /api/name/{name}</p>
+<ul>
+<li>Modified query param: limit
+<ul>
+<li>Explode changed from null to false</li>
+</ul>
+</li>
+<li>Modified query param: ref_only
+<ul>
+<li>Explode changed from null to false</li>
+</ul>
+</li>
+</ul>
 <p>GET /api/recommend/topics/{ref_list}</p>
 <p>GET /api/ref-topic-links/{tref}</p>
 <p>GET /api/related/{tref}</p>
@@ -227,101 +229,231 @@
 <p>POST /api/search-wrapper</p>
 <p>GET /api/shape/{title}</p>
 <ul>
-<li>Deleted query param: dependents</li>
-<li>Deleted query param: depth</li>
+<li>Modified query param: dependents
+<ul>
+<li>Explode changed from null to false</li>
+</ul>
+</li>
+<li>Modified query param: depth
+<ul>
+<li>Explode changed from null to false</li>
+</ul>
+</li>
 </ul>
 <p>GET /api/terms/{name}</p>
 <p>GET /api/texts/random</p>
+<ul>
+<li>Modified query param: categories
+<ul>
+<li>Explode changed from null to false</li>
+</ul>
+</li>
+<li>Modified query param: titles
+<ul>
+<li>Explode changed from null to false</li>
+</ul>
+</li>
+</ul>
 <p>GET /api/texts/random-by-topic</p>
 <p>GET /api/texts/translations</p>
 <p>GET /api/texts/translations/{lang}</p>
 <p>GET /api/texts/versions/{index}</p>
 <p>GET /api/texts/{tref}</p>
 <ul>
-<li>Deprecated changed from true to false</li>
+<li>Modified query param: alts
+<ul>
+<li>Explode changed from null to false</li>
+</ul>
+</li>
+<li>Modified query param: callback
+<ul>
+<li>Explode changed from null to false</li>
+</ul>
+</li>
+<li>Modified query param: commentary
+<ul>
+<li>Explode changed from null to false</li>
+</ul>
+</li>
+<li>Modified query param: context
+<ul>
+<li>Explode changed from null to false</li>
+</ul>
+</li>
+<li>Modified query param: fallbackOnDefaultVersion
+<ul>
+<li>Explode changed from null to false</li>
+</ul>
+</li>
+<li>Modified query param: firstAvailableRef
+<ul>
+<li>Explode changed from null to false</li>
+</ul>
+</li>
+<li>Modified query param: layer
+<ul>
+<li>Explode changed from null to false</li>
+</ul>
+</li>
+<li>Modified query param: multiple
+<ul>
+<li>Explode changed from null to false</li>
+</ul>
+</li>
+<li>Modified query param: pad
+<ul>
+<li>Explode changed from null to false</li>
+</ul>
+</li>
+<li>Modified query param: sheets
+<ul>
+<li>Explode changed from null to false</li>
+</ul>
+</li>
+<li>Modified query param: stripItags
+<ul>
+<li>Explode changed from null to false</li>
+</ul>
+</li>
+<li>Modified query param: transLangPref
+<ul>
+<li>Explode changed from null to false</li>
+</ul>
+</li>
+<li>Modified query param: ven
+<ul>
+<li>Explode changed from null to false</li>
+</ul>
+</li>
+<li>Modified query param: vhe
+<ul>
+<li>Explode changed from null to false</li>
+</ul>
+</li>
+<li>Modified query param: wrapLinks
+<ul>
+<li>Explode changed from null to false</li>
+</ul>
+</li>
+<li>Modified query param: wrapNamedEntities
+<ul>
+<li>Explode changed from null to false</li>
+</ul>
+</li>
 </ul>
 <p>GET /api/topics</p>
 <p>GET /api/topics-graph/{topic_slug}</p>
 <ul>
-<li>Deleted query param: link_type</li>
+<li>Modified query param: link_type
+<ul>
+<li>Explode changed from null to false</li>
+</ul>
+</li>
 </ul>
 <p>GET /api/topics/{topic_slug}</p>
 <ul>
-<li>Deleted query param: annotate_links</li>
-<li>Deleted query param: annotate_time_period</li>
-<li>Deleted query param: group_related</li>
-<li>Deleted query param: with_links</li>
-<li>Deleted query param: with_refs</li>
-<li>Deprecated changed from true to false</li>
+<li>Modified query param: annotate_links
+<ul>
+<li>Explode changed from null to false</li>
+</ul>
+</li>
+<li>Modified query param: annotate_time_period
+<ul>
+<li>Explode changed from null to false</li>
+</ul>
+</li>
+<li>Modified query param: group_related
+<ul>
+<li>Explode changed from null to false</li>
+</ul>
+</li>
+<li>Modified query param: with_links
+<ul>
+<li>Explode changed from null to false</li>
+</ul>
+</li>
+<li>Modified query param: with_refs
+<ul>
+<li>Explode changed from null to false</li>
+</ul>
+</li>
 </ul>
 <p>GET /api/v2/raw/index/{index_title}</p>
 <p>GET /api/v2/topics/{topic_slug}</p>
 <ul>
-<li>Deleted query param: annotate_time_period</li>
-<li>Deleted query param: group_related</li>
-<li>Deleted query param: with_links</li>
-<li>Deleted query param: with_refs</li>
+<li>Modified query param: annotate_links
+<ul>
+<li>Explode changed from null to false</li>
+</ul>
+</li>
+<li>Modified query param: annotate_time_period
+<ul>
+<li>Explode changed from null to false</li>
+</ul>
+</li>
+<li>Modified query param: group_related
+<ul>
+<li>Explode changed from null to false</li>
+</ul>
+</li>
+<li>Modified query param: with_links
+<ul>
+<li>Explode changed from null to false</li>
+</ul>
+</li>
+<li>Modified query param: with_refs
+<ul>
+<li>Explode changed from null to false</li>
+</ul>
+</li>
 </ul>
 <p>GET /api/v3/texts/{tref}</p>
 <ul>
-<li>Deleted query param: fill_in_missing_segments</li>
-<li>Deleted query param: return_format</li>
-<li>Deleted query param: version</li>
-<li>Responses changed
+<li>Modified query param: fill_in_missing_segments
 <ul>
-<li>Modified response: 200
-<ul>
-<li>Content changed
-<ul>
-<li>Modified media type: application/json
-<ul>
-<li>Schema changed
-<ul>
-<li>Properties changed
-<ul>
-<li>Modified property: available_versions
-<ul>
-<li>Items changed
-<ul>
-<li>Properties changed
-<ul>
-<li>New property: firstSectionRef</li>
-<li>New property: text</li>
-<li>Modified property: digitizedBySefaria
-<ul>
-<li>Type changed from 'string' to 'boolean'</li>
+<li>Explode changed from null to false</li>
 </ul>
 </li>
-<li>Modified property: formatAsPoetry
+<li>Modified query param: return_format
 <ul>
-<li>Type changed from 'string' to 'boolean'</li>
+<li>Explode changed from null to false</li>
 </ul>
 </li>
-<li>Modified property: priority
+<li>Modified query param: version
 <ul>
-<li>Type changed from 'integer' to 'number'</li>
-<li>Format changed from 'int32' to 'float'</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</li>
+<li>Explode changed from null to false</li>
 </ul>
 </li>
 </ul>
 <p>GET /api/words/completion/{word}/{lexicon}</p>
+<ul>
+<li>Modified query param: limit
+<ul>
+<li>Explode changed from null to false</li>
+</ul>
+</li>
+</ul>
 <p>GET /api/words/{word}</p>
+<ul>
+<li>Modified query param: always_consonants
+<ul>
+<li>Explode changed from null to false</li>
+</ul>
+</li>
+<li>Modified query param: always_split
+<ul>
+<li>Explode changed from null to false</li>
+</ul>
+</li>
+<li>Modified query param: lookup_ref
+<ul>
+<li>Explode changed from null to false</li>
+</ul>
+</li>
+<li>Modified query param: never_split
+<ul>
+<li>Explode changed from null to false</li>
+</ul>
+</li>
+</ul>
 
