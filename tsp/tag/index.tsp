@@ -315,7 +315,7 @@ model RawIndexSchemaJSON {
    */
   key?: string;
 
-  checkFirst?: BilingualJSONSlim;
+  checkFirst?: BilingualOf<string>;
 }
 
 /**

@@ -145,10 +145,10 @@ model CalendarAPIResponse {
  */
 model CalendarAPIResponseCalendarItem {
   /** The learning schedule title in `he` and `en` */
-  title?: BilingualJSONSlim;
+  title?: BilingualOf<string>;
 
   /** The name of the reading for the selected date in the learning schedule in `en` and `he` */
-  displayValue?: BilingualJSONSlim;
+  displayValue?: BilingualOf<string>;
 
   /** The url path on Sefaria where this selection can be found */
   url?: string;
@@ -171,16 +171,16 @@ model CalendarAPIResponseCalendarItem {
   };
 
   /** A description of this learning schedule entry if it exists in `he` and `en` */
-  description?: BilingualJSONSlim;
+  description?: BilingualOf<string>;
 }
 
 model CalendarNextReadAPI {
   parasha?: {
     /** This should always read `Parashat Hashavua` */
-    title?: BilingualJSONSlim;
+    title?: BilingualOf<string>;
 
     /** The name of the Parashah */
-    displayValue?: BilingualJSONSlim;
+    displayValue?: BilingualOf<string>;
 
     /** The url path on Sefaria where this selection can be found */
     url?: string;
@@ -203,14 +203,14 @@ model CalendarNextReadAPI {
     };
 
     /** A description of this learning schedule entry if it exists in `he` and `en` */
-    description?: BilingualJSONSlim;
+    description?: BilingualOf<string>;
   };
   haftarah?: {
     /** This should always read `Haftarah` */
-    title?: BilingualJSONSlim;
+    title?: BilingualOf<string>;
 
     /** The name of the Haftarah */
-    displayValue?: BilingualJSONSlim;
+    displayValue?: BilingualOf<string>;
 
     /** The url path on Sefaria where this selection can be found */
     url?: string;
@@ -224,5 +224,5 @@ model CalendarNextReadAPI {
     category?: string;
   }[];
   date?: utcDateTime;
-  he_date?: BilingualJSONSlim;
+  he_date?: BilingualOf<string>;
 }

@@ -178,9 +178,9 @@ model TopicJSON {
   properties?: TopicPropertyJson;
 
   /**
-   * A description of the topic in English
+   * A description of the topic
    */
-  description?: BillingualJSON;
+  description?: BilingualOf<string>;
 
   /**
    * A description of the category of this topic
@@ -215,12 +215,12 @@ model TopicJSON {
   /**
    * The primary title for a topic.
    */
-  primaryTitle?: BillingualJSON;
+  primaryTitle?: BilingualOf<string>;
 
   /**
    * This field has the possibility of being used to indicate whether or not a title is a transliteration, however the data here is not always consistent or up-to-date. Therefore, it is best to disregard the data in this field, and there are many false negatives.
    */
-  primaryTitleIsTransliteration?: BillingualJSON;
+  primaryTitleIsTransliteration?: BilingualOf<string>;
 }
 
 model TopicGraphJSON {
@@ -241,7 +241,7 @@ model recommendedTopicResponse {
   /**
    * Titles for the topic by language (usually Hebrew & English)
    */
-  titles?: BilingualJSONSlim;
+  titles?: BilingualOf<string>;
 
   /**
    * Number of times the topic appears in the references
@@ -316,12 +316,12 @@ model RandomByTopicTopicJSON {
   /**
    * The primary title for a topic.
    */
-  primary_title?: BillingualJSON;
+  primary_title?: BilingualOf<string>;
 
   /**
-   * A description of the topic in English
+   * A description of the topic
    */
-  description?: BillingualJSON;
+  description?: BilingualOf<string>;
 }
 
 /**
@@ -366,7 +366,7 @@ model TopicImgJSON {
   /**
    * A JSON object containing the billingual caption data for an image associated with a topic.
    */
-  image_caption?: BillingualJSON;
+  image_caption?: BilingualOf<string>;
 }
 
 model TopicGraphLinkJSON {

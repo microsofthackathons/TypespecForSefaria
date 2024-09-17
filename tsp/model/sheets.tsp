@@ -178,13 +178,5 @@ model SheetTopicJSON {
    */
   asTyped?: string;
 
-  /**
-   * Hebrew topic title
-   */
-  he?: string;
-
-  /**
-   * English topic title
-   */
-  en?: string;
+  ... BilingualOfWithDocumentation<string, "Hebrew topic title", "English topic title">;
 }

@@ -37,13 +37,12 @@ model BulkTextResponseBase {
 }
 
 model BulkTextResponseWithFamily extends BulkTextResponseBase {
-  he?: string[];
-  en?: string[];
+  ... BilingualOf<string[]>;
 
   /** The main category that this work falls under. */
   primary_category?: string;
 }
 
 model BulkTextResponseWithoutFamily extends BulkTextResponseBase {
-  ...BilingualJSONSlim;
+  ...BilingualOf<string>
 }

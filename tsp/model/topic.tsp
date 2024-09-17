@@ -37,25 +37,14 @@ model OrderTopicLinkJSON {
   /**
    * This field is used for manually ordering a source on a topics page. It has a separate order value for each language.
    */
-  curatedPrimacy?: {
-    en?: int32;
-    he?: int32;
-  };
+  curatedPrimacy?: BilingualOf<int32>;
 }
 
 /**
  * JSON containing the information as to the source of the data for a given ref-to-topic link.
  */
 model DataSourceJSON {
-  /**
-   * English title of the data source.
-   */
-  en?: string;
-
-  /**
-   * Hebrew title of the data source.
-   */
-  he?: string;
+  ... BilingualOfWithDocumentation<string, "Hebrew title of the data source", "English title of the data source">;
 
   /**
    * Unique slug describing the data source.
