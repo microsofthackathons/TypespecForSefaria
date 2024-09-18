@@ -44,7 +44,11 @@ model OrderTopicLinkJSON {
  * JSON containing the information as to the source of the data for a given ref-to-topic link.
  */
 model DataSourceJSON {
-  ... BilingualOfWithDocumentation<string, "Hebrew title of the data source", "English title of the data source">;
+  ...BilingualOfWithDocumentation<
+    string,
+    "Hebrew title of the data source",
+    "English title of the data source"
+  >;
 
   /**
    * Unique slug describing the data source.

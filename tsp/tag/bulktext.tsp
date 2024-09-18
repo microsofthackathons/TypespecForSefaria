@@ -22,7 +22,9 @@ op getBulkText(
   @query maxChar?: int32,
 
   /**
-   * Unless explicitly specified, the texts API returns a default version for the `he` and `he` responses (usually in Hebrew & English respectfully). Passing an ISO 639-1 language code here will prioritize text versions in that target language if available.
+   * Unless explicitly specified, the texts API returns a default version for the `he` and `he` 
+    responses (usually in Hebrew & English respectfully). Passing an ISO 639-1 language code here 
+    will prioritize text versions in that target language if available.
    */
   @query transLangPref?: string,
 
@@ -37,12 +39,12 @@ model BulkTextResponseBase {
 }
 
 model BulkTextResponseWithFamily extends BulkTextResponseBase {
-  ... BilingualOf<string[]>;
+  ...BilingualOf<string[]>;
 
   /** The main category that this work falls under. */
   primary_category?: string;
 }
 
 model BulkTextResponseWithoutFamily extends BulkTextResponseBase {
-  ...BilingualOf<string>
+  ...BilingualOf<string>;
 }

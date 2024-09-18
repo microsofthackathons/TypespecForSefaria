@@ -39,11 +39,14 @@ model TitlesJSON {
 /**
  * A JSON object containing `he` and `en` properties of the same type, along with documentation for each model. Intended as a building block for other models.
  */
-model BilingualOfWithDocumentation<T, heDoc extends valueof string, enDoc extends valueof string>
-{
+model BilingualOfWithDocumentation<
+  T,
+  heDoc extends valueof string,
+  enDoc extends valueof string
+> {
   @doc(enDoc)
   en?: T;
-  
+
   @doc(heDoc)
   he?: T;
 }
@@ -51,8 +54,7 @@ model BilingualOfWithDocumentation<T, heDoc extends valueof string, enDoc extend
 /**
  * A JSON object containing `he` and `en` properties of the same type. Intended as a building block for other models.
  */
-alias BilingualOf<T> =
-{
+alias BilingualOf<T> = {
   en?: T;
   he?: T;
 };
