@@ -10,7 +10,7 @@ import "./tag/lexicon.tsp";
 import "./tag/topic.tsp";
 import "./tag/term.tsp";
 import "./tag/misc.tsp";
-import "./tag/bulktext.tsp";
+//import "./tag/bulktext.tsp";
 
 using Http;
 using OpenAPI;
