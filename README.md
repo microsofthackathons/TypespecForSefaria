@@ -1,12 +1,68 @@
 # Typespec For Sefaria
-_TypeSpec definitions for Sefaria. (Global Hackathon 2024)_
+## A Microsoft Global Hackathon 2024 Project
 
-[Sefaria](https://www.sefaria.org/) is the world's largest open-source database of Jewish texts, and its user-facing portal is used by thousands daily. (A brief introduction can be found in this [two-minute video](https://youtu.be/XRPHRo0bb2o)).
+This project is a port of the existing Sefaria API definition to TypeSpec. TypeSpec is a new SDL from the Microsoft Azure Team for writing APIs and generating OpenAPI specs. You can learn more about it [here](https://typespec.io/). It is hoped that this will help Sefaria build out its API ecosystem by making it easier to maintain and extend the API definitions.
 
-They are trying to build a developer ecosystem around [the API](https://developers.sefaria.org/reference/getting-started-with-your-api) used by their web portal, but they're getting held back by maintenance of their [OpenAPI spec](https://github.com/Sefaria/Sefaria-Project/blob/master/docs/openAPI.json). We would like to catalyze their work with [TypeSpec](https://typespec.io/), a domain-specific language created by the Microsoft Azure API team that makes it easy to define OpenAPI specs using TypeScript- and C#-like syntax:
+This project was created as part of the Microsoft Global Hackathon 2024, but Avi is offering continuing support (some development, communication with TypeSpec engineers, etc.)
 
-- Migrate the existing OpenAPI definition to TypeSpec
-- Add missing OpenAPI calls using TypeSpec
-- Use TypeSpec- or OpenAPI-generated clients to have Sefaria's portal dogfood its own APIs
+# Project Structure
 
-[HackBox (for employees)](https://hackbox.microsoft.com/hackathons/hackathon2024/project/60906)
+> 🚧 These instructions are rough and subject to change.
+
+Ths project is a a node/npm project. It contains:
+- a `original_api` folder with the original OpenAPI definition. This is not quite true, some changes were made to ensure Spectre validation, enable import into TypeSpec (such as inlining common parameters), and a handful of others. But the file is essentially the same.
+- a tsp folder with the TypeSpec definition. _Use this folder as your workspace root, as it contains packages.json etc._
+    - `tspconfig.yaml` config file
+    - `main.tsp`, the entry file for openAPI generation
+	- a `tag` folder with a file for each tag in the original OpenAPI definition
+      - we'll talk about bulktext.tsp later; excluded from main.tsp by default
+    - a `model` folder for common models
+    - `common.tsp` for models etc used by multiple tags
+    - a `tsp-output` folder for the generated OpenAPI definition, at `@typespec/openapi3` (not included in source)
+
+# Development Setup and Compilation
+
+- restore the npm after installing node etc
+- install TypeSpec Extension for Visual Studio and/or VSCode
+- Compile by executing the following two commands: `tsp format **/*.tsp`, `tsp compile .`
+
+# Initial Migration
+Most of the migration visible in this project was done using TypeSpec's (not-yet-documented) `tsp-openapi3` import command. The workflow essentially looked as follows:
+- From the root directory, Execute `npx -p @typespec/openapi3@next tsp-openapi3 ./original_api/openAPI_original.json --output-dir tsp`.
+- Compile the generated TypeSpec
+- Compare the input and output JSON using [oasdiff](https://www.oasdiff.com/): `oasdiff diff ./original_api/openAPI_original.json tsp/tsp-output/@typespec/openapi3/openapi.json --flatten-params --flatten-allof --format html --exclude-elements examples,title,description > diff.html`. This spits out an HTML file comparing the old and new schemas.
+  - If some invalidity of the original API files was causing the correction to crash, it was edited, and the workflow was restarted.
+- If non-matching TypeSpec was emitted and it could be fixed by modifying the original API files, that change was made, and the workflow was restarted.
+- Once the original OpenAPI spec was valid, descriptions were added to the comparison (they don't play nice with HTML output, so the comparison was done in JSON): `oasdiff diff ./original_api/openAPI_original.json tsp/tsp-output/@typespec/openapi3/openapi.json --flatten-params --flatten-allof --format json --exclude-elements examples,title > diff.json`
+- The original generated TypeSpec file was refactored into several files (`common.tsp`, `model` folder, `tag` folder).
+- All remaining changes were triaged and, if necessary, fixed by hand. Bugs discovered in the import command were filed with the TypeSpec team.
+
+# BilingualOf\<T\>
+Most of the code is straight ports of the source OpenAPI, just transpiled and split into multiple files. I would say to read these three documentation sections, and "the rest is commentary".
+
+- [Guide - TypeSpec for REST](https://typespec.io/docs/next/getting-started/getting-started-rest/01-setup-basic-syntax)
+- [Language Basics](https://typespec.io/docs/next/language-basics/overview)
+- [Guide - TypeSpec for the OpenAPI developer](https://typespec.io/docs/next/getting-started/typespec-for-openapi-dev)
+
+
+I made one change, though, as a simple example of what TypeSpec can do.
+
+In `common.tsp`, you'll notice the `BilingualOf<T>` alias and `BilingualOfWithDocumentation<T, heDoc, enDoc>` model. These are used to replace all intances of `en` and `he` being two properties (often the only properties) of an object.
+
+The alias version is essentially just a macro, and doesn't support setting comments. It's used when possible to minimize the changes to the output OpenAPI in this stage of the port.
+
+The model version actually creates a model schema in the generated OpenAPI that matches the definition (including documentation). To minimize the changes to the OpenAPI output, the object is `...`- spread into the response objects instead of targeted directly.
+
+Together, these replace all references to the old `BilingualJSON` object.
+
+# Bulk Text API
+The `bulktext.tsp` file is not part of the port (which is why its import statement is commented out in `main.tsp`.) It served as the example demonstrated at the Hackathon "science fair" of how easy it is to write a new endpoint in TypeSpec. (It took about an hour to write, _including_ the time it took to read Sefaria's source code and make test calls to the endpoint.)
+
+While it doesn't follow the full TypeSpec-recommended conventions as visible in the Guide (e.g. using interfaces to group operations on the same model type), it is a bit more aggressive in using type features (unions, `extends`) than the existing code.
+
+# Gaps/Todo
+- The schema `title`s were not imported from the original TypeSpec. It was decided that these were not needed for manual migration.
+- The `uniqueItems` property is not yet supported in TypeSpec. It was decided this is non-critical.
+- Examples have not been imported yet.
+  - Support for model and response examples exists in TypeSpec; the work has to be done.
+  - Parameter examples are not supported, but a workaround exists (which I need to add here.)

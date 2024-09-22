@@ -1,0 +1,1 @@
+Originally generated via `npx -p @typespec/openapi3@next tsp-openapi3 ../openAPI_original.json --output-dir tsp`
