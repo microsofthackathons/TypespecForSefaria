@@ -15,6 +15,18 @@ namespace SefariaAPI;
  */
 @tag("Misc")
 @route("/api/find-refs")
+@opExample(
+  #{
+    parameters: #{
+      text: #{
+        body: "Genesis 1:1 is a citation and also Mishnah Peah 3-4. So is שמות ב",
+        title: "Some thoughts on Sefer Bereishit 1",
+      },
+      lang: "en",
+    },
+  },
+  #{ title: "Example" }
+)
 @post
 op postFindRefs(@body body: FindRefsPOSTRequest): FindRefsAPIResponse;
 
@@ -66,6 +78,19 @@ op getSocialMediaImage(
  */
 @tag("Misc")
 @route("/api/category/{category_path}")
+@opExample(
+  #{
+    returnType: #{
+      path: #["Tanakh", "Torah"],
+      titles: #[
+        #{ lang: "en", text: "Torah", primary: true },
+        #{ lang: "he", text: "תורה", primary: true }
+      ],
+      lastPath: "Torah",
+    },
+  },
+  #{ title: "Genesis" }
+)
 @get
 op getCategory(
   /** A valid Sefaria Category path */

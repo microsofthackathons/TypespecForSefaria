@@ -45,6 +45,26 @@ op getLexicon(
  */
 @tag("Lexicon")
 @route("/api/words/completion/{word}/{lexicon}")
+@opExample(
+  #{
+    returnType: #[
+      #["אב", "אַב"],
+      #["אב", "אֵב"],
+      #["אב", "אָב"],
+      #["אבד", "אֲבַד"],
+      #["אבה", "אבה"],
+      #["אבן", "אֶ֫בֶן"],
+      #["אגרה", "אִגְּרָה"],
+      #["אדין", "אֱדַ֫יִן"],
+      #["אדר", "אִדַּר"],
+      #["אדר", "אֲדָר"],
+      #["אדרגזר", "אֲדַרְגָּזַר"],
+      #["אדרזדא", "אַדְרַזְדָּא"],
+      #["אדרע", "אֶדְרַע"]
+    ],
+  },
+  #{ title: "result" }
+)
 @get
 op getWordCompletion(
   /** The word or phrase to search for in the lexicons. */

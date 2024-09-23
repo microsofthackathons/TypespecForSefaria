@@ -18,6 +18,7 @@ namespace SefariaAPI;
  */
 @tag("Index")
 @route("/api/v2/raw/index/{index_title}")
+@opExample(#{ returnType: getIndexV2ResponseExample }, #{ title: "Pesachim" })
 @get
 op getIndexV2(
   /** A title of a valid Sefaria `Index`. For a complete list of works in the [Sefaria](sefaria.org) library, as well as their index titles, query the [api/index](https://www.sefaria.org/api/index/) endpoint. */
@@ -38,6 +39,64 @@ op getTableOfContents(): APIIndexResponse;
  */
 @tag("Index")
 @route("/api/shape/{title}")
+@opExample(#{ returnType: getShapeResponseExample }, #{ title: "Complex Text" })
+@opExample(
+  #{
+    returnType: #[
+      #{
+        section: "Torah",
+        heTitle: "שמות",
+        title: "Exodus",
+        length: 40,
+        chapters: #[
+          22,
+          25,
+          22,
+          31,
+          23,
+          30,
+          29,
+          28,
+          35,
+          29,
+          10,
+          51,
+          22,
+          31,
+          27,
+          36,
+          16,
+          27,
+          25,
+          23,
+          37,
+          30,
+          33,
+          18,
+          40,
+          37,
+          21,
+          43,
+          46,
+          38,
+          18,
+          35,
+          23,
+          35,
+          35,
+          38,
+          29,
+          31,
+          43,
+          38
+        ],
+        book: "Exodus",
+        heBook: "שמות",
+      }
+    ],
+  },
+  #{ title: "Simple Text" }
+)
 @get
 op getShape(
   /**
@@ -365,3 +424,592 @@ model RawIndexAltStructNodeJSON {
 model RawIndexNodesJSON {
   nodes?: RawIndexAltStructNodeJSON[];
 }
+
+const getIndexV2ResponseExample = #{
+  title: "Pesachim",
+  categories: #["Talmud", "Bavli", "Seder Moed"],
+  schema: #{
+    nodeType: "JaggedArrayNode",
+    depth: 2,
+    addressTypes: #["Talmud", "Integer"],
+    sectionNames: #["Daf", "Line"],
+    match_templates: #[
+      #{ term_slugs: #["talmud", "bavli", "pesachim"] },
+      #{ term_slugs: #["talmud", "bavli", "tractate", "pesachim"] },
+      #{ term_slugs: #["talmud", "pesachim"] },
+      #{ term_slugs: #["bavli", "pesachim"] },
+      #{ term_slugs: #["gemara", "pesachim"] },
+      #{ term_slugs: #["bavli", "tractate", "pesachim"] },
+      #{ term_slugs: #["gemara", "tractate", "pesachim"] },
+      #{ term_slugs: #["tractate", "pesachim"] },
+      #{ term_slugs: #["pesachim"] }
+    ],
+    lengths: #[242, 3519],
+    referenceableSections: #[true, false],
+    titles: #[
+      #{ text: "Masekhet Pesachim", lang: "en" },
+      #{ text: "Talmud Pesachim", lang: "en" },
+      #{ text: "Tractate Pesachim", lang: "en" },
+      #{ text: "Pesahim", lang: "en" },
+      #{ text: "Pes.", lang: "en" },
+      #{ text: "P’saḥim", lang: "en" },
+      #{ text: "Pessachim", lang: "en" },
+      #{ text: "BT Pesachim", lang: "en" },
+      #{ text: "Psachim", lang: "en" },
+      #{ text: "Pesaḥim", lang: "en" },
+      #{ text: "פסחי'", lang: "he" },
+      #{ text: "פסחי׳", lang: "he" },
+      #{ text: "פסחים", lang: "he", primary: true },
+      #{ text: "Pesachim", lang: "en", primary: true }
+    ],
+    key: "Pesachim",
+    checkFirst: #{ he: "משנה פסחים", en: "Mishnah Pesachim" },
+  },
+  alt_structs: #{
+    Chapters: #{
+      nodes: #[
+        #{
+          nodeType: "ArrayMapNode",
+          depth: 0,
+          wholeRef: "Pesachim 2a:1-21a:7",
+          includeSections: true,
+          match_templates: #[
+            #{ term_slugs: #["perek", "chapter-129"], scope: "any" },
+            #{ term_slugs: #["perek", "first"] },
+            #{ term_slugs: #["chapter-129"], scope: "any" },
+            #{ term_slugs: #["first"] }
+          ],
+          numeric_equivalent: 1,
+          titles: #[
+            #{ primary: true, text: "Chapter 1", lang: "en" },
+            #{ primary: true, text: "אור לארבעה עשר", lang: "he" }
+          ],
+        },
+        #{
+          nodeType: "ArrayMapNode",
+          depth: 0,
+          wholeRef: "Pesachim 21a:8-42a:14",
+          includeSections: true,
+          match_templates: #[
+            #{ term_slugs: #["perek", "chapter-224"], scope: "any" },
+            #{ term_slugs: #["perek", "second"] },
+            #{ term_slugs: #["chapter-224"], scope: "any" },
+            #{ term_slugs: #["second"] }
+          ],
+          numeric_equivalent: 2,
+          titles: #[
+            #{ primary: true, text: "Chapter 2", lang: "en" },
+            #{ primary: true, text: "כל שעה", lang: "he" }
+          ],
+        },
+        #{
+          nodeType: "ArrayMapNode",
+          depth: 0,
+          wholeRef: "Pesachim 42a:15-50a:22",
+          includeSections: true,
+          match_templates: #[
+            #{ term_slugs: #["perek", "chapter-324"], scope: "any" },
+            #{ term_slugs: #["perek", "third"] },
+            #{ term_slugs: #["chapter-324"], scope: "any" },
+            #{ term_slugs: #["third"] }
+          ],
+          numeric_equivalent: 3,
+          titles: #[
+            #{ primary: true, text: "Chapter 3", lang: "en" },
+            #{ primary: true, text: "אלו עוברין", lang: "he" }
+          ],
+        },
+        #{
+          nodeType: "ArrayMapNode",
+          depth: 0,
+          wholeRef: "Pesachim 50a:23-57b:3",
+          includeSections: true,
+          match_templates: #[
+            #{ term_slugs: #["perek", "chapter-420"], scope: "any" },
+            #{ term_slugs: #["perek", "fourth"] },
+            #{ term_slugs: #["chapter-420"], scope: "any" },
+            #{ term_slugs: #["fourth"] }
+          ],
+          numeric_equivalent: 4,
+          titles: #[
+            #{ primary: true, text: "Chapter 4", lang: "en" },
+            #{ primary: true, text: "מקום שנהגו", lang: "he" }
+          ],
+        },
+        #{
+          nodeType: "ArrayMapNode",
+          depth: 0,
+          wholeRef: "Pesachim 58a:1-65b:9",
+          includeSections: true,
+          match_templates: #[
+            #{ term_slugs: #["perek", "chapter-518"], scope: "any" },
+            #{ term_slugs: #["perek", "fifth"] },
+            #{ term_slugs: #["chapter-518"], scope: "any" },
+            #{ term_slugs: #["fifth"] }
+          ],
+          numeric_equivalent: 5,
+          titles: #[
+            #{ primary: true, text: "Chapter 5", lang: "en" },
+            #{ primary: true, text: "תמיד נשחט", lang: "he" }
+          ],
+        },
+        #{
+          nodeType: "ArrayMapNode",
+          depth: 0,
+          wholeRef: "Pesachim 65b:10-73b:16",
+          includeSections: true,
+          match_templates: #[
+            #{ term_slugs: #["perek", "chapter-616"], scope: "any" },
+            #{ term_slugs: #["perek", "sixth"] },
+            #{ term_slugs: #["chapter-616"], scope: "any" },
+            #{ term_slugs: #["sixth"] }
+          ],
+          numeric_equivalent: 6,
+          titles: #[
+            #{ primary: true, text: "Chapter 6", lang: "en" },
+            #{ primary: true, text: "אלו דברים", lang: "he" }
+          ],
+        },
+        #{
+          nodeType: "ArrayMapNode",
+          depth: 0,
+          wholeRef: "Pesachim 74a:1-86b:13",
+          includeSections: true,
+          match_templates: #[
+            #{ term_slugs: #["perek", "chapter-714"], scope: "any" },
+            #{ term_slugs: #["perek", "seventh"] },
+            #{ term_slugs: #["chapter-714"], scope: "any" },
+            #{ term_slugs: #["seventh"] }
+          ],
+          numeric_equivalent: 7,
+          titles: #[
+            #{ primary: true, text: "Chapter 7", lang: "en" },
+            #{ primary: true, text: "כיצד צולין", lang: "he" }
+          ],
+        },
+        #{
+          nodeType: "ArrayMapNode",
+          depth: 0,
+          wholeRef: "Pesachim 87a:1-92b:3",
+          includeSections: true,
+          match_templates: #[
+            #{ term_slugs: #["perek", "chapter-814"], scope: "any" },
+            #{ term_slugs: #["perek", "eighth"] },
+            #{ term_slugs: #["chapter-814"], scope: "any" },
+            #{ term_slugs: #["eighth"] }
+          ],
+          numeric_equivalent: 8,
+          titles: #[
+            #{ primary: true, text: "Chapter 8", lang: "en" },
+            #{ primary: true, text: "האשה", lang: "he" }
+          ],
+        },
+        #{
+          nodeType: "ArrayMapNode",
+          depth: 0,
+          wholeRef: "Pesachim 92b:4-99a:5",
+          includeSections: true,
+          match_templates: #[
+            #{ term_slugs: #["perek", "chapter-914"], scope: "any" },
+            #{ term_slugs: #["perek", "ninth"] },
+            #{ term_slugs: #["chapter-914"], scope: "any" },
+            #{ term_slugs: #["ninth"] }
+          ],
+          numeric_equivalent: 9,
+          titles: #[
+            #{ primary: true, text: "Chapter 9", lang: "en" },
+            #{ primary: true, text: "מי שהיה טמא", lang: "he" }
+          ],
+        },
+        #{
+          nodeType: "ArrayMapNode",
+          depth: 0,
+          wholeRef: "Pesachim 99b:1-121b:3",
+          includeSections: true,
+          match_templates: #[
+            #{ term_slugs: #["perek", "chapter-109"], scope: "any" },
+            #{ term_slugs: #["perek", "tenth"] },
+            #{ term_slugs: #["chapter-109"], scope: "any" },
+            #{ term_slugs: #["tenth"] },
+            #{ term_slugs: #["perek", "last"] },
+            #{ term_slugs: #["last"] }
+          ],
+          numeric_equivalent: 10,
+          titles: #[
+            #{ primary: true, text: "Chapter 10", lang: "en" },
+            #{ primary: true, text: "ערבי פסחים", lang: "he" }
+          ],
+        }
+      ],
+    },
+  },
+  default_struct: "Chapters",
+  exclude_structs: #["schema"],
+  order: #[4, 3],
+  authors: #[],
+  enDesc: "Pesachim (“Passover Festivals”) is the third tractate in Seder Moed (“Festivals”). Its ten chapters discuss laws relating to Passover: the consumption of matzah (unleavened bread) and maror (bitter herbs), the prohibitions against owning or consuming chametz (leavened bread) on the festival, the paschal lamb that used to be offered at the Temple in Jerusalem, and the order of the seder (ritual feast) held on the first evening of the holiday.\n.",
+  enShortDesc: "Passover: ridding of chametz, the Paschal lamb offering, matzah, maror, and the Seder.",
+  heShortDesc: "דינים הקשורים לחג הפסח: איסור חמץ, קורבן הפסח, מצה, מרור וליל הסדר.",
+  pubDate: #[1523],
+  hasErrorMargin: true,
+  compDate: #[450, 550],
+  compPlace: "Talmudic Babylon",
+  pubPlace: "Venice",
+  era: "A",
+  is_cited: true,
+  corpora: #["Bavli"],
+};
+
+const getShapeResponseExample = #[
+  #{
+    isComplex: true,
+    section: "Haggadah",
+    length: 38,
+    chapters: #[
+      #{
+        section: "Haggadah",
+        heTitle: "הגדה של פסח, קדש",
+        title: "Pesach Haggadah, Kadesh",
+        length: 1,
+        chapters: 13,
+        book: "Pesach Haggadah",
+        heBook: "הגדה של פסח",
+      },
+      #{
+        section: "Haggadah",
+        heTitle: "הגדה של פסח, ורחץ",
+        title: "Pesach Haggadah, Urchatz",
+        length: 1,
+        chapters: 2,
+        book: "Pesach Haggadah",
+        heBook: "הגדה של פסח",
+      },
+      #{
+        section: "Haggadah",
+        heTitle: "הגדה של פסח, כרפס",
+        title: "Pesach Haggadah, Karpas",
+        length: 1,
+        chapters: 3,
+        book: "Pesach Haggadah",
+        heBook: "הגדה של פסח",
+      },
+      #{
+        section: "Haggadah",
+        heTitle: "הגדה של פסח, יחץ",
+        title: "Pesach Haggadah, Yachatz",
+        length: 1,
+        chapters: 2,
+        book: "Pesach Haggadah",
+        heBook: "הגדה של פסח",
+      },
+      #{
+        section: "Haggadah",
+        heTitle: "הגדה של פסח, מגיד, הא לחמא עניא",
+        title: "Pesach Haggadah, Magid, Ha Lachma Anya",
+        length: 1,
+        chapters: 3,
+        book: "Pesach Haggadah",
+        heBook: "הגדה של פסח",
+      },
+      #{
+        section: "Haggadah",
+        heTitle: "הגדה של פסח, מגיד, מה נשתנה",
+        title: "Pesach Haggadah, Magid, Four Questions",
+        length: 1,
+        chapters: 2,
+        book: "Pesach Haggadah",
+        heBook: "הגדה של פסח",
+      },
+      #{
+        section: "Haggadah",
+        heTitle: "הגדה של פסח, מגיד, עבדים היינו",
+        title: "Pesach Haggadah, Magid, We Were Slaves in Egypt",
+        length: 1,
+        chapters: 2,
+        book: "Pesach Haggadah",
+        heBook: "הגדה של פסח",
+      },
+      #{
+        section: "Haggadah",
+        heTitle: "הגדה של פסח, מגיד, מעשה שהיה בבני ברק",
+        title: "Pesach Haggadah, Magid, Story of the Five Rabbis",
+        length: 1,
+        chapters: 2,
+        book: "Pesach Haggadah",
+        heBook: "הגדה של פסח",
+      },
+      #{
+        section: "Haggadah",
+        heTitle: "הגדה של פסח, מגיד, כנגד ארבעה בנים",
+        title: "Pesach Haggadah, Magid, The Four Sons",
+        length: 1,
+        chapters: 5,
+        book: "Pesach Haggadah",
+        heBook: "הגדה של פסח",
+      },
+      #{
+        section: "Haggadah",
+        heTitle: "הגדה של פסח, מגיד, יכול מראש חודש",
+        title: "Pesach Haggadah, Magid, Yechol Me'rosh Chodesh",
+        length: 1,
+        chapters: 1,
+        book: "Pesach Haggadah",
+        heBook: "הגדה של פסח",
+      },
+      #{
+        section: "Haggadah",
+        heTitle: "הגדה של פסח, מגיד, מתחילה עובדי עבודה זרה היו אבותינו",
+        title: "Pesach Haggadah, Magid, In the Beginning Our Fathers Were Idol Worshipers",
+        length: 1,
+        chapters: 5,
+        book: "Pesach Haggadah",
+        heBook: "הגדה של פסח",
+      },
+      #{
+        section: "Haggadah",
+        heTitle: "הגדה של פסח, מגיד, ארמי אבד אבי",
+        title: "Pesach Haggadah, Magid, First Fruits Declaration",
+        length: 1,
+        chapters: 24,
+        book: "Pesach Haggadah",
+        heBook: "הגדה של פסח",
+      },
+      #{
+        section: "Haggadah",
+        heTitle: "הגדה של פסח, מגיד, עשר המכות",
+        title: "Pesach Haggadah, Magid, The Ten Plagues",
+        length: 1,
+        chapters: 20,
+        book: "Pesach Haggadah",
+        heBook: "הגדה של פסח",
+      },
+      #{
+        section: "Haggadah",
+        heTitle: "הגדה של פסח, מגיד, דיינו",
+        title: "Pesach Haggadah, Magid, Dayenu",
+        length: 1,
+        chapters: 16,
+        book: "Pesach Haggadah",
+        heBook: "הגדה של פסח",
+      },
+      #{
+        section: "Haggadah",
+        heTitle: "הגדה של פסח, מגיד, פסח מצה ומרור",
+        title: "Pesach Haggadah, Magid, Rabban Gamliel's Three Things",
+        length: 1,
+        chapters: 7,
+        book: "Pesach Haggadah",
+        heBook: "הגדה של פסח",
+      },
+      #{
+        section: "Haggadah",
+        heTitle: "הגדה של פסח, מגיד, חצי הלל",
+        title: "Pesach Haggadah, Magid, First Half of Hallel",
+        length: 1,
+        chapters: 4,
+        book: "Pesach Haggadah",
+        heBook: "הגדה של פסח",
+      },
+      #{
+        section: "Haggadah",
+        heTitle: "הגדה של פסח, מגיד, כוס שניה",
+        title: "Pesach Haggadah, Magid, Second Cup of Wine",
+        length: 1,
+        chapters: 4,
+        book: "Pesach Haggadah",
+        heBook: "הגדה של פסח",
+      },
+      #{
+        section: "Haggadah",
+        heTitle: "הגדה של פסח, רחצה",
+        title: "Pesach Haggadah, Rachtzah",
+        length: 1,
+        chapters: 3,
+        book: "Pesach Haggadah",
+        heBook: "הגדה של פסח",
+      },
+      #{
+        section: "Haggadah",
+        heTitle: "הגדה של פסח, מוציא מצה",
+        title: "Pesach Haggadah, Motzi Matzah",
+        length: 1,
+        chapters: 4,
+        book: "Pesach Haggadah",
+        heBook: "הגדה של פסח",
+      },
+      #{
+        section: "Haggadah",
+        heTitle: "הגדה של פסח, מרור",
+        title: "Pesach Haggadah, Maror",
+        length: 1,
+        chapters: 3,
+        book: "Pesach Haggadah",
+        heBook: "הגדה של פסח",
+      },
+      #{
+        section: "Haggadah",
+        heTitle: "הגדה של פסח, כורך",
+        title: "Pesach Haggadah, Korech",
+        length: 1,
+        chapters: 4,
+        book: "Pesach Haggadah",
+        heBook: "הגדה של פסח",
+      },
+      #{
+        section: "Haggadah",
+        heTitle: "הגדה של פסח, שולחן עורך",
+        title: "Pesach Haggadah, Shulchan Orech",
+        length: 1,
+        chapters: 2,
+        book: "Pesach Haggadah",
+        heBook: "הגדה של פסח",
+      },
+      #{
+        section: "Haggadah",
+        heTitle: "הגדה של פסח, צפון",
+        title: "Pesach Haggadah, Tzafun",
+        length: 1,
+        chapters: 3,
+        book: "Pesach Haggadah",
+        heBook: "הגדה של פסח",
+      },
+      #{
+        section: "Haggadah",
+        heTitle: "הגדה של פסח, ברך, ברכת המזון",
+        title: "Pesach Haggadah, Barech, Birkat Hamazon",
+        length: 1,
+        chapters: 23,
+        book: "Pesach Haggadah",
+        heBook: "הגדה של פסח",
+      },
+      #{
+        section: "Haggadah",
+        heTitle: "הגדה של פסח, ברך, כוס שלישית",
+        title: "Pesach Haggadah, Barech, Third Cup of Wine",
+        length: 1,
+        chapters: 2,
+        book: "Pesach Haggadah",
+        heBook: "הגדה של פסח",
+      },
+      #{
+        section: "Haggadah",
+        heTitle: "הגדה של פסח, ברך, שפוך חמתך",
+        title: "Pesach Haggadah, Barech, Pour Out Thy Wrath",
+        length: 1,
+        chapters: 2,
+        book: "Pesach Haggadah",
+        heBook: "הגדה של פסח",
+      },
+      #{
+        section: "Haggadah",
+        heTitle: "הגדה של פסח, הלל, מסיימים את ההלל",
+        title: "Pesach Haggadah, Hallel, Second Half of Hallel",
+        length: 1,
+        chapters: 10,
+        book: "Pesach Haggadah",
+        heBook: "הגדה של פסח",
+      },
+      #{
+        section: "Haggadah",
+        heTitle: "הגדה של פסח, הלל, מזמורי הודיה",
+        title: "Pesach Haggadah, Hallel, Songs of Praise and Thanks",
+        length: 1,
+        chapters: 6,
+        book: "Pesach Haggadah",
+        heBook: "הגדה של פסח",
+      },
+      #{
+        section: "Haggadah",
+        heTitle: "הגדה של פסח, הלל, כוס רביעית",
+        title: "Pesach Haggadah, Hallel, Fourth Cup of Wine",
+        length: 1,
+        chapters: 4,
+        book: "Pesach Haggadah",
+        heBook: "הגדה של פסח",
+      },
+      #{
+        section: "Haggadah",
+        heTitle: "הגדה של פסח, נרצה, חסל סידור פסח",
+        title: "Pesach Haggadah, Nirtzah, Chasal Siddur Pesach",
+        length: 1,
+        chapters: 2,
+        book: "Pesach Haggadah",
+        heBook: "הגדה של פסח",
+      },
+      #{
+        section: "Haggadah",
+        heTitle: "הגדה של פסח, נרצה, לשנה הבאה",
+        title: "Pesach Haggadah, Nirtzah, L'Shana HaBaa",
+        length: 1,
+        chapters: 1,
+        book: "Pesach Haggadah",
+        heBook: "הגדה של פסח",
+      },
+      #{
+        section: "Haggadah",
+        heTitle: "הגדה של פסח, נרצה, ויהי בחצי הלילה",
+        title: "Pesach Haggadah, Nirtzah, And It Happened at Midnight",
+        length: 1,
+        chapters: 11,
+        book: "Pesach Haggadah",
+        heBook: "הגדה של פסח",
+      },
+      #{
+        section: "Haggadah",
+        heTitle: "הגדה של פסח, נרצה, זבח פסח",
+        title: "Pesach Haggadah, Nirtzah, Zevach Pesach",
+        length: 1,
+        chapters: 8,
+        book: "Pesach Haggadah",
+        heBook: "הגדה של פסח",
+      },
+      #{
+        section: "Haggadah",
+        heTitle: "הגדה של פסח, נרצה, אדיר במלוכה",
+        title: "Pesach Haggadah, Nirtzah, Ki Lo Na'e",
+        length: 1,
+        chapters: 9,
+        book: "Pesach Haggadah",
+        heBook: "הגדה של פסח",
+      },
+      #{
+        section: "Haggadah",
+        heTitle: "הגדה של פסח, נרצה, אדיר הוא",
+        title: "Pesach Haggadah, Nirtzah, Adir Hu",
+        length: 1,
+        chapters: 8,
+        book: "Pesach Haggadah",
+        heBook: "הגדה של פסח",
+      },
+      #{
+        section: "Haggadah",
+        heTitle: "הגדה של פסח, נרצה, ספירת העומר",
+        title: "Pesach Haggadah, Nirtzah, Sefirat HaOmer",
+        length: 1,
+        chapters: 2,
+        book: "Pesach Haggadah",
+        heBook: "הגדה של פסח",
+      },
+      #{
+        section: "Haggadah",
+        heTitle: "הגדה של פסח, נרצה, אחד מי יודע",
+        title: "Pesach Haggadah, Nirtzah, Echad Mi Yodea",
+        length: 1,
+        chapters: 1,
+        book: "Pesach Haggadah",
+        heBook: "הגדה של פסח",
+      },
+      #{
+        section: "Haggadah",
+        heTitle: "הגדה של פסח, נרצה, חד גדיא",
+        title: "Pesach Haggadah, Nirtzah, Chad Gadya",
+        length: 1,
+        chapters: 10,
+        book: "Pesach Haggadah",
+        heBook: "הגדה של פסח",
+      }
+    ],
+    book: "Pesach Haggadah",
+    heBook: "הגדה של פסח",
+  }
+];

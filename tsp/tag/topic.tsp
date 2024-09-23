@@ -16,6 +16,71 @@ namespace SefariaAPI;
  */
 @tag("Topic")
 @route("/api/v2/topics/{topic_slug}")
+@opExample(
+  #{
+    returnType: #{
+      slug: "moses",
+      titles: #[
+        #{ text: "Moses", lang: "en", primary: true },
+        #{ text: "Moshe", lang: "en" },
+        #{ text: "Moshe Rabbeinu", lang: "en" },
+        #{ text: "moses", lang: "en" },
+        #{ text: "MOshe", lang: "en" },
+        #{ text: "#Moshe", lang: "en" },
+        #{ text: "Moshe Rebbeinu", lang: "en" },
+        #{ text: "Moshe Rabeinu", lang: "en" },
+        #{ text: "Moses a Leader", lang: "en" },
+        #{ text: "Moses our teacher", lang: "en" },
+        #{ text: "משה", lang: "he", primary: true },
+        #{ text: "ירד", lang: "he" },
+        #{ text: "מֹשֶׁה", lang: "he" },
+        #{ text: "משה רבינו", lang: "he" },
+        #{ text: "משה כמנהיג", lang: "he" },
+        #{ text: "משה רבנו", lang: "he" }
+      ],
+      subclass: "person",
+      alt_ids: #{ _temp_id: "משה", wikidata: "Q9077", _old_slug: "-75" },
+      properties: #{
+        enWikiLink: #{
+          value: "https://en.wikipedia.org/wiki/Moses",
+          dataSource: "wikidata",
+        },
+        heWikiLink: #{
+          value: "https://he.wikipedia.org/wiki/משה",
+          dataSource: "wikidata",
+        },
+        deWikiLink: #{
+          value: "https://de.wikipedia.org/wiki/Mose",
+          dataSource: "wikidata",
+        },
+        esWikiLink: #{
+          value: "https://es.wikipedia.org/wiki/Moisés",
+          dataSource: "wikidata",
+        },
+        frWikiLink: #{
+          value: "https://fr.wikipedia.org/wiki/Moïse",
+          dataSource: "wikidata",
+        },
+        ruWikiLink: #{
+          value: "https://ru.wikipedia.org/wiki/Моисей",
+          dataSource: "wikidata",
+        },
+      },
+      description: #{
+        en: "Moses was the greatest prophet in the biblical tradition. Brought up in the Egyptian royal family, he fled Egypt before being sent back by God to lead the Israelites out of slavery and to the Promised Land. He brought the Torah down from Mount Sinai, and, according to Jewish tradition, wrote it all down. He died before reaching Israel.",
+        he: "משה היה גדול הנביאים במסורת המקראית. הוא גדל בבית המלוכה המצרי, ברח ממצרים ונשלח לשם בחזרה על ידי אלוהים כדי להוציא את בני ישראל מעבדות ולהביאם לארץ המובטחת. הוא קיבל את התורה בהר סיני, ועל פי המסורת היהודית, כתב אותה מפי האל. הוא נפטר לפני כניסת העם לארץ המובטחת.",
+      },
+      categoryDescription: #{},
+      numSources: 1767,
+      good_to_promote: true,
+      description_published: true,
+      data_source: "sefaria",
+      primaryTitle: #{ en: "Moses", he: "משה" },
+      primaryTitleIsTransliteration: #{ en: false, he: false },
+    },
+  },
+  #{ title: "Moses" }
+)
 @get
 op getTopicV2(
   /**
@@ -66,6 +131,58 @@ op getTopicV2(
 #deprecated "use getTopicV1"
 @tag("Topic")
 @route("/api/topics/{topic_slug}")
+@opExample(
+  #{
+    returnType: #{
+      slug: "sukkot",
+      titles: #[
+        #{ text: "Tabernacles", lang: "en" },
+        #{ text: "Succot", lang: "en" },
+        #{ text: "Sukkos", lang: "en" },
+        #{ text: "Succos", lang: "en" },
+        #{ text: "Booths", lang: "en" },
+        #{ text: "sukkot", lang: "en" },
+        #{ text: "succot", lang: "en" },
+        #{ text: "Succoth", lang: "en" },
+        #{ text: "Sukkoth", lang: "en" },
+        #{ text: "חג הסוכות", lang: "he" },
+        #{ text: "סכות", lang: "he" },
+        #{ text: "Sukkot", lang: "en", primary: true },
+        #{ text: "סוכות", lang: "he", primary: true }
+      ],
+      alt_ids: #{ _temp_id: "סוכות" },
+      properties: #{
+        heNliLink: #{
+          value: "https://www.nli.org.il/he/discover/judaism/holidays/sukkot",
+          dataSource: "sefaria",
+        },
+        enNliLink: #{
+          value: "https://www.nli.org.il/en/discover/judaism/holidays/sukkot",
+          dataSource: "sefaria",
+        },
+      },
+      description: #{
+        en: "Sukkot is a weeklong celebration of the harvest in early fall. It is celebrated by the building of temporary booths — that is, sukkot — outside homes in which people eat their meals and sometimes even sleep. The booths are reminders of the transience of life and the sheltering presence of God.",
+        he: "חג הסוכות, הוא חג האסיף, נמשך שבעה ימים ומצוין בחודש תשרי על-ידי בניית סוכה מחוץ לבית, בה  אוכלים וחלק גם ישנים. הסוכה היא תזכורת לסוכות שבנו בני ישראל ביציאת מצרים, ומסמלת את ארעיות החיים ואת נוכחותו המגוננת של ה'",
+      },
+      categoryDescription: #{},
+      displayOrder: 4,
+      numSources: 831,
+      description_published: true,
+      data_source: "sefaria",
+      image: #{
+        image_uri: "https://storage.googleapis.com/img.sefaria.org/topics/sukkot.jpg",
+        image_caption: #{
+          en: "Detail of a painting of a sukkah. Image taken from f. 316v of Forli Siddur. 1383, Italian rite. The British Library",
+          he: "פרט ציור של סוכה עם שולחן פרוש ושלוש דמויות. דימוי מתוך סידור פורלי, 1383 איטליה",
+        },
+      },
+      primaryTitle: #{ en: "Sukkot", he: "סוכות" },
+      primaryTitleIsTransliteration: #{ en: false, he: false },
+    },
+  },
+  #{ title: "Sukkot Topic" }
+)
 @get
 op getTopicV1(
   /**
@@ -105,6 +222,10 @@ op getTopicV1(
  */
 @tag("Topic")
 @route("/api/topics")
+@opExample(
+  #{ returnType: getAllTopicsExampleResponse },
+  #{ title: "The first three topics returned: " }
+)
 @get
 op getAllTopics(): TopicJSON[];
 
@@ -114,6 +235,100 @@ op getAllTopics(): TopicJSON[];
  */
 @tag("Topic")
 @route("/api/topics-graph/{topic_slug}")
+@opExample(
+  #{
+    returnType: #{
+      topics: #[
+        #{
+          slug: "shabbat",
+          titles: #[
+            #{ text: "Shabbos", lang: "en" },
+            #{ text: "Mishnah Shabbat", lang: "en" },
+            #{ text: "שַׁבָּת", lang: "he" },
+            #{ text: "השבת", lang: "he" },
+            #{ text: "Shabbat", lang: "en", primary: true },
+            #{ text: "שבת", lang: "he", primary: true }
+          ],
+          alt_ids: #{ _temp_id: "שבת", _old_slug: "shabbat1" },
+          properties: #{
+            heNliLink: #{
+              value: "https://www.nli.org.il/he/discover/judaism/traditions/shabbat",
+              dataSource: "sefaria",
+            },
+          },
+          description: #{
+            en: "Shabbat (or Sabbath) falls every seventh day of the week, from Friday just before sunset until dark on Saturday night. It is a day of rest, marking the time when God stopped creating after after the six days of creation. Shabbat recognizes God as Creator of the Universe and as Redeemer of Israel from Egypt.",
+            he: "היום השביעי בשבוע, החל מיום שישי בשעת השקיעה ועד צאת הכוכבים במוצאי השבת. יום מנוחה לפי המקורות, המציין את הזמן שבו ה' נח לאחר שברא את העולם.",
+          },
+          categoryDescription: #{},
+          displayOrder: 0,
+          numSources: 1662,
+          good_to_promote: true,
+          description_published: true,
+          data_source: "sefaria",
+          image: #{
+            image_uri: "https://storage.googleapis.com/img.sefaria.org/topics/shabbat.jpg",
+            image_caption: #{
+              en: "Friday Evening, Isidor Kaufmann, Austria c. 1920. The Jewish Museum, Gift of Mr. and Mrs. M. R. Schweitzer",
+              he: "שישי בערב, איזידור קאופמן, וינה 1920. המוזיאון היהודי בניו יורק, מתנת  מר וגברת מ.ר. שוויצר",
+            },
+          },
+          primaryTitle: #{ en: "Shabbat", he: "שבת" },
+        },
+        #{
+          slug: "shabbat-shuvah",
+          titles: #[
+            #{ text: "Shabbat Shuvah", lang: "en", primary: true },
+            #{ text: "שבת שובה", lang: "he", primary: true },
+            #{ lang: "he", text: "שובה" }
+          ],
+          alt_ids: #{ _temp_id: "שבת שובה", _old_slug: "399" },
+          description: #{
+            en: "Shabbat of Repentance between Rosh Hashanah and Yom Kippur.",
+            he: "",
+          },
+          numSources: 19,
+          primaryTitle: #{ en: "Shabbat Shuvah", he: "שבת שובה" },
+        },
+        #{
+          slug: "shabbat-hagadol",
+          titles: #[],
+          alt_ids: #{},
+          description: #{},
+          categoryDescription: #{},
+          displayOrder: 230,
+          numSources: 57,
+          description_published: true,
+          data_source: "sefaria",
+          primaryTitle: #{ en: "Shabbat Hagadol", he: "שבת הגדול" },
+        }
+      ],
+      links: #[
+        #{
+          toTopic: "shabbat",
+          linkType: "is-a",
+          class: "intraTopic",
+          dataSource: "aspaklaria-edited-by-sefaria",
+          fromTopic: "shabbat-shuvah",
+          order: #{ linksInCommon: 0, toTfidf: 0, fromTfidf: 0 },
+        },
+        #{
+          toTopic: "shabbat",
+          linkType: "is-a",
+          class: "intraTopic",
+          dataSource: "aspaklaria-edited-by-sefaria",
+          fromTopic: "shabbat-hagadol",
+          order: #{
+            linksInCommon: 1,
+            toTfidf: 6.1420049159848755,
+            fromTfidf: 9.085421387618508,
+          },
+        }
+      ],
+    },
+  },
+  #{ title: "Shabbat" }
+)
 @get
 op getTopicGraph(
   /**
@@ -148,6 +363,60 @@ op getRecommendedTopics(
  */
 @tag("Topic")
 @route("/api/texts/random-by-topic")
+@opExample(
+  #{
+    returnType: #{
+      ref: "Avot D'Rabbi Natan 32:1",
+      topic: #{
+        slug: "metushelach",
+        titles: #[
+          #{
+            text: "Metushelach",
+            lang: "en",
+            primary: true,
+            transliteration: true,
+          },
+          #{ text: "מתושלח", lang: "he", primary: true },
+          #{ text: "Methuselah", lang: "en" },
+          #{ text: "Methushelach", lang: "en" }
+        ],
+        subclass: "person",
+        alt_ids: #{ _temp_id: "מתושלח", wikidata: "Q156290" },
+        properties: #{
+          enWikiLink: #{
+            value: "https://en.wikipedia.org/wiki/Methuselah",
+            dataSource: "wikidata",
+          },
+          heWikiLink: #{
+            value: "https://he.wikipedia.org/wiki/מתושלח",
+            dataSource: "wikidata",
+          },
+          deWikiLink: #{
+            value: "https://de.wikipedia.org/wiki/Methusalem",
+            dataSource: "wikidata",
+          },
+          esWikiLink: #{
+            value: "https://es.wikipedia.org/wiki/Matusalén",
+            dataSource: "wikidata",
+          },
+          frWikiLink: #{
+            value: "https://fr.wikipedia.org/wiki/Mathusalem",
+            dataSource: "wikidata",
+          },
+          ruWikiLink: #{
+            value: "https://ru.wikipedia.org/wiki/Мафусал_(потомок_Сифа)",
+            dataSource: "wikidata",
+          },
+        },
+        numSources: 7,
+        good_to_promote: true,
+        primaryTitle: #{ en: "Metushelach", he: "מתושלח" },
+      },
+      url: "Avot_D'Rabbi_Natan.32.1",
+    },
+  },
+  #{ title: "Metushelach" }
+)
 @get
 op getRandomByTopic(): RandomByTopicJSON;
 
@@ -408,3 +677,131 @@ model OrderJSON {
   toTfidf?: int32;
   fromTfidf?: int32;
 }
+
+const getAllTopicsExampleResponse = #[
+  #{
+    slug: "prayer",
+    titles: #[
+      #{ primary: true, text: "תפילה", lang: "he" },
+      #{ primary: true, text: "Prayer", lang: "en" },
+      #{ text: "Tefillah", lang: "en", transliteration: true },
+      #{ text: "תפלה", lang: "he", fromTerm: true },
+      #{ text: "T'filah", lang: "en" },
+      #{ text: "Tefilla", lang: "en" },
+      #{ text: "Tefilah", lang: "en" },
+      #{ text: "התפלל", lang: "he" },
+      #{ text: "Liturgy", lang: "en" },
+      #{ text: "Siddur", lang: "en" },
+      #{ text: "תְּפִלָּה", lang: "he" },
+      #{ text: "סידור", lang: "he" },
+      #{ text: "סדר התפילה", lang: "he" },
+      #{ lang: "en", text: "prayer" },
+      #{ lang: "en", text: "#Tefillah" },
+      #{ lang: "en", text: "Tefila" },
+      #{ lang: "en", text: "TEFILA" },
+      #{ lang: "en", text: "Tefiilah" },
+      #{ lang: "en", text: "Tfillah" },
+      #{ lang: "en", text: "T'fillah" },
+      #{ lang: "en", text: "T'filla" },
+      #{ lang: "en", text: "Tfilla" },
+      #{ lang: "en", text: "T'fila" }
+    ],
+    alt_ids: #{
+      _temp_id: "תפלה",
+      _temp_toc_id: "Prayer",
+      _old_slug: "tfilla1",
+    },
+    description: #{},
+    categoryDescription: #{
+      en: "Liturgy and modes of Jewish prayer.",
+      he: "נוסחי תפילה ודרכי תפילה יהודית.",
+    },
+    isTopLevelDisplay: true,
+    displayOrder: 30,
+    numSources: 2937,
+    good_to_promote: true,
+    primaryTitle: #{ en: "Prayer", he: "תפילה" },
+  },
+  #{
+    slug: "torah",
+    titles: #[
+      #{ text: "Torah", lang: "en", primary: true },
+      #{ text: "תורה", lang: "he", primary: true },
+      #{ text: "Chumash", lang: "en" },
+      #{ lang: "en", text: "torah" }
+    ],
+    alt_ids: #{ _temp_id: "תורה" },
+    numSources: 2333,
+    good_to_promote: true,
+    primaryTitle: #{ en: "Torah", he: "תורה" },
+  },
+  #{
+    slug: "passover",
+    titles: #[
+      #{ text: "Passover", lang: "en", primary: true },
+      #{ text: "פסח", lang: "he", primary: true },
+      #{ text: "Pesach", lang: "en", transliteration: true },
+      #{ text: "Pesah", lang: "en" },
+      #{ text: "Chag HaPesach", lang: "en", fromTerm: true },
+      #{ text: "Pessach", lang: "en", fromTerm: true },
+      #{ text: "חג הפסח", lang: "he", fromTerm: true },
+      #{ text: "חג המצות", lang: "he", fromTerm: true },
+      #{ lang: "he", text: "חג פסח" }
+    ],
+    alt_ids: #{ _temp_id: "פסח", _old_slug: "-13" },
+    properties: #{
+      heNliLink: #{
+        value: "https://www.nli.org.il/he/discover/judaism/holidays/passover",
+        dataSource: "sefaria",
+      },
+      enNliLink: #{
+        value: "https://www.nli.org.il/en/discover/judaism/holidays/passover",
+        dataSource: "sefaria",
+      },
+    },
+    description: #{
+      en: "Passover, or Pesach, is a week long springtime festival commemorating the Exodus from Egypt. It also celebrates national redemption, and freedom from slavery. It is observed through avoidance of certain foods (especially grains) and ritual dinners called Seders where attendees retell the story of the Exodus.",
+      he: "חג הפסח הוא חג שנמשך שבוע וחל באביב, לזכר יציאת מצרים. הוא גם חוגג את גאולת העם והשחרור מעבדות. הוא נחגג באמצעות הימנעות ממאכלים מסוימים (במיוחד דגנים) וסעודה טקסית הנקראת ליל הסדר אשר בה מספרים המשתתפים את סיפור יציאת מצרים.",
+    },
+    categoryDescription: #{},
+    displayOrder: 10,
+    numSources: 2040,
+    description_published: true,
+    primaryTitle: #{ en: "Passover", he: "פסח" },
+  },
+  #{
+    slug: "teshuvah",
+    titles: #[
+      #{ text: "Teshuvah", lang: "en", primary: true },
+      #{ text: "Teshuva", lang: "en" },
+      #{ text: "Repentance", lang: "en" },
+      #{ text: "Tshuva", lang: "en" },
+      #{ text: "Repentence", lang: "en" },
+      #{ text: "T'shuva", lang: "en" },
+      #{ text: "teshuva", lang: "en" },
+      #{ text: "teshuvah", lang: "en" },
+      #{ text: "Repent", lang: "en" },
+      #{ text: "Tshuvah", lang: "en" },
+      #{ text: "תשובה", lang: "he", primary: true },
+      #{ text: "תְּשׁוּבָה", lang: "he" }
+    ],
+    alt_ids: #{ _temp_id: "תשובה" },
+    description: #{
+      en: "The word \"teshuvah\" literally means “return” and is best translated as \"repentance.\" Teshuvah is presented in Jewish sources as a gift from God because it allows one to return to the path of righteousness. Although it can be done at any time, Yom Kippur is the Jewish holiday most associated with repentance.",
+      he: "המונח תשובה כוונתו שיבה אל דרכי האל. במקורות היהודיים נתפסת התשובה כמתנה מאלוהים, מכיוון שהיא מאפשרת לאדם לשוב ולדבוק בדרכי הטוב והיושר. אף שתשובה היא דבר שאפשר לעשות בכל עת, יום הכיפורים הוא המועד המוכר ביותר למטרה זו.",
+    },
+    categoryDescription: #{},
+    numSources: 1967,
+    good_to_promote: true,
+    description_published: true,
+    data_source: "sefaria",
+    primaryTitle: #{ en: "Teshuvah", he: "תשובה" },
+  },
+  #{
+    slug: "יחיד-וחברה",
+    titles: #[#{ lang: "he", text: "יחיד וחברה", primary: true }],
+    alt_ids: #{ _old_slug: "-163" },
+    numSources: 1826,
+    primaryTitle: #{ en: "", he: "יחיד וחברה" },
+  }
+];

@@ -16,6 +16,26 @@ namespace SefariaAPI;
  */
 @tag("Term")
 @route("/api/terms/{name}")
+@opExample(
+  #{
+    returnType: #{
+      name: "Noach",
+      titles: #[
+        #{ primary: true, text: "Noach", lang: "en" },
+        #{ primary: true, text: "נח", lang: "he" },
+        #{ text: "Parashat Noach", lang: "en" },
+        #{ text: "פרשת נח", lang: "he" },
+        #{ text: "Noah", lang: "en" },
+        #{ text: "Parshat Noah", lang: "en" }
+      ],
+      scheme: "Parasha",
+      order: 2,
+      ref: "Genesis 6:9-11:32",
+      category: "Torah Portions",
+    },
+  },
+  #{ title: "Noah" }
+)
 @get
 op getTerms(
   /** The English name of a valid Sefaria term. */
