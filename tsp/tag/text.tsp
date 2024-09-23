@@ -624,11 +624,13 @@ model versionData {
 /**
  * The JSON returned from the `v3` `texts/` endpoint.
  */
+@example(v3TextsJsonModelExample)
 model v3TextsJson {
   /**
    * The list of requested `version` objects. It includes all the data that is unique to the requested `versions`.
    *
    */
+  @example(v3TextsJson_versions_ModelExample)
   versions?: v3TextVersionsJSON[];
 
   available_versions?: v3AvailableVersionsTextJson[];
@@ -669,6 +671,7 @@ model v3TextsJson {
   /**
    * The title of the book that the response comes from.
    */
+  @example("Esther")
   book?: string;
 
   heTitle?: string;
@@ -683,6 +686,7 @@ model v3TextsJson {
   /**
    * A list of categories that a text belongs to.
    */
+  @example(#["Tanakh", "Writings"])
   categories?: string[];
 
   heIndexTitle?: string;
@@ -724,11 +728,13 @@ model v3TextsJson {
   /**
    * A list which length reflects the depth of the text structure, with string values indicating class names for address types for each level
    */
+  @example(#["Perek", "Pasuk"])
   addressTypes?: string[];
 
   /**
    * Various alternative titles used for the text.
    */
+  @example(#["Est.", "Est", "Ester", "Esth.", "Esth", "Esther"])
   titleVariants?: string[];
 
   heTitleVariants?: string[];
@@ -744,21 +750,94 @@ model v3TextsJson {
    * `APINoTranslationText = 104`
    *
    */
+  @example(#[
+    #{
+      finnish: #{
+        warning_code: 102,
+        message: "We do not have the language you asked for Esther 1:1. Available languages are #['english', 'esperanto', 'french', 'german', 'hebrew', 'italian', 'persian', 'polish', 'spanish', 'yiddish']",
+      },
+    },
+    #{
+      dutch: #{
+        warning_code: 102,
+        message: "We do not have the language you asked for Esther 1:1. Available languages are #['english', 'esperanto', 'french', 'german', 'hebrew', 'italian', 'persian', 'polish', 'spanish', 'yiddish']",
+      },
+    }
+  ])
   warnings?: unknown[];
 }
 
 /**
  * Data returned in the `available_versions` field of the `v3` `texts` API. This contains all of the available versions for a given text, not just the required versions.
  */
+@example(#{
+  status: "locked",
+  priority: 3,
+  license: "CC-BY-NC",
+  versionNotes: "<a href=\"http://purl.org/jps/rjps-preface\">Read the Preface to the Revised JPS Edition</a>\n<br><br>\n<a href=\"http://purl.org/jps/gender\">Read the Notes on Gender in Translation for the Revised JPS Edition</a>\n<br><br>\n<a href=\"https://www.sefaria.org/collections/commentary-on-the-usage-and-rendering-of-%D7%90%D7%99%D7%A9?tab=sheets\">Read a Commentary on the Hebrew word ’ish in the Revised JPS Edition</a>",
+  formatAsPoetry: "",
+  digitizedBySefaria: "",
+  method: "",
+  heversionSource: "",
+  versionUrl: "",
+  versionTitleInHebrew: "",
+  versionNotesInHebrew: "",
+  shortVersionTitle: "Revised JPS, 2023",
+  shortVersionTitleInHebrew: "",
+  extendedNotes: "",
+  extendedNotesHebrew: "",
+  purchaseInformationImage: "https://storage.googleapis.com/sefaria-physical-editions/JPS-Tanakh-Gender-Sensitive-Edition-Cover-300x450.jpg",
+  purchaseInformationURL: "https://jps.org/books/the-jps-tanakh-gender-sensitive-edition/",
+  hasManuallyWrappedRefs: "",
+  actualLanguage: "en",
+  languageFamilyName: "english",
+  isSource: false,
+  isPrimary: false,
+  direction: "ltr",
+  language: "en",
+  title: "Obadiah",
+  versionSource: "https://jps.org/books/the-jps-tanakh-gender-sensitive-edition/",
+  versionTitle: "THE JPS TANAKH: Gender-Sensitive Edition",
+})
 model v3AvailableVersionsTextJson {
   ...v3TextVersionsJSON;
 
   /**
    * The title of the book.
    */
+  @example("Esther")
   title?: string;
 }
-
+@example(#{
+  status: "locked",
+  priority: 2,
+  license: "CC-BY-SA",
+  versionNotes: "<i>Miqra According to the Masorah</i> (MAM) is a digital Hebrew edition of the Tanakh based on the Aleppo Codex and related manuscripts. It is designed for readers, and as such it contains added elements to aid vocalization of the text. For instance: When an accent is marked in an unstressed syllable, an extra accent is added in the proper place (<i>pashta</i>, <i>zarqa</i>, <i>segol</i>, <i>telisha</i>). <i>Legarmeih</i> and <i>paseq</i> are visibly distinguished. <i>Qamaz qatan</i> is indicated by its designated Unicode character (alternatives are documented where traditions differ about its application).<br>The text of MAM is fully documented. The <a href=\"https://he.wikisource.org/wiki/%D7%9E%D7%A9%D7%AA%D7%9E%D7%A9:Dovi/%D7%9E%D7%A7%D7%A8%D7%90_%D7%A2%D7%9C_%D7%A4%D7%99_%D7%94%D7%9E%D7%A1%D7%95%D7%A8%D7%94/%D7%9E%D7%99%D7%93%D7%A2_%D7%A2%D7%9C_%D7%9E%D7%94%D7%93%D7%95%D7%A8%D7%94_%D7%96%D7%95\">complete introduction</a> to the edition (Hebrew) explains the types of editorial decisions that have been made and the reasons for them (<a href=\"https://en.wikisource.org/wiki/User:Dovi/Miqra_according_to_the_Masorah#About_this_Edition_(English_Abstract)\">English abstract</a>). In addition, every word in the Bible about which there is some textual concern or ambiguity includes a documentation note; these notes can be viewed conveniently <a href=\"https://bdenckla.github.io/MAM-with-doc/\">here</a>. If an error is discovered, it may be reported to <a href=\"https://he.wikisource.org/wiki/%D7%A9%D7%99%D7%97%D7%AA_%D7%9E%D7%A9%D7%AA%D7%9E%D7%A9:Dovi\">User:Dovi</a> at Hebrew Wikisource. Please check the documentation notes before reporting an error.",
+  formatAsPoetry: "",
+  digitizedBySefaria: "",
+  method: "",
+  heversionSource: "",
+  versionUrl: "",
+  versionTitleInHebrew: "מקרא על פי המסורה",
+  versionNotesInHebrew: "",
+  shortVersionTitle: "",
+  shortVersionTitleInHebrew: "",
+  extendedNotes: "",
+  extendedNotesHebrew: "",
+  purchaseInformationImage: "",
+  purchaseInformationURL: "",
+  hasManuallyWrappedRefs: "",
+  actualLanguage: "he",
+  languageFamilyName: "hebrew",
+  isSource: true,
+  isPrimary: true,
+  direction: "rtl",
+  language: "he",
+  versionSource: "https://he.wikisource.org/wiki/%D7%9E%D7%A9%D7%AA%D7%9E%D7%A9:Dovi/%D7%9E%D7%A7%D7%A8%D7%90_%D7%A2%D7%9C_%D7%A4%D7%99_%D7%94%D7%9E%D7%A1%D7%95%D7%A8%D7%94",
+  versionTitle: "Miqra according to the Masorah",
+  text: #[],
+  firstSectionRef: "Obadiah 1",
+})
 model v3TextVersionsJSON {
   /**
    * Whether or not the text is `"locked"` for further edits from the community.
@@ -773,11 +852,13 @@ model v3TextVersionsJSON {
   /**
    * The license for the text, in terms of copyright, and distribution.
    */
+  @example("Public Domain")
   license?: string;
 
   /**
    * Notes on the version
    */
+  @example("© Kehot Publication Society")
   versionNotes?: string;
 
   /**
@@ -808,11 +889,13 @@ model v3TextVersionsJSON {
   /**
    * A URL pointing to an image of the hardcopy text available for purchase.
    */
+  @example("https://storage.googleapis.com/sefaria-physical-editions/touger-mishneh-torah-hilkhot-teshuvah-purchase-img.png")
   purchaseInformationImage?: string;
 
   /**
    * A URL pointing to where one can purchase a hardcopy of this text.
    */
+  @example("https://moznaim.com/products/mishneh-torah-rambam")
   purchaseInformationURL?: string;
 
   hasManuallyWrappedRefs?: string;
@@ -820,6 +903,7 @@ model v3TextVersionsJSON {
   /**
    * The [ISO 639-1](https://en.wikipedia.org/wiki/List_of_ISO_639_language_codes) language code for the language of the text. We default to 2 letter codes when available, and 3 letter codes when they are not.
    */
+  @example("de")
   actualLanguage?: string;
 
   /**
@@ -837,21 +921,25 @@ model v3TextVersionsJSON {
   /**
    * The direction of the text, either `ltr` (left-to-right) or `rtl` (right-to-left). Examples of `ltr` languages include English, French and German. Examples of `rtl` languages are Hebrew and Arabic.
    */
+  @example("ltr")
   direction?: string;
 
   /**
    * A holdover from the `v2` API which will eventually be deprecated. This used to indicate the direction of the text, with `en` indicating texts written from left-to-right, and `he` indicating texting written from right-to-left.
    */
+  @example("`he`\n`en`")
   language?: string;
 
   /**
    * The original source of the digital text.
    */
+  @example("http://kehot.com/")
   versionSource?: string;
 
   /**
    * The English title of the Version of text.
    */
+  @example("Mischnajot mit deutscher Übersetzung und Erklärung. Berlin 1887-1933 [de]")
   versionTitle?: string;
 
   /**
@@ -861,6 +949,26 @@ model v3TextVersionsJSON {
    *
    * If a bottom level section `Ref` was passed, the array returned will be a two-dimensional array, a list of lists of strings. The outer layer of the array represents the section, and the inner arrays represent the segments.
    */
+  @example(#[
+    "<b>Von welcher Zeit ab liest man das Schema.</b> Zu Schema wird Deuter. 6, 4—9 <span dir=\"ltr\">שמע</span> , 2. Deuter. 11, 13—21 <span dir=\"rtl\">והיה אם שמוע</span> und 3. Numeri 15, 37—41 <span dir=\"rtl\">ויאמר</span> gerechnet.",
+    "<b>da die Priester eintreten.</b> Nämlich unreine Priester, welche nicht gebadet und gereinigt hatten und erst mit dem Erscheinen der Sterne ihre Hebe essen durften (Lev. 22, 7).",
+    "<b>bis zu Ende der ersten Nachtwache.</b> Man teilte die Nacht in drei Wachen.",
+    "<b>Die Weisen.</b> So oft hier der Ausdruck die Weisen vorkommt, verstehe man darunter die große Mehrzahl der Weisen, sofern sie nach allgemein geltender Ansicht entscheidet.",
+    "<b>Bis die Morgenröte.</b> Säule der Morgenröte im Hebr. und Arab.",
+    "<b>aufsteigt.</b> Der Grund der Meinungsverschiedenheit liegt in der Deutung des <span dir=\"rtl\">ובשכבך</span> . R. Elieser erklärt: Wenn du dich niederlegst; dies geschieht bei den meisten Menschen bis Ende der ersten Nachtwache. Nach den Weisen und so auch nach R. Gamliel heißt <span dir=\"rtl\">ובשכבך</span> , wenn du liegst; demnach wäre es die ganze Nacht erlaubt das Schema zu lesen, jedoch die Weisen erlauben es nur bis Mitternacht, um der Gesetzesübertretung vorzubeugen, was R. Gamliel nicht für nötig hält.",
+    "<b>Das Aufdampfen des Fettes und der Glieder.</b> Stücke der Opfertiere, (Lev. 6, 2; 7, 2.)",
+    "<b>nur an demselben Tage gegessen werden darf.</b> D. h. am Tage der Darbringung (Lev. 7, 15).",
+    "<b>Um die Menschen von der Übertretung fern zu halten.</b> Nämlich, sie setzten eine kürzere Frist, damit man sich auf keinen Fall verspäte.",
+    "<b>Sobald man zwischen himmelblau und weiß unterscheiden kann; R. Elieser sagt: Zwischen himmelblau und lauchgrün; (und beendet das Lesen.</b> <span dir=\"rtl\">וגומרה</span> , wenn die Lesart richtig ist, bezieht es sich auf <span dir=\"rtl\">פרשת שמע</span> .",
+    "<b>erst um drei Stunden aufzustehen.</b> Das Gesetz <span dir=\"rtl\">ובקומך</span> meint er, bedeute »bis Jedermann aufgestanden ist.« — Die Stunden sind hier je nach der Jahreszeit von verschiedener Länge; denn man teilte den Tag und die Nacht in je 12 Teile. Wenn also z. B. der Tag 8 und die Nacht 16 Stunden hat, so wird die Tagesstunde zu 8/12 gewöhnliche Stunden = 40 Minuten, die Nachtstunde aber zu 16/12 gewöhnliche Stunden = 80 Minuten gerechnet. Solche Stunden werden <span dir=\"rtl\">שעות זמניות</span> = Zeitstunden genannt",
+    "<b>büsst nichts ein.</b> D. h. er möge immerhin die dazu gehörigen Vor- und Nachgebete sprechen (nach Einigen jedoch nur bis Ende der. 4. Stunde) obgleich deren Zeit vorüber ist.",
+    "<b>brachte mich aber in Lebensgefahr durch Räuber.</b> Wäre beinahe von Räubern getötet worden.",
+    "<b>Am Morgen spricht man zwei Segenssprüche voran.</b> <span dir=\"rtl\">לפניה</span> bezieht sich auf <span dir=\"rtl\">פרשת שמע</span> .",
+    "<b>und zwei nachher.</b> Nämlich des Morgens <span dir=\"rtl\">אהבה רבה ,יוצר אור</span> und <span dir=\"rtl\">גאולה</span> Des Abends <span dir=\"rtl\">מעריב גאולה ,אהבת עולם ,ערבים</span> und <span dir=\"rtl\">השכיבנו</span> .",
+    "<b>eine Schlussformel anzubringen.</b> Die ganze Stelle von <span dir=\"rtl\">מקום שאמרו</span> an wird hier als ein allgemeines, auf alle anderen <span dir=\"rtl\">ברכות</span> sich auch beziehendes Gesetz mit eingeschaltet. — Unter Schlussformel versteht man einen mit <span dir=\"rtl\">ברוך</span> anfangenden Satz, der das Ganze schliesst. Z. B. <span dir=\"rtl\">ברוך אתה ה׳ גאל ישראל</span> .",
+    "<b>Man gedenke des Auszuges aus Ägypten auch in der Nachtzeit.</b> D. h. es ist Pflicht auch in der Nacht <span dir=\"rtl\">פרשת ציצית</span> zu sprechen, weil darin des Auszuges Erwähnung geschieht.",
+    "<b>Ich bin jetzt beinah.</b> So nach einer Baraita im Jeruschalmi. Der babylonische Talmud jedoch sagt: R. Elasar ben Asarja sei damals nur 18 Jahre alt, aber bereits grau gewesen, wie ein Greis von siebzig Jahren. Nach Maimonides ist er durch vieles Studieren grau geworden."
+  ])
   text?: string[];
 
   /**
@@ -2109,4 +2217,139 @@ const textAPIReponseModelExample = #{
   commentary: #[],
   sheets: #[],
   layer: #[],
+};
+
+const v3TextsJsonModelExample = #{
+  versions: #[
+    #{
+      status: "locked",
+      priority: 2,
+      license: "CC-BY-SA",
+      versionNotes: "<i>Miqra According to the Masorah</i> (MAM) is a digital Hebrew edition of the Tanakh based on the Aleppo Codex and related manuscripts. It is designed for readers, and as such it contains added elements to aid vocalization of the text. For instance: When an accent is marked in an unstressed syllable, an extra accent is added in the proper place (<i>pashta</i>, <i>zarqa</i>, <i>segol</i>, <i>telisha</i>). <i>Legarmeih</i> and <i>paseq</i> are visibly distinguished. <i>Qamaz qatan</i> is indicated by its designated Unicode character (alternatives are documented where traditions differ about its application).<br>The text of MAM is fully documented. The <a href=\"https://he.wikisource.org/wiki/%D7%9E%D7%A9%D7%AA%D7%9E%D7%A9:Dovi/%D7%9E%D7%A7%D7%A8%D7%90_%D7%A2%D7%9C_%D7%A4%D7%99_%D7%94%D7%9E%D7%A1%D7%95%D7%A8%D7%94/%D7%9E%D7%99%D7%93%D7%A2_%D7%A2%D7%9C_%D7%9E%D7%94%D7%93%D7%95%D7%A8%D7%94_%D7%96%D7%95\">complete introduction</a> to the edition (Hebrew) explains the types of editorial decisions that have been made and the reasons for them (<a href=\"https://en.wikisource.org/wiki/User:Dovi/Miqra_according_to_the_Masorah#About_this_Edition_(English_Abstract)\">English abstract</a>). In addition, every word in the Bible about which there is some textual concern or ambiguity includes a documentation note; these notes can be viewed conveniently <a href=\"https://bdenckla.github.io/MAM-with-doc/\">here</a>. If an error is discovered, it may be reported to <a href=\"https://he.wikisource.org/wiki/%D7%A9%D7%99%D7%97%D7%AA_%D7%9E%D7%A9%D7%AA%D7%9E%D7%A9:Dovi\">User:Dovi</a> at Hebrew Wikisource. Please check the documentation notes before reporting an error.",
+      formatAsPoetry: "",
+      digitizedBySefaria: "",
+      method: "",
+      heversionSource: "",
+      versionUrl: "",
+      versionTitleInHebrew: "מקרא על פי המסורה",
+      versionNotesInHebrew: "",
+      shortVersionTitle: "",
+      shortVersionTitleInHebrew: "",
+      extendedNotes: "",
+      extendedNotesHebrew: "",
+      purchaseInformationImage: "",
+      purchaseInformationURL: "",
+      hasManuallyWrappedRefs: "",
+      actualLanguage: "he",
+      languageFamilyName: "hebrew",
+      isSource: true,
+      isPrimary: true,
+      direction: "rtl",
+      language: "he",
+      versionSource: "https://he.wikisource.org/wiki/%D7%9E%D7%A9%D7%AA%D7%9E%D7%A9:Dovi/%D7%9E%D7%A7%D7%A8%D7%90_%D7%A2%D7%9C_%D7%A4%D7%99_%D7%94%D7%9E%D7%A1%D7%95%D7%A8%D7%94",
+      versionTitle: "Miqra according to the Masorah",
+      text: #[],
+      firstSectionRef: "Obadiah 1",
+    }
+  ],
+  available_versions: #[],
+  ref: "Obadiah",
+  heRef: "עובדיה",
+  sections: #[],
+  toSections: #[],
+  sectionRef: "Obadiah",
+  heSectionRef: "עובדיה",
+  firstAvailableSectionRef: "Obadiah 1",
+  isSpanning: false,
+  spanningRefs: #[],
+  next: "Obadiah 1",
+  prev: "Obadiah 1",
+  title: "Obadiah",
+  book: "Obadiah",
+  heTitle: "עובדיה",
+  primary_category: "Tanakh",
+  type: "Tanakh",
+  indexTitle: "Obadiah",
+  categories: #["Tanakh", "Prophets"],
+  heIndexTitle: "עובדיה",
+  isComplex: false,
+  isDependant: false,
+  order: #[18, 13],
+  collectiveTitle: "",
+  heCollectiveTitle: "",
+  alts: #[],
+  lengths: #[1, 21],
+  length: 1,
+  textDepth: 2,
+  sectionNames: #["Chapter", "Verse"],
+  addressTypes: #["Perek", "Pasuk"],
+  titleVariants: #[
+    "Ovadiah",
+    "Ob.",
+    "Oba.",
+    "Ovadyah",
+    "Ovadia",
+    "Ovadya",
+    "Abdias",
+    "Obad",
+    "Obadiah"
+  ],
+  heTitleVariants: #["עובדיה"],
+  index_offsets_by_depth: #{},
+  warnings: #[],
+};
+
+const v3TextsJson_versions_ModelExample = #{
+  status: "locked",
+  priority: 2,
+  license: "CC-BY-SA",
+  versionNotes: "<i>Miqra According to the Masorah</i> (MAM) is a digital Hebrew edition of the Tanakh based on the Aleppo Codex and related manuscripts. It is designed for readers, and as such it contains added elements to aid vocalization of the text. For instance: When an accent is marked in an unstressed syllable, an extra accent is added in the proper place (<i>pashta</i>, <i>zarqa</i>, <i>segol</i>, <i>telisha</i>). <i>Legarmeih</i> and <i>paseq</i> are visibly distinguished. <i>Qamaz qatan</i> is indicated by its designated Unicode character (alternatives are documented where traditions differ about its application).<br>The text of MAM is fully documented. The <a href=\"https://he.wikisource.org/wiki/%D7%9E%D7%A9%D7%AA%D7%9E%D7%A9:Dovi/%D7%9E%D7%A7%D7%A8%D7%90_%D7%A2%D7%9C_%D7%A4%D7%99_%D7%94%D7%9E%D7%A1%D7%95%D7%A8%D7%94/%D7%9E%D7%99%D7%93%D7%A2_%D7%A2%D7%9C_%D7%9E%D7%94%D7%93%D7%95%D7%A8%D7%94_%D7%96%D7%95\">complete introduction</a> to the edition (Hebrew) explains the types of editorial decisions that have been made and the reasons for them (<a href=\"https://en.wikisource.org/wiki/User:Dovi/Miqra_according_to_the_Masorah#About_this_Edition_(English_Abstract)\">English abstract</a>). In addition, every word in the Bible about which there is some textual concern or ambiguity includes a documentation note; these notes can be viewed conveniently <a href=\"https://bdenckla.github.io/MAM-with-doc/\">here</a>. If an error is discovered, it may be reported to <a href=\"https://he.wikisource.org/wiki/%D7%A9%D7%99%D7%97%D7%AA_%D7%9E%D7%A9%D7%AA%D7%9E%D7%A9:Dovi\">User:Dovi</a> at Hebrew Wikisource. Please check the documentation notes before reporting an error.",
+  formatAsPoetry: "",
+  digitizedBySefaria: "",
+  method: "",
+  heversionSource: "",
+  versionUrl: "",
+  versionTitleInHebrew: "מקרא על פי המסורה",
+  versionNotesInHebrew: "",
+  shortVersionTitle: "",
+  shortVersionTitleInHebrew: "",
+  extendedNotes: "",
+  extendedNotesHebrew: "",
+  purchaseInformationImage: "",
+  purchaseInformationURL: "",
+  hasManuallyWrappedRefs: "",
+  actualLanguage: "he",
+  languageFamilyName: "hebrew",
+  isSource: true,
+  isPrimary: true,
+  direction: "rtl",
+  language: "he",
+  versionSource: "https://he.wikisource.org/wiki/%D7%9E%D7%A9%D7%AA%D7%9E%D7%A9:Dovi/%D7%9E%D7%A7%D7%A8%D7%90_%D7%A2%D7%9C_%D7%A4%D7%99_%D7%94%D7%9E%D7%A1%D7%95%D7%A8%D7%94",
+  versionTitle: "Miqra according to the Masorah",
+  text: #[
+    #[
+      "חֲז֖וֹן עֹֽבַדְיָ֑ה כֹּֽה־אָמַר֩ אֲדֹנָ֨י יֱהֹוִ֜ה לֶאֱד֗וֹם שְׁמוּעָ֨ה שָׁמַ֜עְנוּ מֵאֵ֤ת יְהֹוָה֙ וְצִיר֙ בַּגּוֹיִ֣ם שֻׁלָּ֔ח ק֛וּמוּ וְנָק֥וּמָה עָלֶ֖יהָ לַמִּלְחָמָֽה׃",
+      "הִנֵּ֥ה קָטֹ֛ן נְתַתִּ֖יךָ בַּגּוֹיִ֑ם בָּז֥וּי אַתָּ֖ה מְאֹֽד׃",
+      "זְד֤וֹן לִבְּךָ֙ הִשִּׁיאֶ֔ךָ שֹׁכְנִ֥י בְחַגְוֵי־סֶ֖לַע מְר֣וֹם שִׁבְתּ֑וֹ אֹמֵ֣ר בְּלִבּ֔וֹ מִ֥י יוֹרִדֵ֖נִי אָֽרֶץ׃",
+      "אִם־תַּגְבִּ֣יהַּ כַּנֶּ֔שֶׁר וְאִם־בֵּ֥ין כּֽוֹכָבִ֖ים שִׂ֣ים קִנֶּ֑ךָ מִשָּׁ֥ם אוֹרִֽידְךָ֖ נְאֻם־יְהֹוָֽה׃",
+      "אִם־גַּנָּבִ֤ים בָּאֽוּ־לְךָ֙ אִם־שׁ֣וֹדְדֵי לַ֔יְלָה אֵ֣יךְ נִדְמֵ֔יתָה הֲל֥וֹא יִגְנְב֖וּ דַּיָּ֑ם אִם־בֹּֽצְרִים֙ בָּ֣אוּ לָ֔ךְ הֲל֖וֹא יַשְׁאִ֥ירוּ עֹלֵלֽוֹת׃",
+      "אֵ֚יךְ נֶחְפְּשׂ֣וּ עֵשָׂ֔ו נִבְע֖וּ מַצְפֻּנָֽיו׃",
+      "עַֽד־הַגְּב֣וּל שִׁלְּח֗וּךָ כֹּ֚ל אַנְשֵׁ֣י בְרִיתֶ֔ךָ הִשִּׁיא֛וּךָ יָכְל֥וּ לְךָ֖ אַנְשֵׁ֣י שְׁלֹמֶ֑ךָ לַחְמְךָ֗ יָשִׂ֤ימוּ מָזוֹר֙ תַּחְתֶּ֔יךָ אֵ֥ין תְּבוּנָ֖ה בּֽוֹ׃",
+      "הֲל֛וֹא בַּיּ֥וֹם הַה֖וּא נְאֻם־יְהֹוָ֑ה וְהַאֲבַדְתִּ֤י חֲכָמִים֙ מֵֽאֱד֔וֹם וּתְבוּנָ֖ה מֵהַ֥ר עֵשָֽׂו׃",
+      "וְחַתּ֥וּ גִבּוֹרֶ֖יךָ תֵּימָ֑ן לְמַ֧עַן יִכָּֽרֶת־אִ֛ישׁ מֵהַ֥ר עֵשָׂ֖ו מִקָּֽטֶל׃",
+      "מֵחֲמַ֛ס אָחִ֥יךָ יַעֲקֹ֖ב תְּכַסְּךָ֣ בוּשָׁ֑ה וְנִכְרַ֖תָּ לְעוֹלָֽם׃",
+      "בְּיוֹם֙ עֲמׇֽדְךָ֣ מִנֶּ֔גֶד בְּי֛וֹם שְׁב֥וֹת זָרִ֖ים חֵיל֑וֹ וְנׇכְרִ֞ים בָּ֣אוּ <span class=\"mam-kq-trivial\">שְׁעָרָ֗ו</span> וְעַל־יְרוּשָׁלַ֙͏ִם֙ יַדּ֣וּ גוֹרָ֔ל גַּם־אַתָּ֖ה כְּאַחַ֥ד מֵהֶֽם׃",
+      "וְאַל־תֵּ֤רֶא בְיוֹם־אָחִ֙יךָ֙ בְּי֣וֹם נׇכְר֔וֹ וְאַל־תִּשְׂמַ֥ח לִבְנֵֽי־יְהוּדָ֖ה בְּי֣וֹם אׇבְדָ֑ם וְאַל־תַּגְדֵּ֥ל פִּ֖יךָ בְּי֥וֹם צָרָֽה׃",
+      "אַל־תָּב֤וֹא בְשַֽׁעַר־עַמִּי֙ בְּי֣וֹם אֵידָ֔ם אַל־תֵּ֧רֶא גַם־אַתָּ֛ה בְּרָעָת֖וֹ בְּי֣וֹם אֵיד֑וֹ וְאַל־תִּשְׁלַ֥חְנָה בְחֵיל֖וֹ בְּי֥וֹם אֵידֽוֹ׃",
+      "וְאַֽל־תַּעֲמֹד֙ עַל־הַפֶּ֔רֶק לְהַכְרִ֖ית אֶת־פְּלִיטָ֑יו וְאַל־תַּסְגֵּ֥ר שְׂרִידָ֖יו בְּי֥וֹם צָרָֽה׃",
+      "כִּֽי־קָר֥וֹב יוֹם־יְהֹוָ֖ה עַל־כׇּל־הַגּוֹיִ֑ם כַּאֲשֶׁ֤ר עָשִׂ֙יתָ֙ יֵעָ֣שֶׂה לָּ֔ךְ גְּמֻלְךָ֖ יָשׁ֥וּב בְּרֹאשֶֽׁךָ׃",
+      "כִּ֗י כַּֽאֲשֶׁ֤ר שְׁתִיתֶם֙ עַל־הַ֣ר קׇדְשִׁ֔י יִשְׁתּ֥וּ כׇֽל־הַגּוֹיִ֖ם תָּמִ֑יד וְשָׁת֣וּ וְלָע֔וּ וְהָי֖וּ כְּל֥וֹא הָיֽוּ׃",
+      "וּבְהַ֥ר צִיּ֛וֹן תִּהְיֶ֥ה פְלֵיטָ֖ה וְהָ֣יָה קֹ֑דֶשׁ וְיָֽרְשׁוּ֙ בֵּ֣ית יַֽעֲקֹ֔ב אֵ֖ת מוֹרָֽשֵׁיהֶֽם׃",
+      "וְהָיָה֩ בֵית־יַעֲקֹ֨ב אֵ֜שׁ וּבֵ֧ית יוֹסֵ֣ף לֶהָבָ֗ה וּבֵ֤ית עֵשָׂו֙ לְקַ֔שׁ וְדָלְק֥וּ בָהֶ֖ם וַאֲכָל֑וּם וְלֹֽא־יִֽהְיֶ֤ה שָׂרִיד֙ לְבֵ֣ית עֵשָׂ֔ו כִּ֥י יְהֹוָ֖ה דִּבֵּֽר׃",
+      "וְיָרְשׁ֨וּ הַנֶּ֜גֶב אֶת־הַ֣ר עֵשָׂ֗ו וְהַשְּׁפֵלָה֙ אֶת־פְּלִשְׁתִּ֔ים וְיָרְשׁוּ֙ אֶת־שְׂדֵ֣ה אֶפְרַ֔יִם וְאֵ֖ת שְׂדֵ֣ה שֹׁמְר֑וֹן וּבִנְיָמִ֖ן אֶת־הַגִּלְעָֽד׃",
+      "וְגָלֻ֣ת הַֽחֵל־הַ֠זֶּ֠ה לִבְנֵ֨י יִשְׂרָאֵ֤ל אֲשֶֽׁר־כְּנַעֲנִים֙ עַד־צָ֣רְפַ֔ת וְגָלֻ֥ת יְרוּשָׁלַ֖͏ִם אֲשֶׁ֣ר בִּסְפָרַ֑ד יִֽרְשׁ֕וּ אֵ֖ת עָרֵ֥י הַנֶּֽגֶב׃",
+      "וְעָל֤וּ מֽוֹשִׁעִים֙ בְּהַ֣ר צִיּ֔וֹן לִשְׁפֹּ֖ט אֶת־הַ֣ר עֵשָׂ֑ו וְהָיְתָ֥ה לַֽיהֹוָ֖ה הַמְּלוּכָֽה׃"
+    ]
+  ],
+  firstSectionRef: "Obadiah 1",
 };

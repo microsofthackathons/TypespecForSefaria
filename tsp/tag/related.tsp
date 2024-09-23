@@ -443,6 +443,27 @@ model RelatedTopicJSON {
 /**
  * A single link returned by the link (and related[?]) APIs
  */
+@example(#{
+  _id: "578b4ad1d6e4a90d260c2d9a",
+  index_title: "Tosafot Yom Tov on Mishnah Peah",
+  category: "Commentary",
+  type: "commentary",
+  ref: "Tosafot Yom Tov on Mishnah Peah 4:2:1",
+  anchorRef: "Mishnah Peah 4:2",
+  anchorRefExpanded: #["Mishnah Peah 4:2"],
+  sourceRef: "Tosafot Yom Tov on Mishnah Peah 4:2:1",
+  sourceHeRef: "תוספות יום טוב על משנה פאה ד׳:ב׳:א׳",
+  anchorVerse: 2,
+  sourceHasEn: false,
+  compDate: #[1613, 1617],
+  commentaryNum: 2.0001,
+  collectiveTitle: #{ en: "Tosafot Yom Tov", he: "תוספות יום טוב" },
+  he: "<b>#[*ואחד אומר לחלק לזה שומעין וכו'</b>. שאפילו הוא זקן ותש כח או חולה שהרי מה שאמר לחלק מפני חלישותו הוא אפילו הכי שומעין לו כך מצאתי בפירוש הנ\"ל]: \n",
+  heVersionTitle: "Mishnah, ed. Romm, Vilna 1913",
+  heLicense: "Public Domain",
+  heVersionTitleInHebrew: "משנה, מהדורת בית דפוס ראם, וילנא 1913",
+  text: #[],
+})
 model LinkObj {
   _id?: string;
 
@@ -466,6 +487,7 @@ model LinkObj {
   /**
    * The submitted `ref` in the GET request at times may fall within a more encompassing ranged ref that includes multiple text segments. The `anchorRef` is that complete range the that the link is associated with, and will contain within it the specific `ref` that was passed.
    */
+  @example("Esther 3:15-4:17")
   anchorRef?: string;
 
   /**
@@ -473,7 +495,9 @@ model LinkObj {
    *
    * For example, if someone was searching for links for `Esther 4.14-15`, the `anchorRefExpanded` would contain `Esther 4.14` and `Esther 4.15`.
    */
-  @minItems(1) anchorRefExpanded?: string[];
+  @example(#{ anchorRefExpanded: #["Esther 4:14", "Esther 4:15"] })
+  @minItems(1)
+  anchorRefExpanded?: string[];
 
   /**
    * The connecting link for the submitted `ref`
