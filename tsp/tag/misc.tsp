@@ -100,6 +100,56 @@ op getCategory(
 /**
  * A response to the Find Refs API
  */
+@example(#{
+  title: #{
+    results: #[
+      #{
+        startChar: 23,
+        endChar: 34,
+        text: "Bereishit 1",
+        linkFailed: false,
+        refs: #["Genesis 1"],
+      }
+    ],
+    refData: #{
+      `Genesis 1`: #{
+        heRef: "בראשית א׳",
+        url: "Genesis.1",
+        primaryCategory: "Tanakh",
+      },
+    },
+  },
+  body: #{
+    results: #[
+      #{
+        startChar: 0,
+        endChar: 11,
+        text: "Genesis 1:1",
+        linkFailed: false,
+        refs: #["Genesis 1:1"],
+      },
+      #{
+        startChar: 35,
+        endChar: 51,
+        text: "Mishnah Peah 3-4",
+        linkFailed: false,
+        refs: #["Mishnah Peah 3-4"],
+      }
+    ],
+    refData: #{
+      `Genesis 1:1`: #{
+        heRef: "בראשית א׳:א׳",
+        url: "Genesis.1.1",
+        primaryCategory: "Tanakh",
+      },
+      `Mishnah Peah 3-4`: #{
+        heRef: "משנה פאה ג׳-ד׳",
+        url: "Mishnah_Peah.3-4",
+        primaryCategory: "Mishnah",
+      },
+    },
+  },
+})
 model FindRefsAPIResponse {
   /**
    * Information about any references found in the `title` field of the POST request
@@ -196,6 +246,13 @@ model searchResponse {
 /**
  * A properly formatted POST request for the Find Refs API
  */
+@example(#{
+  text: #{
+    body: "Genesis 1:1 is a citation and also Mishnah Peah 3-4. So is שמות ב",
+    title: "Some thoughts on Sefer Bereishit 1",
+  },
+  lang: "en",
+})
 model FindRefsPOSTRequest {
   /**
    * Initially designed for websites, this API expects the `text` field to contain both a `body` and a `title`. When parsing arbitrary text feel free to just use `body` and pass an empty string `''` to `title`
@@ -208,9 +265,25 @@ model FindRefsPOSTRequest {
   /**
    * Either `he` or `en`. If not included, it will default to one based on the number of Hebrew or Latin characters in the `body` of the `text`.
    */
+  @example("en")
   lang: "he" | "en";
 }
 
+@example(#{
+  aggs: #["path"],
+  field: "naive_lemmatizer",
+  filter_fields: #[],
+  filters: #[],
+  query: "banana",
+  size: 50,
+  slop: 10,
+  sort_fields: #["pagesheetrank"],
+  sort_method: "score",
+  sort_reverse: false,
+  sort_score_missing: 0.04,
+  source_proj: true,
+  type: "text",
+})
 model SearchPOSTData {
   /**
    * List of fields to aggregate on. Common fields are `path` for the `text` type and `group` or `topics` for the `sheet` type
@@ -281,6 +354,14 @@ model SearchPOSTData {
 /**
  * JSON response for a Category GET request
  */
+@example(#{
+  path: #["Tanakh", "Torah"],
+  titles: #[
+    #{ lang: "en", text: "Torah", primary: true },
+    #{ lang: "he", text: "תורה", primary: true }
+  ],
+  lastPath: "Torah",
+})
 model CatJSON {
   /**
    * The full path of the category

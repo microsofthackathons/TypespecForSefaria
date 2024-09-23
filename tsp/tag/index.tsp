@@ -192,6 +192,7 @@ model ShapeJSON {
   /**
    * The parent section for this `Index`. (So for example, the `section` for `Jonah` is `Prophets`. The `section` for `Pesachim` is `Seder Moed`)
    */
+  @example("Prophets")
   Section?: string;
 
   /**
@@ -217,26 +218,57 @@ model ShapeJSON {
   /**
    * For simple texts, this is a list of chapter lengths. For complex texts or categories, the Shape API will return a list of dicts for each text within that category or text.
    */
+  @example(#[16, 11, 10, 11])
   Chapters: ShapeJSON[];
 }
 
 /**
  * The full mongo record JSON from the database for a given Sefaria `Index`.
  */
+@example(RawIndexJSONModelExample)
 model RawIndexJSON {
   /**
    * Title of the work.
    */
+  @example("Pesachim")
   title?: string;
 
   /**
    * The categories within which this text falls. *Note:* The order of the strings in the array is significant. The categories should go from most general at position `0`, to most specific.
    */
+  @example(#["Talmud", "Bavli", "Seder Moed"])
   categories?: string[];
 
   /**
    * The structure of the Index within the Sefaria specific schema for texts.
    */
+  @example(#{
+    nodeType: "JaggedArrayNode",
+    depth: 2,
+    addressTypes: #["Talmud", "Integer"],
+    sectionNames: #["Daf", "Line"],
+    match_templates: #[],
+    lengths: #[242, 3519],
+    referenceableSections: #[true, false],
+    titles: #[
+      #{ text: "Masekhet Pesachim", lang: "en" },
+      #{ text: "Talmud Pesachim", lang: "en" },
+      #{ text: "Tractate Pesachim", lang: "en" },
+      #{ text: "Pesahim", lang: "en" },
+      #{ text: "Pes.", lang: "en" },
+      #{ text: "P’saḥim", lang: "en" },
+      #{ text: "Pessachim", lang: "en" },
+      #{ text: "BT Pesachim", lang: "en" },
+      #{ text: "Psachim", lang: "en" },
+      #{ text: "Pesaḥim ", lang: "en" },
+      #{ text: "פסחי'", lang: "he" },
+      #{ text: "פסחי׳", lang: "he" },
+      #{ text: "פסחים", lang: "he", primary: true },
+      #{ text: "Pesachim", lang: "en", primary: true }
+    ],
+    key: "Pesachim",
+    checkFirst: #{ he: "משנה פסחים", en: "Mishnah Pesachim" },
+  })
   schema?: RawIndexSchemaJSON;
 
   /**
@@ -247,6 +279,7 @@ model RawIndexJSON {
   /**
    * Which structure of the available structures is default.
    */
+  @example("chapters")
   default_struct?: string;
 
   exclude_structs?: string[];
@@ -260,16 +293,19 @@ model RawIndexJSON {
   /**
    * A longer English description of the index.
    */
+  @example("Pesachim (“Passover Festivals”) is the third tractate in Seder Moed (“Festivals”). Its ten chapters discuss laws relating to Passover: the consumption of matzah (unleavened bread) and maror (bitter herbs), the prohibitions against owning or consuming chametz (leavened bread) on the festival, the paschal lamb that used to be offered at the Temple in Jerusalem, and the order of the seder (ritual feast) held on the first evening of the holiday.\n.")
   enDesc?: string;
 
   /**
    * A short English description of the index.
    */
+  @example("Passover: ridding of chametz, the Paschal lamb offering, matzah, maror, and the Seder.")
   enShortDesc?: string;
 
   /**
    * A short description of the text in Hebrew.
    */
+  @example("דינים הקשורים לחג הפסח: איסור חמץ, קורבן הפסח, מצה, מרור וליל הסדר.")
   heShortDesc?: string;
 
   /**
@@ -297,11 +333,13 @@ model RawIndexJSON {
   /**
    * Location of composition
    */
+  @example("Talmudic Babylon")
   compPlace?: string;
 
   /**
    * Location of publication
    */
+  @example("Venice")
   pubPlace?: string;
 
   /**
@@ -321,33 +359,51 @@ model RawIndexJSON {
   /**
    * Indicator of whether ot not this text is cited by others in our library. Functionally, this means we will pick up links to this text when cited in other texts.
    */
+  @example("True")
   is_cited?: boolean;
 
+  @example(#["Bavli"])
   corpora?: string[];
 }
 
 /**
  * Schema JSON for an Index.
  */
+@example(#{
+  nodeType: "JaggedArrayNode",
+  depth: 2,
+  addressTypes: #["Talmud", "Integer"],
+  sectionNames: #["Daf", "Line"],
+  match_templates: #[],
+  lengths: #[242, 3519],
+  referenceableSections: #[true, false],
+  titles: #[],
+  key: "Pesachim",
+  checkFirst: #{ he: "משנה פסחים", en: "Mishnah Pesachim" },
+})
 model RawIndexSchemaJSON {
   /**
    * The type of node. Nodes can either be `SchemaNodes` or `JaggedArray` nodes. A `JaggedArray` is a nested array (2D or 3D), whereas a `SchemaNode` is a node with children of either type. All tree leaves in the Sefaria text tree must be `JaggedArray` nodes.
    */
+  @example("JaggedArrayNode")
   nodeType?: "JaggedArrayNode" | "SchemaNode";
 
   /**
    * The depth of a text. For example, a book of Tanakh with chapters and verses has a depth 2, whereas a commentary on that book of Tanakh, with multiple comments on each verse (so a chapter-verse-comment structure) would have a depth of 3.
    */
+  @example(2)
   depth?: int32;
 
   /**
    * A list which length reflects the depth of the text structure, with string values indicating class names for address types for each level.
    */
+  @example(#["Talmud", "Integer"])
   addressTypes?: string[];
 
   /**
    * An array containing the type names of the sections of this text. The length of `sectionNames` gives the depth of the structure of this text. For example, Kohelet (`["Chapter", "Verse"]`) has depth 2, while Mishneh Torah (`["Book", "Topic", "Section", "Law"]`) has depth 4. Comparing this depth to the depth of sections will show if the request was for the lowest level, or a higher level, of the text.
    */
+  @example(#["Book", "Topic", "Section", "Law"])
   sectionNames?: string[];
 
   /**
@@ -360,6 +416,7 @@ model RawIndexSchemaJSON {
    *
    * A depth-3 text (a commentary, for example) will have three values, representing the number of super sections, sections, and segments.
    */
+  @example(#[50, 1533])
   lengths?: int32[];
 
   referenceableSections?: boolean[];
@@ -367,11 +424,28 @@ model RawIndexSchemaJSON {
   /**
    * Titles for the index.
    */
+  @example(#[
+    #{ text: "Masekhet Pesachim", lang: "en" },
+    #{ text: "Talmud Pesachim", lang: "en" },
+    #{ text: "Tractate Pesachim", lang: "en" },
+    #{ text: "Pesahim", lang: "en" },
+    #{ text: "Pes.", lang: "en" },
+    #{ text: "P’saḥim", lang: "en" },
+    #{ text: "Pessachim", lang: "en" },
+    #{ text: "BT Pesachim", lang: "en" },
+    #{ text: "Psachim", lang: "en" },
+    #{ text: "Pesaḥim ", lang: "en" },
+    #{ text: "פסחי'", lang: "he" },
+    #{ text: "פסחי׳", lang: "he" },
+    #{ text: "פסחים", lang: "he", primary: true },
+    #{ text: "Pesachim", lang: "en", primary: true }
+  ])
   titles?: TitlesJSON[];
 
   /**
    * Unique key for the text, usually matches the `Index` title.
    */
+  @example("Pesachim")
   key?: string;
 
   checkFirst?: BilingualOf<string>;
@@ -380,10 +454,27 @@ model RawIndexSchemaJSON {
 /**
  * The JSON returned for the alt structs of an Index.
  */
+@example(RawIndexAltStructsJSONModelExample)
 model RawIndexAltStructsJSON {
   Chapters?: RawIndexNodesJSON;
 }
-
+@example(#{
+  nodeType: "ArrayMapNode",
+  depth: 0,
+  wholeRef: "Pesachim 2a:1-21a:7",
+  includeSections: true,
+  match_templates: #[
+    #{ term_slugs: #["perek", "chapter-129"], scope: "any" },
+    #{ term_slugs: #["perek", "first"] },
+    #{ term_slugs: #["chapter-129"], scope: "any" },
+    #{ term_slugs: #["first"] }
+  ],
+  numeric_equivalent: 1,
+  titles: #[
+    #{ primary: true, text: "Chapter 1", lang: "en" },
+    #{ primary: true, text: "אור לארבעה עשר", lang: "he" }
+  ],
+})
 model RawIndexAltStructNodeJSON {
   /**
    * The type of node
@@ -398,6 +489,7 @@ model RawIndexAltStructNodeJSON {
   /**
    * The specific ranged `Ref` that corresponds to this section of text.
    */
+  @example("\"Pesachim 2a:1-21a:7")
   wholeRef?: ref;
 
   includeSections?: boolean;
@@ -413,11 +505,16 @@ model RawIndexAltStructNodeJSON {
   /**
    * The numeric equivalent of the section. So for example, if chapter two of Masechet Pesachim is referred to as `כל שעה`, the `numeric_equivalent` is 2.
    */
+  @example(3)
   numeric_equivalent?: int32;
 
   /**
    * Titles for this section of text.
    */
+  @example(#[
+    #{ primary: true, text: "Chapter 1", lang: "en" },
+    #{ primary: true, text: "אור לארבעה עשר", lang: "he" }
+  ])
   titles?: TitlesJSON[];
 }
 
@@ -1013,3 +1110,419 @@ const getShapeResponseExample = #[
     heBook: "הגדה של פסח",
   }
 ];
+
+const RawIndexAltStructsJSONModelExample = #{
+  alt_structs: #{
+    Chapters: #{
+      nodes: #[
+        #{
+          nodeType: "ArrayMapNode",
+          depth: 0,
+          wholeRef: "Pesachim 2a:1-21a:7",
+          includeSections: true,
+          match_templates: #[
+            #{ term_slugs: #["perek", "chapter-129"], scope: "any" },
+            #{ term_slugs: #["perek", "first"] },
+            #{ term_slugs: #["chapter-129"], scope: "any" },
+            #{ term_slugs: #["first"] }
+          ],
+          numeric_equivalent: 1,
+          titles: #[
+            #{ primary: true, text: "Chapter 1", lang: "en" },
+            #{ primary: true, text: "אור לארבעה עשר", lang: "he" }
+          ],
+        },
+        #{
+          nodeType: "ArrayMapNode",
+          depth: 0,
+          wholeRef: "Pesachim 21a:8-42a:14",
+          includeSections: true,
+          match_templates: #[
+            #{ term_slugs: #["perek", "chapter-224"], scope: "any" },
+            #{ term_slugs: #["perek", "second"] },
+            #{ term_slugs: #["chapter-224"], scope: "any" },
+            #{ term_slugs: #["second"] }
+          ],
+          numeric_equivalent: 2,
+          titles: #[
+            #{ primary: true, text: "Chapter 2", lang: "en" },
+            #{ primary: true, text: "כל שעה", lang: "he" }
+          ],
+        },
+        #{
+          nodeType: "ArrayMapNode",
+          depth: 0,
+          wholeRef: "Pesachim 42a:15-50a:22",
+          includeSections: true,
+          match_templates: #[
+            #{ term_slugs: #["perek", "chapter-324"], scope: "any" },
+            #{ term_slugs: #["perek", "third"] },
+            #{ term_slugs: #["chapter-324"], scope: "any" },
+            #{ term_slugs: #["third"] }
+          ],
+          numeric_equivalent: 3,
+          titles: #[
+            #{ primary: true, text: "Chapter 3", lang: "en" },
+            #{ primary: true, text: "אלו עוברין", lang: "he" }
+          ],
+        },
+        #{
+          nodeType: "ArrayMapNode",
+          depth: 0,
+          wholeRef: "Pesachim 50a:23-57b:3",
+          includeSections: true,
+          match_templates: #[
+            #{ term_slugs: #["perek", "chapter-420"], scope: "any" },
+            #{ term_slugs: #["perek", "fourth"] },
+            #{ term_slugs: #["chapter-420"], scope: "any" },
+            #{ term_slugs: #["fourth"] }
+          ],
+          numeric_equivalent: 4,
+          titles: #[
+            #{ primary: true, text: "Chapter 4", lang: "en" },
+            #{ primary: true, text: "מקום שנהגו", lang: "he" }
+          ],
+        },
+        #{
+          nodeType: "ArrayMapNode",
+          depth: 0,
+          wholeRef: "Pesachim 58a:1-65b:9",
+          includeSections: true,
+          match_templates: #[
+            #{ term_slugs: #["perek", "chapter-518"], scope: "any" },
+            #{ term_slugs: #["perek", "fifth"] },
+            #{ term_slugs: #["chapter-518"], scope: "any" },
+            #{ term_slugs: #["fifth"] }
+          ],
+          numeric_equivalent: 5,
+          titles: #[
+            #{ primary: true, text: "Chapter 5", lang: "en" },
+            #{ primary: true, text: "תמיד נשחט", lang: "he" }
+          ],
+        },
+        #{
+          nodeType: "ArrayMapNode",
+          depth: 0,
+          wholeRef: "Pesachim 65b:10-73b:16",
+          includeSections: true,
+          match_templates: #[
+            #{ term_slugs: #["perek", "chapter-616"], scope: "any" },
+            #{ term_slugs: #["perek", "sixth"] },
+            #{ term_slugs: #["chapter-616"], scope: "any" },
+            #{ term_slugs: #["sixth"] }
+          ],
+          numeric_equivalent: 6,
+          titles: #[
+            #{ primary: true, text: "Chapter 6", lang: "en" },
+            #{ primary: true, text: "אלו דברים", lang: "he" }
+          ],
+        },
+        #{
+          nodeType: "ArrayMapNode",
+          depth: 0,
+          wholeRef: "Pesachim 74a:1-86b:13",
+          includeSections: true,
+          match_templates: #[
+            #{ term_slugs: #["perek", "chapter-714"], scope: "any" },
+            #{ term_slugs: #["perek", "seventh"] },
+            #{ term_slugs: #["chapter-714"], scope: "any" },
+            #{ term_slugs: #["seventh"] }
+          ],
+          numeric_equivalent: 7,
+          titles: #[
+            #{ primary: true, text: "Chapter 7", lang: "en" },
+            #{ primary: true, text: "כיצד צולין", lang: "he" }
+          ],
+        },
+        #{
+          nodeType: "ArrayMapNode",
+          depth: 0,
+          wholeRef: "Pesachim 87a:1-92b:3",
+          includeSections: true,
+          match_templates: #[
+            #{ term_slugs: #["perek", "chapter-814"], scope: "any" },
+            #{ term_slugs: #["perek", "eighth"] },
+            #{ term_slugs: #["chapter-814"], scope: "any" },
+            #{ term_slugs: #["eighth"] }
+          ],
+          numeric_equivalent: 8,
+          titles: #[
+            #{ primary: true, text: "Chapter 8", lang: "en" },
+            #{ primary: true, text: "האשה", lang: "he" }
+          ],
+        },
+        #{
+          nodeType: "ArrayMapNode",
+          depth: 0,
+          wholeRef: "Pesachim 92b:4-99a:5",
+          includeSections: true,
+          match_templates: #[
+            #{ term_slugs: #["perek", "chapter-914"], scope: "any" },
+            #{ term_slugs: #["perek", "ninth"] },
+            #{ term_slugs: #["chapter-914"], scope: "any" },
+            #{ term_slugs: #["ninth"] }
+          ],
+          numeric_equivalent: 9,
+          titles: #[
+            #{ primary: true, text: "Chapter 9", lang: "en" },
+            #{ primary: true, text: "מי שהיה טמא", lang: "he" }
+          ],
+        },
+        #{
+          nodeType: "ArrayMapNode",
+          depth: 0,
+          wholeRef: "Pesachim 99b:1-121b:3",
+          includeSections: true,
+          match_templates: #[
+            #{ term_slugs: #["perek", "chapter-109"], scope: "any" },
+            #{ term_slugs: #["perek", "tenth"] },
+            #{ term_slugs: #["chapter-109"], scope: "any" },
+            #{ term_slugs: #["tenth"] },
+            #{ term_slugs: #["perek", "last"] },
+            #{ term_slugs: #["last"] }
+          ],
+          numeric_equivalent: 10,
+          titles: #[
+            #{ primary: true, text: "Chapter 10", lang: "en" },
+            #{ primary: true, text: "ערבי פסחים", lang: "he" }
+          ],
+        }
+      ],
+    },
+  },
+};
+
+const RawIndexJSONModelExample = #{
+  title: "Pesachim",
+  categories: #["Talmud", "Bavli", "Seder Moed"],
+  schema: #{
+    nodeType: "JaggedArrayNode",
+    depth: 2,
+    addressTypes: #["Talmud", "Integer"],
+    sectionNames: #["Daf", "Line"],
+    match_templates: #[
+      #{ term_slugs: #["talmud", "bavli", "pesachim"] },
+      #{ term_slugs: #["talmud", "bavli", "tractate", "pesachim"] },
+      #{ term_slugs: #["talmud", "pesachim"] },
+      #{ term_slugs: #["bavli", "pesachim"] },
+      #{ term_slugs: #["gemara", "pesachim"] },
+      #{ term_slugs: #["bavli", "tractate", "pesachim"] },
+      #{ term_slugs: #["gemara", "tractate", "pesachim"] },
+      #{ term_slugs: #["tractate", "pesachim"] },
+      #{ term_slugs: #["pesachim"] }
+    ],
+    lengths: #[242, 3519],
+    referenceableSections: #[true, false],
+    titles: #[
+      #{ text: "Masekhet Pesachim", lang: "en" },
+      #{ text: "Talmud Pesachim", lang: "en" },
+      #{ text: "Tractate Pesachim", lang: "en" },
+      #{ text: "Pesahim", lang: "en" },
+      #{ text: "Pes.", lang: "en" },
+      #{ text: "P’saḥim", lang: "en" },
+      #{ text: "Pessachim", lang: "en" },
+      #{ text: "BT Pesachim", lang: "en" },
+      #{ text: "Psachim", lang: "en" },
+      #{ text: "Pesaḥim", lang: "en" },
+      #{ text: "פסחי'", lang: "he" },
+      #{ text: "פסחי׳", lang: "he" },
+      #{ text: "פסחים", lang: "he", primary: true },
+      #{ text: "Pesachim", lang: "en", primary: true }
+    ],
+    key: "Pesachim",
+    checkFirst: #{ he: "משנה פסחים", en: "Mishnah Pesachim" },
+  },
+  alt_structs: #{
+    Chapters: #{
+      nodes: #[
+        #{
+          nodeType: "ArrayMapNode",
+          depth: 0,
+          wholeRef: "Pesachim 2a:1-21a:7",
+          includeSections: true,
+          match_templates: #[
+            #{ term_slugs: #["perek", "chapter-129"], scope: "any" },
+            #{ term_slugs: #["perek", "first"] },
+            #{ term_slugs: #["chapter-129"], scope: "any" },
+            #{ term_slugs: #["first"] }
+          ],
+          numeric_equivalent: 1,
+          titles: #[
+            #{ primary: true, text: "Chapter 1", lang: "en" },
+            #{ primary: true, text: "אור לארבעה עשר", lang: "he" }
+          ],
+        },
+        #{
+          nodeType: "ArrayMapNode",
+          depth: 0,
+          wholeRef: "Pesachim 21a:8-42a:14",
+          includeSections: true,
+          match_templates: #[
+            #{ term_slugs: #["perek", "chapter-224"], scope: "any" },
+            #{ term_slugs: #["perek", "second"] },
+            #{ term_slugs: #["chapter-224"], scope: "any" },
+            #{ term_slugs: #["second"] }
+          ],
+          numeric_equivalent: 2,
+          titles: #[
+            #{ primary: true, text: "Chapter 2", lang: "en" },
+            #{ primary: true, text: "כל שעה", lang: "he" }
+          ],
+        },
+        #{
+          nodeType: "ArrayMapNode",
+          depth: 0,
+          wholeRef: "Pesachim 42a:15-50a:22",
+          includeSections: true,
+          match_templates: #[
+            #{ term_slugs: #["perek", "chapter-324"], scope: "any" },
+            #{ term_slugs: #["perek", "third"] },
+            #{ term_slugs: #["chapter-324"], scope: "any" },
+            #{ term_slugs: #["third"] }
+          ],
+          numeric_equivalent: 3,
+          titles: #[
+            #{ primary: true, text: "Chapter 3", lang: "en" },
+            #{ primary: true, text: "אלו עוברין", lang: "he" }
+          ],
+        },
+        #{
+          nodeType: "ArrayMapNode",
+          depth: 0,
+          wholeRef: "Pesachim 50a:23-57b:3",
+          includeSections: true,
+          match_templates: #[
+            #{ term_slugs: #["perek", "chapter-420"], scope: "any" },
+            #{ term_slugs: #["perek", "fourth"] },
+            #{ term_slugs: #["chapter-420"], scope: "any" },
+            #{ term_slugs: #["fourth"] }
+          ],
+          numeric_equivalent: 4,
+          titles: #[
+            #{ primary: true, text: "Chapter 4", lang: "en" },
+            #{ primary: true, text: "מקום שנהגו", lang: "he" }
+          ],
+        },
+        #{
+          nodeType: "ArrayMapNode",
+          depth: 0,
+          wholeRef: "Pesachim 58a:1-65b:9",
+          includeSections: true,
+          match_templates: #[
+            #{ term_slugs: #["perek", "chapter-518"], scope: "any" },
+            #{ term_slugs: #["perek", "fifth"] },
+            #{ term_slugs: #["chapter-518"], scope: "any" },
+            #{ term_slugs: #["fifth"] }
+          ],
+          numeric_equivalent: 5,
+          titles: #[
+            #{ primary: true, text: "Chapter 5", lang: "en" },
+            #{ primary: true, text: "תמיד נשחט", lang: "he" }
+          ],
+        },
+        #{
+          nodeType: "ArrayMapNode",
+          depth: 0,
+          wholeRef: "Pesachim 65b:10-73b:16",
+          includeSections: true,
+          match_templates: #[
+            #{ term_slugs: #["perek", "chapter-616"], scope: "any" },
+            #{ term_slugs: #["perek", "sixth"] },
+            #{ term_slugs: #["chapter-616"], scope: "any" },
+            #{ term_slugs: #["sixth"] }
+          ],
+          numeric_equivalent: 6,
+          titles: #[
+            #{ primary: true, text: "Chapter 6", lang: "en" },
+            #{ primary: true, text: "אלו דברים", lang: "he" }
+          ],
+        },
+        #{
+          nodeType: "ArrayMapNode",
+          depth: 0,
+          wholeRef: "Pesachim 74a:1-86b:13",
+          includeSections: true,
+          match_templates: #[
+            #{ term_slugs: #["perek", "chapter-714"], scope: "any" },
+            #{ term_slugs: #["perek", "seventh"] },
+            #{ term_slugs: #["chapter-714"], scope: "any" },
+            #{ term_slugs: #["seventh"] }
+          ],
+          numeric_equivalent: 7,
+          titles: #[
+            #{ primary: true, text: "Chapter 7", lang: "en" },
+            #{ primary: true, text: "כיצד צולין", lang: "he" }
+          ],
+        },
+        #{
+          nodeType: "ArrayMapNode",
+          depth: 0,
+          wholeRef: "Pesachim 87a:1-92b:3",
+          includeSections: true,
+          match_templates: #[
+            #{ term_slugs: #["perek", "chapter-814"], scope: "any" },
+            #{ term_slugs: #["perek", "eighth"] },
+            #{ term_slugs: #["chapter-814"], scope: "any" },
+            #{ term_slugs: #["eighth"] }
+          ],
+          numeric_equivalent: 8,
+          titles: #[
+            #{ primary: true, text: "Chapter 8", lang: "en" },
+            #{ primary: true, text: "האשה", lang: "he" }
+          ],
+        },
+        #{
+          nodeType: "ArrayMapNode",
+          depth: 0,
+          wholeRef: "Pesachim 92b:4-99a:5",
+          includeSections: true,
+          match_templates: #[
+            #{ term_slugs: #["perek", "chapter-914"], scope: "any" },
+            #{ term_slugs: #["perek", "ninth"] },
+            #{ term_slugs: #["chapter-914"], scope: "any" },
+            #{ term_slugs: #["ninth"] }
+          ],
+          numeric_equivalent: 9,
+          titles: #[
+            #{ primary: true, text: "Chapter 9", lang: "en" },
+            #{ primary: true, text: "מי שהיה טמא", lang: "he" }
+          ],
+        },
+        #{
+          nodeType: "ArrayMapNode",
+          depth: 0,
+          wholeRef: "Pesachim 99b:1-121b:3",
+          includeSections: true,
+          match_templates: #[
+            #{ term_slugs: #["perek", "chapter-109"], scope: "any" },
+            #{ term_slugs: #["perek", "tenth"] },
+            #{ term_slugs: #["chapter-109"], scope: "any" },
+            #{ term_slugs: #["tenth"] },
+            #{ term_slugs: #["perek", "last"] },
+            #{ term_slugs: #["last"] }
+          ],
+          numeric_equivalent: 10,
+          titles: #[
+            #{ primary: true, text: "Chapter 10", lang: "en" },
+            #{ primary: true, text: "ערבי פסחים", lang: "he" }
+          ],
+        }
+      ],
+    },
+  },
+  default_struct: "Chapters",
+  exclude_structs: #["schema"],
+  order: #[4, 3],
+  authors: #[],
+  enDesc: "Pesachim (“Passover Festivals”) is the third tractate in Seder Moed (“Festivals”). Its ten chapters discuss laws relating to Passover: the consumption of matzah (unleavened bread) and maror (bitter herbs), the prohibitions against owning or consuming chametz (leavened bread) on the festival, the paschal lamb that used to be offered at the Temple in Jerusalem, and the order of the seder (ritual feast) held on the first evening of the holiday.\n.",
+  enShortDesc: "Passover: ridding of chametz, the Paschal lamb offering, matzah, maror, and the Seder.",
+  heShortDesc: "דינים הקשורים לחג הפסח: איסור חמץ, קורבן הפסח, מצה, מרור וליל הסדר.",
+  pubDate: #[1523],
+  hasErrorMargin: true,
+  compDate: #[450, 550],
+  compPlace: "Talmudic Babylon",
+  pubPlace: "Venice",
+  era: "A",
+  is_cited: true,
+  corpora: #["Bavli"],
+};

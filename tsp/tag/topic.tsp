@@ -423,20 +423,88 @@ op getRandomByTopic(): RandomByTopicJSON;
 /**
  * A JSON object containing all of the metadata for a topic object
  */
+@example(#{
+  slug: "sukkot",
+  titles: #[
+    #{ text: "Tabernacles", lang: "en" },
+    #{ text: "Succot", lang: "en" },
+    #{ text: "Sukkos", lang: "en" },
+    #{ text: "Succos", lang: "en" },
+    #{ text: "Booths", lang: "en" },
+    #{ text: "sukkot", lang: "en" },
+    #{ text: "succot", lang: "en" },
+    #{ text: "Succoth", lang: "en" },
+    #{ text: "Sukkoth", lang: "en" },
+    #{ text: "חג הסוכות", lang: "he" },
+    #{ text: "סכות", lang: "he" },
+    #{ text: "Sukkot", lang: "en", primary: true },
+    #{ text: "סוכות", lang: "he", primary: true }
+  ],
+  alt_ids: #{ _temp_id: "סוכות" },
+  properties: #{
+    heNliLink: #{
+      value: "https://www.nli.org.il/he/discover/judaism/holidays/sukkot",
+      dataSource: "sefaria",
+    },
+    enNliLink: #{
+      value: "https://www.nli.org.il/en/discover/judaism/holidays/sukkot",
+      dataSource: "sefaria",
+    },
+  },
+  description: #{
+    en: "Sukkot is a weeklong celebration of the harvest in early fall. It is celebrated by the building of temporary booths — that is, sukkot — outside homes in which people eat their meals and sometimes even sleep. The booths are reminders of the transience of life and the sheltering presence of God.",
+    he: "חג הסוכות, הוא חג האסיף, נמשך שבעה ימים ומצוין בחודש תשרי על-ידי בניית סוכה מחוץ לבית, בה  אוכלים וחלק גם ישנים. הסוכה היא תזכורת לסוכות שבנו בני ישראל ביציאת מצרים, ומסמלת את ארעיות החיים ואת נוכחותו המגוננת של ה'",
+  },
+  categoryDescription: #{},
+  displayOrder: 4,
+  numSources: 831,
+  description_published: true,
+  data_source: "sefaria",
+  image: #{
+    image_uri: "https://storage.googleapis.com/img.sefaria.org/topics/sukkot.jpg",
+    image_caption: #{
+      en: "Detail of a painting of a sukkah. Image taken from f. 316v of Forli Siddur. 1383, Italian rite. The British Library",
+      he: "פרט ציור של סוכה עם שולחן פרוש ושלוש דמויות. דימוי מתוך סידור פורלי, 1383 איטליה",
+    },
+  },
+  primaryTitle: #{ en: "Sukkot", he: "סוכות" },
+  primaryTitleIsTransliteration: #{ en: false, he: false },
+})
 model TopicJSON {
   /**
    * The unique slug for a given topic.
    */
+  @example("nachman-of-breslov")
   slug: string;
 
   /**
    * An array of JSON objects, each representing an alternative title for the object, in various languages.
    */
+  @example(#{
+    titles: #[
+      #{ text: "Tabernacles", lang: "en" },
+      #{ text: "Succot", lang: "en" },
+      #{ text: "Sukkos", lang: "en" },
+      #{ text: "Succos", lang: "en" },
+      #{ text: "Booths", lang: "en" },
+      #{ text: "sukkot", lang: "en" },
+      #{ text: "succot", lang: "en" },
+      #{ text: "Succoth", lang: "en" },
+      #{ text: "Sukkoth", lang: "en" },
+      #{ text: "חג הסוכות", lang: "he" },
+      #{ text: "סכות", lang: "he" },
+      #{ text: "Sukkot", lang: "en", primary: true },
+      #{ text: "סוכות", lang: "he", primary: true }
+    ],
+  })
   titles: TitlesJSON[];
 
   /**
    * This is a dictionary containing the keys of naming schemes, and ids of this topic represented in that naming scheme.  It’s used both for canonical names in other naming schemes and temporary storage of names when renaming slugs. All of the data here is for internal use, with the exception of the values `bfo` and `wikidata`. `bfo` refers to [basic formal ontology](https://developers.sefaria.org/docs/topic-ontology), and `wikidata` to the wikidata ontology of topics.
    */
+  @example(#{
+    alt_ids: #{ _temp_id: "משה", wikidata: "Q9077", _old_slug: "-75" },
+  })
   alt_ids?: {
     _temp_id?: string;
   };
@@ -444,11 +512,29 @@ model TopicJSON {
   /**
    * The properties stores optional data relating to the topic, including links (if relevant) to where on can learn more about the topic.
    */
+  @example(#{
+    properties: #{
+      heNliLink: #{
+        value: "https://www.nli.org.il/he/discover/judaism/holidays/sukkot",
+        dataSource: "sefaria",
+      },
+      enNliLink: #{
+        value: "https://www.nli.org.il/en/discover/judaism/holidays/sukkot",
+        dataSource: "sefaria",
+      },
+    },
+  })
   properties?: TopicPropertyJson;
 
   /**
    * A description of the topic
    */
+  @example(#{
+    description: #{
+      en: "Sukkot is a weeklong celebration of the harvest in early fall. It is celebrated by the building of temporary booths — that is, sukkot — outside homes in which people eat their meals and sometimes even sleep. The booths are reminders of the transience of life and the sheltering presence of God.",
+      he: "חג הסוכות, הוא חג האסיף, נמשך שבעה ימים ומצוין בחודש תשרי על-ידי בניית סוכה מחוץ לבית, בה  אוכלים וחלק גם ישנים. הסוכה היא תזכורת לסוכות שבנו בני ישראל ביציאת מצרים, ומסמלת את ארעיות החיים ואת נוכחותו המגוננת של ה'",
+    },
+  })
   description?: BilingualOf<string>;
 
   /**
@@ -459,36 +545,51 @@ model TopicJSON {
   /**
    * The order in which topics are displayed on the Sefaria website, relative to other topics within their same category.
    */
+  @example(1)
   displayOrder?: int32;
 
   /**
    * The number of text sources associated with a topic.
    */
+  @example(831)
   numSources?: int32;
 
   /**
    * A boolean representing whether or not the description was published.
    */
+  @example(true)
   description_published?: boolean;
 
   /**
    * How the topic was generated, whether by Sefaria, a user on a source sheet, or some other source.
    */
+  @example("`sefaria`")
   data_source?: string;
 
   /**
    * Metadata for images associated with topics.
    */
+  @example(#{
+    image: #{
+      image_uri: "https://storage.googleapis.com/img.sefaria.org/topics/sukkot.jpg",
+      image_caption: #{
+        en: "Detail of a painting of a sukkah. Image taken from f. 316v of Forli Siddur. 1383, Italian rite. The British Library",
+        he: "פרט ציור של סוכה עם שולחן פרוש ושלוש דמויות. דימוי מתוך סידור פורלי, 1383 איטליה",
+      },
+    },
+  })
   image?: TopicImgJSON;
 
   /**
    * The primary title for a topic.
    */
+  @example(#{ en: "Sukkot", he: "סוכות" })
   primaryTitle?: BilingualOf<string>;
 
   /**
    * This field has the possibility of being used to indicate whether or not a title is a transliteration, however the data here is not always consistent or up-to-date. Therefore, it is best to disregard the data in this field, and there are many false negatives.
    */
+  @example(#{ primaryTitleIsTransliteration: #{ en: false, he: false } })
   primaryTitleIsTransliteration?: BilingualOf<string>;
 }
 
@@ -501,6 +602,11 @@ model TopicGraphJSON {
   links?: TopicGraphLinkJSON[];
 }
 
+@example(#{
+  slug: "jacobs-burial",
+  titles: #{ en: "Jacob's Burial", he: "קבורת יעקב" },
+  count: 3,
+})
 model recommendedTopicResponse {
   /**
    * The url slug for the topic.
@@ -596,15 +702,33 @@ model RandomByTopicTopicJSON {
 /**
  * The JSON object containing information about a topic's properties
  */
+@example(#{
+  heNliLink: #{
+    value: "https://www.nli.org.il/he/discover/judaism/holidays/sukkot",
+    dataSource: "sefaria",
+  },
+  enNliLink: #{
+    value: "https://www.nli.org.il/en/discover/judaism/holidays/sukkot",
+    dataSource: "sefaria",
+  },
+})
 model TopicPropertyJson {
   /**
    * A link to the Hebrew page on the website of the National Library of Israel which corresponds to the given topic, so users can learn more.
    */
+  @example(#{
+    value: "https://www.nli.org.il/he/discover/judaism/holidays/sukkot",
+    dataSource: "sefaria",
+  })
   heNliLink?: NLILinkJSON;
 
   /**
    * A link to the English page on the website of the National Library of Israel which corresponds to the given topic, so users can learn more.
    */
+  @example(#{
+    value: "https://www.nli.org.il/en/discover/judaism/holidays/sukkot",
+    dataSource: "sefaria",
+  })
   enNliLink?: NLILinkJSON;
 }
 
@@ -615,26 +739,42 @@ model NLILinkJSON {
   /**
    * A link to a corresponding NLI page to learn more.
    */
+  @example("https://www.nli.org.il/en/discover/judaism/holidays/sukkot")
   value?: string;
 
   /**
    * The source of the topic data, whether user-created or Sefaria-created.
    */
+  @example("`sefaria`")
   dataSource?: string;
 }
 
 /**
  * A JSON object containing the image metadata for topics with images.
  */
+@example(#{
+  image_uri: "https://storage.googleapis.com/img.sefaria.org/topics/sukkot.jpg",
+  image_caption: #{
+    en: "Detail of a painting of a sukkah. Image taken from f. 316v of Forli Siddur. 1383, Italian rite. The British Library",
+    he: "פרט ציור של סוכה עם שולחן פרוש ושלוש דמויות. דימוי מתוך סידור פורלי, 1383 איטליה",
+  },
+})
 model TopicImgJSON {
   /**
    * The URL pointing to the image as hosted by Sefaria.
    */
+  @example("https://storage.googleapis.com/img.sefaria.org/topics/sukkot.jpg")
   image_uri?: string;
 
   /**
    * A JSON object containing the billingual caption data for an image associated with a topic.
    */
+  @example(#{
+    image_caption: #{
+      en: "Detail of a painting of a sukkah. Image taken from f. 316v of Forli Siddur. 1383, Italian rite. The British Library",
+      he: "פרט ציור של סוכה עם שולחן פרוש ושלוש דמויות. דימוי מתוך סידור פורלי, 1383 איטליה",
+    },
+  })
   image_caption?: BilingualOf<string>;
 }
 

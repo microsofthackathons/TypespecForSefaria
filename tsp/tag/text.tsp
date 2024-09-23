@@ -314,11 +314,13 @@ op getRandomText(
 /**
  * The texts on Sefaria are grouped into two language buckets, `en` for languages which read left-to-right (i.e. English, Spanish, German) and `he` for languages which read right-to-left (i.e. Hebrew, Arabic). This field is only ever populated by a string containing the value of either `en` or `he`.
  */
+@example("'en'\n'he'")
 scalar LanguageCode extends string;
 
 /**
  * Expected reponse data from Sefaria's Text API
  */
+@example(textAPIReponseModelExample)
 model textAPIReponse {
   ref?: ref;
 
@@ -447,45 +449,73 @@ model textAPIReponse {
 /**
  * The metadata for a given version.
  */
+@example(#{
+  title: "Shulchan Arukh, Orach Chayim",
+  versionTitle: "Wikisource Shulchan Aruch",
+  versionSource: "https://en.wikisource.org/wiki/Translation:Shulchan_Aruch/Orach_Chaim/338",
+  language: "en",
+  status: "",
+  license: "CC-BY-SA",
+  versionNotes: "",
+  digitizedBySefaria: "",
+  priority: "",
+  versionTitleInHebrew: "שולחן ערוך (ויקיטקסט)",
+  versionNotesInHebrew: "",
+  extendedNotes: "",
+  extendedNotesHebrew: "",
+  purchaseInformationImage: "",
+  purchaseInformationURL: "",
+  shortVersionTitle: "",
+  shortVersionTitleInHebrew: "",
+  firstSectionRef: "Shulchan Arukh, Orach Chayim 1",
+})
 model VersionJSON {
   /**
    * The title of the Index.
    */
+  @example("Talmud Berakhot")
   title?: string;
 
   /**
    * The title of the version
    */
+  @example("William Davidson Edition - Vocalized Aramaic")
   versionTitle?: string;
 
   /**
    * A URL pointing to the hardcopy of the text as it can be found in libraries, most usually in our case the NLI (National Library of Israel), but not exclusively.
    */
+  @example("https://www.nli.org.il/he/books/NNL_ALEPH990025294890205171/NLI")
   versionSource?: string;
 
   /**
    * The language of the version. The versions on Sefaria are grouped into two language buckets, `en` for languages which read left-to-right (i.e. English, Spanish, German) and `he` for languages which read right-to-left (i.e. Hebrew, Arabic)
    */
+  @example("'en'\n'he'")
   language?: LanguageCode;
 
   /**
    * The status field contains either the string `"locked"` or an empty string. If `"locked"` is the value of the field, it indicates that the text is locked from future updatees, edits and translations from community members.
    */
+  @example("locked")
   status?: string;
 
   /**
    * The copyright license for using, and reproducing the text.
    */
+  @example("CC-BY")
   license?: string;
 
   /**
    * English notes relating to the version, often containing details of authorship, place of printing, and sometimes donor dedications.
    */
+  @example("\"English from The William Davidson digital edition of the <a href='https://korenpub.com/collections/the-noe-edition-koren-talmud-bavli-1'>Koren Noé Talmud</a>, with commentary by <a href='/adin-even-israel-steinsaltz'>Rabbi Adin Even-Israel Steinsaltz</a>\",")
   versionNotes?: string;
 
   /**
    * Whether or not the text was digitized by Sefaria. We have some texts we've been able to add to our database from digital sources, and other texts that we've transfered from print to a digital medium ourselves. This field indicates if Sefaria did the digitization.
    */
+  @example("True")
   digitizedBySefaria?: boolean;
 
   /**
@@ -493,11 +523,13 @@ model VersionJSON {
    *
    * Priority values can also be floating point numbers. The priority field determines how the various available versions of a text will be displayed on the Sefaria website. The texts are displayed to the user in a highest-to-lowest priority order, in many cases offering more complete or higher quality versions of the text before ones of inferior quality.
    */
+  @example(7)
   priority?: numeric;
 
   /**
    * The title of the version in Hebrew
    */
+  @example("מהדורת וויליאם דייוידסון - ארמית המנוקד")
   versionTitleInHebrew?: string;
 
   /**
@@ -518,16 +550,19 @@ model VersionJSON {
   /**
    * A URL pointing to an image of the hard copy of the version associated with the digital copy, for those who would like to purchase a hard copy.
    */
+  @example("https://storage.googleapis.com/sefaria-physical-editions/4fc4b6d5b144eb3915d250d743eaf2e8.png")
   purchaseInformationImage?: string;
 
   /**
    * The URL pointing to a website where on can buy a physical copy of the given text version.
    */
+  @example("https://korenpub.com/collections/the-noe-edition-koren-talmud-bavli-1/products/copy-of-vol-1-berakhot-1")
   purchaseInformationURL?: string;
 
   /**
    * An English short title for the version
    */
+  @example("Koren - Steinsaltz")
   shortVersionTitle?: string;
 
   /**
@@ -538,12 +573,33 @@ model VersionJSON {
   /**
    * The first `ref` for this title on a section level (as opposed to the more granular segment level). For example, `Genesis 1` would be the first section level ref of Genesis (as opposed to the segment, `Genesis 1:1`), and `Rashi on Kohelet 1:1` is the first section level ref of `Rashi on Kohelet` (as opposed to the segment level of `Rashi on Kohelet 1:1:1`)
    */
+  @example("Rashi on Kohelet 1.1")
   firstSectionRef?: string;
 }
 
 /**
  * Information about a single text version of a title
  */
+@example(#{
+  title: "Genesis",
+  versionTitle: "The Contemporary Torah, Jewish Publication Society, 2006",
+  versionSource: "https://www.nli.org.il/he/books/NNL_ALEPH002529489/NLI",
+  language: "en",
+  status: "locked",
+  license: "CC-BY-NC",
+  versionNotes: "Dedicated by an anonymous donor in honor of all women and girls who study, teach, and transform Torah.\n<br><br>\n<a href=\"https://www.sefaria.org/sheets/382047\">Read the preface to The Contemporary Torah</a>\n<br><br>\n<a href=\"https://www.sefaria.org/sheets/380713\"> See the Dictionary of Gender in the Torah</a>",
+  digitizedBySefaria: "",
+  priority: 7,
+  versionTitleInHebrew: "",
+  versionNotesInHebrew: "תרומה אלמונית לכבוד כל הנשים והבנות שלומדות, מלמדות ונותנות צורה חדשה לתורה",
+  extendedNotes: "",
+  extendedNotesHebrew: "",
+  purchaseInformationImage: "https://jps.org/wp-content/uploads/2014/10/ContemporaryTorah-300x458.png",
+  purchaseInformationURL: "https://jps.org/books/contemporary-torah/",
+  shortVersionTitle: "The Contemporary Torah, JPS, 2006",
+  shortVersionTitleInHebrew: "",
+  firstSectionRef: "Genesis 1",
+})
 model versionData {
   title?: string;
   versionTitle?: string;
@@ -1804,3 +1860,253 @@ const getVersionsResponseExample = #[
     firstSectionRef: "Rashi on Ecclesiastes 1:1",
   }
 ];
+
+const textAPIReponseModelExample = #{
+  ref: "Mishnah Peah 4:2",
+  heRef: "משנה פאה ד׳:ב׳",
+  isComplex: false,
+  text: #[
+    "Peah is given from #[the crop] while it is still connected with the soil. But in the case of hanging vine-branches and the date-palm, the owner brings down #[the fruit] and distributes it among the poor. Rabbi Shimon says: the same applies to smooth nut trees. Even if ninety-nine #[of the poor] say #[to the owner] to distribute it and one says to leave it in the field, this latter is listened to, since he spoke in accordance with the halakhah.",
+    "With hanging vine-branches and date-palm trees it is not so; even if ninety-nine #[of the poor] say #[to the owner] to leave it in the field and one says to distribute it, this latter is listened to, since he spoke in accordance with the halakhah.",
+    "If #[a poor man] took some of the peah #[already collected] and threw it onto the remainder #[not yet collected], he gets none of it. If he fell down upon it, or spread his cloak over it, they take the peah away from him. The same applies to gleanings and the forgotten sheaf.",
+    "#[The poor] may not harvest peah with scythes or tear it out #[of the ground] with spades, so that they might not strike one another #[with these implements].",
+    "There are three times a day #[the poor] make a search #[in the field for peah]: morning, noon, and sunset. Rabban Gamaliel says: these #[times] were only set lest they reduce them. Rabbi Akiva says: these were set lest they add to them. #[The men] of Bet Namer used to have the poor harvest #[the peah] with the aid of a rope, and they left peah at the end of each furrow.",
+    "A non-Jew who harvested his field and then converted, he is exempt from #[leaving] gleanings, the forgotten sheaf and peah. Rabbi Judah makes him liable to leave the forgotten sheaf, since he becomes liable for the forgotten sheaf at the time of their binding.",
+    "One who dedicated standing grain #[to the Temple] and then redeemed it while it was still standing grain, he is liable #[to give the agricultural gifts to the poor]. #[If he dedicated] sheaves and redeemed them while they were still sheaves, he is liable. #[If he dedicated] standing grain and redeemed it #[when it was already in] sheaves, he is exempt, since at the time when it became liable it was exempt.",
+    "Similarly one who dedicates his produce prior to the stage when they are subject to tithes and then redeemed them, they are liable #[to be tithed]. If #[he dedicated them] when they had already become subject to tithes and then redeemed them, they are liable #[to be tithed]. If he dedicated them before they had ripened, and they became ripe while in the possession of the #[Temple] treasurer, and he then redeemed them, they are exempt, since at the time when they would have been liable, they were exempt.",
+    "One who collected peah and said, “This is for so-and-so a poor man:” Rabbi Eliezer says: he has thus acquired it for him. The sages say: he must give it to the first poor man he finds. Gleanings, the forgotten sheaf and the peah of non-Jews are subject to tithes, unless he #[the non-Jew] had declared them ownerless.",
+    "What are gleanings? That which falls down at the time of harvesting. If while he was harvesting, he harvested a handful, or plucked a fistful, and then a thorn pricked him, and what he had in his hand fell to the ground, it still belongs to the owner. #[That which drops from] inside the hand or the sickle #[belongs] to the poor, but #[that which falls from] the back of the hand or the sickle #[belongs] to the owner. #[That which falls from] the top of the hand or sickle: Rabbi Ishmael says: to the poor; But Rabbi Akiva says: to the owner.",
+    "#[Grain found in] ant holes where the stalks are still standing, behold it still belongs to the owner. After the harvesters #[had passed over them], those found in the top parts #[of the ant holes belong] to the poor, but #[those found] on the bottom parts #[belong] to the owner. Rabbi Meir says: it all belongs to the poor, for gleanings about which there is any doubt are regarded as gleanings."
+  ],
+  he: #[
+    "הַפֵּאָה נִתֶּנֶת בִּמְחֻבָּר לַקַּרְקָע. בְּדָלִית וּבְדֶקֶל, בַּעַל הַבַּיִת מוֹרִיד וּמְחַלֵּק לָעֲנִיִּים. רַבִּי שִׁמְעוֹן אוֹמֵר, אַף בַּחֲלִיקֵי אֱגוֹזִים. אֲפִלּוּ תִשְׁעִים וְתִשְׁעָה אוֹמְרִים לְחַלֵּק וְאֶחָד אוֹמֵר לָבוֹז, לָזֶה שׁוֹמְעִין, שֶׁאָמַר כַּהֲלָכָה: \n",
+    "בְּדָלִית וּבְדֶקֶל אֵינוֹ כֵן, אֲפִלּוּ תִשְׁעִים וְתִשְׁעָה אוֹמְרִים לָבוֹז וְאֶחָד אוֹמֵר לְחַלֵּק, לָזֶה שׁוֹמְעִין, שֶׁאָמַר כַּהֲלָכָה: \n",
+    "נָטַל מִקְצָת פֵּאָה וּזְרָקָהּ עַל הַשְּׁאָר, אֵין לוֹ בָהּ כְּלוּם. נָפַל לוֹ עָלֶיהָ, וּפֵרֵשׂ טַלִּיתוֹ עָלֶיהָ, מַעֲבִירִין אוֹתָהּ הֵימֶנּוּ. וְכֵן בְּלֶקֶט, וְכֵן בְּעֹמֶר הַשִּׁכְחָה: \n",
+    "פֵּאָה אֵין קוֹצְרִין אוֹתָהּ בְּמַגָּלוֹת, וְאֵין עוֹקְרִין אוֹתָהּ בְּקַרְדֻּמּוֹת, כְּדֵי שֶׁלֹּא יַכּוּ אִישׁ אֶת רֵעֵהוּ: \n",
+    "שָׁלשׁ אַבְעָיוֹת בַּיּוֹם, בַּשַּׁחַר וּבַחֲצוֹת וּבַמִּנְחָה. רַבָּן גַּמְלִיאֵל אוֹמֵר, לֹא אָמְרוּ אֶלָּא כְּדֵי שֶׁלֹּא יִפְחֲתוּ. רַבִּי עֲקִיבָא אוֹמֵר, לֹא אָמְרוּ אֶלָּא כְּדֵי שֶׁלֹּא יוֹסִיפוּ. שֶׁל בֵּית נָמֵר הָיוּ מְלַקְּטִין עַל הַחֶבֶל, וְנוֹתְנִים פֵּאָה מִכָּל אֻמָּן וְאֻמָּן: \n",
+    "עוֹבֵד כּוֹכָבִים שֶׁקָּצַר אֶת שָׂדֵהוּ וְאַחַר כָּךְ נִתְגַּיֵּר, פָּטוּר מִן הַלֶּקֶט וּמִן הַשִּׁכְחָה וּמִן הַפֵּאָה. רַבִּי יְהוּדָה מְחַיֵּב בְּשִׁכְחָה, שֶׁאֵין הַשִּׁכְחָה אֶלָּא בִשְׁעַת הָעִמּוּר: \n",
+    "הִקְדִּישׁ קָמָה וּפָדָה קָמָה, חַיָּב. עֳמָרִין וּפָדָה עֳמָרִין, חַיָּב. קָמָה וּפָדָה עֳמָרִין, פְּטוּרָה, שֶׁבִּשְׁעַת חוֹבָתָהּ הָיְתָה פְטוּרָה: \n",
+    "כַּיּוֹצֵא בוֹ, הַמַּקְדִּישׁ פֵּרוֹתָיו עַד שֶׁלֹּא בָאוּ לְעוֹנַת הַמַּעַשְׂרוֹת, וּפְדָאָן, חַיָּבִין. מִשֶּׁבָּאוּ לְעוֹנַת הַמַּעַשְׂרוֹת, וּפְדָאָן, חַיָּבִין. הִקְדִּישָׁן עַד שֶׁלֹּא נִגְמְרוּ וּגְמָרָן הַגִּזְבָּר, וְאַחַר כָּךְ פְּדָאָן, פְּטוּרִים, שֶׁבִּשְׁעַת חוֹבָתָן הָיוּ פְטוּרִים: \n",
+    "מִי שֶׁלָּקַט אֶת הַפֵּאָה וְאָמַר הֲרֵי זוֹ לְאִישׁ פְּלוֹנִי עָנִי, רַבִּי אֱלִיעֶזֶר אוֹמֵר, זָכָה לוֹ. וַחֲכָמִים אוֹמְרִים, יִתְּנֶנָּה לֶעָנִי שֶׁנִּמְצָא רִאשׁוֹן. הַלֶּקֶט וְהַשִּׁכְחָה וְהַפֵּאָה שֶׁל עוֹבֵד כּוֹכָבִים חַיָּב בְּמַעַשְׂרוֹת, אֶלָּא אִם כֵּן הִפְקִיר: \n",
+    "אֵיזֶהוּ לֶקֶט, הַנּוֹשֵׁר בִּשְׁעַת הַקְּצִירָה. הָיָה קוֹצֵר, קָצַר מְלֹא יָדוֹ, תָּלַשׁ מְלֹא קֻמְצוֹ, הִכָּהוּ קוֹץ וְנָפַל מִיָּדוֹ לָאָרֶץ, הֲרֵי הוּא שֶׁל בַּעַל הַבָּיִת. תּוֹךְ הַיָּד וְתוֹךְ הַמַּגָּל, לָעֲנִיִּים. אַחַר הַיָּד וְאַחַר הַמַּגָּל, לְבַעַל הַבָּיִת. רֹאשׁ הַיָּד וְרֹאשׁ הַמַּגָּל, רַבִּי יִשְׁמָעֵאל אוֹמֵר, לָעֲנִיִּים. רַבִּי עֲקִיבָא אוֹמֵר, לְבַעַל הַבָּיִת: \n",
+    "חוֹרֵי הַנְּמָלִים שֶׁבְּתוֹךְ הַקָּמָה, הֲרֵי הֵן שֶׁל בַּעַל הַבָּיִת. שֶׁלְּאַחַר הַקּוֹצְרִים, הָעֶלְיוֹנִים לָעֲנִיִּים, וְהַתַּחְתּוֹנִים שֶׁל בַּעַל הַבָּיִת. רַבִּי מֵאִיר אוֹמֵר, הַכֹּל לָעֲנִיִּים, שֶׁסְּפֵק לֶקֶט, לֶקֶט: \n"
+  ],
+  versions: #[
+    #{
+      title: "Mishnah Peah",
+      versionTitle: "Torat Emet 357",
+      versionSource: "http://www.toratemetfreeware.com/index.html?downloads",
+      language: "he",
+      status: "locked",
+      license: "Public Domain",
+      versionNotes: "",
+      digitizedBySefaria: "",
+      priority: 3,
+      versionTitleInHebrew: "תורת אמת 357",
+      versionNotesInHebrew: "",
+      extendedNotes: "",
+      extendedNotesHebrew: "",
+      purchaseInformationImage: "",
+      purchaseInformationURL: "",
+      shortVersionTitle: "",
+      shortVersionTitleInHebrew: "",
+    },
+    #{
+      title: "Mishnah Peah",
+      versionTitle: "Mishnah, ed. Romm, Vilna 1913",
+      versionSource: "https://www.nli.org.il/he/books/NNL_ALEPH001741739",
+      language: "he",
+      status: "locked",
+      license: "Public Domain",
+      versionNotes: "",
+      digitizedBySefaria: true,
+      priority: 2,
+      versionTitleInHebrew: "משנה, מהדורת בית דפוס ראם, וילנא 1913",
+      versionNotesInHebrew: "",
+      extendedNotes: "",
+      extendedNotesHebrew: "",
+      purchaseInformationImage: "",
+      purchaseInformationURL: "",
+      shortVersionTitle: "",
+      shortVersionTitleInHebrew: "",
+    },
+    #{
+      title: "Mishnah Peah",
+      versionTitle: "Mishnah Yomit by Dr. Joshua Kulp",
+      versionSource: "http://learn.conservativeyeshiva.org/mishnah/",
+      language: "en",
+      status: "locked",
+      license: "CC-BY",
+      versionNotes: "",
+      digitizedBySefaria: "",
+      priority: 1,
+      versionTitleInHebrew: "",
+      versionNotesInHebrew: "",
+      extendedNotes: "",
+      extendedNotesHebrew: "",
+      purchaseInformationImage: "",
+      purchaseInformationURL: "",
+      shortVersionTitle: "Dr. Joshua Kulp",
+      shortVersionTitleInHebrew: "",
+    },
+    #{
+      title: "Mishnah Peah",
+      versionTitle: "Mischnajot mit deutscher Übersetzung und Erklärung. Berlin 1887-1933 #[de]",
+      versionSource: "https://www.nli.org.il/he/books/NNL_ALEPH002378149/NLI",
+      language: "en",
+      status: "locked",
+      license: "Public Domain",
+      versionNotes: "Ordnung Seraïm, übers. und erklärt von Ascher Samter. 1887.<br>Ordnung Moed, von Eduard Baneth. 1887-1927.<br>Ordnung Naschim, von Marcus Petuchowski u. Simon Schlesinger. 1896-1933.<br>Ordnung Nesikin, von David Hoffmann. 1893-1898.<br>Ordnung Kodaschim, von John Cohn. 1910-1925.<br>Ordnung Toharot, von David Hoffmann, John Cohn und Moses Auerbach. 1910-1933.",
+      digitizedBySefaria: true,
+      priority: 0.5,
+      versionTitleInHebrew: "",
+      versionNotesInHebrew: "",
+      extendedNotes: "",
+      extendedNotesHebrew: "",
+      purchaseInformationImage: "",
+      purchaseInformationURL: "",
+      shortVersionTitle: "",
+      shortVersionTitleInHebrew: "",
+    },
+    #{
+      title: "Mishnah Peah",
+      versionTitle: "Talmud Bavli. German. Lazarus Goldschmidt. 1929 #[de]",
+      versionSource: "https://www.nli.org.il/he/books/NNL_ALEPH001042448/NLI",
+      language: "en",
+      status: "locked",
+      license: "Public Domain",
+      versionNotes: "",
+      digitizedBySefaria: true,
+      priority: 0.25,
+      versionTitleInHebrew: "",
+      versionNotesInHebrew: "",
+      extendedNotes: "",
+      extendedNotesHebrew: "",
+      purchaseInformationImage: "",
+      purchaseInformationURL: "",
+      shortVersionTitle: "Lazarus Goldschmidt, 1929",
+      shortVersionTitleInHebrew: "",
+    },
+    #{
+      title: "Mishnah Peah",
+      versionTitle: "Open Mishnah",
+      versionSource: "http://en.wikisource.org/wiki/Mishnah",
+      language: "en",
+      status: "locked",
+      license: "CC-BY-SA",
+      versionNotes: "",
+      digitizedBySefaria: "",
+      priority: "",
+      versionTitleInHebrew: "משנה פתוחה",
+      versionNotesInHebrew: "",
+      extendedNotes: "",
+      extendedNotesHebrew: "",
+      purchaseInformationImage: "",
+      purchaseInformationURL: "",
+      shortVersionTitle: "",
+      shortVersionTitleInHebrew: "",
+    },
+    #{
+      title: "Mishnah Peah",
+      versionTitle: "Le Talmud de Jérusalem, traduit par Moise Schwab, 1878-1890 #[fr]",
+      versionSource: "https://www.nli.org.il/he/books/NNL_ALEPH002182155/NLI",
+      language: "en",
+      status: "locked",
+      license: "Public Domain",
+      versionNotes: "",
+      digitizedBySefaria: "",
+      priority: "",
+      versionTitleInHebrew: "",
+      versionNotesInHebrew: "",
+      extendedNotes: "",
+      extendedNotesHebrew: "",
+      purchaseInformationImage: "",
+      purchaseInformationURL: "",
+      shortVersionTitle: "",
+      shortVersionTitleInHebrew: "",
+    },
+    #{
+      title: "Mishnah Peah",
+      versionTitle: "Mishnah based on the Kaufmann manuscript, edited by Dan Be'eri",
+      versionSource: "https://archive.org/details/MishnaCorrectedKaufman00WHOLE",
+      language: "he",
+      status: "locked",
+      license: "PD",
+      versionNotes: "",
+      digitizedBySefaria: true,
+      priority: "",
+      versionTitleInHebrew: "",
+      versionNotesInHebrew: "",
+      extendedNotes: "",
+      extendedNotesHebrew: "",
+      purchaseInformationImage: "",
+      purchaseInformationURL: "",
+      shortVersionTitle: "",
+      shortVersionTitleInHebrew: "",
+    }
+  ],
+  textDepth: 2,
+  sectionNames: #["Chapter", "Mishnah"],
+  addressTypes: #["Perek", "Mishnah"],
+  lengths: #[8, 69],
+  length: 8,
+  heTitle: "משנה פאה",
+  titleVariants: #[
+    "M Peah",
+    "Mishna Peah",
+    "M. Peah",
+    "Mishnah Péah",
+    "Pe’ah",
+    "Pe'ah",
+    "Peah",
+    "Mishnah Peah"
+  ],
+  heTitleVariants: #["פאה", "משנה פיאה", "משנה פאה"],
+  type: "Mishnah",
+  primary_category: "Mishnah",
+  book: "Mishnah Peah",
+  categories: #["Mishnah", "Seder Zeraim"],
+  order: #[2, 2],
+  sections: #[4, 2],
+  toSections: #[4, 2],
+  isDependant: false,
+  indexTitle: "Mishnah Peah",
+  heIndexTitle: "משנה פאה",
+  sectionRef: "Mishnah Peah 4",
+  firstAvailableSectionRef: "Mishnah Peah 4:2",
+  heSectionRef: "משנה פאה ד׳",
+  isSpanning: false,
+  versionTitle: "Mishnah Yomit by Dr. Joshua Kulp",
+  versionTitleInHebrew: "",
+  shortVersionTitle: "Dr. Joshua Kulp",
+  shortVersionTitleInHebrew: "",
+  versionSource: "http://learn.conservativeyeshiva.org/mishnah/",
+  versionStatus: "locked",
+  versionNotes: "",
+  extendedNotes: "",
+  extendedNotesHebrew: "",
+  versionNotesInHebrew: "",
+  digitizedBySefaria: false,
+  license: "CC-BY",
+  formatEnAsPoetry: false,
+  heVersionTitle: "Torat Emet 357",
+  heVersionTitleInHebrew: "תורת אמת 357",
+  heShortVersionTitle: "",
+  heShortVersionTitleInHebrew: "",
+  heVersionSource: "http://www.toratemetfreeware.com/index.html?downloads",
+  heVersionStatus: "locked",
+  heVersionNotes: "",
+  heExtendedNotes: "",
+  heExtendedNotesHebrew: "",
+  heVersionNotesInHebrew: "",
+  heDigitizedBySefaria: false,
+  heLicense: "Public Domain",
+  formatHeAsPoetry: false,
+  alts: #[],
+  index_offsets_by_depth: #{},
+  next: "Mishnah Peah 5",
+  prev: "Mishnah Peah 3",
+  commentary: #[],
+  sheets: #[],
+  layer: #[],
+};

@@ -91,6 +91,7 @@ alias DictionaryEntryArray = (
 /**
  * An array of arrays, each containing two strings. The first is a completion entry in Hebrew without vowels and the second includes vowels.
  */
+@example(#[#["אב", "אַב"]])
 model wordCompletionAPIResponse is string[];
 
 /**
@@ -111,6 +112,78 @@ model dictionaryEntry {
 }
 
 /** A single dictionary entry on Sefaria. */
+@example(#{
+  headword: "רָאָה",
+  parent_lexicon: "BDB Augmented Strong",
+  content: #{
+    morphology: "v",
+    senses: #[
+      #{
+        definition: "to see,  look at,  inspect,  perceive,  consider",
+        senses: #[
+          #{
+            senses: #[
+              #{ definition: "to see" },
+              #{ definition: "to see,  perceive" },
+              #{ definition: "to see,  have vision" },
+              #{
+                definition: "to look at,  see,  regard,  look after,  see after,  learn about,  observe,  watch,  look upon,  look out,  find out",
+              },
+              #{
+                definition: "to see,  observe,  consider,  look at,  give attention to, discern,  distinguish",
+              },
+              #{ definition: "to look at,  gaze at" }
+            ],
+            grammar: #{ verbal_stem: "Qal" },
+          },
+          #{
+            senses: #[
+              #{ definition: "to appear,  present oneself" },
+              #{ definition: "to be seen" },
+              #{ definition: "to be visible" }
+            ],
+            grammar: #{ verbal_stem: "Niphal" },
+          },
+          #{ definition: " to be seen", grammar: #{ verbal_stem: "Pual" } },
+          #{
+            senses: #[
+              #{ definition: "to cause to see,  show" },
+              #{
+                definition: "to cause to look intently at,  behold,  cause to gaze at",
+              }
+            ],
+            grammar: #{ verbal_stem: "Hiphil" },
+          },
+          #{
+            senses: #[
+              #{ definition: "to be caused to see,  be shown" },
+              #{ definition: "to be exhibited to" }
+            ],
+            grammar: #{ verbal_stem: "Hophal" },
+          },
+          #{
+            definition: " to look at each other,  face",
+            grammar: #{ verbal_stem: "Hithpael" },
+          }
+        ],
+      }
+    ],
+  },
+  strong_number: "7200",
+  transliteration: "râʼâh",
+  pronunciation: "raw-aw'",
+  language_code: "heb",
+  parent_lexicon_details: #{
+    name: "BDB Augmented Strong",
+    language: "heb.biblical",
+    to_language: "eng",
+    text_categories: #["Tanakh, Torah", "Tanakh, Prophets", "Tanakh, Writings"],
+    source: "Open Scriptures on GitHub",
+    source_url: "https://github.com/openscriptures/strongs",
+    attribution: "Based on the work of Larry Pierce at the Online Bible",
+    attribution_url: "http://www.blueletterbible.org/contact/contact_gen.cfm",
+  },
+})
 model StrongsDictionaryEntry {
   ...dictionaryEntry;
   strong_number?: string;

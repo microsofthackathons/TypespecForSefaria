@@ -104,6 +104,120 @@ model TermsJSON {
 /**
  * Full response of the Name API
  */
+@example(#{
+  lang: "en",
+  is_ref: true,
+  completions: #[
+    "Job",
+    "Rashi on Job",
+    "Rashi on Amos",
+    "Rashi on Arachin",
+    "Rashi on Beiah",
+    "Rashi on Bechorot",
+    "Rashi on Berachoth",
+    "Rashi on Chag.",
+    "Rashi on Hullin",
+    "Rashi on Dan."
+  ],
+  completion_objects: #[
+    #{
+      title: "Job",
+      key: "Job",
+      type: "ref",
+      is_primary: true,
+      order: 1000000,
+    },
+    #{
+      title: "Job",
+      type: "Topic",
+      key: "job-and-his-friends",
+      is_primary: false,
+      order: 4999978,
+    },
+    #{
+      title: "Rashi on Job",
+      key: "Rashi on Job",
+      type: "ref",
+      is_primary: true,
+      order: 1000000,
+    },
+    #{
+      title: "Rashi on Amos",
+      key: "Rashi on Amos",
+      type: "ref",
+      is_primary: true,
+      order: 1000000,
+    },
+    #{
+      title: "Rashi on Arachin",
+      key: "Rashi on Arakhin",
+      type: "ref",
+      is_primary: false,
+      order: 1000000,
+    },
+    #{
+      title: "Rashi on Beiah",
+      key: "Rashi on Beitzah",
+      type: "ref",
+      is_primary: false,
+      order: 1000000,
+    },
+    #{
+      title: "Rashi on Bechorot",
+      key: "Rashi on Bekhorot",
+      type: "ref",
+      is_primary: false,
+      order: 1000000,
+    },
+    #{
+      title: "Rashi on Berachoth",
+      key: "Rashi on Berakhot",
+      type: "ref",
+      is_primary: false,
+      order: 1000000,
+    },
+    #{
+      title: "Rashi on Chag.",
+      key: "Rashi on Chagigah",
+      type: "ref",
+      is_primary: false,
+      order: 1000000,
+    },
+    #{
+      title: "Rashi on Hullin",
+      key: "Rashi on Chullin",
+      type: "ref",
+      is_primary: false,
+      order: 1000000,
+    },
+    #{
+      title: "Rashi on Dan.",
+      key: "Rashi on Daniel",
+      type: "ref",
+      is_primary: false,
+      order: 1000000,
+    }
+  ],
+  is_book: false,
+  is_node: false,
+  is_section: false,
+  is_segment: true,
+  is_range: false,
+  type: "ref",
+  ref: "Rashi on Job 1:3:3",
+  url: "Rashi_on_Job.1.3.3",
+  index: "Rashi on Job",
+  book: "Rashi on Job",
+  internalSections: #[1, 3, 3],
+  internalToSections: #[1, 3, 3],
+  sections: #["1", "3", "3"],
+  toSections: #["1", "3", "3"],
+  examples: #[],
+  sectionNames: #["Chapter", "Verse", "Comment"],
+  heSectionNames: #["פרק", "פסוק", "פירוש"],
+  addressExamples: #["3", "6", "9"],
+  heAddressExamples: #["ג׳", "ו׳", "ט׳"],
+})
 model nameAPIResponse {
   /**
    * The language of the completion results.
@@ -123,6 +237,51 @@ model nameAPIResponse {
   /**
    * A list of autocompletion response objects for the submitted text along with some information about them.
    */
+  @example(#[
+    #{
+      title: "Ruth",
+      key: "Ruth",
+      type: "ref",
+      is_primary: true,
+      order: 1000000,
+    },
+    #{
+      title: "Ruth Rabbah",
+      key: "Ruth Rabbah",
+      type: "ref",
+      is_primary: true,
+      order: 1000000,
+    },
+    #{
+      title: "Ruth",
+      type: "PersonTopic",
+      key: "ruth",
+      is_primary: true,
+      order: 4999550,
+    },
+    #{
+      title: "Ruach Hakodesh",
+      type: "Topic",
+      key: "ruach-hakodesh1",
+      is_primary: true,
+      order: 4999902,
+    },
+    #{
+      title: "Ruach",
+      type: "Topic",
+      key: "ruach1",
+      is_primary: true,
+      order: 4999949,
+    },
+    #{
+      title: "Rubissa Sharona Hassan",
+      type: "User",
+      key: "sharona-hassan",
+      pic: "https://storage.googleapis.com/sefaria-profile-pictures/sharona-hassan-1622999139-small.png",
+      order: 6999998,
+      is_primary: true,
+    }
+  ])
   completion_objects?: {
     title?: string;
     key?: string;

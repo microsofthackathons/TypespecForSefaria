@@ -14,6 +14,7 @@ namespace SefariaAPI;
  *
  * A title string is any one of the known text titles or title variants in the Sefaria Database.
  */
+@example("Mishnah Peah 4:2")
 scalar ref extends string;
 
 /**

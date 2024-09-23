@@ -173,13 +173,56 @@ model CalendarAPIResponseCalendarItem {
   /** A description of this learning schedule entry if it exists in `he` and `en` */
   description?: BilingualOf<string>;
 }
-
+@example(#{
+  parasha: #{
+    title: #{ en: "Parashat Hashavua", he: "פרשת השבוע" },
+    displayValue: #{ en: "Vayakhel-Pekudei", he: "ויקהל-פקודי" },
+    url: "Exodus.35.1-40.38",
+    ref: "Exodus 35:1-40:38",
+    heRef: "שמות ל״ה:א׳-מ׳:ל״ח",
+    order: 1,
+    category: "Tanakh",
+    extraDetails: #{
+      aliyot: #[
+        "Exodus 35:1-35:29",
+        "Exodus 35:30-37:16",
+        "Exodus 37:17-37:29",
+        "Exodus 38:1-39:1",
+        "Exodus 39:2-39:21",
+        "Exodus 39:22-39:43",
+        "Exodus 40:1-40:38",
+        "Exodus 12:1-12:20"
+      ],
+    },
+    description: #{
+      en: "Vayakhel (“He Assembled”) opens as God commands the Israelites to observe the Sabbath. Moses asks for material donations for the building of the Mishkan (Tabernacle), and the people donate. A group of artisans designated by God begin building the Mishkan and its vessels.\n\nPekudei (“Accountings Of”) is the final Torah reading in the Book of Exodus. It describes the making of priestly garments worn in the Mishkan (Tabernacle) and the completion of its construction. At God’s command, Moses erects the Mishkan and puts its vessels in place, and God's presence fills the Mishkan.",
+      he: "בפרשת ויקהל בני ישראל מצווים לשמור את השבת. בני ישראל מתבקשים לתרום חומרים לבניית המשכן; הם נענים לבקשה בנדיבות ומתבקשים להפסיק לתרום. בצלאל ואהליאב מתחילים לנהל את בניית מבנה המשכן, כלי המשכן והחצר. כל פרט מבוצע כפי שציווה אלוהים את משה.\n\nפרשת פקודי, האחרונה בספר שמות, מסכמת את תרומות החומרים השונים למשכן, ואת עשיית בגדי הכהונה. בפרשה מתואר אירוע הקמת המשכן והכנסת הכלים לתוכו. משהושלמה בניית המשכן הענן מכסה את אוהל מועד, והשכינה שורה במשכן. ענן שוכן על המשכן ביום, ובלילה נראית בו אש, לעיני בני ישראל.",
+    },
+  },
+  haftarah: #[
+    #{
+      title: #{ en: "Haftarah", he: "הפטרה" },
+      displayValue: #{
+        en: "Ezekiel 45:16-46:18",
+        he: "יחזקאל מ״ה:ט״ז-מ״ו:י״ח",
+      },
+      url: "Ezekiel.45.16-46.18",
+      ref: "Ezekiel 45:16-46:18",
+      order: 2,
+      category: "Tanakh",
+    }
+  ],
+  date: "2026-03-14T00:00:00",
+  he_date: #{ en: "Adar 25, 5786", he: "אדר 25, 5786" },
+})
 model CalendarNextReadAPI {
   parasha?: {
     /** This should always read `Parashat Hashavua` */
+    @example("Daf Yomi")
     title?: BilingualOf<string>;
 
     /** The name of the Parashah */
+    @example("Vayishlach")
     displayValue?: BilingualOf<string>;
 
     /** The url path on Sefaria where this selection can be found */
@@ -207,9 +250,11 @@ model CalendarNextReadAPI {
   };
   haftarah?: {
     /** This should always read `Haftarah` */
+    @example("Daf Yomi")
     title?: BilingualOf<string>;
 
     /** The name of the Haftarah */
+    @example("Vayishlach")
     displayValue?: BilingualOf<string>;
 
     /** The url path on Sefaria where this selection can be found */
