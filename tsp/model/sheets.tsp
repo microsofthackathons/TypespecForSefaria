@@ -3,6 +3,39 @@
 /**
  * JSON containing metadata relating for a given source sheet on [Sefaria](sefaria.org).
  */
+@example(#{
+  owner: 65000,
+  _id: "5ec3a6f7c73d4d278311782e",
+  id: "238181",
+  public: true,
+  title: "סדר תיקון ליל שבועות",
+  sheetUrl: "/sheets/238181",
+  anchorRef: "Deuteronomy 1",
+  anchorRefExpanded: #["Deuteronomy 1:2"],
+  options: #{
+    numbered: 0,
+    boxed: 0,
+    assignable: 0,
+    bsd: 1,
+    language: "hebrew",
+    layout: "stacked",
+    langLayout: "heRight",
+    divineNames: "ykvk",
+    highlightMode: 0,
+    collaboration: "none",
+  },
+  ownerName: "יותם גונן",
+  ownerProfileUrl: "/profile/-2977",
+  ownerImageUrl: "https://storage.googleapis.com/sefaria-profile-pictures/-2977-1626800304-small.png",
+  status: "public",
+  views: 8509,
+  topics: #[],
+  likes: #[],
+  summary: "",
+  is_featured: false,
+  category: "Sheets",
+  type: "sheet",
+})
 model SheetsJSON {
   /**
    * the Sefaria User ID of the sheet's owner.
@@ -22,21 +55,25 @@ model SheetsJSON {
   /**
    * Is this sheet public.
    */
+  @example("True")
   public?: boolean;
 
   /**
    * Title of the Source Sheet.
    */
+  @example("Five Chapters, Five Theologies?")
   title?: string;
 
   /**
    * URL to this source sheet.
    */
+  @example("/sheets/1")
   sheetUrl?: string;
 
   /**
    * The Sefaria reference that connects this sheet to the submitted `ref`
    */
+  @example("Deuteronomy 1")
   anchorRef?: ref;
 
   /**
@@ -53,6 +90,16 @@ model SheetsJSON {
   /**
    * A JSON object containing document level options related to how this source sheet should be displayed in Sefaria's Source Sheet editor.
    */
+  @example(#{
+    layout: "sideBySide",
+    bsd: 0,
+    collaboration: "none",
+    language: "bilingual",
+    boxed: 0,
+    langLayout: "enLeft",
+    numbered: 0,
+    divineNames: "noSub",
+  })
   options?: {
     //* Should the sources be automatically numbered in the Sefaria editor view */
     numbered?: boolean;
@@ -127,16 +174,114 @@ model SheetsJSON {
   /**
    * a string indicating whether the sheet is `public` or `unlisted`
    */
+  @example("public")
   status?: "public" | "unlisted";
 
   /**
    * Number of source sheet views.
    */
+  @example(8509)
   views?: int32;
 
   /**
    * Topics linked to the source sheet.
    */
+  @example(#[
+    #{
+      slug: "גשר-מפעלים-חינוכיים",
+      asTyped: "גשר - מפעלים חינוכיים",
+      he: "גשר - מפעלים חינוכיים",
+      en: "",
+    },
+    #{
+      slug: "parashat-devarim",
+      asTyped: "דברים",
+      he: "דברים",
+      en: "Parashat Devarim",
+    },
+    #{ slug: "torah", asTyped: "תורה", he: "תורה", en: "Torah" },
+    #{ slug: "tanakh", asTyped: "תנ\"ך", he: "תנ\"ך", en: "Tanakh" },
+    #{ slug: "הלכות", asTyped: "הלכות", he: "הלכות", en: "" },
+    #{
+      slug: "חמישה-חומשי-תורה",
+      asTyped: "חמישה חומשי תורה",
+      he: "חמישה חומשי תורה",
+      en: "",
+    },
+    #{ slug: "moses", asTyped: "משה רבנו", he: "משה רבנו", en: "Moses" },
+    #{
+      slug: "mishneh-torah",
+      asTyped: "משנה תורה",
+      he: "משנה תורה",
+      en: "Mishneh Torah",
+    },
+    #{ asTyped: "קהילה", slug: "kehillah", he: "קהילה", en: "Kehillah" },
+    #{ asTyped: "יחיד וחברה", slug: "יחיד-וחברה", he: "יחיד וחברה", en: "" },
+    #{ asTyped: "מדינה", slug: "state", he: "מדינה", en: "State" },
+    #{ asTyped: "יחיד וחברה", slug: "יחיד-וחברה", he: "יחיד וחברה", en: "" },
+    #{
+      asTyped: "העם היהודי",
+      slug: "jewish-people",
+      he: "העם היהודי",
+      en: "Jewish People",
+    },
+    #{ asTyped: "יחיד וחברה", slug: "יחיד-וחברה", he: "יחיד וחברה", en: "" },
+    #{
+      asTyped: "מנהיגות",
+      slug: "leadership",
+      he: "מנהיגות",
+      en: "Leadership",
+    },
+    #{ asTyped: "יחיד וחברה", slug: "יחיד-וחברה", he: "יחיד וחברה", en: "" },
+    #{
+      asTyped: "אמונות ודעות",
+      slug: "אמונות-ודעות",
+      he: "אמונות ודעות",
+      en: "",
+    },
+    #{
+      asTyped: "ארץ ישראל",
+      slug: "jewish-people",
+      he: "ארץ ישראל",
+      en: "Jewish People",
+    },
+    #{ asTyped: "אדם ומרחב", slug: "אדם-ומרחב", he: "אדם ומרחב", en: "" },
+    #{
+      asTyped: "אישים",
+      slug: "important-people",
+      he: "אישים",
+      en: "Important People",
+    },
+    #{ asTyped: "תרבות", slug: "culture", he: "תרבות", en: "Culture" },
+    #{
+      asTyped: "סיפורים מכוננים",
+      slug: "סיפורים-מכוננים",
+      he: "סיפורים מכוננים",
+      en: "",
+    },
+    #{ asTyped: "תרבות", slug: "culture", he: "תרבות", en: "Culture" },
+    #{
+      asTyped: "אחריות וסולידריות",
+      slug: "אחריות-וסולידריות",
+      he: "אחריות וסולידריות",
+      en: "",
+    },
+    #{ asTyped: "יחיד וחברה", slug: "יחיד-וחברה", he: "יחיד וחברה", en: "" },
+    #{
+      asTyped: "ספר דברים",
+      slug: "deuteronomy",
+      he: "ספר דברים",
+      en: "Deuteronomy",
+    },
+    #{
+      asTyped: "פרשת השבוע",
+      slug: "torah-portions",
+      he: "פרשת השבוע",
+      en: "Torah Portions",
+    },
+    #{ asTyped: "מקום", slug: "places", he: "מקום", en: "Places" },
+    #{ asTyped: "אדם ומרחב", slug: "אדם-ומרחב", he: "אדם ומרחב", en: "" }
+  ])
   topics?: SheetTopicJSON[];
 
   /**
@@ -166,16 +311,23 @@ model SheetsJSON {
 
   type?: string;
 }
-
+@example(#{
+  slug: "parashat-devarim",
+  asTyped: "דברים",
+  he: "דברים",
+  en: "Parashat Devarim",
+})
 model SheetTopicJSON {
   /**
    * Slug of the topic
    */
+  @example("parashat-devarim")
   slug?: string;
 
   /**
    * How the user typed the topic
    */
+  @example("tanach")
   asTyped?: string;
 
   ...BilingualOfWithDocumentation<
