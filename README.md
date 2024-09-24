@@ -18,12 +18,14 @@ Ths project is a a node/npm project. It contains:
       - we'll talk about bulktext.tsp later; excluded from main.tsp by default
     - a `model` folder for common models
     - `common.tsp` for models etc used by multiple tags
-    - a `tsp-output` folder for the generated OpenAPI definition, at `@typespec/openapi3` (not included in source)
+    - a `tsp-output` folder for the generated OpenAPI definition
+      - each emitter (output generator) has its own subfolder. So for the generated OpenAPI definition, you have to drill down to `tsp-output/@typespec/openapi3/openapi.json`.
+      - Note that `tsp-output` is excluded from source control via `.gitignore`. This is the default setting for TypeSpec projects, but you can obviously modify .gitignore` to include it if desired.
 
 # Development Setup and Compilation
 
 - restore the npm after installing node etc
-- install TypeSpec Extension for Visual Studio and/or VSCode
+- install TypeSpec Extension for [Visual Studio](https://marketplace.visualstudio.com/items?itemName=typespec.typespecvs) and/or [VSCode](https://marketplace.visualstudio.com/items?itemName=typespec.typespec-vscode)
 - Compile by executing the following two commands: `tsp format **/*.tsp`, `tsp compile .`
 
 # Initial Migration
@@ -65,4 +67,4 @@ While it doesn't follow the full TypeSpec-recommended conventions as visible in 
 - The `uniqueItems` property is not yet supported in TypeSpec. It was decided this is non-critical.
 - Examples have not been imported yet.
   - Support for model and response examples exists in TypeSpec; the work has to be done.
-  - Parameter examples are not supported, but a workaround exists (which I need to add here.)
+  - Parameter examples are not supported, but a workaround exists (which I will add once regular models have been imported/migrated.)
