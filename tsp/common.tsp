@@ -20,20 +20,24 @@ scalar ref extends string;
 /**
  * Alternative title for a topic, along with the language code representing the language of the given title.
  */
+@example(#{ text: "Tabernacles", lang: "en", primary: false })
 model TitlesJSON {
   /**
    * The text of the title
    */
+  @example("Sukkoth")
   text?: string;
 
   /**
    * The language of the title, either `en` or `he`.
    */
+  @example("he")
   lang?: string;
 
   /**
    * A field depicting whether or not the title is the primary title. Note: For any given topics, one should expect two titles with this field present and set to `true`, an English and a Hebrew primary title. The English value with `primary` set to `true` will match the string value of the `primaryTitle` field on topic.
    */
+  @example(false)
   Primary?: boolean;
 }
 

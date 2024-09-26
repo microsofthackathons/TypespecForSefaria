@@ -480,31 +480,27 @@ model TopicJSON {
   /**
    * An array of JSON objects, each representing an alternative title for the object, in various languages.
    */
-  @example(#{
-    titles: #[
-      #{ text: "Tabernacles", lang: "en" },
-      #{ text: "Succot", lang: "en" },
-      #{ text: "Sukkos", lang: "en" },
-      #{ text: "Succos", lang: "en" },
-      #{ text: "Booths", lang: "en" },
-      #{ text: "sukkot", lang: "en" },
-      #{ text: "succot", lang: "en" },
-      #{ text: "Succoth", lang: "en" },
-      #{ text: "Sukkoth", lang: "en" },
-      #{ text: "חג הסוכות", lang: "he" },
-      #{ text: "סכות", lang: "he" },
-      #{ text: "Sukkot", lang: "en", primary: true },
-      #{ text: "סוכות", lang: "he", primary: true }
-    ],
-  })
+  @example(#[
+    #{ text: "Tabernacles", lang: "en" },
+    #{ text: "Succot", lang: "en" },
+    #{ text: "Sukkos", lang: "en" },
+    #{ text: "Succos", lang: "en" },
+    #{ text: "Booths", lang: "en" },
+    #{ text: "sukkot", lang: "en" },
+    #{ text: "succot", lang: "en" },
+    #{ text: "Succoth", lang: "en" },
+    #{ text: "Sukkoth", lang: "en" },
+    #{ text: "חג הסוכות", lang: "he" },
+    #{ text: "סכות", lang: "he" },
+    #{ text: "Sukkot", lang: "en", primary: true },
+    #{ text: "סוכות", lang: "he", primary: true }
+  ])
   titles: TitlesJSON[];
 
   /**
    * This is a dictionary containing the keys of naming schemes, and ids of this topic represented in that naming scheme.  It’s used both for canonical names in other naming schemes and temporary storage of names when renaming slugs. All of the data here is for internal use, with the exception of the values `bfo` and `wikidata`. `bfo` refers to [basic formal ontology](https://developers.sefaria.org/docs/topic-ontology), and `wikidata` to the wikidata ontology of topics.
    */
-  @example(#{
-    alt_ids: #{ _temp_id: "משה", wikidata: "Q9077", _old_slug: "-75" },
-  })
+  @example(#{ _temp_id: "משה", wikidata: "Q9077", _old_slug: "-75" })
   alt_ids?: {
     _temp_id?: string;
   };
@@ -513,15 +509,13 @@ model TopicJSON {
    * The properties stores optional data relating to the topic, including links (if relevant) to where on can learn more about the topic.
    */
   @example(#{
-    properties: #{
-      heNliLink: #{
-        value: "https://www.nli.org.il/he/discover/judaism/holidays/sukkot",
-        dataSource: "sefaria",
-      },
-      enNliLink: #{
-        value: "https://www.nli.org.il/en/discover/judaism/holidays/sukkot",
-        dataSource: "sefaria",
-      },
+    heNliLink: #{
+      value: "https://www.nli.org.il/he/discover/judaism/holidays/sukkot",
+      dataSource: "sefaria",
+    },
+    enNliLink: #{
+      value: "https://www.nli.org.il/en/discover/judaism/holidays/sukkot",
+      dataSource: "sefaria",
     },
   })
   properties?: TopicPropertyJson;
@@ -530,10 +524,8 @@ model TopicJSON {
    * A description of the topic
    */
   @example(#{
-    description: #{
-      en: "Sukkot is a weeklong celebration of the harvest in early fall. It is celebrated by the building of temporary booths — that is, sukkot — outside homes in which people eat their meals and sometimes even sleep. The booths are reminders of the transience of life and the sheltering presence of God.",
-      he: "חג הסוכות, הוא חג האסיף, נמשך שבעה ימים ומצוין בחודש תשרי על-ידי בניית סוכה מחוץ לבית, בה  אוכלים וחלק גם ישנים. הסוכה היא תזכורת לסוכות שבנו בני ישראל ביציאת מצרים, ומסמלת את ארעיות החיים ואת נוכחותו המגוננת של ה'",
-    },
+    en: "Sukkot is a weeklong celebration of the harvest in early fall. It is celebrated by the building of temporary booths — that is, sukkot — outside homes in which people eat their meals and sometimes even sleep. The booths are reminders of the transience of life and the sheltering presence of God.",
+    he: "חג הסוכות, הוא חג האסיף, נמשך שבעה ימים ומצוין בחודש תשרי על-ידי בניית סוכה מחוץ לבית, בה  אוכלים וחלק גם ישנים. הסוכה היא תזכורת לסוכות שבנו בני ישראל ביציאת מצרים, ומסמלת את ארעיות החיים ואת נוכחותו המגוננת של ה'",
   })
   description?: BilingualOf<string>;
 
@@ -570,12 +562,10 @@ model TopicJSON {
    * Metadata for images associated with topics.
    */
   @example(#{
-    image: #{
-      image_uri: "https://storage.googleapis.com/img.sefaria.org/topics/sukkot.jpg",
-      image_caption: #{
-        en: "Detail of a painting of a sukkah. Image taken from f. 316v of Forli Siddur. 1383, Italian rite. The British Library",
-        he: "פרט ציור של סוכה עם שולחן פרוש ושלוש דמויות. דימוי מתוך סידור פורלי, 1383 איטליה",
-      },
+    image_uri: "https://storage.googleapis.com/img.sefaria.org/topics/sukkot.jpg",
+    image_caption: #{
+      en: "Detail of a painting of a sukkah. Image taken from f. 316v of Forli Siddur. 1383, Italian rite. The British Library",
+      he: "פרט ציור של סוכה עם שולחן פרוש ושלוש דמויות. דימוי מתוך סידור פורלי, 1383 איטליה",
     },
   })
   image?: TopicImgJSON;
@@ -589,14 +579,32 @@ model TopicJSON {
   /**
    * This field has the possibility of being used to indicate whether or not a title is a transliteration, however the data here is not always consistent or up-to-date. Therefore, it is best to disregard the data in this field, and there are many false negatives.
    */
-  @example(#{ primaryTitleIsTransliteration: #{ en: false, he: false } })
+  @example(#{ en: false, he: false })
   primaryTitleIsTransliteration?: BilingualOf<string>;
 }
 
+@example(topicGraphJSONModelExample)
 model TopicGraphJSON {
   /**
    * Array of topics
    */
+  @example(#[
+    #{
+      slug: "shabbat-shuvah",
+      titles: #[
+        #{ text: "Shabbat Shuvah", lang: "en", primary: true },
+        #{ text: "שבת שובה", lang: "he", primary: true },
+        #{ lang: "he", text: "שובה" }
+      ],
+      alt_ids: #{ _temp_id: "שבת שובה", _old_slug: "399" },
+      description: #{
+        en: "Shabbat of Repentance between Rosh Hashanah and Yom Kippur.",
+        he: "",
+      },
+      numSources: 19,
+      primaryTitle: #{ en: "Shabbat Shuvah", he: "שבת שובה" },
+    }
+  ])
   topics?: TopicJSON[];
 
   links?: TopicGraphLinkJSON[];
@@ -627,30 +635,97 @@ model recommendedTopicResponse {
 /**
  * Response to the random-by-topic API endpoint.
  */
+@example(randomByTopicJSONModelExample)
 model RandomByTopicJSON {
   /**
    * The `Ref` of the text randomly selected, which is connected to one of the recently popular topics.
    */
+  @example("Deuteronomy 16:21")
   ref?: string;
 
   /**
    * The topic attached to the `Ref` returned.
    */
+  @example(#{
+    slug: "metushelach",
+    titles: #[
+      #{
+        text: "Metushelach",
+        lang: "en",
+        primary: true,
+        transliteration: true,
+      },
+      #{ text: "מתושלח", lang: "he", primary: true },
+      #{ text: "Methuselah", lang: "en" },
+      #{ text: "Methushelach", lang: "en" }
+    ],
+    subclass: "person",
+    alt_ids: #{ _temp_id: "מתושלח", wikidata: "Q156290" },
+    properties: #{
+      enWikiLink: #{
+        value: "https://en.wikipedia.org/wiki/Methuselah",
+        dataSource: "wikidata",
+      },
+      heWikiLink: #{
+        value: "https://he.wikipedia.org/wiki/מתושלח",
+        dataSource: "wikidata",
+      },
+      deWikiLink: #{
+        value: "https://de.wikipedia.org/wiki/Methusalem",
+        dataSource: "wikidata",
+      },
+      esWikiLink: #{
+        value: "https://es.wikipedia.org/wiki/Matusalén",
+        dataSource: "wikidata",
+      },
+      frWikiLink: #{
+        value: "https://fr.wikipedia.org/wiki/Mathusalem",
+        dataSource: "wikidata",
+      },
+      ruWikiLink: #{
+        value: "https://ru.wikipedia.org/wiki/Мафусал_(потомок_Сифа)",
+        dataSource: "wikidata",
+      },
+    },
+    numSources: 7,
+    good_to_promote: true,
+    primaryTitle: #{ en: "Metushelach", he: "מתושלח" },
+  })
   topic?: RandomByTopicTopicJSON;
 
   /**
    * The `Ref` in a format appropriate for a URL, with spaces replaced with `.` etc.
    */
+  @example("Deuteronomy.16.21")
   url?: string;
 }
 
 /**
  * Topic JSON for the `random-by-topic/` endpoint.
  */
+@example(#{
+  slug: "mezuzah",
+  titles: #[
+    #{ text: "Mezuzah", lang: "en", primary: true },
+    #{ text: "מזוזה", lang: "he", primary: true }
+  ],
+  alt_ids: #{ _temp_id: "מזוזה" },
+  description: #{
+    en: "A mezuzah is the small parchment placed inside a case and attached to the right side of entryway doorframes where Jews reside. Written on the scroll are various sections from the Torah, such as the Shema, that feature some of Judaism's central principles.",
+    he: "המזוזה היא נייר קלף קטן הנמצא בתוך נרתיק (בית המזוזה) המחובר לצד הימני של משקוף הדלת בבתי יהודים. על מגילת הקלף כתובים מגוון קטעים מן התורה, דוגמת פרשת שמע הכוללת כמה מהעקרונות העיקריים של היהדות.",
+  },
+  categoryDescription: #{},
+  numSources: 120,
+  good_to_promote: true,
+  description_published: true,
+  data_source: "sefaria",
+  primaryTitle: #{ en: "Mezuzah", he: "מזוזה" },
+})
 model RandomByTopicTopicJSON {
   /**
    * The unique slug for a given topic.
    */
+  @example("mezuzah")
   slug: string;
 
   /**
@@ -661,6 +736,9 @@ model RandomByTopicTopicJSON {
   /**
    * This is a dictionary containing the keys of naming schemes, and ids of this topic represented in that naming scheme.  It’s used both for canonical names in other naming schemes and temporary storage of names when renaming slugs. All of the data here is for internal use, with the exception of the values `bfo` and `wikidata`. `bfo` refers to [basic formal ontology](https://github.com/BFO-ontology/BFO#implementations), and `wikidata` to the wikidata ontology of topics.
    */
+  @example(#{
+    alt_ids: #{ _temp_id: "משה", wikidata: "Q9077", _old_slug: "-75" },
+  })
   alt_ids?: unknown;
 
   /**
@@ -676,21 +754,25 @@ model RandomByTopicTopicJSON {
   /**
    * The number of text sources associated with a topic.
    */
+  @example(613)
   numSources?: integer;
 
   /**
    * A boolean representing whether or not the description was published.
    */
+  @example(false)
   description_published?: boolean;
 
   /**
    * How the topic was generated, whether by Sefaria, a user on a source sheet, or some other source.
    */
+  @example("sefaria")
   data_source?: string;
 
   /**
    * The primary title for a topic.
    */
+  @example(#{ en: "Sukkot", he: "סוכות" })
   primary_title?: BilingualOf<string>;
 
   /**
@@ -770,14 +852,20 @@ model TopicImgJSON {
    * A JSON object containing the billingual caption data for an image associated with a topic.
    */
   @example(#{
-    image_caption: #{
-      en: "Detail of a painting of a sukkah. Image taken from f. 316v of Forli Siddur. 1383, Italian rite. The British Library",
-      he: "פרט ציור של סוכה עם שולחן פרוש ושלוש דמויות. דימוי מתוך סידור פורלי, 1383 איטליה",
-    },
+    en: "Detail of a painting of a sukkah. Image taken from f. 316v of Forli Siddur. 1383, Italian rite. The British Library",
+    he: "פרט ציור של סוכה עם שולחן פרוש ושלוש דמויות. דימוי מתוך סידור פורלי, 1383 איטליה",
   })
   image_caption?: BilingualOf<string>;
 }
 
+@example(#{
+  toTopic: "shabbat",
+  linkType: "is-a",
+  class: "intraTopic",
+  dataSource: "aspaklaria-edited-by-sefaria",
+  fromTopic: "shabbat-shuvah",
+  order: #{ linksInCommon: 0, toTfidf: 0, fromTfidf: 0 },
+})
 model TopicGraphLinkJSON {
   /**
    * Slug of the `toTopic` (i.e. the topic to which the link connects to, usually the slug passed as `topic_slug` to the `api/topic-graph` endpoint).
@@ -809,9 +897,11 @@ model TopicGraphLinkJSON {
   /**
    * A dictionary containing information regarding the links in common, as well as the to and from `tfIdf` scores. To learn more about the [tfIdf](https://en.wikipedia.org/wiki/Tf%E2%80%93idf) algorithm.
    */
+  @example(#{ linksInCommon: 0, toTfidf: 0, fromTfidf: 0 })
   order?: OrderJSON;
 }
 
+@example(#{ linksInCommon: 0, toTfidf: 0, fromTfidf: 0 })
 model OrderJSON {
   linksInCommon?: int32;
   toTfidf?: int32;
@@ -945,3 +1035,129 @@ const getAllTopicsExampleResponse = #[
     primaryTitle: #{ en: "", he: "יחיד וחברה" },
   }
 ];
+
+const topicGraphJSONModelExample = #{
+  topics: #[
+    #{
+      slug: "shabbat",
+      titles: #[],
+      alt_ids: #{ _temp_id: "שבת", _old_slug: "shabbat1" },
+      properties: #{
+        heNliLink: #{
+          value: "https://www.nli.org.il/he/discover/judaism/traditions/shabbat",
+          dataSource: "sefaria",
+        },
+      },
+      description: #{
+        en: "Shabbat (or Sabbath) falls every seventh day of the week, from Friday just before sunset until dark on Saturday night. It is a day of rest, marking the time when God stopped creating after after the six days of creation. Shabbat recognizes God as Creator of the Universe and as Redeemer of Israel from Egypt.",
+        he: "היום השביעי בשבוע, החל מיום שישי בשעת השקיעה ועד צאת הכוכבים במוצאי השבת. יום מנוחה לפי המקורות, המציין את הזמן שבו ה' נח לאחר שברא את העולם.",
+      },
+      categoryDescription: #{},
+      displayOrder: 0,
+      numSources: 1662,
+      good_to_promote: true,
+      description_published: true,
+      data_source: "sefaria",
+      image: #{
+        image_uri: "https://storage.googleapis.com/img.sefaria.org/topics/shabbat.jpg",
+        image_caption: #{
+          en: "Friday Evening, Isidor Kaufmann, Austria c. 1920. The Jewish Museum, Gift of Mr. and Mrs. M. R. Schweitzer",
+          he: "שישי בערב, איזידור קאופמן, וינה 1920. המוזיאון היהודי בניו יורק, מתנת  מר וגברת מ.ר. שוויצר",
+        },
+      },
+      primaryTitle: #{ en: "Shabbat", he: "שבת" },
+    },
+    #{
+      slug: "shabbat-shuvah",
+      titles: #[
+        #{ text: "Shabbat Shuvah", lang: "en", primary: true },
+        #{ text: "שבת שובה", lang: "he", primary: true },
+        #{ lang: "he", text: "שובה" }
+      ],
+      alt_ids: #{ _temp_id: "שבת שובה", _old_slug: "399" },
+      description: #{
+        en: "Shabbat of Repentance between Rosh Hashanah and Yom Kippur.",
+        he: "",
+      },
+      numSources: 19,
+      primaryTitle: #{ en: "Shabbat Shuvah", he: "שבת שובה" },
+    },
+    #{
+      slug: "shabbat-hagadol",
+      titles: #[
+        #{ text: "Shabbat HaGadol", lang: "en" },
+        #{ text: "Shabbat Hagadol", lang: "en", primary: true },
+        #{ text: "שבת הגדול", lang: "he", primary: true }
+      ],
+      alt_ids: #{ _temp_id: "שבת הגדול" },
+      description: #{
+        en: "Shabbat HaGadol (“The Great Shabbat”) is the Shabbat that immediately precedes the holiday of Passover. Jewish texts offer many explanations as to why this Shabbat is called “great,” like those that  point to a great miracle performed on this Shabbat during the exodus, or those that point to the word “great” at the end of the haftarah prophetic reading traditionally read on this Shabbat. In many communities, the rabbi delivers a lengthy sermon on a Passover-related topic.",
+        he: "״שבת הגדול״ היא השבת האחרונה לפני חג הפסח. שבת זו נודעה כשבת מיוחדת החל מהמאה ה-12 בבתי המדרש של רש״י וחכמי התוספות. מנהגי שבת זו כוללים דרשה של הרב בקהילתו בהלכות הפסח, וקריאת קטעים מההגדה של פסח. מספר טעמים ניתנו לשמה של שבת זו כגון שבשבת זו בני ישראל הפסיקו לעבוד עבודה זרה, או שהיה נס גדול בלקיחת השה לקרבן פסח, ועוד.",
+      },
+      categoryDescription: #{},
+      displayOrder: 230,
+      numSources: 57,
+      description_published: true,
+      data_source: "sefaria",
+      primaryTitle: #{ en: "Shabbat Hagadol", he: "שבת הגדול" },
+    }
+  ],
+  links: #[
+    #{
+      toTopic: "shabbat",
+      linkType: "is-a",
+      class: "intraTopic",
+      dataSource: "aspaklaria-edited-by-sefaria",
+      fromTopic: "shabbat-shuvah",
+      order: #{ linksInCommon: 0, toTfidf: 0, fromTfidf: 0 },
+    },
+    #{
+      toTopic: "shabbat",
+      linkType: "is-a",
+      class: "intraTopic",
+      dataSource: "aspaklaria-edited-by-sefaria",
+      fromTopic: "shabbat-hagadol",
+      order: #{
+        linksInCommon: 1,
+        toTfidf: 6.1420049159848755,
+        fromTfidf: 9.085421387618508,
+      },
+    }
+  ],
+};
+
+const randomByTopicJSONModelExample = #{
+  ref: "Pesachim 66a:3-6",
+  topic: #{
+    slug: "hillel",
+    titles: #[],
+    subclass: "person",
+    alt_ids: #{ _temp_id: "הלל", `old-person-key`: "Hillel the Elder" },
+    properties: #{
+      enWikiLink: #{
+        value: "http://en.wikipedia.org/wiki/Hillel_the_Elder",
+        dataSource: "person-collection",
+      },
+      jeLink: #{
+        value: "http://www.jewishencyclopedia.com/view.jsp?artid=730&letter=H",
+        dataSource: "person-collection",
+      },
+      generation: #{ value: "Z5", dataSource: "person-collection" },
+      sex: #{ value: "M", dataSource: "person-collection" },
+      heWikiLink: #{
+        data_source: "wikidata",
+        value: "https://he.wikipedia.org/wiki/%D7%94%D7%9C%D7%9C_%D7%94%D7%96%D7%A7%D7%9F",
+      },
+    },
+    description: #{
+      en: "Hillel was one of the most influential and prolific of the early teachers. Coming from Babylon to learn with Avtalyon and Shemaya, he soon became famous for his scholarship and his patient and tolerant manner. Bolstered by his Davidic lineage, he served as Nasi during part of Herod’s reign.",
+      he: "הלל היה אחד החכמים הראשונים, ומהפורים והמשפיעים ביניהם. הוא הגיע מבבל כדי ללמוד עם שמעיה ואבטליון, ונודע מהר מאוד בשל חוכמתו בתורה ואופיו הסבלני והסובלני. היותו צאצא של בית דוד הייתה בסיס לכהונתו כנשיא בתקופת שלטונו של הורדוס.",
+    },
+    categoryDescription: #{},
+    numSources: 217,
+    good_to_promote: true,
+    description_published: true,
+    primaryTitle: #{ en: "Hillel", he: "הִלֵּל" },
+  },
+  url: "Pesachim.66a.3-6",
+};

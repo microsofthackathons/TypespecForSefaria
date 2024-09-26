@@ -754,13 +754,13 @@ model v3TextsJson {
     #{
       finnish: #{
         warning_code: 102,
-        message: "We do not have the language you asked for Esther 1:1. Available languages are #['english', 'esperanto', 'french', 'german', 'hebrew', 'italian', 'persian', 'polish', 'spanish', 'yiddish']",
+        message: "We do not have the language you asked for Esther 1:1. Available languages are ['english', 'esperanto', 'french', 'german', 'hebrew', 'italian', 'persian', 'polish', 'spanish', 'yiddish']",
       },
     },
     #{
       dutch: #{
         warning_code: 102,
-        message: "We do not have the language you asked for Esther 1:1. Available languages are #['english', 'esperanto', 'french', 'german', 'hebrew', 'italian', 'persian', 'polish', 'spanish', 'yiddish']",
+        message: "We do not have the language you asked for Esther 1:1. Available languages are ['english', 'esperanto', 'french', 'german', 'hebrew', 'italian', 'persian', 'polish', 'spanish', 'yiddish']",
       },
     }
   ])
@@ -1385,7 +1385,7 @@ const getTextsV3ResponseExample = #{
       language: "en",
       title: "Esther",
       versionSource: "https://fr.wikisource.org/wiki/Bible_du_Rabbinat_1899",
-      versionTitle: "Bible du Rabbinat 1899 #[fr]",
+      versionTitle: "Bible du Rabbinat 1899 [fr]",
     },
     #{
       status: "",
@@ -1472,7 +1472,7 @@ const getTextsV3ResponseExample = #{
       language: "en",
       title: "Esther",
       versionSource: "http://bibliepolskie.pl/",
-      versionTitle: "Bible in Polish, trans. Izaak Cylkow, 1841 - 1908 #[pl]",
+      versionTitle: "Bible in Polish, trans. Izaak Cylkow, 1841 - 1908 [pl]",
     },
     #{
       status: "",
@@ -1501,7 +1501,7 @@ const getTextsV3ResponseExample = #{
       language: "en",
       title: "Esther",
       versionSource: "http://www.archivio-torah.it",
-      versionTitle: "Ester. Traduzione italiana di Samuel David Luzzatto, 1872 #[it]",
+      versionTitle: "Ester. Traduzione italiana di Samuel David Luzzatto, 1872 [it]",
     },
     #{
       status: "",
@@ -1530,7 +1530,7 @@ const getTextsV3ResponseExample = #{
       language: "he",
       title: "Esther",
       versionSource: "http://www.iranjewish.com/megilla/megilla_main.htm",
-      versionTitle: "Book of Esther in Farsi, trans. by Pole-Choubi, synagogue Talmood Torah #[fa]",
+      versionTitle: "Book of Esther in Farsi, trans. by Pole-Choubi, synagogue Talmood Torah [fa]",
     },
     #{
       status: "",
@@ -1559,7 +1559,7 @@ const getTextsV3ResponseExample = #{
       language: "en",
       title: "Esther",
       versionSource: "http://www.iranjewish.com/megilla/megilla_main.htm",
-      versionTitle: "Book of Esther in Farsi, trans. by Pole-Choubi, synagogue Talmood Torah, LTR #[fa]",
+      versionTitle: "Book of Esther in Farsi, trans. by Pole-Choubi, synagogue Talmood Torah, LTR [fa]",
     },
     #{
       status: "",
@@ -1588,7 +1588,7 @@ const getTextsV3ResponseExample = #{
       language: "he",
       title: "Esther",
       versionSource: "http://opensiddur.org/praxes/study/yehoyeshs-yiddish-translation-of-the-tanakh/",
-      versionTitle: "Yehoyesh's Yiddish Tanakh Translation #[yi]",
+      versionTitle: "Yehoyesh's Yiddish Tanakh Translation [yi]",
     },
     #{
       status: "locked",
@@ -1617,7 +1617,7 @@ const getTextsV3ResponseExample = #{
       language: "en",
       title: "Esther",
       versionSource: "https://www.seminariorabinico.org/wp-content/uploads/El-libro-de-Ester-Meguila-Ester.pdf",
-      versionTitle: "El libro de Ester - Meguila Ester - Seminario Rabínico #[es]",
+      versionTitle: "El libro de Ester - Meguila Ester - Seminario Rabínico [es]",
     },
     #{
       status: "",
@@ -1646,7 +1646,7 @@ const getTextsV3ResponseExample = #{
       language: "en",
       title: "Esther",
       versionSource: "https://www.levangile.com/Bible-CAH-1-1-1-complet-Contexte-oui.htm",
-      versionTitle: "La Bible, Traduction Nouvelle, Samuel Cahen, 1831 #[fr]",
+      versionTitle: "La Bible, Traduction Nouvelle, Samuel Cahen, 1831 [fr]",
     },
     #{
       status: "locked",
@@ -1675,7 +1675,7 @@ const getTextsV3ResponseExample = #{
       language: "en",
       title: "Esther",
       versionSource: "https://eo.wikisource.org/wiki/Malnova_Testamento_(Zamenhof)/Ester/1",
-      versionTitle: "La Malnova Testamento, L.L.Zamenhof #[eo]",
+      versionTitle: "La Malnova Testamento, L.L.Zamenhof [eo]",
     },
     #{
       status: "",
@@ -1704,7 +1704,7 @@ const getTextsV3ResponseExample = #{
       language: "en",
       title: "Esther",
       versionSource: "https://www.talmud.de/tlmd/tanach/",
-      versionTitle: "Die Heilige Schrift, trans. Dr. Simon Bernfeld, Berlin, 1902 - German #[de]",
+      versionTitle: "Die Heilige Schrift, trans. Dr. Simon Bernfeld, Berlin, 1902 - German [de]",
     },
     #{
       status: "locked",
@@ -1974,17 +1974,17 @@ const textAPIReponseModelExample = #{
   heRef: "משנה פאה ד׳:ב׳",
   isComplex: false,
   text: #[
-    "Peah is given from #[the crop] while it is still connected with the soil. But in the case of hanging vine-branches and the date-palm, the owner brings down #[the fruit] and distributes it among the poor. Rabbi Shimon says: the same applies to smooth nut trees. Even if ninety-nine #[of the poor] say #[to the owner] to distribute it and one says to leave it in the field, this latter is listened to, since he spoke in accordance with the halakhah.",
-    "With hanging vine-branches and date-palm trees it is not so; even if ninety-nine #[of the poor] say #[to the owner] to leave it in the field and one says to distribute it, this latter is listened to, since he spoke in accordance with the halakhah.",
-    "If #[a poor man] took some of the peah #[already collected] and threw it onto the remainder #[not yet collected], he gets none of it. If he fell down upon it, or spread his cloak over it, they take the peah away from him. The same applies to gleanings and the forgotten sheaf.",
-    "#[The poor] may not harvest peah with scythes or tear it out #[of the ground] with spades, so that they might not strike one another #[with these implements].",
-    "There are three times a day #[the poor] make a search #[in the field for peah]: morning, noon, and sunset. Rabban Gamaliel says: these #[times] were only set lest they reduce them. Rabbi Akiva says: these were set lest they add to them. #[The men] of Bet Namer used to have the poor harvest #[the peah] with the aid of a rope, and they left peah at the end of each furrow.",
-    "A non-Jew who harvested his field and then converted, he is exempt from #[leaving] gleanings, the forgotten sheaf and peah. Rabbi Judah makes him liable to leave the forgotten sheaf, since he becomes liable for the forgotten sheaf at the time of their binding.",
-    "One who dedicated standing grain #[to the Temple] and then redeemed it while it was still standing grain, he is liable #[to give the agricultural gifts to the poor]. #[If he dedicated] sheaves and redeemed them while they were still sheaves, he is liable. #[If he dedicated] standing grain and redeemed it #[when it was already in] sheaves, he is exempt, since at the time when it became liable it was exempt.",
-    "Similarly one who dedicates his produce prior to the stage when they are subject to tithes and then redeemed them, they are liable #[to be tithed]. If #[he dedicated them] when they had already become subject to tithes and then redeemed them, they are liable #[to be tithed]. If he dedicated them before they had ripened, and they became ripe while in the possession of the #[Temple] treasurer, and he then redeemed them, they are exempt, since at the time when they would have been liable, they were exempt.",
-    "One who collected peah and said, “This is for so-and-so a poor man:” Rabbi Eliezer says: he has thus acquired it for him. The sages say: he must give it to the first poor man he finds. Gleanings, the forgotten sheaf and the peah of non-Jews are subject to tithes, unless he #[the non-Jew] had declared them ownerless.",
-    "What are gleanings? That which falls down at the time of harvesting. If while he was harvesting, he harvested a handful, or plucked a fistful, and then a thorn pricked him, and what he had in his hand fell to the ground, it still belongs to the owner. #[That which drops from] inside the hand or the sickle #[belongs] to the poor, but #[that which falls from] the back of the hand or the sickle #[belongs] to the owner. #[That which falls from] the top of the hand or sickle: Rabbi Ishmael says: to the poor; But Rabbi Akiva says: to the owner.",
-    "#[Grain found in] ant holes where the stalks are still standing, behold it still belongs to the owner. After the harvesters #[had passed over them], those found in the top parts #[of the ant holes belong] to the poor, but #[those found] on the bottom parts #[belong] to the owner. Rabbi Meir says: it all belongs to the poor, for gleanings about which there is any doubt are regarded as gleanings."
+    "Peah is given from [the crop] while it is still connected with the soil. But in the case of hanging vine-branches and the date-palm, the owner brings down [the fruit] and distributes it among the poor. Rabbi Shimon says: the same applies to smooth nut trees. Even if ninety-nine [of the poor] say [to the owner] to distribute it and one says to leave it in the field, this latter is listened to, since he spoke in accordance with the halakhah.",
+    "With hanging vine-branches and date-palm trees it is not so; even if ninety-nine [of the poor] say [to the owner] to leave it in the field and one says to distribute it, this latter is listened to, since he spoke in accordance with the halakhah.",
+    "If [a poor man] took some of the peah [already collected] and threw it onto the remainder [not yet collected], he gets none of it. If he fell down upon it, or spread his cloak over it, they take the peah away from him. The same applies to gleanings and the forgotten sheaf.",
+    "[The poor] may not harvest peah with scythes or tear it out [of the ground] with spades, so that they might not strike one another [with these implements].",
+    "There are three times a day [the poor] make a search [in the field for peah]: morning, noon, and sunset. Rabban Gamaliel says: these [times] were only set lest they reduce them. Rabbi Akiva says: these were set lest they add to them. [The men] of Bet Namer used to have the poor harvest [the peah] with the aid of a rope, and they left peah at the end of each furrow.",
+    "A non-Jew who harvested his field and then converted, he is exempt from [leaving] gleanings, the forgotten sheaf and peah. Rabbi Judah makes him liable to leave the forgotten sheaf, since he becomes liable for the forgotten sheaf at the time of their binding.",
+    "One who dedicated standing grain [to the Temple] and then redeemed it while it was still standing grain, he is liable [to give the agricultural gifts to the poor]. [If he dedicated] sheaves and redeemed them while they were still sheaves, he is liable. [If he dedicated] standing grain and redeemed it [when it was already in] sheaves, he is exempt, since at the time when it became liable it was exempt.",
+    "Similarly one who dedicates his produce prior to the stage when they are subject to tithes and then redeemed them, they are liable [to be tithed]. If [he dedicated them] when they had already become subject to tithes and then redeemed them, they are liable [to be tithed]. If he dedicated them before they had ripened, and they became ripe while in the possession of the [Temple] treasurer, and he then redeemed them, they are exempt, since at the time when they would have been liable, they were exempt.",
+    "One who collected peah and said, “This is for so-and-so a poor man:” Rabbi Eliezer says: he has thus acquired it for him. The sages say: he must give it to the first poor man he finds. Gleanings, the forgotten sheaf and the peah of non-Jews are subject to tithes, unless he [the non-Jew] had declared them ownerless.",
+    "What are gleanings? That which falls down at the time of harvesting. If while he was harvesting, he harvested a handful, or plucked a fistful, and then a thorn pricked him, and what he had in his hand fell to the ground, it still belongs to the owner. [That which drops from] inside the hand or the sickle [belongs] to the poor, but [that which falls from] the back of the hand or the sickle [belongs] to the owner. [That which falls from] the top of the hand or sickle: Rabbi Ishmael says: to the poor; But Rabbi Akiva says: to the owner.",
+    "#[Grain found in] ant holes where the stalks are still standing, behold it still belongs to the owner. After the harvesters #[had passed over them], those found in the top parts #[of the ant holes belong] to the poor, but #[those found] on the bottom parts [belong] to the owner. Rabbi Meir says: it all belongs to the poor, for gleanings about which there is any doubt are regarded as gleanings."
   ],
   he: #[
     "הַפֵּאָה נִתֶּנֶת בִּמְחֻבָּר לַקַּרְקָע. בְּדָלִית וּבְדֶקֶל, בַּעַל הַבַּיִת מוֹרִיד וּמְחַלֵּק לָעֲנִיִּים. רַבִּי שִׁמְעוֹן אוֹמֵר, אַף בַּחֲלִיקֵי אֱגוֹזִים. אֲפִלּוּ תִשְׁעִים וְתִשְׁעָה אוֹמְרִים לְחַלֵּק וְאֶחָד אוֹמֵר לָבוֹז, לָזֶה שׁוֹמְעִין, שֶׁאָמַר כַּהֲלָכָה: \n",
@@ -2059,7 +2059,7 @@ const textAPIReponseModelExample = #{
     },
     #{
       title: "Mishnah Peah",
-      versionTitle: "Mischnajot mit deutscher Übersetzung und Erklärung. Berlin 1887-1933 #[de]",
+      versionTitle: "Mischnajot mit deutscher Übersetzung und Erklärung. Berlin 1887-1933 [de]",
       versionSource: "https://www.nli.org.il/he/books/NNL_ALEPH002378149/NLI",
       language: "en",
       status: "locked",
@@ -2078,7 +2078,7 @@ const textAPIReponseModelExample = #{
     },
     #{
       title: "Mishnah Peah",
-      versionTitle: "Talmud Bavli. German. Lazarus Goldschmidt. 1929 #[de]",
+      versionTitle: "Talmud Bavli. German. Lazarus Goldschmidt. 1929 [de]",
       versionSource: "https://www.nli.org.il/he/books/NNL_ALEPH001042448/NLI",
       language: "en",
       status: "locked",
@@ -2116,7 +2116,7 @@ const textAPIReponseModelExample = #{
     },
     #{
       title: "Mishnah Peah",
-      versionTitle: "Le Talmud de Jérusalem, traduit par Moise Schwab, 1878-1890 #[fr]",
+      versionTitle: "Le Talmud de Jérusalem, traduit par Moise Schwab, 1878-1890 [fr]",
       versionSource: "https://www.nli.org.il/he/books/NNL_ALEPH002182155/NLI",
       language: "en",
       status: "locked",

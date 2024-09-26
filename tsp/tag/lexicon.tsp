@@ -91,7 +91,7 @@ alias DictionaryEntryArray = (
 /**
  * An array of arrays, each containing two strings. The first is a completion entry in Hebrew without vowels and the second includes vowels.
  */
-@example(#[#["אב", "אַב"]])
+@example(#["אב", "אַב"])
 model wordCompletionAPIResponse is string[];
 
 /**

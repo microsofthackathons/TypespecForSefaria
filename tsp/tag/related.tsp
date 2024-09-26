@@ -98,46 +98,48 @@ model RelatedJSON {
   /**
    * All public source sheets linked to a given `Ref` or containing that `Ref` on the sheet.
    */
-  @example(#{
-    owner: 65000,
-    _id: "5ec3a6f7c73d4d278311782e",
-    id: "238181",
-    public: true,
-    title: "סדר תיקון ליל שבועות",
-    sheetUrl: "/sheets/238181",
-    anchorRef: "Deuteronomy 1",
-    anchorRefExpanded: #["Deuteronomy 1:2"],
-    options: #{
-      numbered: 0,
-      boxed: 0,
-      assignable: 0,
-      bsd: 1,
-      language: "hebrew",
-      layout: "stacked",
-      langLayout: "heRight",
-      divineNames: "ykvk",
-      highlightMode: 0,
-      collaboration: "none",
-    },
-    collectionTOC: null,
-    ownerName: "יותם גונן",
-    via: null,
-    viaOwnerName: null,
-    assignerName: null,
-    viaOwnerProfileUrl: null,
-    assignerProfileUrl: null,
-    ownerProfileUrl: "/profile/-2977",
-    ownerImageUrl: "https://storage.googleapis.com/sefaria-profile-pictures/-2977-1626800304-small.png",
-    status: "public",
-    views: 8509,
-    topics: #[],
-    likes: #[],
-    summary: "",
-    attribution: null,
-    is_featured: false,
-    category: "Sheets",
-    type: "sheet",
-  })
+  @example(#[
+    #{
+      owner: 65000,
+      _id: "5ec3a6f7c73d4d278311782e",
+      id: "238181",
+      public: true,
+      title: "סדר תיקון ליל שבועות",
+      sheetUrl: "/sheets/238181",
+      anchorRef: "Deuteronomy 1",
+      anchorRefExpanded: #["Deuteronomy 1:2"],
+      options: #{
+        numbered: 0,
+        boxed: 0,
+        assignable: 0,
+        bsd: 1,
+        language: "hebrew",
+        layout: "stacked",
+        langLayout: "heRight",
+        divineNames: "ykvk",
+        highlightMode: 0,
+        collaboration: "none",
+      },
+      collectionTOC: null,
+      ownerName: "יותם גונן",
+      via: null,
+      viaOwnerName: null,
+      assignerName: null,
+      viaOwnerProfileUrl: null,
+      assignerProfileUrl: null,
+      ownerProfileUrl: "/profile/-2977",
+      ownerImageUrl: "https://storage.googleapis.com/sefaria-profile-pictures/-2977-1626800304-small.png",
+      status: "public",
+      views: 8509,
+      topics: #[],
+      likes: #[],
+      summary: "",
+      attribution: null,
+      is_featured: false,
+      category: "Sheets",
+      type: "sheet",
+    }
+  ])
   sheets?: SheetsJSON[];
 
   /**
@@ -148,91 +150,95 @@ model RelatedJSON {
   /**
    * Webpages related to the `Ref`.
    */
-  @example(#{
-    url: "https://etzion.org.il/en/mission-spies",
-    title: "The Mission of the Spies | vbm haretzion",
-    refs: #[
-      "Joshua 2:2-3",
-      "I Samuel 26:9",
-      "Deuteronomy 32:51",
-      "Numbers 34:16-29",
-      "Numbers 26:52-56",
-      "Joshua 14",
-      "Numbers 13",
-      "Numbers 20:12",
-      "Numbers 32:9",
-      "Deuteronomy 9:1-2",
-      "Numbers 13:20",
-      "Genesis 13:17",
-      "Numbers 13:21",
-      "Numbers 13:22",
-      "Deuteronomy 1:37",
-      "Joshua 2:1",
-      "Deuteronomy 1:22",
-      "Deuteronomy 1",
-      "Numbers 34",
-      "Deuteronomy 1:21",
-      "Numbers 32",
-      "Deuteronomy 1:24",
-      "Joshua 18:3-9"
-    ],
-    description: "Parshat HaShavua Yeshivat Har Etzion PARASHAT SHELACH The Mission of the Spies by Rav Yaakov Medan A  The Problem",
-    linkerHits: 283,
-    domain: "etzion.org.il",
-    siteName: "Torat Har Etzion",
-    favicon: "https://www.google.com/s2/favicons?domain=etzion.org.il",
-    authors: null,
-    articleSource: null,
-    anchorRef: "Deuteronomy 1",
-    anchorRefExpanded: #["Deuteronomy 1:2"],
-  })
+  @example(#[
+    #{
+      url: "https://etzion.org.il/en/mission-spies",
+      title: "The Mission of the Spies | vbm haretzion",
+      refs: #[
+        "Joshua 2:2-3",
+        "I Samuel 26:9",
+        "Deuteronomy 32:51",
+        "Numbers 34:16-29",
+        "Numbers 26:52-56",
+        "Joshua 14",
+        "Numbers 13",
+        "Numbers 20:12",
+        "Numbers 32:9",
+        "Deuteronomy 9:1-2",
+        "Numbers 13:20",
+        "Genesis 13:17",
+        "Numbers 13:21",
+        "Numbers 13:22",
+        "Deuteronomy 1:37",
+        "Joshua 2:1",
+        "Deuteronomy 1:22",
+        "Deuteronomy 1",
+        "Numbers 34",
+        "Deuteronomy 1:21",
+        "Numbers 32",
+        "Deuteronomy 1:24",
+        "Joshua 18:3-9"
+      ],
+      description: "Parshat HaShavua Yeshivat Har Etzion PARASHAT SHELACH The Mission of the Spies by Rav Yaakov Medan A  The Problem",
+      linkerHits: 283,
+      domain: "etzion.org.il",
+      siteName: "Torat Har Etzion",
+      favicon: "https://www.google.com/s2/favicons?domain=etzion.org.il",
+      authors: null,
+      articleSource: null,
+      anchorRef: "Deuteronomy 1",
+      anchorRefExpanded: #["Deuteronomy 1:2"],
+    }
+  ])
   webpages?: WebPagesJSON[];
 
   /**
    * Topics related to a given `Ref`.
    */
-  @example(#{
-    linkType: "about",
-    class: "refTopic",
-    dataSource: #{
-      en: "Sheets by Sefaria users",
-      he: "דפי מקורות ממשתמשי ספריא",
-      slug: "sefaria-users",
-    },
-    is_sheet: false,
-    generatedBy: "sheet-topic-aggregator",
-    order: #{
-      user_votes: 14,
-      tfidf: 10.783834565585545,
-      numDatasource: 1,
-      availableLangs: #["en", "he"],
-      comp_date: -1400,
-      order_id: "A00000000400010001-00010011",
-      pr: 8.083013483888324,
-      numSources: 143,
-    },
-    topic: "parashat-devarim",
-    title: #{ en: "Parashat Devarim", he: "פרשת דברים" },
-    titleIsTransliteration: #{ en: false, he: false },
-    description: #{
-      en: "Devarim (“Words”) is the first Torah portion in the Book of Deuteronomy, the final book of the Torah. In it, Moses recounts events from the Israelites’ travels in the desert, like the appointment of judges, the sin of the spies, and the wars with the Emorite kings Sihon and Og.",
-      he: "דברים היא הפרשה הראשונה בספר דברים, החומש החמישי והאחרון בתורה. בספר מובאים נאומי משה, שבהם הוא מזכיר אירועים מהעבר, סוקר מצוות שכבר ניתנו ומצווה מצוות חדשות. בפרשה משה מספר על הצורך במינוי שופטים להנהגת העם. הוא גם מזכיר את חטא המרגלים, שבו התלונן העם על הכניסה העתידית לארץ כנען, את העונש שהוטל על העם לנדוד במדבר ארבעים שנה ואת מלחמות ישראל במדבר.",
-    },
-    anchorRef: "Deuteronomy 1:1-11",
-    anchorRefExpanded: #[
-      "Deuteronomy 1:1",
-      "Deuteronomy 1:2",
-      "Deuteronomy 1:3",
-      "Deuteronomy 1:4",
-      "Deuteronomy 1:5",
-      "Deuteronomy 1:6",
-      "Deuteronomy 1:7",
-      "Deuteronomy 1:8",
-      "Deuteronomy 1:9",
-      "Deuteronomy 1:10",
-      "Deuteronomy 1:11"
-    ],
-  })
+  @example(#[
+    #{
+      linkType: "about",
+      class: "refTopic",
+      dataSource: #{
+        en: "Sheets by Sefaria users",
+        he: "דפי מקורות ממשתמשי ספריא",
+        slug: "sefaria-users",
+      },
+      is_sheet: false,
+      generatedBy: "sheet-topic-aggregator",
+      order: #{
+        user_votes: 14,
+        tfidf: 10.783834565585545,
+        numDatasource: 1,
+        availableLangs: #["en", "he"],
+        comp_date: -1400,
+        order_id: "A00000000400010001-00010011",
+        pr: 8.083013483888324,
+        numSources: 143,
+      },
+      topic: "parashat-devarim",
+      title: #{ en: "Parashat Devarim", he: "פרשת דברים" },
+      titleIsTransliteration: #{ en: false, he: false },
+      description: #{
+        en: "Devarim (“Words”) is the first Torah portion in the Book of Deuteronomy, the final book of the Torah. In it, Moses recounts events from the Israelites’ travels in the desert, like the appointment of judges, the sin of the spies, and the wars with the Emorite kings Sihon and Og.",
+        he: "דברים היא הפרשה הראשונה בספר דברים, החומש החמישי והאחרון בתורה. בספר מובאים נאומי משה, שבהם הוא מזכיר אירועים מהעבר, סוקר מצוות שכבר ניתנו ומצווה מצוות חדשות. בפרשה משה מספר על הצורך במינוי שופטים להנהגת העם. הוא גם מזכיר את חטא המרגלים, שבו התלונן העם על הכניסה העתידית לארץ כנען, את העונש שהוטל על העם לנדוד במדבר ארבעים שנה ואת מלחמות ישראל במדבר.",
+      },
+      anchorRef: "Deuteronomy 1:1-11",
+      anchorRefExpanded: #[
+        "Deuteronomy 1:1",
+        "Deuteronomy 1:2",
+        "Deuteronomy 1:3",
+        "Deuteronomy 1:4",
+        "Deuteronomy 1:5",
+        "Deuteronomy 1:6",
+        "Deuteronomy 1:7",
+        "Deuteronomy 1:8",
+        "Deuteronomy 1:9",
+        "Deuteronomy 1:10",
+        "Deuteronomy 1:11"
+      ],
+    }
+  ])
   topics?: RelatedTopicJSON[];
 
   /**
@@ -332,7 +338,7 @@ model RelatedLinkJSON {
    *
    * For example, if someone was searching for links for Esther 4.14-15, the `anchorRefExpanded` would contain Esther 4.14 and Esther 4.15.
    */
-  @example(#{ anchorRefExpanded: #["Deuteronomy 1:11"] })
+  @example(#["Deuteronomy 1:11"])
   anchorRefExpanded?: ref[];
 
   @example(" רש\\\"י על דברים א׳:י״א:א׳\n")
@@ -702,7 +708,7 @@ model RelatedTopicJSON {
   compDate: #[1613, 1617],
   commentaryNum: 2.0001,
   collectiveTitle: #{ en: "Tosafot Yom Tov", he: "תוספות יום טוב" },
-  he: "<b>#[*ואחד אומר לחלק לזה שומעין וכו'</b>. שאפילו הוא זקן ותש כח או חולה שהרי מה שאמר לחלק מפני חלישותו הוא אפילו הכי שומעין לו כך מצאתי בפירוש הנ\"ל]: \n",
+  he: "<b>[*ואחד אומר לחלק לזה שומעין וכו'</b>. שאפילו הוא זקן ותש כח או חולה שהרי מה שאמר לחלק מפני חלישותו הוא אפילו הכי שומעין לו כך מצאתי בפירוש הנ\"ל]: \n",
   heVersionTitle: "Mishnah, ed. Romm, Vilna 1913",
   heLicense: "Public Domain",
   heVersionTitleInHebrew: "משנה, מהדורת בית דפוס ראם, וילנא 1913",
@@ -739,7 +745,7 @@ model LinkObj {
    *
    * For example, if someone was searching for links for `Esther 4.14-15`, the `anchorRefExpanded` would contain `Esther 4.14` and `Esther 4.15`.
    */
-  @example(#{ anchorRefExpanded: #["Esther 4:14", "Esther 4:15"] })
+  @example(#["Esther 4:14", "Esther 4:15"])
   @minItems(1)
   anchorRefExpanded?: string[];
 
@@ -805,37 +811,84 @@ model LinkObj {
 /**
  * Response from the ref-topic-links endpoint
  */
+@example(#{
+  linkType: "about",
+  class: "refTopic",
+  dataSource: #{ en: "Aspaklaria", he: "אספקלריא", slug: "aspaklaria" },
+  is_sheet: false,
+  order: #{
+    tfidf: 53.476917039392994,
+    numDatasource: 2,
+    availableLangs: #["en", "he"],
+    comp_date: -1400,
+    order_id: "A00000000300280026",
+    pr: 5.15330629652094,
+    curatedPrimacy: #{ en: 100, he: 0 },
+  },
+  descriptions: #{
+    en: #{
+      title: "A New Grain Offering",
+      prompt: "The central ritual of Shavuot as described in the Torah is a special bread offering that was brought to the Temple. This sacrifice marked the beginning of sacrifices that were brought using grain from that year, as opposed to grains from the previous year, as explained in the Book of Numbers.",
+    },
+  },
+  topic: "shavuot",
+  anchorRef: "Numbers 28:26",
+  anchorRefExpanded: #["Numbers 28:26"],
+})
 model RefTopicLinksJSON {
   /**
    * The type of the link, based on the relationship within our ontology. Many links has an `is-a` relationship (such as `Genesis` `is-a` `Book`), but other topic-to-topic links have a variety of other types documented  [here](https://developers.sefaria.org/docs/topic-ontology#overview-of-sefaria-link-types).
    *
    * Some examples include `child-of`, `parent-of`, `sibling-of` etc.
    */
+  @example("about")
   linkType?: string;
 
   /**
    * A classification of the link as either `refTopic` (i.e. a ref to a topic) or `intraTopic` (topic-to-topic). In this case, it would be expected that all returned topic links would be of type `refTopic`.
    */
+  @example("refTopic")
   class?: "refTopic" | "intraTopic";
 
   /**
    * Where the topic link originated from (i.e. was it added to a sheet and generated by Sefaria users, or was it created by the Sefaria learning team?)
    */
+  @example(#{
+    en: "Sheets by Sefaria users",
+    he: "דפי מקורות ממשתמשי ספריא",
+    slug: "sefaria-users",
+  })
   dataSource?: DataSourceJSON;
 
   /**
    * Is this ref-to-topic link one that was generated by a user-created source sheet?
    */
+  @example(false)
   is_sheet?: boolean;
 
   /**
    * This JSON includes the various metrics that are relevant for ordering the link on a topics page. We use these metrics at [Sefaria.org](sefaria.org) to change the order on the topics page.
    */
+  @example(#{
+    tfidf: 53.476917039392994,
+    numDatasource: 2,
+    availableLangs: #["en", "he"],
+    comp_date: -1400,
+    order_id: "A00000000300280026",
+    pr: 5.15330629652094,
+    curatedPrimacy: #{ en: 100, he: 0 },
+  })
   order?: OrderTopicLinkJSON;
 
   /**
    * JSON containing descriptions for a given topic in various languages. Each language contains a `title` for the topic description, as well as a `prompt` which previews the source and asks questions to help the user engage with the text.
    */
+  @example(#{
+    en: #{
+      title: "A New Grain Offering",
+      prompt: "The central ritual of Shavuot as described in the Torah is a special bread offering that was brought to the Temple. This sacrifice marked the beginning of sacrifices that were brought using grain from that year, as opposed to grains from the previous year, as explained in the Book of Numbers.",
+    },
+  })
   descriptions?: {
     en?: {
       title?: string;
@@ -846,16 +899,29 @@ model RefTopicLinksJSON {
   /**
    * The title of the topic.
    */
+  @example("passover")
   topic?: string;
 
   /**
    * The `Ref` the topic is connected to, which should overlap with the requested `Ref` passed through the endpoint. For example, if someone queries for `Bamidbar 28:21`, one of the topics returned is `passover` which has an `anchorRef` of `Numbers 28:16-24` - a range overlapping with our desired `Ref`.
    */
+  @example("Numbers 28:16-24")
   anchorRef?: string;
 
   /**
    * If the `anchorRef` is a ranged `Ref` (i.e. containing more than a single segment), then this is a list of strings, with each string being one of single segment level `Ref`s that together comprise the range. So for example, the `anchorRefExpanded` of `Exodus 1:1-2` would be `["Exodus 1:1", "Exodus 1:2"]`.
    */
+  @example(#[
+    "Numbers 28:16",
+    "Numbers 28:17",
+    "Numbers 28:18",
+    "Numbers 28:19",
+    "Numbers 28:20",
+    "Numbers 28:21",
+    "Numbers 28:22",
+    "Numbers 28:23",
+    "Numbers 28:24"
+  ])
   anchorRefExpanded?: string[];
 }
 

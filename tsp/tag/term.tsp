@@ -69,35 +69,63 @@ op getName(
 /**
  * Term JSON returned to a query for a Term.
  */
+@example(#{
+  name: "Noach",
+  titles: #[
+    #{ primary: true, text: "Noach", lang: "en" },
+    #{ primary: true, text: "נח", lang: "he" },
+    #{ text: "Parashat Noach", lang: "en" },
+    #{ text: "פרשת נח", lang: "he" },
+    #{ text: "Noah", lang: "en" },
+    #{ text: "Parshat Noah", lang: "en" }
+  ],
+  scheme: "Parasha",
+  order: 2,
+  ref: "Genesis 6:9-11:32",
+  category: "Torah Portions",
+})
 model TermsJSON {
   /**
    * The name of the `Term`. Since a `Term` is a shared title node that can be referenced and used by many different `Index` nodes, the `name` field is critical as it contains the shared title.
    */
+  @example("Noah")
   name: string;
 
   /**
    * Alternative titles for the term in Hebrew and English.
    */
+  @example(#[
+    #{ primary: true, text: "Noach", lang: "en" },
+    #{ primary: true, text: "נח", lang: "he" },
+    #{ text: "Parashat Noach", lang: "en" },
+    #{ text: "פרשת נח", lang: "he" },
+    #{ text: "Noah", lang: "en" },
+    #{ text: "Parshat Noah", lang: "en" }
+  ])
   titles?: TitlesJSON[];
 
   /**
    * A shared `scheme` for a group of terms.
    */
+  @example("Parasha")
   scheme?: string;
 
   /**
    * Terms that share a `scheme` can be ordered within that `scheme`. So for example, _Parshiyot_ within the `Parasha` scheme can be ordered as per the order of the _Parshiyot_.
    */
+  @example(4)
   order?: int32;
 
   /**
    * For a _Parasha_, this is the Sefaria `Ref` which correlates to this _Parasha_ in the text. For example, _Parshat Noah_ corresponds to the ranged `Ref` of `"Genesis 6:9-11:32"`.
    */
+  @example("Genesis 6:9-11:32")
   ref?: ref;
 
   /**
    * The category of a specific term.
    */
+  @example("`texts`, `Torah Portions`")
   category?: string;
 }
 
