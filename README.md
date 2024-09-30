@@ -10,8 +10,8 @@ This project was created as part of the Microsoft Global Hackathon 2024, but Avi
 > 🚧 These instructions are rough and subject to change.
 
 Ths project is a a node/npm project. It contains:
-- a `original_api` folder with the original OpenAPI definition. This is not quite true, some changes were made to ensure Spectre validation, enable import into TypeSpec (such as inlining common parameters), and a handful of others. But the file is essentially the same.
-- a tsp folder with the TypeSpec definition. _Use this folder as your workspace root, as it contains packages.json etc._
+- a `original_api` folder with the original OpenAPI definition. This is not quite true, some changes were made to ensure [Spectral](https://marketplace.visualstudio.com/items?itemName=stoplight.spectral) validation, enable import into TypeSpec (such as inlining common parameters), and a handful of others. But the file is essentially the same.
+- a `tsp/` folder with the TypeSpec definition. _Use this folder as your workspace root, as it contains packages.json etc._
     - `tspconfig.yaml` config file
     - `main.tsp`, the entry file for openAPI generation
 	- a `tag` folder with a file for each tag in the original OpenAPI definition
@@ -24,9 +24,30 @@ Ths project is a a node/npm project. It contains:
 
 # Development Setup and Compilation
 
-- restore the npm after installing node etc
-- install TypeSpec Extension for [Visual Studio](https://marketplace.visualstudio.com/items?itemName=typespec.typespecvs) and/or [VSCode](https://marketplace.visualstudio.com/items?itemName=typespec.typespec-vscode)
-- Compile by executing the following two commands: `tsp format **/*.tsp`, `tsp compile .`
+1. Clone this repo. _For now, we recommend cloning it as an independent directory, but eventually it will be moved inside the [Sefaria-Project](https://github.com/Sefaria/Sefaria-Project) project structure._
+
+2. Navigate into the main working directory, `cd TypespecForSefaria/tsp/`.  
+
+3. Make sure you have node/npm installed. 
+
+4. Install TypeSpec. In theory, `npm i` from `TypespecForSefaria/tsp/` should work. 
+
+5. If `npm i` didn't successfully install TypeSpec, explicitly install it in the same directory by running `npm install -g @typespec/compiler`. Then, install the dependencies by running `tsp install`. 
+
+6. Make sure you have VSCode or Visual Studio installed. If you already have it installed, make sure it is updated.  
+
+7. Install TypeSpec Extension for [Visual Studio](https://marketplace.visualstudio.com/items?itemName=typespec.typespecvs) and/or [VSCode](https://marketplace.visualstudio.com/items?itemName=typespec.typespec-vscode). You can search inside VSCode's extensions sidebar and install it easily there. 
+
+8. Restart your IDE. 
+
+9. Test that TypeSpec was properly installed by attempting to compile using the following two commands: `tsp format **/*.tsp`, `tsp compile .`
+
+10. Confirm that the `tsp/tsp-output/` directory contains a valid `openapi.json` file. 
+
+If it does, great news - you have everything set up properly. 
+
+
+
 
 # Initial Migration
 Most of the migration visible in this project was done using TypeSpec's (not-yet-documented) `tsp-openapi3` import command. The workflow essentially looked as follows:
