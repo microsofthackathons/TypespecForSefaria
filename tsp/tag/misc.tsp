@@ -17,7 +17,7 @@ namespace SefariaAPI;
 @route("/api/find-refs")
 @opExample(
   #{
-    parameters: #{
+    returnType: #{
       text: #{
         body: "Genesis 1:1 is a citation and also Mishnah Peah 3-4. So is שמות ב",
         title: "Some thoughts on Sefer Bereishit 1",

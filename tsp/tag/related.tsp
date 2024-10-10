@@ -925,7 +925,7 @@ model RefTopicLinksJSON {
   anchorRefExpanded?: string[];
 }
 
-const getRelatedResponseExample = #{
+const getRelatedResponseExample : RelatedJSON = #{
   links: #[
     #{
       _id: "54bd48c4fbfba21733367bfa",

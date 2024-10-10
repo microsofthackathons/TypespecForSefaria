@@ -977,7 +977,7 @@ model v3TextVersionsJSON {
   firstSectionRef?: string;
 }
 
-const getTextsV3ResponseExample = #{
+const getTextsV3ResponseExample : v3TextsJson = #{
   versions: #[
     #{
       status: "locked",
@@ -1800,7 +1800,7 @@ const getTextsV3ResponseExample = #{
   warnings: #[],
 };
 
-const getTextsV1ResponseExample = #{
+const getTextsV1ResponseExample : textAPIReponse = #{
   ref: "Shabbat 22a:1",
   heRef: "שבת כ״ב א:א׳",
   isComplex: false,
@@ -1866,7 +1866,7 @@ const getTextsV1ResponseExample = #{
   layer: #[],
 };
 
-const getVersionsResponseExample = #[
+const getVersionsResponseExample : VersionJSON[] = #[
   #{
     title: "Rashi on Ecclesiastes",
     versionTitle: "The Metsudah Five Megillot, Lakewood, N.J., 2001",

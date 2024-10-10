@@ -908,7 +908,7 @@ model OrderJSON {
   fromTfidf?: int32;
 }
 
-const getAllTopicsExampleResponse = #[
+const getAllTopicsExampleResponse : TopicJSON[] = #[
   #{
     slug: "prayer",
     titles: #[

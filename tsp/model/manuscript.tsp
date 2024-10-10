@@ -55,7 +55,7 @@ model ManuscriptJSON {
    *
    * For example, if someone was searching for manuscript data for `Esther 4.14-15`, the `anchorRefExpanded` would contain `Esther 4.14` and `Esther 4.15`.
    */
-  @example(#{ anchorRefExpanded: #["Esther 4:14", "Esther 4:15"] })
+  @example(#["Esther 4:14", "Esther 4:15"])
   @minItems(1)
   anchorRefExpanded?: string[];
 

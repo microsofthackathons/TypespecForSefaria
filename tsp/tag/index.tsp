@@ -522,7 +522,7 @@ model RawIndexNodesJSON {
   nodes?: RawIndexAltStructNodeJSON[];
 }
 
-const getIndexV2ResponseExample = #{
+const getIndexV2ResponseExample : RawIndexJSON = #{
   title: "Pesachim",
   categories: #["Talmud", "Bavli", "Seder Moed"],
   schema: #{
@@ -757,7 +757,7 @@ const getIndexV2ResponseExample = #{
   corpora: #["Bavli"],
 };
 
-const getShapeResponseExample = #[
+const getShapeResponseExample : ShapeJSON[] = #[
   #{
     isComplex: true,
     section: "Haggadah",
