@@ -275,7 +275,7 @@ model CalendarNextReadAPI {
   he_date?: BilingualOf<string>;
 }
 
-const CalendarAPIResponseBaseReponseExample = #{
+const CalendarAPIResponseBaseReponseExample : CalendarAPIResponse = #{
   date: "2023-11-28",
   timezone: "America/Halifax",
   calendar_items: #[

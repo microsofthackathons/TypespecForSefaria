@@ -1969,7 +1969,7 @@ const getVersionsResponseExample : VersionJSON[] = #[
   }
 ];
 
-const textAPIReponseModelExample = #{
+const textAPIReponseModelExample : textAPIReponse = #{
   ref: "Mishnah Peah 4:2",
   heRef: "משנה פאה ד׳:ב׳",
   isComplex: false,
@@ -2219,7 +2219,7 @@ const textAPIReponseModelExample = #{
   layer: #[],
 };
 
-const v3TextsJsonModelExample = #{
+const v3TextsJsonModelExample : v3TextsJson = #{
   versions: #[
     #{
       status: "locked",
@@ -2299,7 +2299,7 @@ const v3TextsJsonModelExample = #{
   warnings: #[],
 };
 
-const v3TextsJson_versions_ModelExample = #{
+const v3TextsJson_versions_ModelExample : v3TextVersionsJSON = #{
   status: "locked",
   priority: 2,
   license: "CC-BY-SA",

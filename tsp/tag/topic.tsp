@@ -1036,7 +1036,7 @@ const getAllTopicsExampleResponse : TopicJSON[] = #[
   }
 ];
 
-const topicGraphJSONModelExample = #{
+const topicGraphJSONModelExample : TopicGraphJSON = #{
   topics: #[
     #{
       slug: "shabbat",
@@ -1126,7 +1126,7 @@ const topicGraphJSONModelExample = #{
   ],
 };
 
-const randomByTopicJSONModelExample = #{
+const randomByTopicJSONModelExample : RandomByTopicJSON = #{
   ref: "Pesachim 66a:3-6",
   topic: #{
     slug: "hillel",

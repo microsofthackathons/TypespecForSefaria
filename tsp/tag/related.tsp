@@ -1311,7 +1311,7 @@ const getRelatedResponseExample : RelatedJSON = #{
   media: #[],
 };
 
-const RelatedJSONModelExample = #{
+const RelatedJSONModelExample : RelatedJSON = #{
   links: #[
     #{
       _id: "54bd48c4fbfba21733367bfa",
